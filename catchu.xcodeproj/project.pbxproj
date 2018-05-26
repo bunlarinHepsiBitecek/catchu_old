@@ -14,6 +14,8 @@
 		4564E41D20B95576003B0D16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4564E41B20B95576003B0D16 /* LaunchScreen.storyboard */; };
 		4564E42820B95576003B0D16 /* catchuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E42720B95576003B0D16 /* catchuTests.swift */; };
 		4564E43320B95576003B0D16 /* catchuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E43220B95576003B0D16 /* catchuUITests.swift */; };
+		4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4564E44120B958C7003B0D16 /* GoogleService-Info.plist */; };
+		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		4564E42E20B95576003B0D16 /* catchuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = catchuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4564E43220B95576003B0D16 /* catchuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catchuUITests.swift; sourceTree = "<group>"; };
 		4564E43420B95576003B0D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4564E44120B958C7003B0D16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.release.xcconfig"; sourceTree = "<group>"; };
+		C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +88,8 @@
 				4564E42620B95576003B0D16 /* catchuTests */,
 				4564E43120B95576003B0D16 /* catchuUITests */,
 				4564E41020B95574003B0D16 /* Products */,
+				CEE167D9C611BBBC09B6A7BB /* Pods */,
+				C5CD0901428B420FF13AF238 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,7 +111,7 @@
 				4564E41620B95574003B0D16 /* Main.storyboard */,
 				4564E41920B95576003B0D16 /* Assets.xcassets */,
 				4564E41B20B95576003B0D16 /* LaunchScreen.storyboard */,
-				4564E41E20B95576003B0D16 /* Info.plist */,
+				4564E44020B958A2003B0D16 /* Resources */,
 			);
 			path = catchu;
 			sourceTree = "<group>";
@@ -125,6 +134,32 @@
 			path = catchuUITests;
 			sourceTree = "<group>";
 		};
+		4564E44020B958A2003B0D16 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4564E41E20B95576003B0D16 /* Info.plist */,
+				4564E44120B958C7003B0D16 /* GoogleService-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C5CD0901428B420FF13AF238 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEE167D9C611BBBC09B6A7BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */,
+				B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +167,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4564E43720B95576003B0D16 /* Build configuration list for PBXNativeTarget "catchu" */;
 			buildPhases = (
+				713F06190AF573F3C86B91C7 /* [CP] Check Pods Manifest.lock */,
 				4564E40B20B95574003B0D16 /* Sources */,
 				4564E40C20B95574003B0D16 /* Frameworks */,
 				4564E40D20B95574003B0D16 /* Resources */,
+				32FC355551C0EEA3376A9D26 /* [CP] Embed Pods Frameworks */,
+				83D9E5C336439C5B1E3FBB9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4564E41D20B95576003B0D16 /* LaunchScreen.storyboard in Resources */,
+				4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */,
 				4564E41A20B95576003B0D16 /* Assets.xcassets in Resources */,
 				4564E41820B95574003B0D16 /* Main.storyboard in Resources */,
 			);
@@ -250,6 +289,85 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32FC355551C0EEA3376A9D26 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-catchu/Pods-catchu-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-catchu/Pods-catchu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		713F06190AF573F3C86B91C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-catchu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83D9E5C336439C5B1E3FBB9C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-catchu/Pods-catchu-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-catchu/Pods-catchu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4564E40B20B95574003B0D16 /* Sources */ = {
@@ -428,11 +546,12 @@
 		};
 		4564E43820B95576003B0D16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2ZGY2Y58F;
-				INFOPLIST_FILE = catchu/Info.plist;
+				INFOPLIST_FILE = catchu/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,11 +565,12 @@
 		};
 		4564E43920B95576003B0D16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2ZGY2Y58F;
-				INFOPLIST_FILE = catchu/Info.plist;
+				INFOPLIST_FILE = catchu/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
