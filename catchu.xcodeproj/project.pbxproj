@@ -15,6 +15,10 @@
 		4564E42820B95576003B0D16 /* catchuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E42720B95576003B0D16 /* catchuTests.swift */; };
 		4564E43320B95576003B0D16 /* catchuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E43220B95576003B0D16 /* catchuUITests.swift */; };
 		4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4564E44120B958C7003B0D16 /* GoogleService-Info.plist */; };
+		4564E44F20B96E81003B0D16 /* TestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E44E20B96E81003B0D16 /* TestServices.swift */; };
+		4564E45120B96EA2003B0D16 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45020B96EA2003B0D16 /* TestController.swift */; };
+		4564E45320B96EAD003B0D16 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45220B96EAD003B0D16 /* TestView.swift */; };
+		4564E45520B96EB6003B0D16 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45420B96EB6003B0D16 /* TestModel.swift */; };
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,10 @@
 		4564E43220B95576003B0D16 /* catchuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catchuUITests.swift; sourceTree = "<group>"; };
 		4564E43420B95576003B0D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4564E44120B958C7003B0D16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4564E44E20B96E81003B0D16 /* TestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServices.swift; sourceTree = "<group>"; };
+		4564E45020B96EA2003B0D16 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		4564E45220B96EAD003B0D16 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		4564E45420B96EB6003B0D16 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.release.xcconfig"; sourceTree = "<group>"; };
 		C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 		4564E41120B95574003B0D16 /* catchu */ = {
 			isa = PBXGroup;
 			children = (
+				4564E44D20B96C14003B0D16 /* Services */,
 				4564E44C20B96794003B0D16 /* Controller */,
 				4564E44B20B9678D003B0D16 /* View */,
 				4564E44A20B96785003B0D16 /* Model */,
@@ -157,6 +166,7 @@
 		4564E44A20B96785003B0D16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4564E45420B96EB6003B0D16 /* TestModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +174,7 @@
 		4564E44B20B9678D003B0D16 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4564E45220B96EAD003B0D16 /* TestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,8 +182,17 @@
 		4564E44C20B96794003B0D16 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4564E45020B96EA2003B0D16 /* TestController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		4564E44D20B96C14003B0D16 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4564E44E20B96E81003B0D16 /* TestServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C5CD0901428B420FF13AF238 /* Frameworks */ = {
@@ -406,8 +426,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4564E44F20B96E81003B0D16 /* TestServices.swift in Sources */,
+				4564E45320B96EAD003B0D16 /* TestView.swift in Sources */,
 				4564E41520B95574003B0D16 /* ViewController.swift in Sources */,
+				4564E45520B96EB6003B0D16 /* TestModel.swift in Sources */,
 				4564E41320B95574003B0D16 /* AppDelegate.swift in Sources */,
+				4564E45120B96EA2003B0D16 /* TestController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
