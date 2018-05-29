@@ -26,6 +26,8 @@ extension PasswordResetViewController {
         
         performSegueToReturnBack()
         
+        print("erkut")
+        
 //        _ = navigationController?.popViewController(animated: true)
         
     }
