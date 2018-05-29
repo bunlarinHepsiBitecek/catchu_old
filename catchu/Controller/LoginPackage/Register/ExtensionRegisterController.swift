@@ -150,7 +150,7 @@ extension RegisterViewController {
                 if let result = httpResult?.data {
                     print("result :\(String(describing: result))")
 
-                    
+                       
                 }
                 
 //                let json = try? JSONSerialization.jsonObject(with: httpResult?.data, options: [])
