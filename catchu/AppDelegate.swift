@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import Firebase
+//import IQKeyboardManagerSwift
+import FBSDKLoginKit
+import TwitterKit
+
+let TWITTER_CUSTOMER_KEY = "VeQxZvXMp0rdAdAbhqwpQ7a9T"
+let TWITTER_CUSTOMER_SECRETKEY = "nPRTbxaonteKlAZg7ltOPpZ2MQ8giEGJCOujehp7ywJlA4CzRK"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        FirebaseApp.configure()
+//        IQKeyboardManager.sharedManager().enable = true
+        
+        //Facebook
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        //Twitter
+//        TWTRTwitter.sharedInstance().start(withConsumerKey: TWITTER_CUSTOMER_KEY, consumerSecret: TWITTER_CUSTOMER_SECRETKEY)
+        
         return true
     }
 
