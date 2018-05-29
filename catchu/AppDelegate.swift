@@ -12,9 +12,6 @@ import Firebase
 import FBSDKLoginKit
 import TwitterKit
 
-let TWITTER_CUSTOMER_KEY = "VeQxZvXMp0rdAdAbhqwpQ7a9T"
-let TWITTER_CUSTOMER_SECRETKEY = "nPRTbxaonteKlAZg7ltOPpZ2MQ8giEGJCOujehp7ywJlA4CzRK"
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -31,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         //Twitter
-//        TWTRTwitter.sharedInstance().start(withConsumerKey: TWITTER_CUSTOMER_KEY, consumerSecret: TWITTER_CUSTOMER_SECRETKEY)
+        TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.TWITTER_CUSTOMER_KEY, consumerSecret: Constants.TWITTER_CUSTOMER_SECRETKEY)
         
         return true
     }
@@ -57,7 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    // MARK: Twitter log-in - Completed sign-in but not being redirected to my app
+    func application(_ application:UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+//        let directedByGGL =  GIDSignIn.sharedInstance().handle(url as URL!, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let directedByTWTR =  TWTRTwitter.sharedInstance().application(application, open: url, options: options)
+        return directedByTWTR
+    }
 
 }
 

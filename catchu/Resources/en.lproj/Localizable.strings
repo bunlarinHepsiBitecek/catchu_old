@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  catchu
+
+  Created by Remzi YILDIRIM on 5/26/18.
+  Copyright © 2018 Remzi YILDIRIM. All rights reserved.
+*/
+
+"OK"              = "OK";
+
+"UserName"        = "User name";
+"Email"           = "Email";
+"Password"        = "Password";
+"Login"           = "Login";
+"ForgotPassword"  = "Forgot your password?";
+"DontHaveAccount" = "Don't have an account?";
+"Register"        = "Register";
+
+// Error Message
+"UnknownError"    = "Unknown error occured";
+"InvalidEmail"    = "Invalid email";
+"InvalidPassword" = "Invalid password";
+"EmptyEmail"      = "Email cann't be empty";
+"EmptyPassword"   = "Password cann't be empty";
+"EmptyUserName"   = "Username cann't be empty";

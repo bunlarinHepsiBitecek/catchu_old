@@ -15,10 +15,18 @@
 		4564E42820B95576003B0D16 /* catchuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E42720B95576003B0D16 /* catchuTests.swift */; };
 		4564E43320B95576003B0D16 /* catchuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E43220B95576003B0D16 /* catchuUITests.swift */; };
 		4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4564E44120B958C7003B0D16 /* GoogleService-Info.plist */; };
-		4564E44F20B96E81003B0D16 /* TestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E44E20B96E81003B0D16 /* TestServices.swift */; };
-		4564E45120B96EA2003B0D16 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45020B96EA2003B0D16 /* TestController.swift */; };
 		4564E45320B96EAD003B0D16 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45220B96EAD003B0D16 /* TestView.swift */; };
-		4564E45520B96EB6003B0D16 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45420B96EB6003B0D16 /* TestModel.swift */; };
+		4564E45720B97118003B0D16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45620B97118003B0D16 /* User.swift */; };
+		4564E45A20B97387003B0D16 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45920B97387003B0D16 /* Constants.swift */; };
+		4564E45E20B975C4003B0D16 /* LocalizedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45D20B975C4003B0D16 /* LocalizedConstants.swift */; };
+		4564E46320B978F9003B0D16 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4564E46520B978F9003B0D16 /* Localizable.strings */; };
+		4564E46B20B996B0003B0D16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E46A20B996B0003B0D16 /* LoginViewController.swift */; };
+		4564E46D20B998A8003B0D16 /* LoginViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E46C20B998A8003B0D16 /* LoginViewControllerExtention.swift */; };
+		4564E46F20B999AD003B0D16 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E46E20B999AD003B0D16 /* DesignableUITextField.swift */; };
+		4564E47320B9A7FD003B0D16 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47220B9A7FD003B0D16 /* Validation.swift */; };
+		4564E47620B9CBB2003B0D16 /* AlertViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47520B9CBB2003B0D16 /* AlertViewSupport.swift */; };
+		4564E47820BB1F45003B0D16 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47720BB1F44003B0D16 /* FirebaseManager.swift */; };
+		4564E47A20BBBF4E003B0D16 /* LoaderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47920BBBF4E003B0D16 /* LoaderControl.swift */; };
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,10 +62,19 @@
 		4564E43220B95576003B0D16 /* catchuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catchuUITests.swift; sourceTree = "<group>"; };
 		4564E43420B95576003B0D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4564E44120B958C7003B0D16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4564E44E20B96E81003B0D16 /* TestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServices.swift; sourceTree = "<group>"; };
-		4564E45020B96EA2003B0D16 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		4564E45220B96EAD003B0D16 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		4564E45420B96EB6003B0D16 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		4564E45620B97118003B0D16 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4564E45920B97387003B0D16 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4564E45D20B975C4003B0D16 /* LocalizedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedConstants.swift; sourceTree = "<group>"; };
+		4564E46420B978F9003B0D16 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4564E46620B97910003B0D16 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4564E46A20B996B0003B0D16 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4564E46C20B998A8003B0D16 /* LoginViewControllerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerExtention.swift; sourceTree = "<group>"; };
+		4564E46E20B999AD003B0D16 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
+		4564E47220B9A7FD003B0D16 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		4564E47520B9CBB2003B0D16 /* AlertViewSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewSupport.swift; sourceTree = "<group>"; };
+		4564E47720BB1F44003B0D16 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		4564E47920BBBF4E003B0D16 /* LoaderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderControl.swift; sourceTree = "<group>"; };
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.release.xcconfig"; sourceTree = "<group>"; };
 		C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +131,7 @@
 		4564E41120B95574003B0D16 /* catchu */ = {
 			isa = PBXGroup;
 			children = (
+				4564E45820B9736C003B0D16 /* SupportFile */,
 				4564E44D20B96C14003B0D16 /* Services */,
 				4564E44C20B96794003B0D16 /* Controller */,
 				4564E44B20B9678D003B0D16 /* View */,
@@ -151,6 +169,7 @@
 			children = (
 				4564E41E20B95576003B0D16 /* Info.plist */,
 				4564E44120B958C7003B0D16 /* GoogleService-Info.plist */,
+				4564E46520B978F9003B0D16 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -166,7 +185,7 @@
 		4564E44A20B96785003B0D16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4564E45420B96EB6003B0D16 /* TestModel.swift */,
+				4564E45620B97118003B0D16 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,7 +201,7 @@
 		4564E44C20B96794003B0D16 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4564E45020B96EA2003B0D16 /* TestController.swift */,
+				4564E46720B99629003B0D16 /* LoginPackage */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,9 +209,87 @@
 		4564E44D20B96C14003B0D16 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4564E44E20B96E81003B0D16 /* TestServices.swift */,
+				4564E47720BB1F44003B0D16 /* FirebaseManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		4564E45820B9736C003B0D16 /* SupportFile */ = {
+			isa = PBXGroup;
+			children = (
+				4564E47020B9A79E003B0D16 /* Utils */,
+				4564E45C20B9756C003B0D16 /* UIExtentions */,
+				4564E45B20B97555003B0D16 /* Constants */,
+			);
+			path = SupportFile;
+			sourceTree = "<group>";
+		};
+		4564E45B20B97555003B0D16 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4564E45920B97387003B0D16 /* Constants.swift */,
+				4564E45D20B975C4003B0D16 /* LocalizedConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		4564E45C20B9756C003B0D16 /* UIExtentions */ = {
+			isa = PBXGroup;
+			children = (
+				4564E46E20B999AD003B0D16 /* DesignableUITextField.swift */,
+			);
+			path = UIExtentions;
+			sourceTree = "<group>";
+		};
+		4564E46720B99629003B0D16 /* LoginPackage */ = {
+			isa = PBXGroup;
+			children = (
+				4564E46920B99687003B0D16 /* Login */,
+			);
+			path = LoginPackage;
+			sourceTree = "<group>";
+		};
+		4564E46920B99687003B0D16 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4564E46A20B996B0003B0D16 /* LoginViewController.swift */,
+				4564E46C20B998A8003B0D16 /* LoginViewControllerExtention.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4564E47020B9A79E003B0D16 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4564E47B20BBC022003B0D16 /* Loader */,
+				4564E47420B9CB7D003B0D16 /* AlertWarning */,
+				4564E47120B9A7AB003B0D16 /* Validations */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4564E47120B9A7AB003B0D16 /* Validations */ = {
+			isa = PBXGroup;
+			children = (
+				4564E47220B9A7FD003B0D16 /* Validation.swift */,
+			);
+			path = Validations;
+			sourceTree = "<group>";
+		};
+		4564E47420B9CB7D003B0D16 /* AlertWarning */ = {
+			isa = PBXGroup;
+			children = (
+				4564E47520B9CBB2003B0D16 /* AlertViewSupport.swift */,
+			);
+			path = AlertWarning;
+			sourceTree = "<group>";
+		};
+		4564E47B20BBC022003B0D16 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				4564E47920BBBF4E003B0D16 /* LoaderControl.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		C5CD0901428B420FF13AF238 /* Frameworks */ = {
@@ -301,6 +398,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 4564E40620B95574003B0D16;
 			productRefGroup = 4564E41020B95574003B0D16 /* Products */;
@@ -319,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4564E46320B978F9003B0D16 /* Localizable.strings in Resources */,
 				4564E41D20B95576003B0D16 /* LaunchScreen.storyboard in Resources */,
 				4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */,
 				4564E41A20B95576003B0D16 /* Assets.xcassets in Resources */,
@@ -426,12 +525,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4564E44F20B96E81003B0D16 /* TestServices.swift in Sources */,
+				4564E46B20B996B0003B0D16 /* LoginViewController.swift in Sources */,
+				4564E46D20B998A8003B0D16 /* LoginViewControllerExtention.swift in Sources */,
+				4564E47820BB1F45003B0D16 /* FirebaseManager.swift in Sources */,
 				4564E45320B96EAD003B0D16 /* TestView.swift in Sources */,
+				4564E47A20BBBF4E003B0D16 /* LoaderControl.swift in Sources */,
 				4564E41520B95574003B0D16 /* ViewController.swift in Sources */,
-				4564E45520B96EB6003B0D16 /* TestModel.swift in Sources */,
 				4564E41320B95574003B0D16 /* AppDelegate.swift in Sources */,
-				4564E45120B96EA2003B0D16 /* TestController.swift in Sources */,
+				4564E46F20B999AD003B0D16 /* DesignableUITextField.swift in Sources */,
+				4564E45E20B975C4003B0D16 /* LocalizedConstants.swift in Sources */,
+				4564E47620B9CBB2003B0D16 /* AlertViewSupport.swift in Sources */,
+				4564E45720B97118003B0D16 /* User.swift in Sources */,
+				4564E47320B9A7FD003B0D16 /* Validation.swift in Sources */,
+				4564E45A20B97387003B0D16 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +589,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		4564E46520B978F9003B0D16 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4564E46420B978F9003B0D16 /* en */,
+				4564E46620B97910003B0D16 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -490,6 +605,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -550,6 +666,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

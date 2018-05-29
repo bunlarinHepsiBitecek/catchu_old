@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  catchu
+
+  Created by Remzi YILDIRIM on 5/26/18.
+  Copyright © 2018 Remzi YILDIRIM. All rights reserved.
+*/
+"OK"              = "Tamam";
+
+"UserName"        = "Kullanıcı adı";
+"Email"           = "Email";
+"Password"        = "Şifre";
+"Login"           = "Giriş";
+"ForgotPassword"  = "Şifremi unuttum?";
+"DontHaveAccount" = "Hesabın yok mu?";
+"Register"        = "Kaydol";
+
+// Error Message
+"UnknownError"    = "Bilinmeyen hata oluştu";
+"InvalidEmail"    = "Geçersiz email";
+"InvalidPassword" = "Geçersiz şifre";
+"EmptyEmail"      = "Email boş olamaz";
+"EmptyPassword"   = "Şifre boş olamaz";
