@@ -101,4 +101,10 @@ class User {
             self._providerID = newValue
         }
     }
+    
+    func toString() {
+        print("userName :\(_userName)")
+        print("email :\(_email)")
+        print("passworld :\(String(describing: _password))")
+    }
 }

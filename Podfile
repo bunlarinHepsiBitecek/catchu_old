@@ -11,6 +11,7 @@ target 'catchu' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Firebase/Functions'
   pod 'IQKeyboardManagerSwift'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
