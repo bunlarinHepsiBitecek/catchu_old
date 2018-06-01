@@ -26,6 +26,10 @@ struct LocalizedConstants {
         static let InvalidPassword = NSLocalizedString("InvalidPassword", comment: "")
     }
     
+    struct PasswordReset {
+        static let PasswordResetMailSend = NSLocalizedString("PasswordResetMailSend", comment: "")        
+    }
+    
     struct Register {
         static let UserName        = NSLocalizedString("UserName", comment: "")
         static let Email           = NSLocalizedString("Email", comment: "")

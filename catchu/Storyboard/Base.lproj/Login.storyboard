@@ -146,6 +146,8 @@
                         <outlet property="loginButton" destination="glb-17-lOF" id="zeG-6y-3JA"/>
                         <outlet property="passwordText" destination="jZQ-cV-3oL" id="q7K-2N-upf"/>
                         <outlet property="registerButton" destination="kuC-6y-kuC" id="SXI-34-pzI"/>
+                        <segue destination="G9I-VC-PJ0" kind="show" identifier="segueToRegisterView" id="Red-oq-d8B"/>
+                        <segue destination="0tF-f9-0u8" kind="show" identifier="segueToPasswordResetView" id="0h7-8z-oeD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -168,7 +170,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZu-Ue-Du3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1156" y="132"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="AW5-Ah-geE">
@@ -207,6 +209,15 @@
                                 <state key="normal" title="REGISTER"/>
                                 <connections>
                                     <action selector="registerButtonClicked:" destination="G9I-VC-PJ0" eventType="touchUpInside" id="8UJ-wg-5gT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heb-dD-hXS">
+                                <rect key="frame" x="60" y="407" width="255" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonClicked:" destination="G9I-VC-PJ0" eventType="touchUpInside" id="TBf-UB-nF9"/>
                                 </connections>
                             </button>
                         </subviews>

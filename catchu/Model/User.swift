@@ -19,6 +19,8 @@ class User {
     private var _provider: String
     private var _providerID: String
     
+    private var _userDataDictionary : Dictionary<String, String> = [:]
+    
     init() {
         self._userID     = Constants.CharacterConstants.SPACE
         self._email      = Constants.CharacterConstants.SPACE
@@ -107,4 +109,28 @@ class User {
         print("email :\(_email)")
         print("passworld :\(String(describing: _password))")
     }
+    
+    func appendElementIntoDictionary(key : String, value : String) {
+        
+        self._userDataDictionary[key] = value
+        
+    }
+    
+    func createUserDataDictionary() -> Dictionary<String, String> {
+        
+        if !_userID.isEmpty {
+            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.UserModelConstants.userID, value: _userID)
+        }
+        
+        if !_userName.isEmpty {
+            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.UserModelConstants.userName, value: _userName)
+        }
+        
+        if !_email.isEmpty {
+            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.UserModelConstants.email, value: _email)
+        }
+        
+        return _userDataDictionary
+    }
+    
 }

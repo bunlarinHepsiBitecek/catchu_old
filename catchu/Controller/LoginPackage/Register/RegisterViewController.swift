@@ -39,10 +39,14 @@ class RegisterViewController: UIViewController {
     */
     @IBAction func registerButtonClicked(_ sender: Any) {
         
-//        t()
-        cloudFunctionTest()
-//        registerUser()
+        registerUser()
         
     }
     
+    @IBAction func logoutButtonClicked(_ sender: Any) {
+        
+        logout()
+        
+    }
+
 }

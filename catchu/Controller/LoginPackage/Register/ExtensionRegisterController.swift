@@ -16,6 +16,8 @@ extension RegisterViewController {
         
         user.toString()
         
+        LoaderController.shared.showLoader()
+        
         Auth.auth().createUser(withEmail: user.email, password: user.password) { (user, error) in
             
             if error != nil {
@@ -51,12 +53,11 @@ extension RegisterViewController {
                             } else {
                                 
                                 print("result :\(String(describing: result))")
+                                self.createUserProfileModel(userID: userID)
                                 
                             }
                             
                         })
-                        
-                        
                         
                     }
                     
@@ -64,6 +65,7 @@ extension RegisterViewController {
                 
             }
             
+            LoaderController.shared.removeLoader()
         }
         
     }
@@ -97,132 +99,141 @@ extension RegisterViewController {
     
     func registerUser() {
         
-        let user = User()
-        
-        if let userName = userNameTextField.text as String? {
-            if !userName.isEmpty {
-                user.userName = userName
-            }
+        guard validateRequiredFields() else {
+            
+            return
         }
         
-        if let email = emailTextField.text as String? {
-            if !email.isEmpty {
-                user.email = email
-            }
-        }
-        
-        if let password = passwordTextField.text as String? {
-            if !password.isEmpty {
-                user.password = password
-            }
-        }
-        
-        user.toString()
-        
-        registerFirebase(user: user)
+        registerFirebase(user: User.shared)
         
     }
     
-    func cloudFunctionTest() {
+    func createUserProfileModel(userID: String) {
         
-        let functions = Functions.functions()
+        User.shared.userID = userID
         
-        functions.httpsCallable("helloWorld2").call(["text": "erkut"]) { (httpResult, error) in
-            
-            print("httpResult :\(String(describing: httpResult))")
-            print("errorCode :\(error)")
-            
+        User.shared.toString()
+        
+        let function = Functions.functions()
+        
+        let data = User.shared.createUserDataDictionary()
+        
+        function.httpsCallable(Constants.FirebaseCallableFunctions.createUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
                 
                 if let errorCode = error as NSError? {
                     
-                    print("errorCode :\(errorCode.localizedDescription)")
-                    print("errorCode :\(errorCode)")
+                    print("errorCode : \(errorCode.localizedDescription)")
+                    print("errorCode : \(errorCode.userInfo)")
                     
                 }
                 
             } else {
                 
-                print("cloudFunction call is ok!")
-                print("httpResult :\(String(describing: httpResult))")
-                
-                if let result = httpResult?.data {
-                    print("result :\(String(describing: result))")
-
-                       
+                if let data = httpResult?.data {
+                    
+                    print("data : \(data)")
+                    
                 }
                 
-//                let json = try? JSONSerialization.jsonObject(with: httpResult?.data, options: [])
-                //let json = try? JSONSerialization.jsonObject(with: httpResult?.data, options: [])
-                
-                
-                let data : Data = httpResult?.data as! Data
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                
-                print("json :\(json)")
-
-                
-                
-                
             }
             
         }
         
-//        functions.httpsCallable("helloWorld2").call { (httpResult, error) in
-//            
-//            print("httpResult :\(String(describing: httpResult))")
-//            print("errorCode :\(error)")
-//
-//            
-//            if error != nil {
-//                
-//                if let errorCode = error as NSError? {
-//                    
-//                    print("errorCode :\(errorCode.localizedDescription)")
-//                    print("errorCode :\(errorCode)")
-//                    
-//                }
-//                
-//            } else {
-//                
-//                print("cloudFunction call is ok!")
-//                print("httpResult :\(String(describing: httpResult))")
-//                
-//            }
-//            
-//        }
+        print("data :\(data)")
+    }
+    
+    func logout() {
+        
+        do
+        {
+            try Auth.auth().signOut()
+            
+            print("logout is ok")
+        }
+        catch let error as NSError
+        {
+            print(error.localizedDescription)
+            print("logout is failed")
+        }
         
     }
     
-    func t() {
+}
+
+struct Dog : Codable {
+    let name: String
+    let owner: String
+}
+
+// validation manager
+extension RegisterViewController {
+    
+    func validateRequiredFields() -> Bool {
         
-        let url = URL(string: "https://us-central1-catchu-594ca.cloudfunctions.net/helloWorld")
+        let validateUserNameResult = Validation.shared.isUserNameValid(userName: userNameTextField.text!)
         
-        let request = URLRequest(url: url!)
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, resp, error) in
+        if !validateUserNameResult.isValid {
+            AlertViewManager.shared.createAlert(title: validateUserNameResult.title, message: validateUserNameResult.message, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            return false
+        } else {
             
-            print("resp :\(String(describing: resp))")
-            print("data :\(String(describing: data))")
-            
-            if let data = String(data: data!, encoding: String.Encoding.ascii) {
-                
-                print("data :\(String(describing: data))")
-                
-                
+            if let userName = userNameTextField.text as String? {
+                User.shared.userName = userName
             }
-        
         }
         
-        task.resume()
+        let validateEmailResult = Validation.shared.isValidEmail(email: emailTextField.text!)
+        
+        if !validateEmailResult.isValid {
+            AlertViewManager.shared.createAlert(title: validateEmailResult.title, message: validateEmailResult.message, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            return false
+        } else {
+            
+            if let email = emailTextField.text {
+                User.shared.email = email
+            }
+            
+        }
+        
+        let validatePasswordResult = Validation.shared.isValidPassword(password: passwordTextField.text!)
+        
+        if !validatePasswordResult.isValid {
+            AlertViewManager.shared.createAlert(title: validatePasswordResult.title, message: validatePasswordResult.message, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            return false
+        } else {
+            
+            if let password = passwordTextField.text {
+                User.shared.password = password
+            }
+            
+        }
+        
+        return true
         
     }
     
     
 }
 
-public struct hayda {
-    public let deneme1:String
-    public let deneme2:String
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

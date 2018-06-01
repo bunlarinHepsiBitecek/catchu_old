@@ -73,3 +73,19 @@ extension LoginViewController {
     }
 }
 
+// MARK: PerformSegue Manager
+extension LoginViewController {
+    
+    func performSegueToRegisterView() {
+        
+        performSegue(withIdentifier: "segueToRegisterView", sender: self)
+        
+    }
+    
+    func performSegueToForgetPassword() {
+        
+        performSegue(withIdentifier: "segueToPasswordResetView", sender: self)
+        
+    }
+    
+}
