@@ -21,8 +21,22 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.localized()
+        
+        //self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = true
+        
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -39,8 +53,6 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonClicked(_ sender: UIButton) {
         self.login()
     }
-    @IBAction func forgotPasswordButtonClicked(_ sender: UIButton) {
-    }
     
     @IBAction func facebookButtonClicked(_ sender: UIButton) {
         self.loginWithFaceebook()
@@ -50,6 +62,15 @@ class LoginViewController: UIViewController {
         self.loginWithTwitter()
     }
     @IBAction func registerButtonClicked(_ sender: UIButton) {
+        
+        self.performSegueToRegisterView()
+        
+    }
+    
+    @IBAction func forgotPasswordButtonClicked(_ sender: UIButton) {
+        
+        self.performSegueToForgetPassword()
+        
     }
     @IBAction func denemeButtonClicked(_ sender: UIButton) {
         FirebaseManager.shared.cfAddMessage()

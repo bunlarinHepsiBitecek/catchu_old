@@ -7,6 +7,7 @@
 */
 
 "OK"              = "OK";
+"Error"           = "Error";
 
 "UserName"        = "User name";
 "Email"           = "Email";
@@ -23,3 +24,4 @@
 "EmptyEmail"      = "Email cann't be empty";
 "EmptyPassword"   = "Password cann't be empty";
 "EmptyUserName"   = "Username cann't be empty";
+"PasswordResetMailSend" = "Password reset link has been send to your email";

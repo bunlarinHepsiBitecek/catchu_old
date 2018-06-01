@@ -11,6 +11,7 @@ import Foundation
 struct LocalizedConstants {
     static let Ok = NSLocalizedString("OK", comment: "")
     static let UnknownError = NSLocalizedString("UnknownError", comment: "")
+    static let Error = NSLocalizedString("Error", comment: "")
     
     struct Login {
         static let Email           = NSLocalizedString("Email", comment: "")
@@ -26,6 +27,10 @@ struct LocalizedConstants {
         static let InvalidPassword = NSLocalizedString("InvalidPassword", comment: "")
     }
     
+    struct PasswordReset {
+        static let PasswordResetMailSend = NSLocalizedString("PasswordResetMailSend", comment: "")        
+    }
+    
     struct Register {
         static let UserName        = NSLocalizedString("UserName", comment: "")
         static let Email           = NSLocalizedString("Email", comment: "")
@@ -33,5 +38,22 @@ struct LocalizedConstants {
         static let Register        = NSLocalizedString("Register", comment: "")
         
         static let EmptyUserName   = NSLocalizedString("EmptyUserName", comment: "")
+    }
+    
+    struct FirebaseError {
+        
+        static let accountExistsWithDifferentCredential =   
+            NSLocalizedString("accountExistsWithDifferentCredential", comment: "")
+        static let credentialAlreadyInUse =
+            NSLocalizedString("credentialAlreadyInUse", comment: "")
+        static let emailAlreadyInUse =
+            NSLocalizedString("emailAlreadyInUse", comment: "")
+        static let invalidCredential =
+            NSLocalizedString("invalidCredential", comment: "")
+        static let invalidEmail =
+            NSLocalizedString("invalidEmail", comment: "")
+        static let userNotFound =
+            NSLocalizedString("userNotFound", comment: "")
+    
     }
 }

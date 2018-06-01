@@ -44,4 +44,10 @@ class RegisterViewController: UIViewController {
 //        registerUser()
     }
     
+    @IBAction func logoutButtonClicked(_ sender: Any) {
+        
+        logout()
+        
+    }
+
 }

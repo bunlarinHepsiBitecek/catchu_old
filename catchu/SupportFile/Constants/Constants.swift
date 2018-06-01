@@ -24,4 +24,23 @@ struct Constants {
         static let DOUBLE_ZERO: Double = 0.0
         static let FLOAT_ZERO: Float   = 0.0
     }
+    
+    struct FirebaseCallableFunctions {
+        
+        static let createUserProfile = "createUserProfile"
+        static let updateUserProfile = "updateUserProfile"
+        
+    }
+    
+    struct FirebaseModelConstants {
+        
+        struct UserModelConstants {
+            
+            static let userID: String = "userId"
+            static let userName: String = "userName"
+            static let email: String = "email"
+            
+        }
+        
+    }
 }

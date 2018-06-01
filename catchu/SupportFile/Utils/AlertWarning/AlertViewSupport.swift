@@ -43,6 +43,31 @@ class AlertViewManager : NSObject {
         
     }
     
+    func createAlert_2(title: String, message: String, preferredStyle: UIAlertControllerStyle, actionTitle: String, actionStyle: UIAlertActionStyle, selfDismiss: Bool, seconds: Int, completionHandler: ((UIAlertAction) -> Void)?) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        let alertAction = UIAlertAction(title: actionTitle, style: actionStyle, handler: completionHandler)
+        
+        alertController.addAction(alertAction)
+        
+        if let app = UIApplication.shared.delegate, let window = app.window, let presentingViewController = window?.rootViewController {
+            
+            self.presentAlertController(alertController, presentingViewController: presentingViewController)
+            
+        }
+        
+        if selfDismiss {
+            
+            let when = DispatchTime.now() + Double(Int64(seconds))
+            
+            DispatchQueue.main.asyncAfter(deadline: when){
+                alertController.dismiss(animated: true, completion: nil)
+            }
+        
+        }
+    
+    }
+    
     public func showOkAlert(_ title: String?, message: String?, handler: ((UIAlertAction) -> Void)?) {
         let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: handler)
         

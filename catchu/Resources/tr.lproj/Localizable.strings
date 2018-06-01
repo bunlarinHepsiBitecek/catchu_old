@@ -6,6 +6,7 @@
   Copyright © 2018 Remzi YILDIRIM. All rights reserved.
 */
 "OK"              = "Tamam";
+"Error"           = "Hata";
 
 "UserName"        = "Kullanıcı adı";
 "Email"           = "Email";
@@ -21,3 +22,4 @@
 "InvalidPassword" = "Geçersiz şifre";
 "EmptyEmail"      = "Email boş olamaz";
 "EmptyPassword"   = "Şifre boş olamaz";
+"PasswordResetMailSend" = "Şifre resetleme linki mailinize gönderildi";

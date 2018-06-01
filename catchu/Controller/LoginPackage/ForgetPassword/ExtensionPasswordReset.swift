@@ -22,17 +22,30 @@ extension PasswordResetViewController {
     
     @objc func backToLoginViewController() {
         
-        print("backToLoginViewController starts")
-        
         performSegueToReturnBack()
-        
-        print("erkut")
-        
-//        _ = navigationController?.popViewController(animated: true)
         
     }
     
+    func performSegueToReturnBack()  {
+        
+        if let navigation = self.navigationController {
+            
+            navigation.popViewController(animated: true)
+            
+        } else {
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+    }
+    
     func resetPasswordWithEmail(email: String) {
+        
+        guard validateRequiredFields() else {
+            return
+        }
+        
+        LoaderController.shared.showLoader()
         
         let actionCodeSetting = ActionCodeSettings.init()
         
@@ -58,18 +71,35 @@ extension PasswordResetViewController {
                 
                 print("PasswordReset process finished successfully")
                 
+                LoaderController.shared.removeLoader()
+                self.informUserAboutEmailSend()
+                
             }
-            
         }
+    }
+
+    func informUserAboutEmailSend() {
+        
+        AlertViewManager.shared.createAlert_2(title: LocalizedConstants.Login.ForgotPassword, message: LocalizedConstants.PasswordReset.PasswordResetMailSend, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, selfDismiss: true, seconds: 3, completionHandler: nil)
         
     }
     
-    func performSegueToReturnBack()  {
-        if let nav = self.navigationController {
-            nav.popViewController(animated: true)
-        } else {
-            self.dismiss(animated: true, completion: nil)
+}
+
+// validation manager
+extension PasswordResetViewController {
+    
+    func validateRequiredFields() -> Bool {
+        
+        let validateEmailResult = Validation.shared.isValidEmail(email: emailTextField.text!)
+        
+        if !validateEmailResult.isValid {
+            AlertViewManager.shared.createAlert(title: validateEmailResult.title, message: validateEmailResult.message, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            return false
         }
+        
+        return true
+        
     }
     
 }
