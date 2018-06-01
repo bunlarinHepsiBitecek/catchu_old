@@ -28,6 +28,7 @@ struct Constants {
     struct FirebaseCallableFunctions {
         
         static let createUserProfile = "createUserProfile"
+        static let updateUserProfile = "updateUserProfile"
         
     }
     

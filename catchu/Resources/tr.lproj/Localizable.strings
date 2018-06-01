@@ -6,6 +6,7 @@
   Copyright © 2018 Remzi YILDIRIM. All rights reserved.
 */
 "OK"              = "Tamam";
+"Error"           = "Hata";
 
 "UserName"        = "Kullanıcı adı";
 "Email"           = "Email";

@@ -7,6 +7,7 @@
 */
 
 "OK"              = "OK";
+"Error"           = "Error";
 
 "UserName"        = "User name";
 "Email"           = "Email";
