@@ -222,7 +222,3 @@ extension RegisterViewController {
     
 }
 
-public struct hayda {
-    public let deneme1:String
-    public let deneme2:String
-}

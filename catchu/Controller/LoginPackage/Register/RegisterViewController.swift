@@ -42,7 +42,6 @@ class RegisterViewController: UIViewController {
 //        t()
         cloudFunctionTest()
 //        registerUser()
-        
     }
     
 }

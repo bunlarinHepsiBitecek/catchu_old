@@ -51,4 +51,7 @@ class LoginViewController: UIViewController {
     }
     @IBAction func registerButtonClicked(_ sender: UIButton) {
     }
+    @IBAction func denemeButtonClicked(_ sender: UIButton) {
+        FirebaseManager.shared.cfAddMessage()
+    }
 }

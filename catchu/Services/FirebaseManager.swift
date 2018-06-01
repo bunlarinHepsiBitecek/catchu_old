@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import FirebaseFunctions
 import FBSDKCoreKit
 import FBSDKLoginKit
 import TwitterKit
@@ -14,6 +15,14 @@ import TwitterKit
 class FirebaseManager {
     
     public static let shared = FirebaseManager()
+    lazy var functions = Functions.functions()
+    
+    func loginLogOutCheck() {
+        if (Auth.auth().currentUser == nil) {
+            User.shared = User()
+            LoaderController.shared.appDelegate().window?.rootViewController = LoginViewController()
+        }
+    }
     
     func loginUser(user: User) {
         LoaderController.shared.showLoader()
@@ -181,6 +190,43 @@ class FirebaseManager {
         }
         return UIViewController()
     }
+    
+    func cfAddMessage() {
+        let message = "Remzi kisa mesaj 3"
+        // MARK: Firebase callable function always return json format, vise versa return INTERNAL error
+        functions.httpsCallable("addMessage").call(["text": message]) { (result, error) in
+            // [START function_error]
+            print("cfAddMessage call edildi")
+            if let error = error as NSError? {
+                if error.domain == FunctionsErrorDomain {
+                    let code = FIRFunctionsErrorCode(rawValue: error.code)
+                    let message = error.localizedDescription
+                    let details = error.userInfo[FunctionsErrorDetailsKey]
+                    print("Remzi hata detay code:\(code) message:\(message) details:\(details)")
+                }
+                // [START_EXCLUDE]
+                print(error.localizedDescription)
+                return
+                // [END_EXCLUDE]
+            }
+            // [END function_error]
+            
+            print("CF sonrasi datamIlk")
+            if let datamIlk = (result?.data as? Data) {
+                print("CF icerde datamIlk:\(datamIlk)")
+                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: datamIlk)
+                print("denemeObject:\(denemeObject)")
+            } else {
+                print("nill")
+            }
+            
+            if let data = result?.data {
+                print("CF sonrasi donen:\(data)")
+//                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: data)
+//                print("denemeObject:\(denemeObject)")
+            }
+        }
+    }
 }
 
 
@@ -192,16 +238,10 @@ struct FacebookPermissions {
 
 public enum ProviderType: String  {
     case facebook, twitter, firebase
-    
-//    public var stringValue: String {
-//        switch self {
-//        case .facebook:
-//            return "facebook"
-//        case .twitter:
-//            return "twitter"
-//        case .firebase:
-//            return "firebase"
-//        }
-//    }
-    
+}
+
+struct DenemeObject: Decodable {
+    let name: String?
+    let surname: String?
+    let age: Int?
 }

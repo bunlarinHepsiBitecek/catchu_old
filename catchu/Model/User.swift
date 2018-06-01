@@ -9,7 +9,7 @@
 import UIKit
 
 class User {
-    public static let shared = User()
+    public static var shared = User()
     
     private var _userID: String
     private var _userName: String
