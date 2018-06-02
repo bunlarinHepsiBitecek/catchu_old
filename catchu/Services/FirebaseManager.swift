@@ -15,74 +15,44 @@ import TwitterKit
 class FirebaseManager {
     
     public static let shared = FirebaseManager()
-    let firebaseAuth = Auth.auth()
     lazy var functions = Functions.functions()
     
-    func logOut() {
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+    func logout() {
+        do
+        {
+            try Auth.auth().signOut()
+            userSignOut()
+            print("logout is ok")
         }
-        self.userSignedAuth()
+        catch let error as NSError
+        {
+            print(error.localizedDescription)
+            print("logout is failed")
+        }
     }
     
     // MARK: if user not sigin, redirect loginVC
-    func userSignedAuth() {
-        if (firebaseAuth.currentUser == nil) {
+    func userSignOut() {
+        if (Auth.auth().currentUser == nil) {
             User.shared = User()
-            LoaderController.shared.appDelegate().window?.rootViewController = LoginViewController()
+//            LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController()
+//            LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    
-    func userAlreadySiginAuth() -> Bool {
-        if (firebaseAuth.currentUser != nil) {
-            LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
-            LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
-            return true
-        }
-        return false
     }
     
     func loginUser(user: User) {
         LoaderController.shared.showLoader()
-        firebaseAuth.signIn(withEmail: user.email, password: user.password) { (userSignIn, error) in
+        Auth.auth().signIn(withEmail: user.email, password: user.password) { (userSignIn, error) in
             if error != nil {
                 print("signIn Error: \(String(describing: error?.localizedDescription))")
                 
-                if let errorCode = Firebase.AuthErrorCode(rawValue: (error?._code)!) {
-                    switch errorCode {
-                    case .operationNotAllowed:
-                        print("operationNotAllowed")
-                        Analytics.logEvent("\(type(of: self))_\("signIn")", parameters: [
-                            "email": user.email,
-                            "password": user.password])
-                    case .invalidEmail:
-                        print("invalidEmail")
-                        Analytics.logEvent("\(type(of: self))_\("signIn")", parameters: [
-                            "email": user.email,
-                            "password": user.password])
-                    case .userDisabled:
-                        print("userDisabled")
-                        Analytics.logEvent("\(type(of: self))_\("signIn")", parameters: [
-                            "email": user.email,
-                            "password": user.password])
-                    case .wrongPassword:
-                        print("wrongPassword")
-                        Analytics.logEvent("\(type(of: self))_\("signIn")", parameters: [
-                            "email": user.email,
-                            "password": user.password])
-                    case .userNotFound:
-                        print("userNotFound")
-                        Analytics.logEvent("\(type(of: self))_\("signIn")", parameters: [
-                            "email": user.email,
-                            "password": user.password])
-                    default:
-                        print("default")
+                if let errorCode = error as NSError? {
+                    if let firebaseErrorCode = Firebase.AuthErrorCode(rawValue: errorCode.code){
+                        let functionName = String(#function.split(separator: "(")[0])
+                        self.handleFirebaseErrorCodes(errorCode: firebaseErrorCode, functionName)
                     }
-
                 }
+
             } else {
                 if let userSignIn = userSignIn {
                     print("user successfully login uid: \(userSignIn.uid)")
@@ -168,7 +138,7 @@ class FirebaseManager {
     
     private func firebaseAuth(_ credential: AuthCredential, _ userName: String, _ provider: ProviderType) {
         LoaderController.shared.showLoader()
-        firebaseAuth.signIn(with: credential) { (user, error) in
+        Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
                 print("REMZİ: Unable to authenticate with Firebase")
                 print(error)
@@ -212,6 +182,7 @@ class FirebaseManager {
         return UIViewController()
     }
     
+    
     func cfAddMessage() {
         let message = "Remzi kisa mesaj 3"
         // MARK: Firebase callable function always return json format, vise versa return INTERNAL error
@@ -243,11 +214,103 @@ class FirebaseManager {
             
             if let data = result?.data {
                 print("CF sonrasi donen:\(data)")
-//                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: data)
-//                print("denemeObject:\(denemeObject)")
+                //                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: data)
+                //                print("denemeObject:\(denemeObject)")
             }
         }
     }
+
+    
+    func registerFirebase(user: User) {
+        
+        user.toString()
+        
+        LoaderController.shared.showLoader()
+        
+        Auth.auth().createUser(withEmail: user.email, password: user.password) { (user, error) in
+            
+            if error != nil {
+                
+                if let errorCode = error as NSError? {
+                    
+                    if let firebaseErrorCode = Firebase.AuthErrorCode(rawValue: errorCode.code){
+                        let functionName = String(#function.split(separator: "(")[0])
+                        self.handleFirebaseErrorCodes(errorCode: firebaseErrorCode, functionName)
+                        
+                    }
+                    
+                }
+                
+            } else {
+                
+                if let user = user {
+                    
+                    if let userID = user.uid as String? {
+                        
+                        print("userID : \(userID)")
+                        
+                        Auth.auth().currentUser?.getIDToken(completion: { (result, error) in
+                            
+                            if error != nil {
+                                
+                                if let errorCode = error as NSError? {
+                                    
+                                    print("errorCode :\(errorCode.localizedDescription)")
+                                    
+                                }
+                                
+                            } else {
+                                
+                                print("result :\(String(describing: result))")
+                                CloudFunctionsManager.shared.createUserProfileModel(userID: userID)
+                                
+                            }
+                            
+                        })
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            LoaderController.shared.removeLoader()
+        }
+    }
+    
+    func handleFirebaseErrorCodes(errorCode: AuthErrorCode,_ callerFunctionName: String) {
+        
+        switch errorCode {
+        case .accountExistsWithDifferentCredential:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.accountExistsWithDifferentCredential, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .credentialAlreadyInUse:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.credentialAlreadyInUse, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .emailAlreadyInUse:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.emailAlreadyInUse, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .invalidCredential:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.invalidCredential, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .invalidEmail:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.invalidEmail, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .userNotFound:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.userNotFound, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        default:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.unknownError, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+//            let className = type(of: self)
+            let className = ""
+            let eventName = className + "_" + callerFunctionName
+            Analytics.logEvent(eventName, parameters: [
+                "email": User.shared.email,
+                "password": User.shared.password])
+        }
+        
+    }
+    
 }
 
 

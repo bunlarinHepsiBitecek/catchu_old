@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Twitter
         TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.TWITTER_CUSTOMER_KEY, consumerSecret: Constants.TWITTER_CUSTOMER_SECRETKEY)
         
-        // MARK: if user not sigin, redirect loginVC
-        FirebaseManager.shared.userSignedAuth()
         return true
     }
 
