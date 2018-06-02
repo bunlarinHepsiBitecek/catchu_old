@@ -23,8 +23,7 @@ class LoaderController: NSObject {
     func showLoader() {
         setupLoader()
         
-        let appDel = UIApplication.shared.delegate as! AppDelegate
-        let currentView = appDel.window!.rootViewController!.view!
+        let currentView = self.currentView()
         
         DispatchQueue.main.async {
             self.activityIndicator.center = currentView.center
@@ -42,8 +41,13 @@ class LoaderController: NSObject {
         }
     }
     
+    func appDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
     func currentView() -> UIView {
         let appDel = UIApplication.shared.delegate as! AppDelegate
         return appDel.window!.rootViewController!.view!
     }
+    
 }

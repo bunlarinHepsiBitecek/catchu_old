@@ -9,7 +9,7 @@
 import UIKit
 
 extension LoginViewController {
-    
+
     func localized() {
         emailText.placeHolderTitle(title:  LocalizedConstants.Login.Email)
         passwordText.placeHolderTitle(title: LocalizedConstants.Login.Password)
@@ -77,15 +77,11 @@ extension LoginViewController {
 extension LoginViewController {
     
     func performSegueToRegisterView() {
-        
-        performSegue(withIdentifier: "segueToRegisterView", sender: self)
-        
+        performSegue(withIdentifier: Constants.Segue.RegisterView, sender: self)
     }
     
     func performSegueToForgetPassword() {
-        
-        performSegue(withIdentifier: "segueToPasswordResetView", sender: self)
-        
+        performSegue(withIdentifier: Constants.Segue.PasswwordResetView, sender: self)
     }
     
 }

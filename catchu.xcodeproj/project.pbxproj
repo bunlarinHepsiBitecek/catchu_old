@@ -11,6 +11,7 @@
 		45356B2320BDF34D00E0733F /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45356B1E20BDF34D00E0733F /* PasswordResetViewController.swift */; };
 		45356B2420BDF34D00E0733F /* ExtensionRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45356B2020BDF34D00E0733F /* ExtensionRegisterController.swift */; };
 		45356B2520BDF34D00E0733F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45356B2120BDF34D00E0733F /* RegisterViewController.swift */; };
+		45356B2720C2F96E00E0733F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45356B2620C2F96E00E0733F /* Main.storyboard */; };
 		4564E41320B95574003B0D16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E41220B95574003B0D16 /* AppDelegate.swift */; };
 		4564E41820B95574003B0D16 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4564E41620B95574003B0D16 /* Login.storyboard */; };
 		4564E41A20B95576003B0D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4564E41920B95576003B0D16 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		45356B1E20BDF34D00E0733F /* PasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		45356B2020BDF34D00E0733F /* ExtensionRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionRegisterController.swift; sourceTree = "<group>"; };
 		45356B2120BDF34D00E0733F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		45356B2620C2F96E00E0733F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4564E40F20B95574003B0D16 /* catchu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = catchu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4564E41220B95574003B0D16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4564E41720B95574003B0D16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				4564E41620B95574003B0D16 /* Login.storyboard */,
+				45356B2620C2F96E00E0733F /* Main.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				4564E46320B978F9003B0D16 /* Localizable.strings in Resources */,
 				4564E41D20B95576003B0D16 /* LaunchScreen.storyboard in Resources */,
 				4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */,
+				45356B2720C2F96E00E0733F /* Main.storyboard in Resources */,
 				4564E41A20B95576003B0D16 /* Assets.xcassets in Resources */,
 				4564E41820B95574003B0D16 /* Login.storyboard in Resources */,
 			);

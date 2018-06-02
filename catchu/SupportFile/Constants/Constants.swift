@@ -25,6 +25,11 @@ struct Constants {
         static let FLOAT_ZERO: Float   = 0.0
     }
     
+    struct Segue {
+        static let RegisterView = "segueToRegisterView"
+        static let PasswwordResetView = "segueToPasswordResetView"
+    }
+    
     struct FirebaseCallableFunctions {
         
         static let createUserProfile = "createUserProfile"
