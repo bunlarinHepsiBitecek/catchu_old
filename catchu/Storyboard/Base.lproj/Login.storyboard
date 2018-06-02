@@ -172,6 +172,14 @@
             </objects>
             <point key="canvasLocation" x="1156" y="132"/>
         </scene>
+        <!--ContactStoryBoardReference-->
+        <scene sceneID="cdD-lS-PcI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Contact" referencedIdentifier="ContactStoryBoardReference" id="mdi-Ic-0ma" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sib-Lu-NxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3671" y="562"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="AW5-Ah-geE">
             <objects>
