@@ -15,18 +15,39 @@ import TwitterKit
 class FirebaseManager {
     
     public static let shared = FirebaseManager()
+    let firebaseAuth = Auth.auth()
     lazy var functions = Functions.functions()
     
-    func loginLogOutCheck() {
-        if (Auth.auth().currentUser == nil) {
+    func logOut() {
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        self.userSignedAuth()
+    }
+    
+    // MARK: if user not sigin, redirect loginVC
+    func userSignedAuth() {
+        if (firebaseAuth.currentUser == nil) {
             User.shared = User()
             LoaderController.shared.appDelegate().window?.rootViewController = LoginViewController()
         }
     }
     
+    
+    func userAlreadySiginAuth() -> Bool {
+        if (firebaseAuth.currentUser != nil) {
+            LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+            LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
+            return true
+        }
+        return false
+    }
+    
     func loginUser(user: User) {
         LoaderController.shared.showLoader()
-        Auth.auth().signIn(withEmail: user.email, password: user.password) { (userSignIn, error) in
+        firebaseAuth.signIn(withEmail: user.email, password: user.password) { (userSignIn, error) in
             if error != nil {
                 print("signIn Error: \(String(describing: error?.localizedDescription))")
                 
@@ -147,7 +168,7 @@ class FirebaseManager {
     
     private func firebaseAuth(_ credential: AuthCredential, _ userName: String, _ provider: ProviderType) {
         LoaderController.shared.showLoader()
-        Auth.auth().signIn(with: credential) { (user, error) in
+        firebaseAuth.signIn(with: credential) { (user, error) in
             if let error = error {
                 print("REMZİ: Unable to authenticate with Firebase")
                 print(error)

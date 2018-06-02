@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.localized()
-        
         //self.navigationController?.isNavigationBarHidden = true
     }
     

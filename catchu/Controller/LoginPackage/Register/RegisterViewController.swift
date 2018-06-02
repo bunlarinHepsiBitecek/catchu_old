@@ -46,7 +46,6 @@ class RegisterViewController: UIViewController {
     @IBAction func logoutButtonClicked(_ sender: Any) {
         
         logout()
-        
     }
 
 }

@@ -10,6 +10,9 @@ import UIKit
 
 extension LoginViewController {
     
+    func authCheck() -> Bool {
+        return !FirebaseManager.shared.userAlreadySiginAuth()
+    }
     func localized() {
         emailText.placeHolderTitle(title:  LocalizedConstants.Login.Email)
         passwordText.placeHolderTitle(title: LocalizedConstants.Login.Password)
