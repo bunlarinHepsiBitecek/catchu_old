@@ -31,6 +31,7 @@
 		4564E47820BB1F45003B0D16 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47720BB1F44003B0D16 /* FirebaseManager.swift */; };
 		4564E47A20BBBF4E003B0D16 /* LoaderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47920BBBF4E003B0D16 /* LoaderControl.swift */; };
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
+		A791E30A20C1B324005082C9 /* CloudFunctionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		4564E47720BB1F44003B0D16 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		4564E47920BBBF4E003B0D16 /* LoaderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderControl.swift; sourceTree = "<group>"; };
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFunctionsManager.swift; sourceTree = "<group>"; };
 		B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.release.xcconfig"; sourceTree = "<group>"; };
 		C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				4564E47720BB1F44003B0D16 /* FirebaseManager.swift */,
+				A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				45356B2520BDF34D00E0733F /* RegisterViewController.swift in Sources */,
 				4564E47320B9A7FD003B0D16 /* Validation.swift in Sources */,
 				45356B2220BDF34D00E0733F /* ExtensionPasswordReset.swift in Sources */,
+				A791E30A20C1B324005082C9 /* CloudFunctionsManager.swift in Sources */,
 				4564E45A20B97387003B0D16 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

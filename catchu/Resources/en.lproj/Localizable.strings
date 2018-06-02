@@ -25,3 +25,16 @@
 "EmptyPassword"   = "Password cann't be empty";
 "EmptyUserName"   = "Username cann't be empty";
 "PasswordResetMailSend" = "Password reset link has been send to your email";
+
+// Error explanation retrieved from Firebase.AuthErrorCode
+"accountExistsWithDifferentCredential" = "Account exists with different credentials";
+"credentialAlreadyInUse" = "Credential is already in use";
+"emailAlreadyInUse" = "Email is already in use";
+"invalidCredential" = "Wrong password or username information";
+"invalidEmail" = "Wrong password or username information";
+"userNotFound" = "User not found";
+"unknownError" = "Unknown Error";
+
+
+
+
