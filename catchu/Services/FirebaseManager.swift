@@ -181,6 +181,110 @@ class FirebaseManager {
         }
         return UIViewController()
     }
+    
+    func registerFirebase(user: User) {
+        
+        user.toString()
+        
+        LoaderController.shared.showLoader()
+        
+        Auth.auth().createUser(withEmail: user.email, password: user.password) { (user, error) in
+            
+            if error != nil {
+                
+                if let errorCode = error as NSError? {
+                    
+                    if let firebaseErrorCode = Firebase.AuthErrorCode(rawValue: errorCode.code){
+                        
+                        self.handleFirebaseErrorCodes(errorCode: firebaseErrorCode)
+                        
+                    }
+                    
+                }
+                
+            } else {
+                
+                if let user = user {
+                    
+                    if let userID = user.uid as String? {
+                        
+                        print("userID : \(userID)")
+                        
+                        Auth.auth().currentUser?.getIDToken(completion: { (result, error) in
+                            
+                            if error != nil {
+                                
+                                if let errorCode = error as NSError? {
+                                    
+                                    print("errorCode :\(errorCode.localizedDescription)")
+                                    
+                                }
+                                
+                            } else {
+                                
+                                print("result :\(String(describing: result))")
+                                CloudFunctionsManager.shared.createUserProfileModel(userID: userID)
+                                
+                            }
+                            
+                        })
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            LoaderController.shared.removeLoader()
+        }
+    }
+    
+    func logout() {
+        
+        //CloudFunctionsManager.shared.updateUserProfileModel(userID: (Auth.auth().currentUser?.uid)!)
+        
+        do
+        {
+            try Auth.auth().signOut()
+            
+            print("logout is ok")
+        }
+        catch let error as NSError
+        {
+            print(error.localizedDescription)
+            print("logout is failed")
+        }
+        
+        
+    }
+    
+    func handleFirebaseErrorCodes(errorCode: AuthErrorCode) {
+        
+        switch errorCode {
+        case .accountExistsWithDifferentCredential:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.accountExistsWithDifferentCredential, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .credentialAlreadyInUse:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.credentialAlreadyInUse, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .emailAlreadyInUse:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.emailAlreadyInUse, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .invalidCredential:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.invalidCredential, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .invalidEmail:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.invalidEmail, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        case .userNotFound:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.userNotFound, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+            
+        default:
+            AlertViewManager.shared.createAlert(title: LocalizedConstants.Error, message: LocalizedConstants.FirebaseError.unknownError, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+        }
+        
+    }
+    
 }
 
 

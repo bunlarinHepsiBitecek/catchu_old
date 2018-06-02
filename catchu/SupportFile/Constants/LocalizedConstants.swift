@@ -54,6 +54,7 @@ struct LocalizedConstants {
             NSLocalizedString("invalidEmail", comment: "")
         static let userNotFound =
             NSLocalizedString("userNotFound", comment: "")
+        static let unknownError = NSLocalizedString("unknownError", comment: "")
     
     }
 }
