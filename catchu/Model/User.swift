@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFunctions
 
 class User {
     public static var shared = User()
@@ -18,8 +19,12 @@ class User {
     private var _password: String
     private var _provider: String
     private var _providerID: String
+    private var _profilePictureUrl: String?
     
     private var _userDataDictionary : Dictionary<String, String> = [:]
+    
+    private var _userFriendList : Dictionary<String, User> = [:]
+    private var _sortedFriendArray : Array<User> = []
     
     init() {
         self._userID     = Constants.CharacterConstants.SPACE
@@ -39,6 +44,14 @@ class User {
         self._password   = password
         self._provider   = provider
         self._providerID = providerID
+    }
+    
+    func parseFriendDataToUser(dataDictionary : [String : AnyObject]) {
+        
+        self._name = dataDictionary["nameSurname"] as? String ?? ""
+        self._profilePictureUrl = dataDictionary["profilePictureUrl"] as? String ?? ""
+        self._providerID = dataDictionary["providerId"] as? String ?? ""
+        
     }
     
     var userID: String {
@@ -104,6 +117,33 @@ class User {
         }
     }
     
+    var userFriendList: Dictionary<String, User> {
+        get {
+            return _userFriendList
+        }
+        set {
+            _userFriendList = newValue
+        }
+    }
+    
+    var sortedFriendArray: Array<User> {
+        get {
+            return _sortedFriendArray
+        }
+        set {
+            _sortedFriendArray = newValue
+        }
+    }
+    
+    var profilePictureUrl: String {
+        get {
+            return _profilePictureUrl!
+        }
+        set {
+            _profilePictureUrl = newValue
+        }
+    }
+    
     func toString() {
         print("userName :\(_userName)")
         print("email :\(_email)")
@@ -113,6 +153,46 @@ class User {
     func appendElementIntoDictionary(key : String, value : String) {
         
         self._userDataDictionary[key] = value
+        
+    }
+    
+    func appendElementIntoFriendList(httpResult : HTTPSCallableResult) {
+        
+        let dataDictionary = httpResult.data as! Dictionary<String, Any>
+        
+        print("dataDictionary : \(dataDictionary)")
+        
+        for item in dataDictionary {
+            
+            let userData = item.value as! [String : AnyObject]
+            
+            let tempUser = User()
+            
+            tempUser.parseFriendDataToUser(dataDictionary: userData)
+            tempUser.userID = item.key
+            
+            User.shared._userFriendList[item.key] = tempUser
+            
+        }
+        
+        for item in User.shared.userFriendList {
+            
+            print("key ---> :\(item.key)")
+            print("val ---> :\(item.value)")
+        }
+    }
+    
+    func createSortedUserArray() {
+        
+        var tempArray : Array<User> = []
+        
+        for item in User.shared.userFriendList {
+            
+            tempArray.append(item.value)
+            
+        }
+        
+        _sortedFriendArray = tempArray.sorted(by: {$0._name < $1._name})
         
     }
     
@@ -132,5 +212,6 @@ class User {
         
         return _userDataDictionary
     }
+    
     
 }

@@ -48,4 +48,13 @@ class RegisterViewController: UIViewController {
         FirebaseManager.shared.logout()
     }
 
+    @IBAction func gotoMain(_ sender: Any) {
+        
+        if let destinationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TemporaryViewController") as? TemporaryViewController {
+            
+            present(destinationViewController, animated: true, completion: nil)
+            
+        }
+        
+    }
 }

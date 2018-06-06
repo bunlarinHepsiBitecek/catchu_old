@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,12 +10,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item-->
+        <scene sceneID="Rne-dI-iOG">
+            <objects>
+                <viewController storyboardIdentifier="TemporaryViewController" id="rGg-cJ-mDB" customClass="TemporaryViewController" customModule="catchu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dnv-ju-Th0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8El-8D-zzt">
+                                <rect key="frame" x="140" y="318" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="goFriendView"/>
+                                <connections>
+                                    <action selector="goFriendView:" destination="rGg-cJ-mDB" eventType="touchUpInside" id="qKa-Ex-8Jd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ze6-rC-5s6"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="2CS-pJ-tQd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pps-p4-cdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="310" y="-710"/>
+        </scene>
         <!--Item 2-->
         <scene sceneID="L0W-CO-B1a">
             <objects>
                 <viewController id="bh8-L7-E2c" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XYz-5u-Exb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="woH-Q5-YMa"/>
@@ -31,7 +57,7 @@
             <objects>
                 <viewController id="Si9-xP-JeQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m5P-qM-nUs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2Te-rg-I6w"/>
@@ -54,6 +80,7 @@
                     <connections>
                         <segue destination="Si9-xP-JeQ" kind="relationship" relationship="viewControllers" id="ZH9-fN-vng"/>
                         <segue destination="bh8-L7-E2c" kind="relationship" relationship="viewControllers" id="ffO-Jj-W5U"/>
+                        <segue destination="rGg-cJ-mDB" kind="relationship" relationship="viewControllers" id="h7N-re-LiK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IUt-bP-W9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>

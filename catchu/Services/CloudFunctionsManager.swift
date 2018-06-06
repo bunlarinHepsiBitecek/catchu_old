@@ -13,11 +13,7 @@ class CloudFunctionsManager {
     
     public static let shared = CloudFunctionsManager()
     
-    func createUserProfileModel(userID: String) {
-        
-        User.shared.userID = userID
-        
-        User.shared.toString()
+    func createUserProfileModel() {
         
         let function = Functions.functions()
         
@@ -50,17 +46,13 @@ class CloudFunctionsManager {
     }
     
     // function below uses singleton user object
-    func updateUserProfileModel(userID: String) {
-        
-        User.shared.userID = userID
+    func updateUserProfileModel() {
         
         User.shared.toString()
         
         let function = Functions.functions()
         
         let data = User.shared.createUserDataDictionary()
-        
-        //let data2 : NSDictionary = ["userId" : User.shared.userID, "userName" : User.shared.userName]
         
         function.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
             
@@ -89,9 +81,7 @@ class CloudFunctionsManager {
     }
     
     // function below updates specific childs of Profile unique nodes according to data 
-    func updateUserProfileModelWithData(userID: String, data: NSDictionary) {
-        
-        User.shared.userID = userID
+    func updateUserProfileModelWithData(data: NSDictionary) {
         
         User.shared.toString()
         
@@ -121,6 +111,33 @@ class CloudFunctionsManager {
         }
         
         print("data :\(data)")
+    }
+    
+    func getFriends() {
+        
+        User.shared.toString()
+        
+        let function = Functions.functions()
+        
+        function.httpsCallable(Constants.FirebaseCallableFunctions.getFriends).call { (httpResult, error) in
+           
+            if error != nil {
+                
+                if let errorCode = error as NSError? {
+                    
+                    print("errorCode : \(errorCode.localizedDescription)")
+                    print("errorCode : \(errorCode.userInfo)")
+                    
+                }
+                
+            } else {
+                
+                User.shared.appendElementIntoFriendList(httpResult: httpResult!)
+                
+            }
+        }
+        
+        
     }
     
 }

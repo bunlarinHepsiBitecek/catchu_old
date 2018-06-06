@@ -248,25 +248,8 @@ class FirebaseManager {
                     if let userID = user.uid as String? {
                         
                         print("userID : \(userID)")
-                        
-                        Auth.auth().currentUser?.getIDToken(completion: { (result, error) in
-                            
-                            if error != nil {
-                                
-                                if let errorCode = error as NSError? {
-                                    
-                                    print("errorCode :\(errorCode.localizedDescription)")
-                                    
-                                }
-                                
-                            } else {
-                                
-                                print("result :\(String(describing: result))")
-                                CloudFunctionsManager.shared.createUserProfileModel(userID: userID)
-                                
-                            }
-                            
-                        })
+                        User.shared.userID = userID
+                        CloudFunctionsManager.shared.createUserProfileModel()
                         
                     }
                     
@@ -307,6 +290,16 @@ class FirebaseManager {
             Analytics.logEvent(eventName, parameters: [
                 "email": User.shared.email,
                 "password": User.shared.password])
+        }
+        
+    }
+    
+    func checkUserLoggedIn() {
+        
+        if Auth.auth().currentUser != nil {
+            
+            CloudFunctionsManager.shared.getFriends()
+            
         }
         
     }
