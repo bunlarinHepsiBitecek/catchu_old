@@ -21,6 +21,11 @@ class User {
     private var _providerID: String
     private var _profilePictureUrl: String?
     
+    // the attributes below is used for collectionView management
+    private var _indexPathCollectionview : IndexPath!
+    private var _indexPathTableView : IndexPath!
+    private var _isUserSelected : Bool
+    
     private var _userDataDictionary : Dictionary<String, String> = [:]
     
     private var _userFriendList : Dictionary<String, User> = [:]
@@ -34,6 +39,9 @@ class User {
         self._password   = Constants.CharacterConstants.SPACE
         self._provider   = Constants.CharacterConstants.SPACE
         self._providerID = Constants.CharacterConstants.SPACE
+        self._isUserSelected = false
+        self._indexPathCollectionview = IndexPath()
+        self._indexPathTableView = IndexPath()
     }
     
     init(userID: String, userName: String, name: String, email: String, password: String, provider: String, providerID: String) {
@@ -44,6 +52,7 @@ class User {
         self._password   = password
         self._provider   = provider
         self._providerID = providerID
+        self._isUserSelected = false
     }
     
     func parseFriendDataToUser(dataDictionary : [String : AnyObject]) {
@@ -143,6 +152,34 @@ class User {
             _profilePictureUrl = newValue
         }
     }
+    
+    var indexPathCollectionView: IndexPath {
+        get {
+            return _indexPathCollectionview
+        }
+        set {
+            _indexPathCollectionview = newValue
+        }
+    }
+    
+    var indexPathTableView: IndexPath {
+        get {
+            return _indexPathTableView
+        }
+        set {
+            _indexPathTableView = newValue
+        }
+    }
+    
+    var isUserSelected: Bool {
+        get {
+            return _isUserSelected
+        }
+        set {
+            _isUserSelected = newValue
+        }
+    }
+    
     
     func toString() {
         print("userName :\(_userName)")

@@ -15,12 +15,7 @@ class ContactView: UIView {
     @IBOutlet var topView: UIView!
     
     var referenceMasterViewController : ContactViewController!
-    
-    @IBAction func test(_ sender: Any) {
-        self.referenceMasterViewController.dismiss(animated: true, completion: nil)
-        
-    }
-    
+
     func initializeView() {
         
         self.topView.alpha = 0.0
@@ -34,7 +29,6 @@ class ContactView: UIView {
         
         self.containerViewFriend.alpha = 1.0
         self.containerGroup.alpha = 0.0
-        
         
         
         

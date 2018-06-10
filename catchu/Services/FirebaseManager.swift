@@ -59,7 +59,7 @@ class FirebaseManager {
                     print("REMZI: full:\(userSignIn)")
                     User.shared.userID = userSignIn.uid
                     User.shared.email = userSignIn.email!
-                    User.shared.userName = userSignIn.displayName!
+                    //User.shared.userName = userSignIn.displayName!
                     User.shared.provider = ProviderType.firebase.rawValue
                 }
             }

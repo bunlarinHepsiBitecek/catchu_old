@@ -14,6 +14,8 @@ class ContainerFriendViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
     
+    var isCollectionViewOpen : Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -12,8 +12,8 @@ extension ContactViewController {
     
     func prepareViewLoadProcess() {
         
+        //startTableViewDataSourceManagement()
         addSubViewIntoSafeArea()
-        startTableViewDataSourceManagement()
 
     }
 
@@ -38,6 +38,8 @@ extension ContactViewController {
     func startTableViewDataSourceManagement() {
         
         SectionBasedFriend.shared.createInitialLetterBasedFriendDictionary()
+        
+        print("_friendUsernameInitialBasedDictionary :\(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count)")
         
     }
     

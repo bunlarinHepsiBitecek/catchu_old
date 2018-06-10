@@ -88,9 +88,11 @@ class SectionBasedFriend {
     
     func emptyIfUserSelectedDictionary() {
         
-        for item in _friendUsernameInitialBasedDictionary {
+        print("_friendUsernameInitialBasedDictionary : \(_friendUsernameInitialBasedDictionary.count)")
+        
+        for item in User.shared.userFriendList {
             
-            _ifUserSelectedDictionary[item.key] = false
+            _ifUserSelectedDictionary[item.value.userID] = false
             
         }
         

@@ -34,6 +34,7 @@
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
 		A7369AFE20C78830001692F4 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */; };
 		A7369B0020C86A5C001692F4 /* check-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A7369AFF20C86A5C001692F4 /* check-mark.png */; };
+		A76DF54E20CC308A00B98A09 /* EnumFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76DF54D20CC308A00B98A09 /* EnumFiles.swift */; };
 		A791E30A20C1B324005082C9 /* CloudFunctionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */; };
 		A79A765D20C368B700FCE198 /* TemporaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A765C20C368B700FCE198 /* TemporaryViewController.swift */; };
 		A79A765F20C36BE400FCE198 /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A79A765E20C36BE400FCE198 /* Contact.storyboard */; };
@@ -104,6 +105,7 @@
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
 		A7369AFF20C86A5C001692F4 /* check-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-mark.png"; sourceTree = "<group>"; };
+		A76DF54D20CC308A00B98A09 /* EnumFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFiles.swift; sourceTree = "<group>"; };
 		A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFunctionsManager.swift; sourceTree = "<group>"; };
 		A79A765C20C368B700FCE198 /* TemporaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryViewController.swift; sourceTree = "<group>"; };
 		A79A765E20C36BE400FCE198 /* Contact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contact.storyboard; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		4564E47020B9A79E003B0D16 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A76DF54C20CC304F00B98A09 /* Enums */,
 				4564E47B20BBC022003B0D16 /* Loader */,
 				4564E47420B9CB7D003B0D16 /* AlertWarning */,
 				4564E47120B9A7AB003B0D16 /* Validations */,
@@ -390,6 +393,14 @@
 				A79A768320C656E100FCE198 /* ExtensionContainerFriendController.swift */,
 			);
 			path = Contact;
+			sourceTree = "<group>";
+		};
+		A76DF54C20CC304F00B98A09 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A76DF54D20CC308A00B98A09 /* EnumFiles.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		A79A765A20C3680600FCE198 /* MainPackage */ = {
@@ -732,6 +743,7 @@
 				A79A767420C5BF2300FCE198 /* UIViewDesign.swift in Sources */,
 				4564E46B20B996B0003B0D16 /* LoginViewController.swift in Sources */,
 				A79A767820C5BFC400FCE198 /* UIImageViewDesign.swift in Sources */,
+				A76DF54E20CC308A00B98A09 /* EnumFiles.swift in Sources */,
 				45356B2320BDF34D00E0733F /* PasswordResetViewController.swift in Sources */,
 				4564E46D20B998A8003B0D16 /* LoginViewControllerExtention.swift in Sources */,
 				A79A766720C4B48B00FCE198 /* ContactView.swift in Sources */,
