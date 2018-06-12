@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Twitter
         TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.TWITTER_CUSTOMER_KEY, consumerSecret: Constants.TWITTER_CUSTOMER_SECRETKEY)
         
+        // MARK: SIL
+//        FirebaseManager.shared.userSigned()
+        
         return true
     }
 

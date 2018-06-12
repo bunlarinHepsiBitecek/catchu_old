@@ -57,4 +57,18 @@ struct LocalizedConstants {
         static let unknownError = NSLocalizedString("unknownError", comment: "")
     
     }
+    
+    struct Location {
+        static let LocationServiceDisableTitle = NSLocalizedString("LocationServiceDisableTitle", comment: "")
+        static let LocationServiceDisable      = NSLocalizedString("LocationServiceDisable", comment: "")
+        static let Settings                    = NSLocalizedString("Settings", comment: "")
+        static let Ok                          = NSLocalizedString("OK", comment: "")
+    }
+    
+    struct Library {
+        static let AccessLibraryDisableTitle   = NSLocalizedString("AccessLibraryDisableTitle", comment: "")
+        static let AccessLibraryDisable        = NSLocalizedString("AccessLibraryDisable", comment: "")
+        static let Settings                    = NSLocalizedString("Settings", comment: "")
+        static let Ok                          = NSLocalizedString("OK", comment: "")
+    }
 }

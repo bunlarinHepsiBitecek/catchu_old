@@ -12,6 +12,7 @@ import FirebaseFunctions
 class CloudFunctionsManager {
     
     public static let shared = CloudFunctionsManager()
+    lazy var functions = Functions.functions()
     
     func createUserProfileModel(userID: String) {
         
@@ -19,11 +20,9 @@ class CloudFunctionsManager {
         
         User.shared.toString()
         
-        let function = Functions.functions()
-        
         let data = User.shared.createUserDataDictionary()
         
-        function.httpsCallable(Constants.FirebaseCallableFunctions.createUserProfile).call(data) { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.createUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
                 
@@ -56,13 +55,11 @@ class CloudFunctionsManager {
         
         User.shared.toString()
         
-        let function = Functions.functions()
-        
         let data = User.shared.createUserDataDictionary()
         
         //let data2 : NSDictionary = ["userId" : User.shared.userID, "userName" : User.shared.userName]
         
-        function.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
                 
@@ -95,9 +92,7 @@ class CloudFunctionsManager {
         
         User.shared.toString()
         
-        let function = Functions.functions()
-        
-        function.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
                 
@@ -121,6 +116,74 @@ class CloudFunctionsManager {
         }
         
         print("data :\(data)")
+    }
+    
+    // MARK: sil
+    func cfAddMessage() {
+        let message = "Remzi kisa mesaj 3"
+        // MARK: Firebase callable function always return json format, vise versa return INTERNAL error
+        functions.httpsCallable("addMessage").call(["text": message]) { (result, error) in
+            // [START function_error]
+            print("cfAddMessage call edildi")
+            if let error = error as NSError? {
+                if error.domain == FunctionsErrorDomain {
+                    let code = FIRFunctionsErrorCode(rawValue: error.code)
+                    let message = error.localizedDescription
+                    let details = error.userInfo[FunctionsErrorDetailsKey]
+                    print("Remzi hata detay code:\(code) message:\(message) details:\(details)")
+                }
+                // [START_EXCLUDE]
+                print(error.localizedDescription)
+                return
+                // [END_EXCLUDE]
+            }
+            // [END function_error]
+            
+            print("CF sonrasi datamIlk")
+            if let datamIlk = (result?.data as? Data) {
+                print("CF icerde datamIlk:\(datamIlk)")
+                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: datamIlk)
+                print("denemeObject:\(denemeObject)")
+            } else {
+                print("nill")
+                
+            }
+            
+            if let data = result?.data {
+                print("CF sonrasi donen:\(data)")
+                //                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: data)
+                //                print("denemeObject:\(denemeObject)")
+
+                //                let jsonData = try! JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+//                print("jsonData: \(jsonData)")
+//                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: jsonData)
+            }
+        }
+    }
+    
+    func getFriendList() {
+        
+        // MARK: Firebase callable function always return json format, vise versa return INTERNAL error
+        functions.httpsCallable("getFriendList").call { (result, error) in
+            // [START function_error]
+            print("getFriendList call edildi")
+            if let error = error as NSError? {
+                if error.domain == FunctionsErrorDomain {
+                    let code = FIRFunctionsErrorCode(rawValue: error.code)
+                    let message = error.localizedDescription
+                    let details = error.userInfo[FunctionsErrorDetailsKey]
+                    print("Remzi hata detay code:\(code) message:\(message) details:\(details)")
+                }
+                // [START_EXCLUDE]
+                print(error.localizedDescription)
+                return
+                // [END_EXCLUDE]
+            }
+            // [END function_error]
+            if let data = result?.data {
+                print("getFriendList CF sonrasi donen:\(data)")
+            }
+        }
     }
     
 }

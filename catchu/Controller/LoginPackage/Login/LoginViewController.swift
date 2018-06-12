@@ -25,15 +25,11 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         self.navigationController?.isNavigationBarHidden = true
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        
         self.navigationController?.isNavigationBarHidden = false
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,17 +57,15 @@ class LoginViewController: UIViewController {
         self.loginWithTwitter()
     }
     @IBAction func registerButtonClicked(_ sender: UIButton) {
-        
         self.performSegueToRegisterView()
-        
     }
     
     @IBAction func forgotPasswordButtonClicked(_ sender: UIButton) {
-        
         self.performSegueToForgetPassword()
-        
     }
     @IBAction func denemeButtonClicked(_ sender: UIButton) {
-        FirebaseManager.shared.cfAddMessage()
+//        CloudFunctionsManager.shared.cfAddMessage()
+//        CloudFunctionsManager.shared.getFriendList()
+        self.psuhMainTabBarView()
     }
 }

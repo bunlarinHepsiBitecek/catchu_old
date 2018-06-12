@@ -7,7 +7,6 @@
 //
 
 import Firebase
-import FirebaseFunctions
 import FBSDKCoreKit
 import FBSDKLoginKit
 import TwitterKit
@@ -15,7 +14,6 @@ import TwitterKit
 class FirebaseManager {
     
     public static let shared = FirebaseManager()
-    lazy var functions = Functions.functions()
     
     func logout() {
         do
@@ -40,30 +38,32 @@ class FirebaseManager {
         }
     }
     
+    // MARK: push mainVC
+    func userSigned() {
+//        if (Auth.auth().currentUser != nil) {
+            LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.ID.MainTabBarViewController)
+            LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
+//        }
+    }
+    
     func loginUser(user: User) {
         LoaderController.shared.showLoader()
         Auth.auth().signIn(withEmail: user.email, password: user.password) { (userSignIn, error) in
-            if error != nil {
-                print("signIn Error: \(String(describing: error?.localizedDescription))")
-                
-                if let errorCode = error as NSError? {
-                    if let firebaseErrorCode = Firebase.AuthErrorCode(rawValue: errorCode.code){
-                        let functionName = String(#function.split(separator: "(")[0])
-                        self.handleFirebaseErrorCodes(errorCode: firebaseErrorCode, functionName)
-                    }
-                }
-
-            } else {
-                if let userSignIn = userSignIn {
-                    print("user successfully login uid: \(userSignIn.uid)")
-                    print("REMZI: full:\(userSignIn)")
-                    User.shared.userID = userSignIn.uid
-                    User.shared.email = userSignIn.email!
-                    User.shared.userName = userSignIn.displayName!
-                    User.shared.provider = ProviderType.firebase.rawValue
-                }
+            if let error = error {
+                self.handleError(error: error)
+                LoaderController.shared.removeLoader()
+                return
             }
             
+            if let userSignIn = userSignIn {
+                print("user successfully login uid: \(userSignIn.uid)")
+                print("REMZI: full:\(userSignIn)")
+                User.shared.userID = userSignIn.uid
+                User.shared.email = userSignIn.email!
+                User.shared.userName = userSignIn.displayName!
+                User.shared.providerID = userSignIn.providerID
+                User.shared.provider = ProviderType.firebase.rawValue
+            }
             LoaderController.shared.removeLoader()
         }
     }
@@ -78,7 +78,7 @@ class FirebaseManager {
         
         facebookLogin.logIn(withReadPermissions: permissions, from: currentVC) { (result, error) in
             if let error = error {
-                print("There is an error: \(error)")
+                self.handleError(error: error)
                 return
             }
             if (result?.isCancelled)! {
@@ -88,7 +88,7 @@ class FirebaseManager {
                 print("***** Token: \(FBSDKAccessToken.current().tokenString)")
                 guard let accessToken = FBSDKAccessToken.current().tokenString else {return}
                 
-                let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, name, first_name, last_name, email"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
+                let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, name, short_name, email"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
                 
                 req?.start(completionHandler: { (connection, result, error) in
                     
@@ -102,11 +102,10 @@ class FirebaseManager {
                         print("result as a data form: \(data)")
                         
                         self.parseFacebookGraph(data: data, provider: .facebook)
+                        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+                        self.firebaseAuth(credential)
                     }
                 })
-                
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
-                self.firebaseAuth(credential, User.shared.name, .facebook)
             }
         }
     }
@@ -114,29 +113,32 @@ class FirebaseManager {
     // MARK: Handle event with twitter button
     func loginWithTwitterAccount() {
         let twitterLoginButton = TWTRLogInButton(logInCompletion: { session, error in
-            if (session != nil) {
+            if let error = error {
+                self.handleError(error: error)
+                return
+            }
+            
+            if let session = session {
                 print("REMZİ Twitter dönen session: \(String(describing: session))")
-                print("signed in as \(String(describing: session?.userName))");
+                print("signed in as \(String(describing: session.userName))");
                 
                 TWTRAPIClient.withCurrentUser().requestEmail { email, error in
                     if (email != nil) {
-                        print("get email user: \(String(describing: session?.userName)) and email: \(String(describing: email))");
-                        let credential = TwitterAuthProvider.credential(withToken: (session?.authToken)!, secret: (session?.authTokenSecret)!)
-                        let userName = (session?.userName)!
-                        self.firebaseAuth(credential, userName, .twitter)
+                        print("get email user: \(String(describing: session.userName)) and email: \(String(describing: email))");
+                        let credential = TwitterAuthProvider.credential(withToken: (session.authToken), secret: (session.authTokenSecret))
+                        User.shared.userName = session.userName
+                        self.firebaseAuth(credential)
                     } else {
                         print("get email error: \(String(describing: error?.localizedDescription))");
                     }
                 }
                 
-            } else {
-                print("error: \(String(describing: error?.localizedDescription))");
             }
         })
         twitterLoginButton.sendActions(for: .touchUpInside)
     }
     
-    private func firebaseAuth(_ credential: AuthCredential, _ userName: String, _ provider: ProviderType) {
+    private func firebaseAuth(_ credential: AuthCredential) {
         LoaderController.shared.showLoader()
         Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
@@ -145,12 +147,13 @@ class FirebaseManager {
             } else {
                 print("REMZİ: Successfullty authenticate with Firebase")
                 if let user = user {
-                    print("REMZI: Userid:\(user.uid) userEmail: \(user.email) name:\(user.displayName)")
-                    print("REMZI: full:\(user)")
+                    print("REMZI1: \(user.providerID)")
+                    print("REMZI2: \(user.uid)")
+                    print("REMZI3: \(user.email)")
+                    print("REMZI4: \(user.displayName)")
+                    print("REMZI5: \(user.isEmailVerified)")
                     User.shared.userID = user.uid
-                    User.shared.email = user.email!
-                    User.shared.userName = user.displayName!
-                    User.shared.provider = provider.rawValue
+                    User.shared.provider = user.providerID
                 }
             }
         }
@@ -166,6 +169,7 @@ class FirebaseManager {
         if let name = data["name"]  as? String {
             User.shared.name = name
         }
+        
         if let providerID = data["id"]  as? String {
             User.shared.providerID = providerID
         }
@@ -182,45 +186,6 @@ class FirebaseManager {
         return UIViewController()
     }
     
-    
-    func cfAddMessage() {
-        let message = "Remzi kisa mesaj 3"
-        // MARK: Firebase callable function always return json format, vise versa return INTERNAL error
-        functions.httpsCallable("addMessage").call(["text": message]) { (result, error) in
-            // [START function_error]
-            print("cfAddMessage call edildi")
-            if let error = error as NSError? {
-                if error.domain == FunctionsErrorDomain {
-                    let code = FIRFunctionsErrorCode(rawValue: error.code)
-                    let message = error.localizedDescription
-                    let details = error.userInfo[FunctionsErrorDetailsKey]
-                    print("Remzi hata detay code:\(code) message:\(message) details:\(details)")
-                }
-                // [START_EXCLUDE]
-                print(error.localizedDescription)
-                return
-                // [END_EXCLUDE]
-            }
-            // [END function_error]
-            
-            print("CF sonrasi datamIlk")
-            if let datamIlk = (result?.data as? Data) {
-                print("CF icerde datamIlk:\(datamIlk)")
-                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: datamIlk)
-                print("denemeObject:\(denemeObject)")
-            } else {
-                print("nill")
-            }
-            
-            if let data = result?.data {
-                print("CF sonrasi donen:\(data)")
-                //                let denemeObject = try! JSONDecoder().decode(DenemeObject.self, from: data)
-                //                print("denemeObject:\(denemeObject)")
-            }
-        }
-    }
-
-    
     func registerFirebase(user: User) {
         
         user.toString()
@@ -236,7 +201,6 @@ class FirebaseManager {
                     if let firebaseErrorCode = Firebase.AuthErrorCode(rawValue: errorCode.code){
                         let functionName = String(#function.split(separator: "(")[0])
                         self.handleFirebaseErrorCodes(errorCode: firebaseErrorCode, functionName)
-                        
                     }
                     
                 }
@@ -275,6 +239,16 @@ class FirebaseManager {
             }
             
             LoaderController.shared.removeLoader()
+        }
+    }
+    
+    func handleError(error: Error) {
+        print("error: \(String(describing: error.localizedDescription))");
+        if let errorCode = error as NSError? {
+            if let firebaseErrorCode = Firebase.AuthErrorCode(rawValue: errorCode.code){
+                let functionName = String(#function.split(separator: "(")[0])
+                self.handleFirebaseErrorCodes(errorCode: firebaseErrorCode, functionName)
+            }
         }
     }
     
