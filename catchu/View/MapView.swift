@@ -20,7 +20,6 @@ class MapView: UIView {
         didSet {
             if let coordinate = coordinate {
                 centerMap(coordinate)
-//                annotate(coordinate)
             }
         }
     }

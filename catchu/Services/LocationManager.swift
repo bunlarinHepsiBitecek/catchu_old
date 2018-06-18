@@ -76,6 +76,15 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        if let error = error as? CLError, error.code == .denied {
+            // Location updates are not authorized.
+            self.locationManager.stopUpdatingLocation()
+            return
+        }
+        // Notify the user of any errors.
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {
             return

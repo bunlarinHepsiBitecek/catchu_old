@@ -18,6 +18,11 @@ class ShareView: UIView {
     //MARK: View LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.customization()
+    }
+    
+    private func customization() {
+        self.textField.delegate = self
     }
     
     private func accessPhotos() {
@@ -50,6 +55,22 @@ class ShareView: UIView {
     
     @IBAction func dropPinButtonClicked(_ sender: UIButton) {
     }
+    
+}
+
+// MARK: Keyboard Setting
+extension ShareView: UITextFieldDelegate {
+    // to close keyboard when touches somewhere else but keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
+    
+    // to close keyboard when press return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
 
 extension ShareView: UICollectionViewDelegate {

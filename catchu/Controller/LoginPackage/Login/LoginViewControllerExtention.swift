@@ -9,6 +9,11 @@
 import UIKit
 
 extension LoginViewController {
+    
+    func customization() {
+        self.emailText.delegate = self
+        self.passwordText.delegate = self
+    }
 
     func localized() {
         emailText.placeHolderTitle(title:  LocalizedConstants.Login.Email)
@@ -56,7 +61,7 @@ extension LoginViewController {
 }
 
 // MARK: Keyboard Setting
-extension LoginViewController {
+extension LoginViewController: UITextFieldDelegate {
     // to close keyboard when touches somewhere else but keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
