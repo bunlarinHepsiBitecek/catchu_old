@@ -21,7 +21,6 @@ extension ContainerFriendViewController {
     func prepareViewDidLoadProcess() {
         
         SectionBasedFriend.shared.createInitialLetterBasedFriendDictionary()
-        print("_friendUsernameInitialBasedDictionary :\(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count)")
         
         self.isCollectionViewOpen = false
         SectionBasedFriend.shared.emptyIfUserSelectedDictionary()
@@ -71,11 +70,7 @@ extension ContainerFriendViewController {
             
             self.view.layoutIfNeeded()
             
-        }) { (result) in
-            
-            print("result : \(result)")
-            
-        }
+        })
         
     }
     
@@ -92,23 +87,16 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
             
         }
         
-        cell.friendImage.image = UIImage(named: "user.png")
-        cell.userFriend = SectionBasedFriend.shared.returnUserFromSectionBasedDictionary(indexPath: indexPath)
+        /* the code below supplies data for table view - begin */
+        
+        //cell.userFriend = SectionBasedFriend.shared.returnUserFromSectionBasedDictionary(indexPath: indexPath)
+        cell.userFriend = returnUser(indexPath: indexPath)
+        /* the code below supplies data for table view - end */
         
         cell.friendName.text = cell.userFriend.name
         cell.friendImage.setImagesFromCacheOrFirebaseForFriend(cell.userFriend.profilePictureUrl)
         
-        print("ifUserSelectedDictionary : \(SectionBasedFriend.shared.ifUserSelectedDictionary.count)")
-        print("friendUsernameInitialBasedDictionary : \(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count)")
-        
-        for item in SectionBasedFriend.shared.ifUserSelectedDictionary {
-            
-            print("item key : \(item.key)")
-            print("item val : \(item.value)")
-            
-        }
-        
-        if cell.userFriend.isUserSelected {
+        if SectionBasedFriend.shared.ifUserSelectedDictionary[cell.userFriend.userID]! {
             
             cell.friendSelectedIcon.image = #imageLiteral(resourceName: "check-mark.png")
             
@@ -117,47 +105,33 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
             
         } else {
             
-            cell.friendSelectedIcon.image = UIImage()
+            cell.friendSelectedIcon.image = nil
             
         }
         
-        
-        
-//        if SectionBasedFriend.shared.ifUserSelectedDictionary[cell.userFriend.userID]! {
-//
-//            cell.friendSelectedIcon.image = #imageLiteral(resourceName: "check-mark.png")
-//
-//            // after reloading tableview selected rows will be gone, that's why we need to implement code below
-//            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-//
-//        } else {
-//
-//            cell.friendSelectedIcon.image = UIImage()
-//
-//        }
         
         return cell
         
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return SectionBasedFriend.shared.returnSectionNumber(index: section)
+        //return SectionBasedFriend.shared.returnSectionNumber(index: section)
+        return returnRowCount(section: section)
         
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        print("SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.keys.count :\(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.keys.count)")
-        
-        return SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.keys.count
+        //return SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.keys.count
+        return returnSectionCount()
         
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return SectionBasedFriend.shared.friendSectionKeyData[section]
+        //return SectionBasedFriend.shared.friendSectionKeyData[section]
+        return returnSectionHeader(section: section)
         
     }
     
@@ -167,6 +141,13 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
         
     }
     
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        
+        return SectionBasedFriend.shared.friendSectionKeyData
+        
+    }
+    
+    // select tableView row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath) as! FriendsTableViewCell
@@ -175,17 +156,22 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
             userID is marked as selected
             user is added into selected user array
         */
-        //SectionBasedFriend.shared.ifUserSelectedDictionary[cell.userFriend.userID] = true
+        SectionBasedFriend.shared.ifUserSelectedDictionary[cell.userFriend.userID] = true
+        //cell.userFriend.indexPathTableView = indexPath
         cell.userFriend.indexPathTableView = indexPath
-        cell.userFriend.isUserSelected = true
+        cell.userFriend.indexPathTableViewOfSearchMode = indexPath
+        
         SectionBasedFriend.shared.addElementIntoSelectedUsers(user: cell.userFriend)
         
+        cell.userFriend.isUserSelected = true
+        
         print("selected user indexPath : \(cell.userFriend.indexPathTableView)")
+        print("selected user indexPathSearchMode : \(cell.userFriend.indexPathTableViewOfSearchMode)")
         
         /*
             check image is activated
          */
-        cellSelectedIconManagement(indexPath: indexPath, iconManagement: .selected)
+        cellSelectedIconManagement(indexPath: indexPath, iconManagement: .selected, userId: cell.userFriend.userID)
         
         collectionViewAnimationManagement()
         
@@ -194,20 +180,19 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
             
             collectionView.insertItems(at: [selectedItemIndexPath])
             
-        }) { (result) in
-            
-            print("result : \(result)")
-            
-        }
+        })
+        
+        parentReferenceContactViewController?.contactView.setSelectedUserCounterLabel()
         
     }
     
+    // deselect tableView row
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath) as! FriendsTableViewCell
         
         /*  userID is marked as deselected
-            user is removed from selected user array
+         user is removed from selected user array
          */
         SectionBasedFriend.shared.ifUserSelectedDictionary[cell.userFriend.userID] = false
         
@@ -217,9 +202,10 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
         }
         
         /*
-            uncheck image is activated
+         uncheck image is activated
          */
-        cellSelectedIconManagement(indexPath: indexPath, iconManagement: .deselected)
+        
+        cellSelectedIconManagement(indexPath: indexPath, iconManagement: .deselected, userId: cell.userFriend.userID)
         
         print("cell.userFriend.indexPathCollectionView :\(cell.userFriend.indexPathCollectionView)")
         //collectionView.deleteItems(at: [cell.userFriend.indexPathCollectionView])
@@ -227,6 +213,53 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
         collectionView.reloadData()
         collectionViewAnimationManagement()
         
+        parentReferenceContactViewController?.contactView.setSelectedUserCounterLabel()
+        
+    }
+    
+    // the functions below decides return values for tableview row, section management according to search mode
+    // return user object according to search mode process, if search is activated, retrieves data from search array. Otherwise, returns data from main collection data retrieved from firabase friends model
+    func returnUser(indexPath : IndexPath) -> User {
+        
+        if SectionBasedFriend.shared.isSearchModeActivated {
+            
+            return SectionBasedFriend.shared.searchResult[indexPath.row]
+            
+        } else {
+            
+            return SectionBasedFriend.shared.returnUserFromSectionBasedDictionary(indexPath: indexPath)
+            
+        }
+        
+    }
+    
+    func returnRowCount(section : Int) -> Int {
+        
+        if SectionBasedFriend.shared.isSearchModeActivated {
+            return SectionBasedFriend.shared.searchResult.count
+        } else {
+            return SectionBasedFriend.shared.returnSectionNumber(index: section)
+        }
+        
+    }
+    
+    func returnSectionCount() -> Int {
+        
+        if SectionBasedFriend.shared.isSearchModeActivated {
+            return Constants.NumericConstants.INTEGER_ONE
+        } else {
+            return SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.keys.count
+        }
+        
+    }
+    
+    func returnSectionHeader(section : Int) -> String {
+        
+        if SectionBasedFriend.shared.isSearchModeActivated {
+            return LocalizedConstants.SearchBar.searchResult
+        } else {
+            return SectionBasedFriend.shared.friendSectionKeyData[section]
+        }
     }
     
 }
@@ -245,16 +278,11 @@ extension ContainerFriendViewController: UICollectionViewDataSource, UICollectio
         if SectionBasedFriend.shared.selectedUserArray.count > 0 {
             
             UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-
                 cell.selectedFriendImage.setImagesFromCacheOrFirebaseForFriend(SectionBasedFriend.shared.selectedUserArray[indexPath.row].profilePictureUrl)
                 cell.selectedFriendName.text = SectionBasedFriend.shared.selectedUserArray[indexPath.row].name
                 cell.selectedUser = SectionBasedFriend.shared.selectedUserArray[indexPath.row]
                 
-            }) { (result) in
-                
-                print("result : \(result)")
-                
-            }
+            })
             
         }
         
@@ -273,6 +301,7 @@ extension ContainerFriendViewController: UICollectionViewDataSource, UICollectio
         
     }
     
+    // select collectionView item (to delete selected user array)
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath) as! FriendCollectionViewCell
@@ -284,7 +313,7 @@ extension ContainerFriendViewController: UICollectionViewDataSource, UICollectio
         
         collectionView.deleteItems(at: [indexPath])
         
-        //SectionBasedFriend.shared.ifUserSelectedDictionary[cell.selectedUser.userID] = false
+        SectionBasedFriend.shared.ifUserSelectedDictionary[cell.selectedUser.userID] = false
         
         /* if collection view is reload, the user interface changes sharply, not smoothly */
         //collectionView.reloadData()
@@ -295,40 +324,39 @@ extension ContainerFriendViewController: UICollectionViewDataSource, UICollectio
             must be deselected as well
          */
         
-        tableView.deselectRow(at: cell.selectedUser.indexPathTableView, animated: true)
+        print("cell.selectedUser indexParh : \(cell.selectedUser.indexPathTableView)")
+        print("cell.selectedUser indexParhSearch : \(cell.selectedUser.indexPathTableViewOfSearchMode)")
         
-        cellSelectedIconManagement(indexPath: cell.selectedUser.indexPathTableView, iconManagement: .deselected)
+        if SectionBasedFriend.shared.isSearchModeActivated {
+            tableView.deselectRow(at: cell.selectedUser.indexPathTableViewOfSearchMode, animated: true)
+            cellSelectedIconManagement(indexPath: cell.selectedUser.indexPathTableViewOfSearchMode, iconManagement: .deselected, userId: cell.selectedUser.userID)
+        } else {
+            tableView.deselectRow(at: cell.selectedUser.indexPathTableView, animated: true)
+            cellSelectedIconManagement(indexPath: cell.selectedUser.indexPathTableView, iconManagement: .deselected, userId: cell.selectedUser.userID)
+        }
+        
+        //tableView.deselectRow(at: cell.selectedUser.indexPathTableView, animated: true)
+        
+        //cellSelectedIconManagement(indexPath: cell.selectedUser.indexPathTableView, iconManagement: .deselected)
+        
+        parentReferenceContactViewController?.contactView.setSelectedUserCounterLabel()
         
     }
 
-    /*
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        UIView.animate(withDuration: 1.0) {
-            
-            var newFrame = cell.frame
-            
-            cell.frame = CGRect(x: newFrame.origin.x + 60, y: newFrame.origin.y, width: newFrame.width, height: newFrame.height)
-        }
-        
-    }*/
-    
-    /*
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 1, animations: {
-            let newFrame = cell.frame
-            cell.frame = CGRect(x: newFrame.origin.x + 60, y: newFrame.origin.y, width: newFrame.width, height: newFrame.height)
-        })
-    }*/
-    
     // to select or deselect check icon inside each row of tableview
-    func cellSelectedIconManagement(indexPath : IndexPath, iconManagement : IconManagement) {
+    func cellSelectedIconManagement(indexPath : IndexPath, iconManagement : IconManagement, userId : String) {
+        
+        print("cellSelectedIconManagement starts")
+        print("indexPath :\(indexPath)")
+        print("userID : \(userId)")
         
         switch iconManagement {
         case .selected:
             selectCellIcon(indexPath: indexPath)
         case .deselected:
-            deselectCellIcon(indexPath: indexPath)
+            //deselectCellIcon(inputIndexPath: indexPath, userId: userId)
+            deselectCellIconForWithUserID(userId: userId)
+            //tableView.reloadData()
         default:
             return
         }
@@ -347,15 +375,58 @@ extension ContainerFriendViewController: UICollectionViewDataSource, UICollectio
         
     }
     
-    func deselectCellIcon(indexPath : IndexPath) {
+    func deselectCellIcon(inputIndexPath : IndexPath, userId : String) {
         
-        let cell = tableView.cellForRow(at: indexPath) as! FriendsTableViewCell
+        print("deselectCellIcon starts")
+        print("inputIndexPath :\(inputIndexPath)")
         
-        UIView.transition(with: cell.friendSelectedIcon, duration: 0.3, options: .transitionCrossDissolve, animations: {
+        let tempIndexArray : [IndexPath] = self.tableView.indexPathsForVisibleRows!
+        
+        for item in tempIndexArray {
             
-            cell.friendSelectedIcon.image = nil
+            if inputIndexPath == item {
+                
+                let cell = tableView.cellForRow(at: inputIndexPath) as! FriendsTableViewCell
+                
+                UIView.transition(with: cell.friendSelectedIcon, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    
+                    cell.friendSelectedIcon.image = nil
+                    
+                })
+                
+                break
+                
+            }
             
-        })
+        }
+        
+    }
+    
+    func deselectCellIconForWithUserID(userId : String) {
+        
+        print("deselectCellIconForWithUserID starts")
+        print("userId :\(userId)")
+        
+        let tempCellArray : [UITableViewCell] = self.tableView.visibleCells
+        
+        for item in tempCellArray {
+            
+            let cell = item as! FriendsTableViewCell
+            
+            if cell.userFriend.userID == userId {
+                
+                UIView.transition(with: cell.friendSelectedIcon, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    
+                    cell.friendSelectedIcon.image = nil
+                    
+                })
+                
+                break
+                
+            }
+            
+            
+        }
         
     }
     

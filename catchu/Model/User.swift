@@ -24,6 +24,7 @@ class User {
     // the attributes below is used for collectionView management
     private var _indexPathCollectionview : IndexPath!
     private var _indexPathTableView : IndexPath!
+    private var _indexPathTableViewOfSearchMode : IndexPath!
     private var _isUserSelected : Bool
     
     private var _userDataDictionary : Dictionary<String, String> = [:]
@@ -41,6 +42,7 @@ class User {
         self._providerID = Constants.CharacterConstants.SPACE
         self._isUserSelected = false
         self._indexPathCollectionview = IndexPath()
+        self._indexPathTableViewOfSearchMode = IndexPath()
         self._indexPathTableView = IndexPath()
     }
     
@@ -180,6 +182,14 @@ class User {
         }
     }
     
+    var indexPathTableViewOfSearchMode: IndexPath {
+        get {
+            return _indexPathTableViewOfSearchMode
+        }
+        set {
+            _indexPathTableViewOfSearchMode = newValue
+        }
+    }
     
     func toString() {
         print("userName :\(_userName)")

@@ -33,6 +33,16 @@
 "userNotFound" = "Kullanıcı bulunamadı";
 "unknownError" = "Bilinmeyen hata";
 
+// Button or Label promt values
+"addParticipant" = "Kişi veya Grup Ekle";
+"cancel" = "Vazgeç";
+"next" = "Ekle";
+"Friends" = "Arkadaşlar";
+"Groups" = "Gruplar";
+"New Group" = "Yeni Grup";
+"Search Result" = "Arama Sonuçları";
+
+
 
 
 

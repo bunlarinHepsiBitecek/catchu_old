@@ -57,4 +57,27 @@ struct LocalizedConstants {
         static let unknownError = NSLocalizedString("unknownError", comment: "")
     
     }
+    
+    struct TitleValues {
+        
+        struct ButtonTitle {
+            
+            static let cancel = NSLocalizedString("cancel", comment: "")
+            static let next = NSLocalizedString("next", comment: "")
+            static let friend = NSLocalizedString("Friends", comment: "")
+            static let group = NSLocalizedString("Groups", comment: "")
+            static let newGroup = NSLocalizedString("New Group", comment: "")
+            
+        }
+        
+        struct LabelTitle {
+
+            static let addParticipant = NSLocalizedString("addParticipant", comment: "")
+            
+        }
+    }
+    
+    struct SearchBar {
+        static let searchResult = NSLocalizedString("Search Result", comment: "")
+    }
 }

@@ -29,5 +29,23 @@ class TemporaryViewController: UIViewController {
             
         }
     }
+    @IBAction func printData(_ sender: Any) {
+    
+        SectionBasedFriend.shared.createInitialLetterBasedFriendDictionary()
+        
+        for item in SectionBasedFriend.shared.friendUsernameInitialBasedDictionary {
+            
+            for item2 in item.value as [User] {
+
+                print("isUserSelected :\(item2.isUserSelected)")
+                
+            }
+            
+        }
+        
+    
+    }
+    
+    
     
 }

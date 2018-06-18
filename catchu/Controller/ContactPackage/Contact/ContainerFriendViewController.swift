@@ -14,6 +14,9 @@ class ContainerFriendViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
     
+    // parent view controller object to update value from container view controller to contact view on contact view controller
+    var parentReferenceContactViewController : ContactViewController?
+    
     var isCollectionViewOpen : Bool!
     
     override func viewDidLoad() {
@@ -29,6 +32,12 @@ class ContainerFriendViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func testDeneme() {
+        
+        print("we did it")
+        
     }
     
 }

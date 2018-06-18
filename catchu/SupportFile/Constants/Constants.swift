@@ -21,6 +21,7 @@ struct Constants {
     }
     struct NumericConstants {
         static let INTEGER_ZERO: Int   = 0
+        static let INTEGER_ONE : Int = 1
         static let DOUBLE_ZERO: Double = 0.0
         static let FLOAT_ZERO: Float   = 0.0
         
@@ -29,6 +30,8 @@ struct Constants {
     struct Segue {
         static let RegisterView = "segueToRegisterView"
         static let PasswwordResetView = "segueToPasswordResetView"
+        static let SegueToFriend = "segueToFriend"
+        static let SegueToGroup = "segueToGroup"
     }
     
     struct FirebaseCallableFunctions {
@@ -84,6 +87,18 @@ struct Constants {
     struct NumericValues {
         
         static let rowHeight : CGFloat = 60.0
+        
+    }
+    
+    struct NotificationCenterConstants {
+        
+        static let refreshCounterValues : String = "refreshCounterValues"
+        
+    }
+    
+    struct searchBarProperties {
+        
+        static let searchField : String = "searchField"
         
     }
     

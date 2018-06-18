@@ -35,6 +35,15 @@
 "userNotFound" = "User not found";
 "unknownError" = "Unknown Error";
 
+// Button or Label promt values
+"addParticipant" = "Add Participant";
+"cancel" = "Cancel";
+"next" = "Next";
+"Friends" = "Friends";
+"Groups" = "Groups";
+"New Group" = "New Group";
+"Search Result" = "Search Result";
+
 
 
 

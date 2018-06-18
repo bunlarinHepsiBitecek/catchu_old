@@ -1,4 +1,4 @@
-//
+ //
 //  ContactViewController.swift
 //  catchu
 //
@@ -13,15 +13,16 @@ class ContactViewController: UIViewController {
 
     @IBOutlet var contactView: ContactView!
     
+    // let's create a child view controller of container view controller get data from container view controller to main controller view controller
+    var childReferenceFriendContainerFriendController : ContainerFriendViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         contactView.referenceMasterViewController = self
         
         prepareViewLoadProcess()
-        
-        
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +30,5 @@ class ContactViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-}
-
+ }
 

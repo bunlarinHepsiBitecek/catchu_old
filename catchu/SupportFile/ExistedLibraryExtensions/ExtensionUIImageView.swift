@@ -13,8 +13,6 @@ extension UIImageView {
     
     func setImagesFromCacheOrFirebaseForFriend(_ urlString: String) {
         
-        print("setImagesFromCacheOrFirebaseForFriend starts")
-        
         self.image = nil
         
         if let tempImage = SectionBasedFriend.shared.cachedFriendProfileImages.object(forKey: urlString as NSString) {

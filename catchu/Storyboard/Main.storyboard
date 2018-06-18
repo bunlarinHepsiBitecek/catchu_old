@@ -26,6 +26,14 @@
                                     <action selector="goFriendView:" destination="rGg-cJ-mDB" eventType="touchUpInside" id="qKa-Ex-8Jd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzv-fc-Trc">
+                                <rect key="frame" x="98" y="356" width="179" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test Section Based Friend"/>
+                                <connections>
+                                    <action selector="printData:" destination="rGg-cJ-mDB" eventType="touchUpInside" id="Y7V-et-O4h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ze6-rC-5s6"/>

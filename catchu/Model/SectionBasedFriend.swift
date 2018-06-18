@@ -10,12 +10,15 @@ import UIKit
 
 class SectionBasedFriend {
     
-    public static let shared = SectionBasedFriend()
+//    public static let shared = SectionBasedFriend()
+    public static var shared = SectionBasedFriend()
     
     private var _friendUsernameInitialBasedDictionary : Dictionary<String, [User]>!
     private var _friendSectionKeyData : Array<String>!
     private var _selectedUserArray : Array<User>!
+    private var _searchResult : Array<User>!
     private var _ifUserSelectedDictionary : Dictionary<String, Bool>!
+    private var _isSearchModeActivated : Bool!
     
     private var _cachedFriendProfileImages : NSCache<NSString, UIImage>!
     
@@ -26,6 +29,8 @@ class SectionBasedFriend {
         _cachedFriendProfileImages = NSCache<NSString, UIImage>()
         _selectedUserArray = Array<User>()
         _ifUserSelectedDictionary = Dictionary<String, Bool>()
+        _searchResult = Array<User>()
+        _isSearchModeActivated = false
         
     }
     
@@ -74,6 +79,25 @@ class SectionBasedFriend {
         }
     }
     
+    var searchResult : Array<User> {
+        get {
+            sortSearchResult()
+            return _searchResult
+        }
+        set {
+            _searchResult = newValue
+        }
+    }
+    
+    var isSearchModeActivated: Bool{
+        get {
+            return _isSearchModeActivated
+        }
+        set {
+            _isSearchModeActivated = newValue
+        }
+    }
+    
     func emptySectionBasedDictioanry() {
         
         SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.removeAll()
@@ -86,6 +110,12 @@ class SectionBasedFriend {
         
     }
     
+    func addElementIntoSearchResultOfFriends(user : User) {
+    
+        _searchResult.append(user)
+        
+    }
+    
     func emptyIfUserSelectedDictionary() {
         
         print("_friendUsernameInitialBasedDictionary : \(_friendUsernameInitialBasedDictionary.count)")
@@ -95,6 +125,18 @@ class SectionBasedFriend {
             _ifUserSelectedDictionary[item.value.userID] = false
             
         }
+        
+    }
+    
+    func emptySearchResult() {
+        
+        _searchResult.removeAll()
+        
+    }
+    
+    func sortSearchResult() {
+        
+        _searchResult.sort(by: {$0.name < $1.name})
         
     }
     
@@ -241,20 +283,20 @@ class SectionBasedFriend {
                 
             } else if item.name.hasPrefix(Constants.LetterConstants.P){
                 
-                if SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.A] == nil {
-                    SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.A] = [User]()
-                    SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.A]?.append(item)
-                } else {
-                    SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.A]?.append(item)
-                }
-                
-            } else if item.name.hasPrefix(Constants.LetterConstants.Q) {
-                
                 if SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.P] == nil {
                     SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.P] = [User]()
                     SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.P]?.append(item)
                 } else {
                     SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.P]?.append(item)
+                }
+                
+            } else if item.name.hasPrefix(Constants.LetterConstants.Q) {
+                
+                if SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.Q] == nil {
+                    SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.Q] = [User]()
+                    SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.Q]?.append(item)
+                } else {
+                    SectionBasedFriend.shared._friendUsernameInitialBasedDictionary[Constants.LetterConstants.Q]?.append(item)
                 }
                 
             } else if item.name.hasPrefix(Constants.LetterConstants.R) {
