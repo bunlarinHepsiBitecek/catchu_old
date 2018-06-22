@@ -23,6 +23,12 @@ class ShareView: UIView {
     
     private func customization() {
         self.textField.delegate = self
+        
+        // MARK: CollectionView layout arrange
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = Constants.Cell.ShareCollectionViewItemSpace
+        layout.minimumLineSpacing = Constants.Cell.ShareCollectionViewItemSpace
+        collectionView.collectionViewLayout = layout
     }
     
     private func accessPhotos() {
@@ -75,10 +81,6 @@ extension ShareView: UITextFieldDelegate {
 
 extension ShareView: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MediaLibraryManager.shared.assets.count
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell:ShareCollectionViewCell = collectionView.cellForItem(at: indexPath) as! ShareCollectionViewCell
         cell.isSelected = true
@@ -86,6 +88,10 @@ extension ShareView: UICollectionViewDelegate {
 }
 
 extension ShareView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return MediaLibraryManager.shared.assets.count
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:ShareCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.ShareCollectionViewCell, for: indexPath) as! ShareCollectionViewCell
@@ -96,7 +102,10 @@ extension ShareView: UICollectionViewDataSource {
 
 extension ShareView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Constants.Cell.ShareCollectionViewCellWidht, height: Constants.Cell.ShareCollectionViewCellHeight)
+        // MARK: decreace item size up to space
+        let itemSize = collectionView.contentSize.width / Constants.Cell.ShareCollectionViewItemPerLine - Constants.Cell.ShareCollectionViewItemSpace
+        
+        return CGSize(width: itemSize, height: itemSize)
     }
 }
 

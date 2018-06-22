@@ -38,7 +38,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Drop Pin" id="RPn-rw-fIr"/>
                     <connections>
-                        <outlet property="mapShareView" destination="pT2-Vh-vzs" id="zyQ-I8-8K5"/>
+                        <outlet property="mapShareView" destination="pT2-Vh-vzs" id="DSM-9l-GwG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghj-Gx-X2c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -52,10 +52,9 @@
                         </containerView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAJ-Di-PHR">
                             <rect key="frame" x="0.0" y="748" width="375" height="30"/>
-                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Swip Up"/>
                             <connections>
-                                <action selector="shareViewButtonClicked:" destination="pT2-Vh-vzs" eventType="touchUpInside" id="p7F-zL-V5f"/>
+                                <action selector="shareViewButtonClick:" destination="pT2-Vh-vzs" eventType="touchUpInside" id="leB-Qu-FAS"/>
                             </connections>
                         </button>
                     </subviews>
@@ -71,11 +70,11 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="a8L-JN-7Tq"/>
                     <connections>
-                        <outlet property="containerView" destination="evH-VV-JT1" id="BDc-WQ-1py"/>
-                        <outlet property="mapView" destination="HNZ-UI-qnw" id="24w-Ob-3XE"/>
-                        <outlet property="shareView" destination="UTg-wE-XG2" id="Zfv-NQ-f4E"/>
-                        <outlet property="shareViewBottomConstraint" destination="Myx-29-X6d" id="7Dh-X9-o0w"/>
-                        <outlet property="shareViewButton" destination="GAJ-Di-PHR" id="ORz-xN-9TX"/>
+                        <outlet property="containerView" destination="evH-VV-JT1" id="0h4-p4-G18"/>
+                        <outlet property="mapView" destination="HNZ-UI-qnw" id="CdG-3J-rMW"/>
+                        <outlet property="shareView" destination="UTg-wE-XG2" id="GBV-vU-nPX"/>
+                        <outlet property="shareViewBottomConstraint" destination="Myx-29-X6d" id="qBx-10-6cU"/>
+                        <outlet property="shareViewButton" destination="GAJ-Di-PHR" id="WZ5-mS-Bo3"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" id="HNZ-UI-qnw" customClass="MapView" customModule="catchu" customModuleProvider="target">
@@ -196,7 +195,7 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" red="0.52406015230000003" green="0.90781646569999996" blue="0.82793865050000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

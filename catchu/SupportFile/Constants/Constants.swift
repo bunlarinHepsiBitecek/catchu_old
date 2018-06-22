@@ -50,9 +50,9 @@ struct Constants {
     }
     
     struct Cell {
-        static let ShareCollectionViewCell       = "ShareCollectionViewCell"
-        static let ShareCollectionViewCellHeight = 100
-        static let ShareCollectionViewCellWidht  = 100
+        static let ShareCollectionViewCell        = "ShareCollectionViewCell"
+        static let ShareCollectionViewItemPerLine = CGFloat(4)
+        static let ShareCollectionViewItemSpace   = CGFloat(3)
     }
     
     struct FirebaseCallableFunctions {

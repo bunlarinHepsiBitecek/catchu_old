@@ -9,7 +9,7 @@
 import UIKit
 
 class DropPinViewController: UIViewController {
-    
+    // MARK: outlets
     @IBOutlet var mapShareView: MapShareView!
     
     override func viewDidLoad() {

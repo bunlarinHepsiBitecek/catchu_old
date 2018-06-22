@@ -12,7 +12,7 @@
 		452001CD20CC253500C1ED22 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452001CC20CC253500C1ED22 /* ShareView.swift */; };
 		452001CF20CC354F00C1ED22 /* MediaLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452001CE20CC354F00C1ED22 /* MediaLibraryManager.swift */; };
 		452001D220CC439C00C1ED22 /* ShareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452001D120CC439C00C1ED22 /* ShareCollectionViewCell.swift */; };
-		45211DE120D17500009347B1 /* MapShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45211DE020D17500009347B1 /* MapShareView.swift */; };
+		45211DE520D81793009347B1 /* MapShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45211DE420D81793009347B1 /* MapShareView.swift */; };
 		4527E05520C8605800ECB3D1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4527E05420C8605800ECB3D1 /* MainTabBarViewController.swift */; };
 		45356B2220BDF34D00E0733F /* ExtensionPasswordReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45356B1D20BDF34D00E0733F /* ExtensionPasswordReset.swift */; };
 		45356B2320BDF34D00E0733F /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45356B1E20BDF34D00E0733F /* PasswordResetViewController.swift */; };
@@ -65,7 +65,7 @@
 		452001CC20CC253500C1ED22 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		452001CE20CC354F00C1ED22 /* MediaLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryManager.swift; sourceTree = "<group>"; };
 		452001D120CC439C00C1ED22 /* ShareCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCollectionViewCell.swift; sourceTree = "<group>"; };
-		45211DE020D17500009347B1 /* MapShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapShareView.swift; sourceTree = "<group>"; };
+		45211DE420D81793009347B1 /* MapShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapShareView.swift; sourceTree = "<group>"; };
 		4527E05420C8605800ECB3D1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		45356B1720BDF2EF00E0733F /* catchu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = catchu.entitlements; sourceTree = "<group>"; };
 		45356B1D20BDF34D00E0733F /* ExtensionPasswordReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionPasswordReset.swift; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 		4564E44B20B9678D003B0D16 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				45211DE020D17500009347B1 /* MapShareView.swift */,
+				45211DE420D81793009347B1 /* MapShareView.swift */,
 				452001C920CBB7AB00C1ED22 /* MapView.swift */,
 				452001CC20CC253500C1ED22 /* ShareView.swift */,
 				452001D120CC439C00C1ED22 /* ShareCollectionViewCell.swift */,
@@ -629,7 +629,7 @@
 				452001C820CABFF500C1ED22 /* DropPinViewController.swift in Sources */,
 				4564E45720B97118003B0D16 /* User.swift in Sources */,
 				45356B2520BDF34D00E0733F /* RegisterViewController.swift in Sources */,
-				45211DE120D17500009347B1 /* MapShareView.swift in Sources */,
+				45211DE520D81793009347B1 /* MapShareView.swift in Sources */,
 				4564E47320B9A7FD003B0D16 /* Validation.swift in Sources */,
 				452001D220CC439C00C1ED22 /* ShareCollectionViewCell.swift in Sources */,
 				45356B2220BDF34D00E0733F /* ExtensionPasswordReset.swift in Sources */,
