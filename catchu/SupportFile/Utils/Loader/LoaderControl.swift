@@ -50,4 +50,20 @@ class LoaderController: NSObject {
         return appDel.window!.rootViewController!.view!
     }
     
+    func goToSettings() {
+        let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
+        if UIApplication.shared.canOpenURL(settingsUrl!)  {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(settingsUrl!, completionHandler: { (success) in
+                })
+            }
+            else  {
+                let url = URL(string : "prefs:root=")
+                if UIApplication.shared.canOpenURL(url!) {
+                    UIApplication.shared.openURL(url!)
+                }
+            }
+        }
+    }
+    
 }

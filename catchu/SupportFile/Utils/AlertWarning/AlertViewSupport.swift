@@ -38,9 +38,7 @@ class AlertViewManager : NSObject {
         if let app = UIApplication.shared.delegate, let window = app.window, let presentingViewController = window?.rootViewController {
             
             self.presentAlertController(alertController, presentingViewController: presentingViewController)
-            
         }
-        
     }
     
     func createAlert_2(title: String, message: String, preferredStyle: UIAlertControllerStyle, actionTitle: String, actionStyle: UIAlertActionStyle, selfDismiss: Bool, seconds: Int, completionHandler: ((UIAlertAction) -> Void)?) {
@@ -68,8 +66,24 @@ class AlertViewManager : NSObject {
     
     }
     
+    func createAlert(title: String, message: String, preferredStyle: UIAlertControllerStyle, actionTitleLeft: String, actionTitleRight: String, actionStyle: UIAlertActionStyle, completionHandlerLeft: ((UIAlertAction) -> Void)?, completionHandlerRight: ((UIAlertAction) -> Void)?) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        let alertActionLeft = UIAlertAction(title: actionTitleLeft, style: actionStyle, handler: completionHandlerLeft)
+        let alertActionRight = UIAlertAction(title: actionTitleRight, style: actionStyle, handler: completionHandlerRight)
+        
+        alertController.addAction(alertActionLeft)
+        alertController.addAction(alertActionRight)
+        
+        if let app = UIApplication.shared.delegate, let window = app.window, let presentingViewController = window?.rootViewController {
+            
+            self.presentAlertController(alertController, presentingViewController: presentingViewController)
+        }
+    }
+    
+    
     public func showOkAlert(_ title: String?, message: String?, handler: ((UIAlertAction) -> Void)?) {
-        let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: handler)
+        let okAction = UIAlertAction.init(title: LocalizedConstants.Ok, style: UIAlertActionStyle.cancel, handler: handler)
         
         self.showAlert(title, message: message, actions: [okAction], style: UIAlertControllerStyle.alert, view: nil)
         

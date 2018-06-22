@@ -9,6 +9,11 @@
 import UIKit
 
 extension LoginViewController {
+    
+    func customization() {
+        self.emailText.delegate = self
+        self.passwordText.delegate = self
+    }
 
     func localized() {
         emailText.placeHolderTitle(title:  LocalizedConstants.Login.Email)
@@ -56,20 +61,16 @@ extension LoginViewController {
 }
 
 // MARK: Keyboard Setting
-extension LoginViewController {
+extension LoginViewController: UITextFieldDelegate {
     // to close keyboard when touches somewhere else but keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         self.view.endEditing(true)
     }
     
     // to close keyboard when press return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
-        
         return true
-        
     }
 }
 
@@ -82,6 +83,19 @@ extension LoginViewController {
     
     func performSegueToForgetPassword() {
         performSegue(withIdentifier: Constants.Segue.PasswwordResetView, sender: self)
+    }
+    
+    func psuhMainTabBarView() {
+        let mainTabBarViewController: UIViewController = self.buildFromStoryboard(Constants.Storyboard.Name.Main, Constants.Storyboard.ID.MainTabBarViewController)
+        navigationController?.pushViewController(mainTabBarViewController, animated: true)
+    }
+    
+    private func buildFromStoryboard<T>(_ name: String, _ identifier: String) -> T {
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
+            fatalError("Missing \(identifier) in Storyboard")
+        }
+        return viewController
     }
     
 }

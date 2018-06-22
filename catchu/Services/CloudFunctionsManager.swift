@@ -12,14 +12,13 @@ import FirebaseFunctions
 class CloudFunctionsManager {
     
     public static let shared = CloudFunctionsManager()
+    lazy var functions = Functions.functions()
     
     func createUserProfileModel() {
         
-        let function = Functions.functions()
-        
         let data = User.shared.createUserDataDictionary()
         
-        function.httpsCallable(Constants.FirebaseCallableFunctions.createUserProfile).call(data) { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.createUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
                 
@@ -49,8 +48,6 @@ class CloudFunctionsManager {
     func updateUserProfileModel() {
         
         User.shared.toString()
-        
-        let function = Functions.functions()
         
         let data = User.shared.createUserDataDictionary()
         
@@ -85,9 +82,7 @@ class CloudFunctionsManager {
         
         User.shared.toString()
         
-        let function = Functions.functions()
-        
-        function.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
                 

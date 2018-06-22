@@ -27,11 +27,36 @@ struct Constants {
         
     }
     
+    struct MediaLibrary {
+        static let ImageHolderSize: CGSize = CGSize(width: 50.0, height: 50.0)
+    }
+    
+    struct Map {
+        static let DistanceFilter: Double = 10.0
+        static let ZoomDegree: Double       = 0.02
+    }
     struct Segue {
         static let RegisterView = "segueToRegisterView"
         static let PasswwordResetView = "segueToPasswordResetView"
         static let SegueToFriend = "segueToFriend"
         static let SegueToGroup = "segueToGroup"
+    }
+    
+    struct Storyboard {
+        struct ID {
+            static let MainTabBarViewController = "MainTabBarViewController"
+        }
+        
+        struct Name {
+            static let Main = "Main"
+        }
+        
+    }
+    
+    struct Cell {
+        static let ShareCollectionViewCell        = "ShareCollectionViewCell"
+        static let ShareCollectionViewItemPerLine = CGFloat(4)
+        static let ShareCollectionViewItemSpace   = CGFloat(3)
     }
     
     struct FirebaseCallableFunctions {
