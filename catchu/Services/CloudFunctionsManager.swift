@@ -51,7 +51,7 @@ class CloudFunctionsManager {
         
         let data = User.shared.createUserDataDictionary()
         
-        function.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
                 
@@ -81,7 +81,6 @@ class CloudFunctionsManager {
     func updateUserProfileModelWithData(data: NSDictionary) {
         
         User.shared.toString()
-        
         functions.httpsCallable(Constants.FirebaseCallableFunctions.updateUserProfile).call(data) { (httpResult, error) in
             
             if error != nil {
@@ -112,9 +111,7 @@ class CloudFunctionsManager {
         
         User.shared.toString()
         
-        let function = Functions.functions()
-        
-        function.httpsCallable(Constants.FirebaseCallableFunctions.getFriends).call { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.getFriends).call { (httpResult, error) in
            
             if error != nil {
                 

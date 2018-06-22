@@ -49,25 +49,10 @@ class FirebaseManager {
     func loginUser(user: User) {
         LoaderController.shared.showLoader()
         Auth.auth().signIn(withEmail: user.email, password: user.password) { (userSignIn, error) in
-            if error != nil {
-                print("signIn Error: \(String(describing: error?.localizedDescription))")
-                
-                if let errorCode = error as NSError? {
-                    if let firebaseErrorCode = Firebase.AuthErrorCode(rawValue: errorCode.code){
-                        let functionName = String(#function.split(separator: "(")[0])
-                        self.handleFirebaseErrorCodes(errorCode: firebaseErrorCode, functionName)
-                    }
-                }
-
-            } else {
-                if let userSignIn = userSignIn {
-                    print("user successfully login uid: \(userSignIn.uid)")
-                    print("REMZI: full:\(userSignIn)")
-                    User.shared.userID = userSignIn.uid
-                    User.shared.email = userSignIn.email!
-                    //User.shared.userName = userSignIn.displayName!
-                    User.shared.provider = ProviderType.firebase.rawValue
-                }
+            if let error = error {
+                self.handleError(error: error)
+                LoaderController.shared.removeLoader()
+                return
             }
             
             if let userSignIn = userSignIn {
@@ -75,7 +60,8 @@ class FirebaseManager {
                 print("REMZI: full:\(userSignIn)")
                 User.shared.userID = userSignIn.uid
                 User.shared.email = userSignIn.email!
-                User.shared.userName = userSignIn.displayName!
+                // TODO: Burayi duzelt
+//                User.shared.userName = userSignIn.displayName!
                 User.shared.providerID = userSignIn.providerID
                 User.shared.provider = ProviderType.firebase.rawValue
             }
