@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import FirebaseFunctions
 
 class TemporaryViewController: UIViewController {
 
+    @IBOutlet var testImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +49,38 @@ class TemporaryViewController: UIViewController {
     
     }
     
+    @IBAction func sendImage(_ sender: Any) {
+        
+        let function = Functions.functions()
+        
+        let uploadData = UIImagePNGRepresentation(testImage.image!)
+        
+        let data = ["yarro" : uploadData]
+        
+        function.httpsCallable("uploadImage").call(data) { (httpResult, error) in
+            
+            if error != nil {
+                
+                if let errorCode = error as NSError? {
+                    
+                    print("errorCode : \(errorCode.localizedDescription)")
+                    print("errorCode : \(errorCode.userInfo)")
+                    
+                }
+                
+            } else {
+                
+                if let data = httpResult?.data {
+                    
+                    print("data : \(data)")
+                    
+                }
+                
+            }
+            
+        }
+            
+    }
     
     
 }

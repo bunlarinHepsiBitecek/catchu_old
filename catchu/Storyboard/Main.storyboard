@@ -34,15 +34,30 @@
                                     <action selector="printData:" destination="rGg-cJ-mDB" eventType="touchUpInside" id="Y7V-et-O4h"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUX-hx-OOW">
+                                <rect key="frame" x="146" y="394" width="82" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send Image"/>
+                                <connections>
+                                    <action selector="sendImage:" destination="rGg-cJ-mDB" eventType="touchUpInside" id="ymN-m0-JYG"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="8771.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="K39-gg-cXS">
+                                <rect key="frame" x="162" y="432" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ze6-rC-5s6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="2CS-pJ-tQd"/>
+                    <connections>
+                        <outlet property="testImage" destination="K39-gg-cXS" id="BLB-cR-Bg6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pps-p4-cdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="310" y="-710"/>
+            <point key="canvasLocation" x="309.60000000000002" y="-710.09852216748766"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="L0W-CO-B1a">
@@ -96,4 +111,7 @@
             <point key="canvasLocation" x="-1586" y="-1038"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="8771.jpg" width="2880" height="1620"/>
+    </resources>
 </document>

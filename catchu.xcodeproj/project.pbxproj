@@ -32,6 +32,7 @@
 		4564E47820BB1F45003B0D16 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47720BB1F44003B0D16 /* FirebaseManager.swift */; };
 		4564E47A20BBBF4E003B0D16 /* LoaderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47920BBBF4E003B0D16 /* LoaderControl.swift */; };
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
+		A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A735C57420D8447A00B7B1E2 /* 8771.jpg */; };
 		A7369AFE20C78830001692F4 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */; };
 		A7369B0020C86A5C001692F4 /* check-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A7369AFF20C86A5C001692F4 /* check-mark.png */; };
 		A76DF54E20CC308A00B98A09 /* EnumFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76DF54D20CC308A00B98A09 /* EnumFiles.swift */; };
@@ -103,6 +104,7 @@
 		4564E47720BB1F44003B0D16 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		4564E47920BBBF4E003B0D16 /* LoaderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderControl.swift; sourceTree = "<group>"; };
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A735C57420D8447A00B7B1E2 /* 8771.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8771.jpg; sourceTree = "<group>"; };
 		A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
 		A7369AFF20C86A5C001692F4 /* check-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-mark.png"; sourceTree = "<group>"; };
 		A76DF54D20CC308A00B98A09 /* EnumFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFiles.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		4564E40620B95574003B0D16 = {
 			isa = PBXGroup;
 			children = (
+				A735C57420D8447A00B7B1E2 /* 8771.jpg */,
 				4564E41120B95574003B0D16 /* catchu */,
 				4564E42620B95576003B0D16 /* catchuTests */,
 				4564E43120B95576003B0D16 /* catchuUITests */,
@@ -626,6 +629,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */,
 				A79A767620C5BF6600FCE198 /* cancel_gray.png in Resources */,
 				4564E46320B978F9003B0D16 /* Localizable.strings in Resources */,
 				4564E41D20B95576003B0D16 /* LaunchScreen.storyboard in Resources */,
