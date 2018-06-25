@@ -6,8 +6,8 @@
 //  Copyright © 2018 Remzi YILDIRIM. All rights reserved.
 //
 
-import Firebase
 import FBSDKCoreKit
+import Firebase
 import FBSDKLoginKit
 import TwitterKit
 import MapKit
