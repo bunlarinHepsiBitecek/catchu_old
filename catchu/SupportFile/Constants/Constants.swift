@@ -22,6 +22,7 @@ struct Constants {
     struct NumericConstants {
         static let INTEGER_ZERO: Int   = 0
         static let INTEGER_ONE : Int = 1
+        static let INTEGER_TWO : Int = 2
         static let DOUBLE_ZERO: Double = 0.0
         static let FLOAT_ZERO: Float   = 0.0
         
@@ -64,7 +65,7 @@ struct Constants {
         static let createUserProfile = "createUserProfile"
         static let updateUserProfile = "updateUserProfile"
         static let getFriends = "getFriends"
-        
+        static let setNewShareData = "setNewShareData"
     }
     
     struct FirebaseModelConstants {
@@ -75,6 +76,30 @@ struct Constants {
             static let userName: String = "userName"
             static let email: String = "email"
             
+        }
+        
+        struct ShareModelConstants {
+            
+            static let sharedId: String = "sharedId"
+            static let imageUrl : String = "imageUrl"
+            static let textScreenShotUrl : String = "textScreenShotUrl"
+            static let videoScreenShotUrl : String = "videoScreenShotUrl"
+            
+        }
+        
+        struct PathNames {
+            
+            static let Media = "Media"
+            static let Share = "Share"
+            static let TextScreenShots = "TextScreenShots"
+            static let Images = "Images"
+            
+        }
+        
+        struct ModelNames {
+            
+            static let GeoFire = "GeoFire"
+            static let ShareData = "ShareData"
         }
         
     }

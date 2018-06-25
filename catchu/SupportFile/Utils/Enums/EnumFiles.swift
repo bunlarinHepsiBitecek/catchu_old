@@ -14,3 +14,10 @@ enum IconManagement {
     case selected
     case deselected
 }
+
+enum SegmentedButtonChoise {
+    case friends
+    case groups
+    case groupCreation
+    case nothing
+}

@@ -49,6 +49,8 @@ PODS:
   - FirebaseStorage (3.0.0):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
+  - GeoFire (3.0.0):
+    - Firebase/Database (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
   - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
@@ -73,8 +75,18 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Functions
   - Firebase/Storage
+  - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
   - IQKeyboardManagerSwift
   - TwitterKit
+
+EXTERNAL SOURCES:
+  GeoFire:
+    :git: https://github.com/firebase/geofire-objc.git
+
+CHECKOUT OPTIONS:
+  GeoFire:
+    :commit: 7bc124db5d7c428bffe7ee4bd10ea9ad55f54523
+    :git: https://github.com/firebase/geofire-objc.git
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -89,6 +101,7 @@ SPEC CHECKSUMS:
   FirebaseFunctions: 141da172b7491276d9da8715b8ca88f9e439ffb6
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
+  GeoFire: e3ae6f4be3f2466c3467ef6c1c203db3af935c59
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
@@ -97,6 +110,6 @@ SPEC CHECKSUMS:
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 2ff128a5f35f9a50761dcd7f462d7d956ea59978
+PODFILE CHECKSUM: 30db2c5b2728843aae759a65ddc5680894083695
 
 COCOAPODS: 1.4.0

@@ -10,6 +10,8 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 import TwitterKit
+import MapKit
+import GeoFire
 
 class FirebaseManager {
     
@@ -279,6 +281,59 @@ class FirebaseManager {
         
     }
     
+    
+    func uploadImages(image : UIImage, completion : @escaping (_ downloadUrl : URL) -> Void) {
+        
+        let imageId = NSUUID().uuidString
+        
+        let storageReference = Storage.storage().reference().child(Constants.FirebaseModelConstants.PathNames.Share).child(Constants.FirebaseModelConstants.PathNames.Media).child(Constants.FirebaseModelConstants.PathNames.Images).child("\(imageId).png")
+        
+        if let uploadData = UIImagePNGRepresentation(image){
+            
+            storageReference.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                // check metadata exists
+                guard metadata != nil else {
+                    return
+                }
+                
+                if error != nil {
+                    
+                    if let errorMessage = error as NSError? {
+                        
+                        print("loadPinImageToStorage error")
+                        print("errorMessage : \(errorMessage.localizedDescription)")
+                        print("errorMessage : \(errorMessage.userInfo)")
+                    }
+                    
+                } else {
+                    
+                    storageReference.downloadURL { (url, error) in
+                        guard let downloadURL = url else {
+                            return
+                        }
+                        
+                        completion(downloadURL)
+                    }
+                }
+                
+            })
+        }
+        
+    }
+    
+    func createGeofireData(selectedUserArray : [User], location : CLLocation, key : String, completion : @escaping (_ result : Bool) -> Void) {
+        
+        for item in selectedUserArray {
+            
+            let geofireReference = GeoFire(firebaseRef: Database.database().reference().child(Constants.FirebaseModelConstants.ModelNames.GeoFire).child(item.userID))
+            
+            // key value is getting as an input, in this case it must be shareId
+            geofireReference.setLocation(location, forKey: key)
+            
+        }
+        
+    }
 }
 
 

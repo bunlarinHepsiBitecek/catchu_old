@@ -27,7 +27,6 @@
 		4564E42820B95576003B0D16 /* catchuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E42720B95576003B0D16 /* catchuTests.swift */; };
 		4564E43320B95576003B0D16 /* catchuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E43220B95576003B0D16 /* catchuUITests.swift */; };
 		4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4564E44120B958C7003B0D16 /* GoogleService-Info.plist */; };
-		4564E45720B97118003B0D16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45620B97118003B0D16 /* User.swift */; };
 		4564E45A20B97387003B0D16 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45920B97387003B0D16 /* Constants.swift */; };
 		4564E45E20B975C4003B0D16 /* LocalizedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E45D20B975C4003B0D16 /* LocalizedConstants.swift */; };
 		4564E46320B978F9003B0D16 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4564E46520B978F9003B0D16 /* Localizable.strings */; };
@@ -38,6 +37,9 @@
 		4564E47620B9CBB2003B0D16 /* AlertViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47520B9CBB2003B0D16 /* AlertViewSupport.swift */; };
 		4564E47820BB1F45003B0D16 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47720BB1F44003B0D16 /* FirebaseManager.swift */; };
 		4564E47A20BBBF4E003B0D16 /* LoaderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4564E47920BBBF4E003B0D16 /* LoaderControl.swift */; };
+		45DEEA9120E167F400FE484E /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEEA8E20E167F300FE484E /* Share.swift */; };
+		45DEEA9220E167F400FE484E /* SectionBasedFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEEA8F20E167F300FE484E /* SectionBasedFriend.swift */; };
+		45DEEA9320E167F400FE484E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEEA9020E167F300FE484E /* User.swift */; };
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
 		A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A735C57420D8447A00B7B1E2 /* 8771.jpg */; };
 		A7369AFE20C78830001692F4 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */; };
@@ -57,7 +59,6 @@
 		A79A768020C5CB1B00FCE198 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A767F20C5CB1B00FCE198 /* FriendsTableViewCell.swift */; };
 		A79A768220C6564900FCE198 /* ContainerFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A768120C6564900FCE198 /* ContainerFriendViewController.swift */; };
 		A79A768420C656E100FCE198 /* ExtensionContainerFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A768320C656E100FCE198 /* ExtensionContainerFriendController.swift */; };
-		A79A768620C69C0600FCE198 /* SectionBasedFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A768520C69C0600FCE198 /* SectionBasedFriend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +106,6 @@
 		4564E43220B95576003B0D16 /* catchuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catchuUITests.swift; sourceTree = "<group>"; };
 		4564E43420B95576003B0D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4564E44120B958C7003B0D16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4564E45620B97118003B0D16 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4564E45920B97387003B0D16 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4564E45D20B975C4003B0D16 /* LocalizedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedConstants.swift; sourceTree = "<group>"; };
 		4564E46420B978F9003B0D16 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -117,6 +117,9 @@
 		4564E47520B9CBB2003B0D16 /* AlertViewSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewSupport.swift; sourceTree = "<group>"; };
 		4564E47720BB1F44003B0D16 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		4564E47920BBBF4E003B0D16 /* LoaderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderControl.swift; sourceTree = "<group>"; };
+		45DEEA8E20E167F300FE484E /* Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		45DEEA8F20E167F300FE484E /* SectionBasedFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionBasedFriend.swift; path = "../../../catchu copy/catchu/Model/SectionBasedFriend.swift"; sourceTree = "<group>"; };
+		45DEEA9020E167F300FE484E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "../../../catchu copy/catchu/Model/User.swift"; sourceTree = "<group>"; };
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A735C57420D8447A00B7B1E2 /* 8771.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8771.jpg; sourceTree = "<group>"; };
 		A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
@@ -136,7 +139,6 @@
 		A79A767F20C5CB1B00FCE198 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A79A768120C6564900FCE198 /* ContainerFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerFriendViewController.swift; sourceTree = "<group>"; };
 		A79A768320C656E100FCE198 /* ExtensionContainerFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionContainerFriendController.swift; sourceTree = "<group>"; };
-		A79A768520C69C0600FCE198 /* SectionBasedFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBasedFriend.swift; sourceTree = "<group>"; };
 		B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.release.xcconfig"; sourceTree = "<group>"; };
 		C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -304,8 +306,9 @@
 		4564E44A20B96785003B0D16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4564E45620B97118003B0D16 /* User.swift */,
-				A79A768520C69C0600FCE198 /* SectionBasedFriend.swift */,
+				45DEEA9020E167F300FE484E /* User.swift */,
+				45DEEA8F20E167F300FE484E /* SectionBasedFriend.swift */,
+				45DEEA8E20E167F300FE484E /* Share.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -816,16 +819,16 @@
 				A79A766320C36C7E00FCE198 /* ContactViewController.swift in Sources */,
 				45356B2920C43C3C00E0733F /* LocationManager.swift in Sources */,
 				4564E46F20B999AD003B0D16 /* DesignableUITextField.swift in Sources */,
+				45DEEA9120E167F400FE484E /* Share.swift in Sources */,
 				4564E45E20B975C4003B0D16 /* LocalizedConstants.swift in Sources */,
 				A79A766920C5B55900FCE198 /* ExtensionContactViewController.swift in Sources */,
 				A79A768420C656E100FCE198 /* ExtensionContainerFriendController.swift in Sources */,
 				4527E05520C8605800ECB3D1 /* MainTabBarViewController.swift in Sources */,
 				4564E47620B9CBB2003B0D16 /* AlertViewSupport.swift in Sources */,
 				452001C820CABFF500C1ED22 /* DropPinViewController.swift in Sources */,
-				4564E45720B97118003B0D16 /* User.swift in Sources */,
-				A79A768620C69C0600FCE198 /* SectionBasedFriend.swift in Sources */,
 				A7369AFE20C78830001692F4 /* ExtensionUIImageView.swift in Sources */,
 				45356B2520BDF34D00E0733F /* RegisterViewController.swift in Sources */,
+				45DEEA9320E167F400FE484E /* User.swift in Sources */,
 				45211DE520D81793009347B1 /* MapShareView.swift in Sources */,
 				4564E47320B9A7FD003B0D16 /* Validation.swift in Sources */,
 				A79A768220C6564900FCE198 /* ContainerFriendViewController.swift in Sources */,
@@ -834,6 +837,7 @@
 				45356B2220BDF34D00E0733F /* ExtensionPasswordReset.swift in Sources */,
 				452001CA20CBB7AB00C1ED22 /* MapView.swift in Sources */,
 				A791E30A20C1B324005082C9 /* CloudFunctionsManager.swift in Sources */,
+				45DEEA9220E167F400FE484E /* SectionBasedFriend.swift in Sources */,
 				A79A768020C5CB1B00FCE198 /* FriendsTableViewCell.swift in Sources */,
 				4564E45A20B97387003B0D16 /* Constants.swift in Sources */,
 			);
