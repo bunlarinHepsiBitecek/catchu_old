@@ -35,6 +35,9 @@ class MapView: UIView {
         mapView.showsCompass = true
         mapView.isRotateEnabled = true
         mapView.isOpaque = true
+        
+        LocationManager.shared.delegete = self
+        LocationManager.shared.startUpdateLocation()
     }
     
     private func centerMap(_ coordinate: CLLocationCoordinate2D) {
@@ -49,6 +52,12 @@ class MapView: UIView {
         mapView.addAnnotation(annotation)
     }
     
+}
+
+extension MapView: LocationManagerDelegate {
+    func didUpdateLocation() {
+        self.coordinate = LocationManager.shared.currentLocation.coordinate
+    }
 }
 
 extension MapView: MKMapViewDelegate {

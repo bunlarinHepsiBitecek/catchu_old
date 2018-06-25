@@ -48,21 +48,21 @@ class FirebaseManager {
     
     func loginUser(user: User) {
         LoaderController.shared.showLoader()
-        Auth.auth().signIn(withEmail: user.email, password: user.password) { (userSignIn, error) in
+        Auth.auth().signIn(withEmail: user.email, password: user.password) { (userData, error) in
             if let error = error {
                 self.handleError(error: error)
                 LoaderController.shared.removeLoader()
                 return
             }
             
-            if let userSignIn = userSignIn {
-                print("user successfully login uid: \(userSignIn.uid)")
-                print("REMZI: full:\(userSignIn)")
-                User.shared.userID = userSignIn.uid
-                User.shared.email = userSignIn.email!
+            if let userData = userData {
+                print("user successfully login uid: \(userData.user.uid)")
+                print("REMZI: full:\(userData.user)")
+                User.shared.userID = userData.user.uid
+                User.shared.email = userData.user.email!
                 // TODO: Burayi duzelt
 //                User.shared.userName = userSignIn.displayName!
-                User.shared.providerID = userSignIn.providerID
+                User.shared.providerID = userData.user.providerID
                 User.shared.provider = ProviderType.firebase.rawValue
             }
             LoaderController.shared.removeLoader()
@@ -193,7 +193,7 @@ class FirebaseManager {
         
         LoaderController.shared.showLoader()
         
-        Auth.auth().createUser(withEmail: user.email, password: user.password) { (user, error) in
+        Auth.auth().createUser(withEmail: user.email, password: user.password) { (userData, error) in
             
             if error != nil {
                 
@@ -208,9 +208,9 @@ class FirebaseManager {
                 
             } else {
                 
-                if let user = user {
+                if let userData = userData {
                     
-                    if let userID = user.uid as String? {
+                    if let userID = userData.user.uid as String? {
                         
                         print("userID : \(userID)")
                         User.shared.userID = userID
