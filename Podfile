@@ -17,5 +17,6 @@ target 'catchu' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod 'TwitterKit'
+  pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 
 end
