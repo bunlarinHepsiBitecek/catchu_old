@@ -57,7 +57,6 @@ class MapView: UIView {
 extension MapView: LocationManagerDelegate {
     func didUpdateLocation() {
         self.coordinate = LocationManager.shared.currentLocation.coordinate
-        
     }
 }
 
