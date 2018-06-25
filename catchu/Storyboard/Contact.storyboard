@@ -53,6 +53,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eo5-mN-jWg">
                                     <rect key="frame" x="321" y="25" width="46" height="30"/>
                                     <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="nextButtonClicked:" destination="ULJ-ba-d6Q" eventType="touchUpInside" id="hF2-zr-vlp"/>
+                                    </connections>
                                 </button>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5iI-Fe-QDj">
                                     <rect key="frame" x="8" y="134" width="359" height="29"/>

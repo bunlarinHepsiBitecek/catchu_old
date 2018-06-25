@@ -32,6 +32,10 @@ class ContactView: UIView {
 
     func initializeView() {
         
+        // initialize SectionBasedFriend
+        SectionBasedFriend.shared.emptySearchResult()
+        SectionBasedFriend.shared.emptySelectedUserArray()
+        
         self.topView.alpha = 0.0
         boolenValueForCountColorManagement = false
         
@@ -62,6 +66,44 @@ class ContactView: UIView {
     
         SectionBasedFriend.shared = SectionBasedFriend()
         referenceMasterViewController.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        
+        switch returnSegment() {
+        case .friends:
+            
+            if SectionBasedFriend.shared.selectedUserArray.count > 0 {
+                
+                referenceMasterViewController.dismiss(animated: true, completion: nil)
+            }
+            
+        default:
+            print("nothing")
+        }
+        
+    }
+    
+    func returnSegment() -> SegmentedButtonChoise {
+        
+        if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_ZERO {
+            
+            return .friends
+            
+        } else if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_ONE {
+            
+            return .groups
+            
+        } else if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_TWO {
+            
+            return .groupCreation
+            
+        } else {
+            
+            return .nothing
+            
+        }
         
     }
     

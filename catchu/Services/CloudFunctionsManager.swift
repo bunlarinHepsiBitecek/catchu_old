@@ -14,6 +14,37 @@ class CloudFunctionsManager {
     public static let shared = CloudFunctionsManager()
     lazy var functions = Functions.functions()
     
+    func createSharedModel() {
+        
+        let data = Share.shared.createSharedDataDictionary()
+        
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.setNewShareData).call { (httpResult, error) in
+            
+            if error != nil {
+                
+                if let errorCode = error as NSError? {
+                    
+                    print("errorCode : \(errorCode.localizedDescription)")
+                    print("errorCode : \(errorCode.userInfo)")
+                    
+                }
+                
+            } else {
+                
+                if let data = httpResult?.data {
+                    
+                    print("data : \(data)")
+                    
+                }
+                
+            }
+            
+        }
+        
+        print("data :\(data)")
+            
+    }
+        
     func createUserProfileModel() {
         
         let data = User.shared.createUserDataDictionary()

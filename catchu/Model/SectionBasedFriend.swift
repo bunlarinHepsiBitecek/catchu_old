@@ -128,6 +128,12 @@ class SectionBasedFriend {
         
     }
     
+    func emptySelectedUserArray() {
+        
+        _selectedUserArray.removeAll()
+        
+    }
+    
     func emptySearchResult() {
         
         _searchResult.removeAll()
