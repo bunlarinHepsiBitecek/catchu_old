@@ -45,6 +45,10 @@ class LoaderController: NSObject {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
+    func currentViewController() -> UIViewController {
+        return appDelegate().window!.rootViewController!
+    }
+    
     func currentView() -> UIView {
         let appDel = UIApplication.shared.delegate as! AppDelegate
         return appDel.window!.rootViewController!.view!

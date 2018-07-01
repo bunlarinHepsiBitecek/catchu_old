@@ -53,14 +53,22 @@ class MapShareView: UIView {
             self.shareView.topAnchor.constraint(equalTo: shareViewButton.bottomAnchor),
             self.shareView.heightAnchor.constraint(equalToConstant: self.frame.height/2)
             ])
+        
+        self.shareView.masterMapShareView = self
     }
     
     
     @IBAction func shareViewButtonClick(_ sender: UIButton) {
+        self.showHideShareView()
+    }
+    
+    func showHideShareView() {
         if (shareViewBottomConstraint.constant > 0) {
             shareViewBottomConstraint.constant = 0
+            self.shareView.textField.resignFirstResponder()
         } else {
             shareViewBottomConstraint.constant = +self.frame.height/2
+            self.shareView.textField.becomeFirstResponder()
         }
         
         UIView.animate(withDuration: 0.3,

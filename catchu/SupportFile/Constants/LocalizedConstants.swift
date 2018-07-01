@@ -91,5 +91,13 @@ struct LocalizedConstants {
         static let AccessLibraryDisable        = NSLocalizedString("AccessLibraryDisable", comment: "")
         static let Settings                    = NSLocalizedString("Settings", comment: "")
         static let Ok                          = NSLocalizedString("OK", comment: "")
+        static let CameraNotAvaliableTitle     = NSLocalizedString("CameraNotAvaliableTitle", comment: "")
+        static let CameraNotAvaliable          = NSLocalizedString("CameraNotAvaliable", comment: "")
+    }
+    
+    struct Share {
+        static let MissingData                 = NSLocalizedString("MissingData", comment: "")
+        static let NoShareData                 = NSLocalizedString("NoShareData", comment: "")
+        static let Ok                          = NSLocalizedString("OK", comment: "")
     }
 }

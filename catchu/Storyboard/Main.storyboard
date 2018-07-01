@@ -173,20 +173,20 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="njp-bS-CH8">
-                                    <rect key="frame" x="239" y="8" width="128" height="30"/>
+                                    <rect key="frame" x="261" y="8" width="106" height="30"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8N-9W-Y2g">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
                                             <state key="normal" title="Cancel"/>
                                             <connections>
                                                 <action selector="cancelButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="Sbp-6u-Dx5"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mB3-hm-BSy">
-                                            <rect key="frame" x="69" y="0.0" width="59" height="30"/>
-                                            <state key="normal" title="Drop Pin"/>
+                                            <rect key="frame" x="58" y="0.0" width="48" height="30"/>
+                                            <state key="normal" title="Share"/>
                                             <connections>
-                                                <action selector="dropPinButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="pwC-FD-P3C"/>
+                                                <action selector="shareButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="M56-MU-VXr"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -214,9 +214,21 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zBR-vf-gq1">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     </imageView>
-                                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jn-6i-uSe">
+                                                    <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jn-6i-uSe">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="outline_check_circle_white_48pt" translatesAutoresizingMaskIntoConstraints="NO" id="K4y-uH-bKi">
+                                                                <rect key="frame" x="20" y="20" width="10" height="10"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="K4y-uH-bKi" secondAttribute="trailing" constant="20" id="Eaw-pn-msE"/>
+                                                            <constraint firstItem="K4y-uH-bKi" firstAttribute="top" secondItem="6jn-6i-uSe" secondAttribute="top" constant="20" id="FF9-NU-8zc"/>
+                                                            <constraint firstItem="K4y-uH-bKi" firstAttribute="leading" secondItem="6jn-6i-uSe" secondAttribute="leading" constant="20" id="Qcm-7Q-Amz"/>
+                                                            <constraint firstAttribute="bottom" secondItem="K4y-uH-bKi" secondAttribute="bottom" constant="20" id="agM-10-Pq8"/>
+                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                             </view>
@@ -300,5 +312,6 @@
     </scenes>
     <resources>
         <image name="8771.jpg" width="2880" height="1620"/>
+        <image name="outline_check_circle_white_48pt" width="48" height="48"/>
     </resources>
 </document>

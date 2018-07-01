@@ -43,11 +43,19 @@
 "Groups" = "Groups";
 "New Group" = "New Group";
 "Search Result" = "Search Result";
+
+// Location Services
 "LocationServiceDisableTitle" = "Location Service Disable";
 "LocationServiceDisable"      = "Please enable Location Services in Settings";
 "Settings"                    = "Settings";
 "AccessLibraryDisableTitle"   = "Access Library Disable";
 "AccessLibraryDisable"        = "Please enable access photos in Settings";
+"CameraNotAvaliableTitle"     = "Camera Access Error";
+"CameraNotAvaliable"          = "Camera not avaliable";
+
+// Share
+"MissingData"                 = "Missing Data";
+"NoShareData"                 = "No share data found";
 
 
 

@@ -29,7 +29,9 @@ struct Constants {
     }
     
     struct MediaLibrary {
-        static let ImageHolderSize: CGSize = CGSize(width: 50.0, height: 50.0)
+        static let ImageFetchLimit = 11
+        static let ImageHolderSize: CGSize    = CGSize(width: 50.0, height: 50.0)
+        static let ImageSmallSize: CGSize = CGSize(width: 200.0, height: 200.0)
     }
     
     struct Map {
@@ -45,11 +47,13 @@ struct Constants {
     
     struct Storyboard {
         struct ID {
+            static let LoginViewController      = "LoginViewController"
             static let MainTabBarViewController = "MainTabBarViewController"
         }
         
         struct Name {
-            static let Main = "Main"
+            static let Login = "Login"
+            static let Main  = "Main"
         }
         
     }
@@ -57,7 +61,7 @@ struct Constants {
     struct Cell {
         static let ShareCollectionViewCell        = "ShareCollectionViewCell"
         static let ShareCollectionViewItemPerLine = CGFloat(4)
-        static let ShareCollectionViewItemSpace   = CGFloat(3)
+        static let ShareCollectionViewItemSpace   = CGFloat(1)
     }
     
     struct FirebaseCallableFunctions {
@@ -80,11 +84,12 @@ struct Constants {
         
         struct ShareModelConstants {
             
-            static let sharedId: String = "sharedId"
+            static let shareId: String = "shareId"
             static let imageUrl : String = "imageUrl"
             static let textScreenShotUrl : String = "textScreenShotUrl"
             static let videoScreenShotUrl : String = "videoScreenShotUrl"
-            
+            static let Text: String = "text"
+            static let imageUrlSmall : String = "imageUrlSmall"
         }
         
         struct PathNames {
@@ -98,8 +103,8 @@ struct Constants {
         
         struct ModelNames {
             
-            static let GeoFire = "GeoFire"
-            static let ShareData = "ShareData"
+            static let GeoFireModel = "GeoFireModel"
+            static let ShareData    = "ShareData"
         }
         
     }

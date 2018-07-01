@@ -18,12 +18,11 @@ class CloudFunctionsManager {
         
         let data = Share.shared.createSharedDataDictionary()
         
-        functions.httpsCallable(Constants.FirebaseCallableFunctions.setNewShareData).call { (httpResult, error) in
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.setNewShareData).call(data) { (httpResult, error) in
             
             if error != nil {
                 
                 if let errorCode = error as NSError? {
-                    
                     print("errorCode : \(errorCode.localizedDescription)")
                     print("errorCode : \(errorCode.userInfo)")
                     
@@ -34,7 +33,6 @@ class CloudFunctionsManager {
                 if let data = httpResult?.data {
                     
                     print("data : \(data)")
-                    
                 }
                 
             }

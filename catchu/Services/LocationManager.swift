@@ -86,9 +86,19 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
+        print("Remzi didUpdateLocations :\(locations.last)")
+        
+        guard let location = locations.last  else {
             return
         }
+        
+        if let currentLocation = currentLocation {
+            if (location.coordinate.longitude == currentLocation.coordinate.longitude &&
+                location.coordinate.latitude == currentLocation.coordinate.latitude) {
+                return
+            }
+        }
+        
         // singleton for get last(current) location
         self.currentLocation = location
         

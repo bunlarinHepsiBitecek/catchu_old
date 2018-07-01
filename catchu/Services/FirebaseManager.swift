@@ -46,6 +46,7 @@ class FirebaseManager {
             LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.ID.MainTabBarViewController)
             LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
 //        }
+        
     }
     
     func loginUser(user: User) {
@@ -61,9 +62,8 @@ class FirebaseManager {
                 print("user successfully login uid: \(userData.user.uid)")
                 print("REMZI: full:\(userData.user)")
                 User.shared.userID = userData.user.uid
-                User.shared.email = userData.user.email!
-                // TODO: Burayi duzelt
-//                User.shared.userName = userSignIn.displayName!
+                User.shared.email = userData.user.email ?? Constants.CharacterConstants.SPACE
+                User.shared.userName = userData.user.displayName ?? Constants.CharacterConstants.SPACE
                 User.shared.providerID = userData.user.providerID
                 User.shared.provider = ProviderType.firebase.rawValue
             }
@@ -91,10 +91,10 @@ class FirebaseManager {
                 print("***** Token: \(FBSDKAccessToken.current().tokenString)")
                 guard let accessToken = FBSDKAccessToken.current().tokenString else {return}
                 
-                let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, name, short_name, email"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
+                let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id, name, short_name, email"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
+                let connection = FBSDKGraphRequestConnection()
                 
-                req?.start(completionHandler: { (connection, result, error) in
-                    
+                connection.add(request, completionHandler: { (connection, result, error) in
                     if(error != nil) {
                         print("GET request error: \(String(describing: error))")
                     } else {
@@ -109,6 +109,7 @@ class FirebaseManager {
                         self.firebaseAuth(credential)
                     }
                 })
+                connection.start()
             }
         }
     }
@@ -143,13 +144,13 @@ class FirebaseManager {
     
     private func firebaseAuth(_ credential: AuthCredential) {
         LoaderController.shared.showLoader()
-        Auth.auth().signIn(with: credential) { (user, error) in
+        Auth.auth().signInAndRetrieveData(with: credential) { (userInfo, error) in
             if let error = error {
                 print("REMZİ: Unable to authenticate with Firebase")
                 print(error)
             } else {
                 print("REMZİ: Successfullty authenticate with Firebase")
-                if let user = user {
+                if let user = userInfo?.user {
                     print("REMZI1: \(user.providerID)")
                     print("REMZI2: \(user.uid)")
                     print("REMZI3: \(user.email)")
@@ -276,9 +277,7 @@ class FirebaseManager {
         if Auth.auth().currentUser != nil {
             
             CloudFunctionsManager.shared.getFriends()
-            
         }
-        
     }
     
     
@@ -290,7 +289,7 @@ class FirebaseManager {
         
         if let uploadData = UIImagePNGRepresentation(image){
             
-            storageReference.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+            let uploadTask = storageReference.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 
                 // check metadata exists
                 guard metadata != nil else {
@@ -318,21 +317,26 @@ class FirebaseManager {
                 }
                 
             })
+            
+            uploadTask.observe(.progress) { snapshot in
+                // Upload reported progress
+                let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                    / Double(snapshot.progress!.totalUnitCount)
+                print("percentComplete: \(percentComplete)")
+            }
+            
         }
         
     }
     
-    func createGeofireData(selectedUserArray : [User], location : CLLocation, key : String, completion : @escaping (_ result : Bool) -> Void) {
-        
+    func createGeofireData(selectedUserArray : [User]) {
         for item in selectedUserArray {
             
-            let geofireReference = GeoFire(firebaseRef: Database.database().reference().child(Constants.FirebaseModelConstants.ModelNames.GeoFire).child(item.userID))
+            let geofireReference = GeoFire(firebaseRef: Database.database().reference().child(Constants.FirebaseModelConstants.ModelNames.GeoFireModel).child(item.userID))
             
             // key value is getting as an input, in this case it must be shareId
-            geofireReference.setLocation(location, forKey: key)
-            
+            geofireReference.setLocation(Share.shared.location, forKey: Share.shared.shareId)
         }
-        
     }
 }
 

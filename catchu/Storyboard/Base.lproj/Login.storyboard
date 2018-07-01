@@ -14,7 +14,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="catchu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="catchu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +75,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kZu-If-bE1">
-                                <rect key="frame" x="20" y="529" width="335" height="30"/>
+                                <rect key="frame" x="20" y="499" width="335" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLY-lB-UCh">
                                         <rect key="frame" x="0.0" y="0.0" width="195.33333333333334" height="30"/>
@@ -118,7 +118,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syQ-QQ-Zyu">
-                                <rect key="frame" x="126" y="567" width="123" height="30"/>
+                                <rect key="frame" x="126" y="113" width="123" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Deneme Butonum"/>
                                 <connections>
@@ -134,7 +134,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="phC-iW-hmd" secondAttribute="trailing" constant="20" id="6jK-Rj-v3p"/>
                             <constraint firstItem="phC-iW-hmd" firstAttribute="top" secondItem="MgU-v4-Lix" secondAttribute="bottom" constant="25" id="Cu1-JC-RPa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IOj-Dx-CwH" secondAttribute="trailing" constant="20" id="DKt-IO-yIY"/>
-                            <constraint firstItem="kZu-If-bE1" firstAttribute="top" secondItem="phC-iW-hmd" secondAttribute="bottom" constant="50" id="ELJ-bU-pwe"/>
+                            <constraint firstItem="kZu-If-bE1" firstAttribute="top" secondItem="phC-iW-hmd" secondAttribute="bottom" constant="20" id="ELJ-bU-pwe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kZu-If-bE1" secondAttribute="trailing" constant="20" id="W2J-XJ-gpB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IOj-Dx-CwH" secondAttribute="bottom" constant="10" id="Xo6-Un-Sv3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bgs-Nd-QHi" secondAttribute="trailing" constant="50" id="ZQp-QE-fv0"/>
