@@ -26,6 +26,12 @@ struct Constants {
         static let DOUBLE_ZERO: Double = 0.0
         static let FLOAT_ZERO: Float   = 0.0
         
+        struct GeoFireUnits {
+            
+            static let GEOFIRE_QUERY_RADIUS : Double = 0.05
+            
+        }
+        
     }
     
     struct MediaLibrary {
@@ -66,6 +72,8 @@ struct Constants {
         static let updateUserProfile = "updateUserProfile"
         static let getFriends = "getFriends"
         static let setNewShareData = "setNewShareData"
+        static let getShareDataByUserNameAndShareID = "getShareDataByUserNameAndShareID"
+        static let getShareDataByShareID = "getShareDataByShareID"
     }
     
     struct FirebaseModelConstants {
@@ -99,6 +107,7 @@ struct Constants {
         struct ModelNames {
             
             static let GeoFire = "GeoFire"
+            static let GeoFireModel = "GeoFireModel"
             static let ShareData = "ShareData"
         }
         
@@ -149,6 +158,12 @@ struct Constants {
     struct searchBarProperties {
         
         static let searchField : String = "searchField"
+        
+    }
+    
+    struct NotificationConstants {
+        
+        static let requestIdentifier : String = "LocalNotificationRequest"
         
     }
     

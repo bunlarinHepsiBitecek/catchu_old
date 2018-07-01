@@ -41,6 +41,9 @@
 		45DEEA9C20E16DB000FE484E /* SectionBasedFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEEA9A20E16DAF00FE484E /* SectionBasedFriend.swift */; };
 		45DEEA9D20E16DB000FE484E /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEEA9B20E16DAF00FE484E /* Share.swift */; };
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
+		A72173B620E5793300F73B9C /* NotificationManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B520E5793300F73B9C /* NotificationManager2.swift */; };
+		A72173B820E778D600F73B9C /* GeoFireData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B720E778D600F73B9C /* GeoFireData.swift */; };
+		A72173BA20E7D32700F73B9C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B920E7D32700F73B9C /* UIImageExtensions.swift */; };
 		A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A735C57420D8447A00B7B1E2 /* 8771.jpg */; };
 		A7369AFE20C78830001692F4 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */; };
 		A7369B0020C86A5C001692F4 /* check-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A7369AFF20C86A5C001692F4 /* check-mark.png */; };
@@ -121,6 +124,9 @@
 		45DEEA9A20E16DAF00FE484E /* SectionBasedFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionBasedFriend.swift; sourceTree = "<group>"; };
 		45DEEA9B20E16DAF00FE484E /* Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72173B520E5793300F73B9C /* NotificationManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager2.swift; sourceTree = "<group>"; };
+		A72173B720E778D600F73B9C /* GeoFireData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFireData.swift; sourceTree = "<group>"; };
+		A72173B920E7D32700F73B9C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		A735C57420D8447A00B7B1E2 /* 8771.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8771.jpg; sourceTree = "<group>"; };
 		A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
 		A7369AFF20C86A5C001692F4 /* check-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-mark.png"; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 				45DEEA9A20E16DAF00FE484E /* SectionBasedFriend.swift */,
 				45DEEA9B20E16DAF00FE484E /* Share.swift */,
 				45DEEA9620E16D1400FE484E /* User.swift */,
+				A72173B720E778D600F73B9C /* GeoFireData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -340,6 +347,7 @@
 				A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */,
 				45356B2820C43C3C00E0733F /* LocationManager.swift */,
 				452001CE20CC354F00C1ED22 /* MediaLibraryManager.swift */,
+				A72173B520E5793300F73B9C /* NotificationManager2.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				4564E46E20B999AD003B0D16 /* DesignableUITextField.swift */,
+				A72173B920E7D32700F73B9C /* UIImageExtensions.swift */,
 			);
 			path = UIExtentions;
 			sourceTree = "<group>";
@@ -647,6 +656,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
@@ -810,6 +822,8 @@
 				45356B2320BDF34D00E0733F /* PasswordResetViewController.swift in Sources */,
 				452001CF20CC354F00C1ED22 /* MediaLibraryManager.swift in Sources */,
 				4564E46D20B998A8003B0D16 /* LoginViewControllerExtention.swift in Sources */,
+				A72173BA20E7D32700F73B9C /* UIImageExtensions.swift in Sources */,
+				A72173B620E5793300F73B9C /* NotificationManager2.swift in Sources */,
 				A79A766720C4B48B00FCE198 /* ContactView.swift in Sources */,
 				452001CD20CC253500C1ED22 /* ShareView.swift in Sources */,
 				4564E47820BB1F45003B0D16 /* FirebaseManager.swift in Sources */,
@@ -821,6 +835,7 @@
 				4564E46F20B999AD003B0D16 /* DesignableUITextField.swift in Sources */,
 				45DEEA9D20E16DB000FE484E /* Share.swift in Sources */,
 				45DEEA9920E16D1400FE484E /* User.swift in Sources */,
+				A72173B820E778D600F73B9C /* GeoFireData.swift in Sources */,
 				4564E45E20B975C4003B0D16 /* LocalizedConstants.swift in Sources */,
 				A79A766920C5B55900FCE198 /* ExtensionContactViewController.swift in Sources */,
 				A79A768420C656E100FCE198 /* ExtensionContainerFriendController.swift in Sources */,

@@ -13,28 +13,39 @@ class Share {
     
     public static var shared = Share()
     
+    private var _tempImageView = UIImageView()
+    
     private var _image : UIImage
+    private var _text : String
     private var _textScreenShot : UIImage
     private var _videoScreenShot : UIImage
     private var _location : CLLocation
     private var _shareId : String
     
-    private var _imageUrl : URL
-    private var _textScreenShotUrl : URL
-    private var _videoScreenShotUrl : URL
+    private var _imageUrl : String
+    private var _imageUrlSmall : String
+    private var _textScreenShotUrl : String
+    private var _videoScreenShotUrl : String
     
     private var _sharedDataDictionary : Dictionary<String, String> = [:]
+    private var _shareQueryResultDictionary : Dictionary<String, Share> = [:]
 
     init() {
         
         _image = UIImage()
+        _text = Constants.CharacterConstants.SPACE
         _textScreenShot = UIImage()
         _videoScreenShot = UIImage()
         _location = CLLocation()
         _shareId = Constants.CharacterConstants.SPACE
-        _imageUrl = URL(string: Constants.CharacterConstants.SPACE)!
-        _textScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
-        _videoScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
+        _imageUrl = Constants.CharacterConstants.SPACE
+        _imageUrlSmall = Constants.CharacterConstants.SPACE
+        _textScreenShotUrl = Constants.CharacterConstants.SPACE
+        _videoScreenShotUrl = Constants.CharacterConstants.SPACE
+        
+//        _imageUrl = URL(string: Constants.CharacterConstants.SPACE)!
+//        _textScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
+//        _videoScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
     }
     
     var image : UIImage {
@@ -43,6 +54,15 @@ class Share {
         }
         set {
             _image = newValue
+        }
+    }
+    
+    var text: String {
+        get {
+            return _text
+        }
+        set {
+            _text = newValue
         }
     }
     
@@ -82,9 +102,60 @@ class Share {
         }
     }
     
+    var imageUrl: String {
+        get {
+            return _imageUrl
+        }
+        set {
+            _imageUrl = newValue
+        }
+    }
+    
+    var imageUrlSmall: String {
+        get {
+            return _imageUrlSmall
+        }
+        set {
+            _imageUrlSmall = newValue
+        }
+    }
+
+    
+    var tempImageView: UIImageView {
+        get {
+            return _tempImageView
+        }
+        set {
+            _tempImageView = newValue
+        }
+    }
+    
+    var shareQueryResultDictionary: Dictionary<String, Share> {
+        get {
+            return _shareQueryResultDictionary
+        }
+        set {
+            _shareQueryResultDictionary = newValue
+        }
+    }
+    
+    func appendElementIntoShareQueryResultDictionary(key : String, value : Share) {
+        
+        self._shareQueryResultDictionary[key] = value
+        
+    }
+    
     func appendElementIntoDictionary(key : String, value : String) {
         
         self._sharedDataDictionary[key] = value
+        
+    }
+    
+    func parseShareData(dataDictionary : [String : AnyObject]) {
+        
+        self._imageUrl = dataDictionary["imageUrl"] as? String ?? Constants.CharacterConstants.SPACE
+        self._imageUrlSmall = dataDictionary["imageUrlSmall"] as? String ?? Constants.CharacterConstants.SPACE
+        self._text = dataDictionary["text"] as? String ?? Constants.CharacterConstants.SPACE
         
     }
     
@@ -96,21 +167,21 @@ class Share {
             
         }
         
-        if _imageUrl.isFileURL {
+        if _imageUrl.isEmpty {
             
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.imageUrl, value: _imageUrl.absoluteString)
-            
-        }
-        
-        if _textScreenShotUrl.isFileURL {
-            
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.textScreenShotUrl, value: _textScreenShotUrl.absoluteString)
+            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.imageUrl, value: _imageUrl)
             
         }
         
-        if _videoScreenShotUrl.isFileURL {
+        if _textScreenShotUrl.isEmpty {
             
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.videoScreenShotUrl, value: _videoScreenShotUrl.absoluteString)
+            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.textScreenShotUrl, value: _textScreenShotUrl)
+            
+        }
+        
+        if _videoScreenShotUrl.isEmpty {
+            
+            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.videoScreenShotUrl, value: _videoScreenShotUrl)
             
         }
         

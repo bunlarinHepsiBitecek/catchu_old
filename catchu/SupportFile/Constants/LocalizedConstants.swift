@@ -92,4 +92,10 @@ struct LocalizedConstants {
         static let Settings                    = NSLocalizedString("Settings", comment: "")
         static let Ok                          = NSLocalizedString("OK", comment: "")
     }
+    
+    struct Notification {
+        
+        static let CatchSomething = NSLocalizedString("CatchSomething", comment: "")
+        
+    }
 }

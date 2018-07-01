@@ -49,6 +49,9 @@
 "AccessLibraryDisableTitle"   = "Access Library Disable";
 "AccessLibraryDisable"        = "Please enable access photos in Settings";
 
+// notification variables
+"CatchSomething" = "You caught something :)";
+
 
 
 
