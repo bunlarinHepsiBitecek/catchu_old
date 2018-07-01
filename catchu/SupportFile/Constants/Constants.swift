@@ -111,6 +111,7 @@ struct Constants {
         
         struct ModelNames {
             
+            static let GeoFire = "GeoFire"
             static let GeoFireModel = "GeoFireModel"
             static let ShareData    = "ShareData"
         }

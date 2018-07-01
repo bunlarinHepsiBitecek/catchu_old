@@ -44,6 +44,10 @@ class Share {
         _imageUrlSmall = Constants.CharacterConstants.SPACE
         _textScreenShotUrl = Constants.CharacterConstants.SPACE
         _videoScreenShotUrl = Constants.CharacterConstants.SPACE
+        
+//        _imageUrl = URL(string: Constants.CharacterConstants.SPACE)!
+//        _textScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
+//        _videoScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
     }
     
     var image : UIImage {
@@ -69,15 +73,6 @@ class Share {
         }
         set {
             self._text = newValue
-        }
-    }
-    
-    var text: String {
-        get {
-            return _text
-        }
-        set {
-            _text = newValue
         }
     }
     
@@ -128,11 +123,36 @@ class Share {
     
     var imageUrlSmall: String {
         get {
-            return self._imageUrlSmall
+            return _imageUrlSmall
         }
         set {
-            self._imageUrlSmall = newValue
+            _imageUrlSmall = newValue
         }
+    }
+
+    
+    var tempImageView: UIImageView {
+        get {
+            return _tempImageView
+        }
+        set {
+            _tempImageView = newValue
+        }
+    }
+    
+    var shareQueryResultDictionary: Dictionary<String, Share> {
+        get {
+            return _shareQueryResultDictionary
+        }
+        set {
+            _shareQueryResultDictionary = newValue
+        }
+    }
+    
+    func appendElementIntoShareQueryResultDictionary(key : String, value : Share) {
+        
+        self._shareQueryResultDictionary[key] = value
+        
     }
     
     func appendElementIntoDictionary(key : String, value : String) {
