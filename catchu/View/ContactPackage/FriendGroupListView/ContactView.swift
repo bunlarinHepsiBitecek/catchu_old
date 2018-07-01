@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import UserNotifications
 
-class ContactView: UIView {
+class ContactView: UIView, UNUserNotificationCenterDelegate {
     
     @IBOutlet var topView: UIViewDesign!
     @IBOutlet var containerViewFriend: UIView!
@@ -56,6 +57,66 @@ class ContactView: UIView {
         setSelectedUserCounterLabel()
         searchBarPropertyManagement()
         
+        requestPermissionWithCompletionhandler { (granted) -> (Void) in
+            
+            DispatchQueue.main.async {
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+            
+        }
+        
+    }
+    
+    func requestPermissionWithCompletionhandler(completion: ((Bool) -> (Void))? ) {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in
+            
+            if error != nil {
+                
+                if let errorMessage = error as NSError? {
+                    
+                    print("errorMessage :\(errorMessage)")
+                    print("errorMessage :\(errorMessage.localizedDescription)")
+                    
+                    completion!(false)
+                    return
+                }
+                
+            } else {
+                
+                if granted {
+                    
+                    UNUserNotificationCenter.current().delegate = self
+                    self.setNotificationCategories()
+                    
+                }
+                
+                completion!(true)
+                
+            }
+            
+        }
+        
+    }
+    
+    private func setNotificationCategories() {
+        
+        let likeAction = UNNotificationAction(identifier: "like", title: "Like", options: [])
+        let replyAction = UNNotificationAction(identifier: "reply", title: "Reply", options: [])
+        let archiveAction = UNNotificationAction(identifier: "archive", title: "Archive", options: [])
+        let  ccommentAction = UNTextInputNotificationAction(identifier: "comment", title: "Comment", options: [])
+        
+        
+        let localCat =  UNNotificationCategory(identifier: "local", actions: [likeAction], intentIdentifiers: [], options: [])
+        
+        let customCat =  UNNotificationCategory(identifier: "recipe", actions: [likeAction,ccommentAction], intentIdentifiers: [], options: [])
+        
+        let emailCat =  UNNotificationCategory(identifier: "email", actions: [replyAction, archiveAction], intentIdentifiers: [], options: [])
+        
+        UNUserNotificationCenter.current().setNotificationCategories([localCat, customCat, emailCat])
+        
     }
     
     deinit {
@@ -69,7 +130,34 @@ class ContactView: UIView {
         
     }
     
+    // MARK: Push Notification with Banner
+    func showNotification(title: String, message: String) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = message
+        content.badge = 1
+        content.sound = .default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "notif", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("TTTTTTTTTT")
+        
+        if response.notification.request.identifier == "notif" {
+            
+            completionHandler()
+        }
+        
+    }
+    
     @IBAction func nextButtonClicked(_ sender: Any) {
+        
+        showNotification(title: "yarro", message: "yarro messaje")
         
         switch returnSegment() {
         case .friends:

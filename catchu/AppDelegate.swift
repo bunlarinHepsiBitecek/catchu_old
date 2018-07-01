@@ -11,9 +11,10 @@ import Firebase
 //import IQKeyboardManagerSwift
 import FBSDKLoginKit
 import TwitterKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -31,6 +32,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.TWITTER_CUSTOMER_KEY, consumerSecret: Constants.TWITTER_CUSTOMER_SECRETKEY)
         
         FirebaseManager.shared.checkUserLoggedIn()
+        
+        //NotificationManager.shared.initializeRegisterForRemoteNotification()
+        //application.registerForRemoteNotifications()
+        //UIApplication.shared.registerForRemoteNotifications()
+        
+        if #available(iOS 10.0, *) {
+            let center  = UNUserNotificationCenter.current()
+            center.delegate = self as? UNUserNotificationCenterDelegate
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+                if error == nil{
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+        else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
         
         return true
     }
@@ -63,6 +82,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let directedByTWTR =  TWTRTwitter.sharedInstance().application(application, open: url, options: options)
         return directedByTWTR
     }
-
+    
+    func initiateNotificationSettings() {
+        
+        UIApplication.shared.registerForRemoteNotifications()
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.delegate = self
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        completionHandler()
+        
+    }
+    
+    
 }
 

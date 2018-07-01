@@ -14,6 +14,46 @@ class CloudFunctionsManager {
     public static let shared = CloudFunctionsManager()
     lazy var functions = Functions.functions()
     
+    func getSharedDataByUserNameAndShareId(inputKey : String, completion : @escaping (_ result : Bool) -> Void) {
+        
+        print("getSharedDataByUserNameAndShareId starts")
+        print("inputKey : \(inputKey)")
+        
+        let data = ["shareId" : inputKey]
+        
+        functions.httpsCallable(Constants.FirebaseCallableFunctions.getShareDataByShareID).call(data) { (httpResult, error) in
+            
+            if error != nil {
+                
+                if let errorCode = error as NSError? {
+                    
+                    print("errorCode : \(errorCode.localizedDescription)")
+                    print("errorCode : \(errorCode.userInfo)")
+                    
+                }
+                
+            } else {
+                
+                if let data = httpResult?.data {
+                
+                    print("data : \(data)")
+                    
+                    let tempShareObject = Share()
+                    
+                    tempShareObject.shareId = inputKey
+                    tempShareObject.parseShareData(dataDictionary: data as! [String : AnyObject])
+                    
+                    Share.shared.appendElementIntoShareQueryResultDictionary(key: inputKey, value: tempShareObject)
+                    
+                }
+                
+            }
+            
+            completion(true)
+        }
+        
+    }
+    
     func createSharedModel() {
         
         let data = Share.shared.createSharedDataDictionary()

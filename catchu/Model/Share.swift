@@ -13,6 +13,8 @@ class Share {
     
     public static var shared = Share()
     
+    private var _tempImageView = UIImageView()
+    
     private var _image : UIImage
     private var _imageSmall : UIImage
     private var _text: String
@@ -27,6 +29,7 @@ class Share {
     private var _videoScreenShotUrl : String
     
     private var _sharedDataDictionary : Dictionary<String, String> = [:]
+    private var _shareQueryResultDictionary : Dictionary<String, Share> = [:]
 
     init() {
         
@@ -66,6 +69,15 @@ class Share {
         }
         set {
             self._text = newValue
+        }
+    }
+    
+    var text: String {
+        get {
+            return _text
+        }
+        set {
+            _text = newValue
         }
     }
     
@@ -126,6 +138,14 @@ class Share {
     func appendElementIntoDictionary(key : String, value : String) {
         
         self._sharedDataDictionary[key] = value
+        
+    }
+    
+    func parseShareData(dataDictionary : [String : AnyObject]) {
+        
+        self._imageUrl = dataDictionary["imageUrl"] as? String ?? Constants.CharacterConstants.SPACE
+        self._imageUrlSmall = dataDictionary["imageUrlSmall"] as? String ?? Constants.CharacterConstants.SPACE
+        self._text = dataDictionary["text"] as? String ?? Constants.CharacterConstants.SPACE
         
     }
     

@@ -57,6 +57,9 @@
 "MissingData"                 = "Missing Data";
 "NoShareData"                 = "No share data found";
 
+// notification variables
+"CatchSomething" = "You caught something :)";
+
 
 
 

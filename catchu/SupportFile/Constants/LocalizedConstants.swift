@@ -100,4 +100,10 @@ struct LocalizedConstants {
         static let NoShareData                 = NSLocalizedString("NoShareData", comment: "")
         static let Ok                          = NSLocalizedString("OK", comment: "")
     }
+    
+    struct Notification {
+        
+        static let CatchSomething = NSLocalizedString("CatchSomething", comment: "")
+        
+    }
 }

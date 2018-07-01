@@ -274,7 +274,12 @@ class FirebaseManager {
     
     func checkUserLoggedIn() {
         
+        print("checkUserLoggedIn starts")
+        
         if Auth.auth().currentUser != nil {
+            
+            User.shared.userID = (Auth.auth().currentUser?.uid)!
+            print("User.shared.userID : \(User.shared.userID)")
             
             CloudFunctionsManager.shared.getFriends()
         }
@@ -336,6 +341,42 @@ class FirebaseManager {
             
             // key value is getting as an input, in this case it must be shareId
             geofireReference.setLocation(Share.shared.location, forKey: Share.shared.shareId)
+        }
+    }
+    
+    func getGeoFireData(currentLocation : CLLocation, completion : @escaping (_ result : Bool) -> Void) {
+    
+        print("getGeoFireData starts")
+        
+        let firebaseReference = Database.database().reference().child(Constants.FirebaseModelConstants.ModelNames.GeoFireModel).child(User.shared.userID)
+        
+        let geoFire = GeoFire(firebaseRef: firebaseReference)
+        
+        let regionQuery = geoFire.query(at: currentLocation, withRadius: Constants.NumericConstants.GeoFireUnits.GEOFIRE_QUERY_RADIUS)
+        
+        regionQuery.observe(.keyEntered) { (key, location) in
+            
+            print("key : \(key)")
+            print("location : \(location)")
+            
+            GeoFireData.shared.locationID = key
+            GeoFireData.shared.coordinateData = location
+            
+            GeoFireData.shared.appendElementToGeoFireDictionary(key: key, value: GeoFireData.shared)
+            
+        }
+        
+        regionQuery.observeReady {
+
+            print("kakakakakakakakakakakakakakakakakakakakakakakk")
+            completion(true)
+
+//            if GeoFireData.shared.geofireDictionary.count > 0 {
+//
+//                completion(true)
+//
+//            }
+
         }
     }
 }
