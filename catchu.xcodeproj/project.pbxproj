@@ -47,6 +47,11 @@
 		A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A735C57420D8447A00B7B1E2 /* 8771.jpg */; };
 		A7369AFE20C78830001692F4 /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */; };
 		A7369B0020C86A5C001692F4 /* check-mark.png in Resources */ = {isa = PBXBuildFile; fileRef = A7369AFF20C86A5C001692F4 /* check-mark.png */; };
+		A73A610D20EA10C300BBA13B /* gallery_512.png in Resources */ = {isa = PBXBuildFile; fileRef = A73A610C20EA10C200BBA13B /* gallery_512.png */; };
+		A73A610F20EA114000BBA13B /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = A73A610E20EA113F00BBA13B /* gallery.png */; };
+		A73A611220EA123900BBA13B /* photo-camera (5).png in Resources */ = {isa = PBXBuildFile; fileRef = A73A611020EA123700BBA13B /* photo-camera (5).png */; };
+		A73A611320EA123900BBA13B /* photo-camera (6).png in Resources */ = {isa = PBXBuildFile; fileRef = A73A611120EA123800BBA13B /* photo-camera (6).png */; };
+		A73A611520EA12FF00BBA13B /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = A73A611420EA12FE00BBA13B /* cross.png */; };
 		A76DF54E20CC308A00B98A09 /* EnumFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76DF54D20CC308A00B98A09 /* EnumFiles.swift */; };
 		A791E30A20C1B324005082C9 /* CloudFunctionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */; };
 		A79A765D20C368B700FCE198 /* TemporaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A765C20C368B700FCE198 /* TemporaryViewController.swift */; };
@@ -130,6 +135,11 @@
 		A735C57420D8447A00B7B1E2 /* 8771.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8771.jpg; sourceTree = "<group>"; };
 		A7369AFD20C78830001692F4 /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
 		A7369AFF20C86A5C001692F4 /* check-mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-mark.png"; sourceTree = "<group>"; };
+		A73A610C20EA10C200BBA13B /* gallery_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery_512.png; sourceTree = "<group>"; };
+		A73A610E20EA113F00BBA13B /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
+		A73A611020EA123700BBA13B /* photo-camera (5).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-camera (5).png"; sourceTree = "<group>"; };
+		A73A611120EA123800BBA13B /* photo-camera (6).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-camera (6).png"; sourceTree = "<group>"; };
+		A73A611420EA12FE00BBA13B /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		A76DF54D20CC308A00B98A09 /* EnumFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFiles.swift; sourceTree = "<group>"; };
 		A791E30920C1B324005082C9 /* CloudFunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudFunctionsManager.swift; sourceTree = "<group>"; };
 		A79A765C20C368B700FCE198 /* TemporaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +243,11 @@
 			isa = PBXGroup;
 			children = (
 				A735C57420D8447A00B7B1E2 /* 8771.jpg */,
+				A73A610E20EA113F00BBA13B /* gallery.png */,
+				A73A610C20EA10C200BBA13B /* gallery_512.png */,
+				A73A611020EA123700BBA13B /* photo-camera (5).png */,
+				A73A611120EA123800BBA13B /* photo-camera (6).png */,
+				A73A611420EA12FE00BBA13B /* cross.png */,
 				4564E41120B95574003B0D16 /* catchu */,
 				4564E42620B95576003B0D16 /* catchuTests */,
 				4564E43120B95576003B0D16 /* catchuUITests */,
@@ -700,14 +715,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A73A610D20EA10C300BBA13B /* gallery_512.png in Resources */,
 				A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */,
 				A79A767620C5BF6600FCE198 /* cancel_gray.png in Resources */,
 				4564E46320B978F9003B0D16 /* Localizable.strings in Resources */,
+				A73A610F20EA114000BBA13B /* gallery.png in Resources */,
+				A73A611220EA123900BBA13B /* photo-camera (5).png in Resources */,
+				A73A611520EA12FF00BBA13B /* cross.png in Resources */,
 				4564E41D20B95576003B0D16 /* LaunchScreen.storyboard in Resources */,
 				A79A766E20C5BDE800FCE198 /* user.png in Resources */,
 				4564E44220B958C7003B0D16 /* GoogleService-Info.plist in Resources */,
 				45356B2720C2F96E00E0733F /* Main.storyboard in Resources */,
 				4564E41A20B95576003B0D16 /* Assets.xcassets in Resources */,
+				A73A611320EA123900BBA13B /* photo-camera (6).png in Resources */,
 				4564E41820B95574003B0D16 /* Login.storyboard in Resources */,
 				A79A765F20C36BE400FCE198 /* Contact.storyboard in Resources */,
 				A7369B0020C86A5C001692F4 /* check-mark.png in Resources */,

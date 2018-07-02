@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -154,18 +154,18 @@
                             <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A9Q-q5-HTi">
-                                    <rect key="frame" x="8" y="8" width="118" height="30"/>
+                                    <rect key="frame" x="8" y="8" width="74" height="32"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbe-Xx-qOW">
-                                            <rect key="frame" x="0.0" y="0.0" width="54" height="30"/>
-                                            <state key="normal" title="Photos"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbe-Xx-qOW">
+                                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                            <state key="normal" image="gallery.png"/>
                                             <connections>
                                                 <action selector="photosButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="fdE-qo-DGi"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeB-82-nyN">
-                                            <rect key="frame" x="64" y="0.0" width="54" height="30"/>
-                                            <state key="normal" title="Camera"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeB-82-nyN">
+                                            <rect key="frame" x="42" y="0.0" width="32" height="32"/>
+                                            <state key="normal" image="photo-camera (6).png"/>
                                             <connections>
                                                 <action selector="cameraButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="PKq-Yh-WLG"/>
                                             </connections>
@@ -173,17 +173,17 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="njp-bS-CH8">
-                                    <rect key="frame" x="239" y="8" width="128" height="30"/>
+                                    <rect key="frame" x="239" y="8" width="128" height="32"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8N-9W-Y2g">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
-                                            <state key="normal" title="Cancel"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8N-9W-Y2g">
+                                            <rect key="frame" x="0.0" y="0.0" width="59" height="32"/>
+                                            <state key="normal" image="cross.png"/>
                                             <connections>
                                                 <action selector="cancelButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="Sbp-6u-Dx5"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mB3-hm-BSy">
-                                            <rect key="frame" x="69" y="0.0" width="59" height="30"/>
+                                            <rect key="frame" x="69" y="0.0" width="59" height="32"/>
                                             <state key="normal" title="Drop Pin"/>
                                             <connections>
                                                 <action selector="dropPinButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="pwC-FD-P3C"/>
@@ -192,7 +192,7 @@
                                     </subviews>
                                 </stackView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nPx-Ck-5Iz">
-                                    <rect key="frame" x="8" y="153" width="359" height="200"/>
+                                    <rect key="frame" x="8" y="155" width="359" height="200"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="fD0-kj-OPI"/>
@@ -237,8 +237,9 @@
                                         </collectionViewCell>
                                     </cells>
                                 </collectionView>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-cn-SrX">
-                                    <rect key="frame" x="8" y="58" width="359" height="75"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you up to?" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-cn-SrX">
+                                    <rect key="frame" x="8" y="60" width="359" height="75"/>
+                                    <color key="backgroundColor" red="0.93433669626229865" green="0.92982299241562083" blue="0.93885040010897636" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="75" id="W8y-7h-DMU"/>
                                     </constraints>
@@ -247,7 +248,7 @@
                                     <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 </textField>
                             </subviews>
-                            <color key="backgroundColor" red="0.52406015230000003" green="0.90781646569999996" blue="0.82793865050000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.96782419122886443" green="0.96314871204418395" blue="0.9724996704135449" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="nPx-Ck-5Iz" secondAttribute="trailing" constant="8" id="6W1-zu-f3T"/>
                                 <constraint firstItem="A9Q-q5-HTi" firstAttribute="top" secondItem="NI7-b7-nyT" secondAttribute="top" constant="8" id="QTG-3l-jkb"/>
@@ -300,5 +301,8 @@
     </scenes>
     <resources>
         <image name="8771.jpg" width="2880" height="1620"/>
+        <image name="cross.png" width="32" height="32"/>
+        <image name="gallery.png" width="32" height="32"/>
+        <image name="photo-camera (6).png" width="32" height="32"/>
     </resources>
 </document>
