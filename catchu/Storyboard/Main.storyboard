@@ -46,11 +46,25 @@
                                 <rect key="frame" x="162" y="432" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nku-HH-V9Y">
+                                <rect key="frame" x="317" y="54" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ggR-rt-HBn"/>
+                                </constraints>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonClick:" destination="rGg-cJ-mDB" eventType="touchUpInside" id="OPf-mH-Oyz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Nku-HH-V9Y" firstAttribute="top" secondItem="ze6-rC-5s6" secondAttribute="top" constant="10" id="oow-cQ-zDV"/>
+                            <constraint firstItem="ze6-rC-5s6" firstAttribute="trailing" secondItem="Nku-HH-V9Y" secondAttribute="trailing" constant="10" id="ovg-Zb-Feg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ze6-rC-5s6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2CS-pJ-tQd"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="baseline_person_black_48pt" id="2CS-pJ-tQd"/>
                     <connections>
                         <outlet property="testImage" destination="K39-gg-cXS" id="BLB-cR-Bg6"/>
                     </connections>
@@ -85,7 +99,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2Te-rg-I6w"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Drop Pin" id="RPn-rw-fIr"/>
+                    <tabBarItem key="tabBarItem" title="Drop Pin" image="baseline_pin_drop_black_48pt" id="RPn-rw-fIr"/>
                     <connections>
                         <outlet property="mapShareView" destination="pT2-Vh-vzs" id="DSM-9l-GwG"/>
                     </connections>
@@ -96,12 +110,14 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evH-VV-JT1">
-                            <rect key="frame" x="0.0" y="44" width="375" height="704"/>
+                            <rect key="frame" x="0.0" y="44" width="375" height="700"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </containerView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAJ-Di-PHR">
-                            <rect key="frame" x="0.0" y="748" width="375" height="30"/>
-                            <state key="normal" title="Swip Up"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAJ-Di-PHR">
+                            <rect key="frame" x="0.0" y="744" width="375" height="34"/>
+                            <state key="normal" title="Share View">
+                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="shareViewButtonClick:" destination="pT2-Vh-vzs" eventType="touchUpInside" id="leB-Qu-FAS"/>
                             </connections>
@@ -154,18 +170,22 @@
                             <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A9Q-q5-HTi">
-                                    <rect key="frame" x="8" y="8" width="118" height="30"/>
+                                    <rect key="frame" x="8" y="8" width="136" height="34"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbe-Xx-qOW">
-                                            <rect key="frame" x="0.0" y="0.0" width="54" height="30"/>
-                                            <state key="normal" title="Photos"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fbe-Xx-qOW">
+                                            <rect key="frame" x="0.0" y="0.0" width="63" height="34"/>
+                                            <state key="normal" title="Photos">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="photosButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="fdE-qo-DGi"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeB-82-nyN">
-                                            <rect key="frame" x="64" y="0.0" width="54" height="30"/>
-                                            <state key="normal" title="Camera"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeB-82-nyN">
+                                            <rect key="frame" x="73" y="0.0" width="63" height="34"/>
+                                            <state key="normal" title="Camera">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="cameraButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="PKq-Yh-WLG"/>
                                             </connections>
@@ -173,18 +193,22 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="njp-bS-CH8">
-                                    <rect key="frame" x="261" y="8" width="106" height="30"/>
+                                    <rect key="frame" x="245" y="8" width="122" height="34"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8N-9W-Y2g">
-                                            <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
-                                            <state key="normal" title="Cancel"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8N-9W-Y2g">
+                                            <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
+                                            <state key="normal" title="Cancel">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="cancelButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="Sbp-6u-Dx5"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mB3-hm-BSy">
-                                            <rect key="frame" x="58" y="0.0" width="48" height="30"/>
-                                            <state key="normal" title="Share"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mB3-hm-BSy">
+                                            <rect key="frame" x="66" y="0.0" width="56" height="34"/>
+                                            <state key="normal" title="Share">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="shareButtonClicked:" destination="UTg-wE-XG2" eventType="touchUpInside" id="M56-MU-VXr"/>
                                             </connections>
@@ -192,7 +216,7 @@
                                     </subviews>
                                 </stackView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nPx-Ck-5Iz">
-                                    <rect key="frame" x="8" y="153" width="359" height="200"/>
+                                    <rect key="frame" x="8" y="157" width="359" height="200"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="fD0-kj-OPI"/>
@@ -249,8 +273,9 @@
                                         </collectionViewCell>
                                     </cells>
                                 </collectionView>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-cn-SrX">
-                                    <rect key="frame" x="8" y="58" width="359" height="75"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you up to?" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-cn-SrX">
+                                    <rect key="frame" x="8" y="62" width="359" height="75"/>
+                                    <color key="backgroundColor" red="0.9137254901960784" green="0.90980392156862744" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="75" id="W8y-7h-DMU"/>
                                     </constraints>
@@ -259,7 +284,7 @@
                                     <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 </textField>
                             </subviews>
-                            <color key="backgroundColor" red="0.52406015230000003" green="0.90781646569999996" blue="0.82793865050000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.97647058823529409" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="nPx-Ck-5Iz" secondAttribute="trailing" constant="8" id="6W1-zu-f3T"/>
                                 <constraint firstItem="A9Q-q5-HTi" firstAttribute="top" secondItem="NI7-b7-nyT" secondAttribute="top" constant="8" id="QTG-3l-jkb"/>
@@ -312,6 +337,8 @@
     </scenes>
     <resources>
         <image name="8771.jpg" width="2880" height="1620"/>
+        <image name="baseline_person_black_48pt" width="48" height="48"/>
+        <image name="baseline_pin_drop_black_48pt" width="48" height="48"/>
         <image name="outline_check_circle_white_48pt" width="48" height="48"/>
     </resources>
 </document>

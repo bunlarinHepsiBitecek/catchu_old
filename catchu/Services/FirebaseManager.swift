@@ -35,10 +35,24 @@ class FirebaseManager {
     func userSignOut() {
         if (Auth.auth().currentUser == nil) {
             User.shared = User()
-//            LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController()
-//            LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
+            LoaderController.shared.goToLoginViewController()
         }
     }
+    
+    func checkUserLoggedIn() {
+        
+        if Auth.auth().currentUser != nil {
+            
+            User.shared.userID = (Auth.auth().currentUser?.uid)!
+            
+            CloudFunctionsManager.shared.getFriends()
+            
+            // MARK: direct to MainVC
+            LoaderController.shared.goToMainViewController()
+        }
+    }
+    
+  
     
     // MARK: push mainVC
     func userSigned() {
@@ -66,6 +80,7 @@ class FirebaseManager {
                 User.shared.userName = userData.user.displayName ?? Constants.CharacterConstants.SPACE
                 User.shared.providerID = userData.user.providerID
                 User.shared.provider = ProviderType.firebase.rawValue
+                LoaderController.shared.goToMainViewController()
             }
             LoaderController.shared.removeLoader()
         }
@@ -158,6 +173,7 @@ class FirebaseManager {
                     print("REMZI5: \(user.isEmailVerified)")
                     User.shared.userID = user.uid
                     User.shared.provider = user.providerID
+                    LoaderController.shared.goToMainViewController()
                 }
             }
         }
@@ -272,29 +288,18 @@ class FirebaseManager {
         
     }
     
-    func checkUserLoggedIn() {
-        
-        print("checkUserLoggedIn starts")
-        
-        if Auth.auth().currentUser != nil {
-            
-            User.shared.userID = (Auth.auth().currentUser?.uid)!
-            print("User.shared.userID : \(User.shared.userID)")
-            
-            CloudFunctionsManager.shared.getFriends()
-        }
-    }
-    
-    
     func uploadImages(image : UIImage, completion : @escaping (_ downloadUrl : URL) -> Void) {
+        LoaderController.shared.startProgressView(progressViewStyle: .bar)
         
         let imageId = NSUUID().uuidString
         
         let storageReference = Storage.storage().reference().child(Constants.FirebaseModelConstants.PathNames.Share).child(Constants.FirebaseModelConstants.PathNames.Media).child(Constants.FirebaseModelConstants.PathNames.Images).child("\(imageId).png")
         
-        if let uploadData = UIImagePNGRepresentation(image){
+        if let uploadData = UIImagePNGRepresentation(image) {
             
             let uploadTask = storageReference.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                LoaderController.shared.removeProgressView()
                 
                 // check metadata exists
                 guard metadata != nil else {
@@ -325,11 +330,12 @@ class FirebaseManager {
             
             uploadTask.observe(.progress) { snapshot in
                 // Upload reported progress
-                let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                let progress = Double(snapshot.progress!.completedUnitCount)
                     / Double(snapshot.progress!.totalUnitCount)
-                print("percentComplete: \(percentComplete)")
+                let percentComplete = 100.0 * progress
+                print("percentComplete: \(percentComplete) progresss: \(progress)")
+                LoaderController.shared.progressCounter = percentComplete
             }
-            
         }
         
     }

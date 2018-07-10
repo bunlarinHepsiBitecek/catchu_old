@@ -85,7 +85,7 @@ extension LoginViewController {
         performSegue(withIdentifier: Constants.Segue.PasswwordResetView, sender: self)
     }
     
-    func psuhMainTabBarView() {
+    func pushMainTabBarView() {
         let mainTabBarViewController: UIViewController = self.buildFromStoryboard(Constants.Storyboard.Name.Main, Constants.Storyboard.ID.MainTabBarViewController)
         navigationController?.pushViewController(mainTabBarViewController, animated: true)
     }

@@ -31,6 +31,11 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
         
     }
     
+    @IBAction func logoutButtonClick(_ sender: UIButton) {
+        FirebaseManager.shared.logout()
+    }
+    
+    
     func requestPermissionWithCompletionhandler(completion: ((Bool) -> (Void))? ) {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in

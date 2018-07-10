@@ -64,9 +64,4 @@ class LoginViewController: UIViewController {
     @IBAction func forgotPasswordButtonClicked(_ sender: UIButton) {
         self.performSegueToForgetPassword()
     }
-    @IBAction func denemeButtonClicked(_ sender: UIButton) {
-//        CloudFunctionsManager.shared.cfAddMessage()
-//        CloudFunctionsManager.shared.getFriendList()
-        self.psuhMainTabBarView()
-    }
 }

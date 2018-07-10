@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-//        IQKeyboardManager.sharedManager().enable = true
+
         
         //Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //Twitter
         TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.TWITTER_CUSTOMER_KEY, consumerSecret: Constants.TWITTER_CUSTOMER_SECRETKEY)
         
-        FirebaseManager.shared.checkUserLoggedIn()
         
         //NotificationManager.shared.initializeRegisterForRemoteNotification()
         //application.registerForRemoteNotifications()
@@ -39,10 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if #available(iOS 10.0, *) {
             let center  = UNUserNotificationCenter.current()
-            center.delegate = self as? UNUserNotificationCenterDelegate
+            center.delegate = self as UNUserNotificationCenterDelegate
             center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
                 if error == nil{
-                    UIApplication.shared.registerForRemoteNotifications()
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             }
         }
@@ -50,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
         }
+        
+        FirebaseManager.shared.checkUserLoggedIn()
         
         return true
     }

@@ -11,6 +11,15 @@ class LoaderController: NSObject {
     
     static let shared = LoaderController()
     private let activityIndicator = UIActivityIndicatorView()
+    private let progressView = UIProgressView()
+    
+    // MARK: between 0.0 - 1.0
+    var progressCounter: Double = 0 {
+        didSet {
+            let progress = Float(progressCounter) / 100
+            progressView.setProgress(progress, animated: progressCounter != 0)
+        }
+    }
     
     //MARK: - Private Methods -
     private func setupLoader() {
@@ -18,6 +27,7 @@ class LoaderController: NSObject {
         
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = .gray
+        
     }
     
     func showLoader() {
@@ -39,6 +49,31 @@ class LoaderController: NSObject {
             self.activityIndicator.removeFromSuperview()
 //            UIApplication.shared.endIgnoringInteractionEvents()
         }
+    }
+    
+    func startProgressView(progressViewStyle: UIProgressViewStyle) {
+        removeProgressView()
+        print("startProgressView")
+        
+        self.progressView.progressViewStyle = progressViewStyle
+        let currentView = self.currentView()
+        
+        DispatchQueue.main.async {
+            self.progressView.frame = currentView.frame
+            currentView.addSubview(self.progressView)
+            self.progressView.translatesAutoresizingMaskIntoConstraints = false
+    
+            let margins = self.currentViewController().view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                self.progressView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+                self.progressView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+                self.progressView.topAnchor.constraint(equalTo: margins.topAnchor)
+                ])
+        }
+    }
+    
+    func removeProgressView() {
+        self.progressView.removeFromSuperview()
     }
     
     func appDelegate() -> AppDelegate {
@@ -68,6 +103,16 @@ class LoaderController: NSObject {
                 }
             }
         }
+    }
+    
+    func goToLoginViewController() {
+        LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: Constants.Storyboard.Name.Login, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController)
+        LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func goToMainViewController() {
+        LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.ID.MainTabBarViewController)
+        LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
 }

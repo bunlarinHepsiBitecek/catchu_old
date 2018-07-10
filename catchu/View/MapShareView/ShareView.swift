@@ -189,13 +189,13 @@ extension ShareView {
             Share.shared.imageSmall = cell.originalImageSmall
             FirebaseManager.shared.uploadImages(image: Share.shared.imageSmall) { (imageUrl) in
                 Share.shared.imageUrlSmall = imageUrl.absoluteString
-            }
-            
-            // MARK: for orginal Image
-            Share.shared.image = cell.originalImage
-            FirebaseManager.shared.uploadImages(image: Share.shared.image) { (imageUrl) in
-                Share.shared.imageUrl = imageUrl.absoluteString
-                self.insertFirebase()
+                
+                // MARK: for orginal Image
+                Share.shared.image = cell.originalImage
+                FirebaseManager.shared.uploadImages(image: Share.shared.image) { (imageUrl) in
+                    Share.shared.imageUrl = imageUrl.absoluteString
+                    self.insertFirebase()
+                }
             }
         } else {
             self.insertFirebase()
