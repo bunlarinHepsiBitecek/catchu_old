@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSCognitoIdentityProvider
 
 extension LoginViewController {
     
@@ -36,6 +37,21 @@ extension LoginViewController {
         FirebaseManager.shared.loginUser(user: user)
     }
     
+    // aws singIn process
+    func signIn() {
+        
+        guard validateRequiredField() else {
+            
+            return
+        }
+        
+        let authenticationDetails = AWSCognitoIdentityPasswordAuthenticationDetails(username: emailText.text!, password: passwordText.text!)
+        
+        passwordAuthenticationCompletion?.set(result: authenticationDetails)
+        print("erkut")
+        
+    }
+    
     func loginWithFaceebook() {
         FirebaseManager.shared.loginWithFacebookAccount()
     }
@@ -45,11 +61,11 @@ extension LoginViewController {
     }
     
     func validateRequiredField() -> Bool {
-        let validateEmailResult = Validation.shared.isValidEmail(email: emailText.text!)
-        if !validateEmailResult.isValid {
-            AlertViewManager.shared.createAlert(title: validateEmailResult.title, message: validateEmailResult.message, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
-            return false
-        }
+//        let validateEmailResult = Validation.shared.isValidEmail(email: emailText.text!)
+//        if !validateEmailResult.isValid {
+//            AlertViewManager.shared.createAlert(title: validateEmailResult.title, message: validateEmailResult.message, preferredStyle: .alert, actionTitle: LocalizedConstants.Ok, actionStyle: .default, completionHandler: nil)
+//            return false
+//        }
         
         let validatePasswordResult = Validation.shared.isValidPassword(password: passwordText.text!)
         if !validatePasswordResult.isValid {

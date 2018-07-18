@@ -13,11 +13,28 @@ import FBSDKLoginKit
 import TwitterKit
 import UserNotifications
 
+import AWSCognitoIdentityProvider
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
+    // to manage cognito user interfaces
+    var navigationController: UINavigationController?
+    var navigationTabBarController : UITabBarController?
+    var loginViewController: LoginViewController?
+    
+    var storyboardMain: UIStoryboard? {
+        return UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: nil)
+    }
+    
+    var storyboardLogin: UIStoryboard? {
+        return UIStoryboard(name: Constants.Storyboard.Name.Login, bundle: nil)
+    }
+
+    // to configure cognito settings
+    var cognitoConfig : CognitoConfig?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -52,7 +69,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UIApplication.shared.registerForRemoteNotifications()
         }
         
-        FirebaseManager.shared.checkUserLoggedIn()
+        // AWS kullanacagimizdan dolayi firebase akisini simdilik kapatalim
+        //FirebaseManager.shared.checkUserLoggedIn()
+        
+        // setup logging
+        // asagidaki 2 satir fonksiyonun ne ise yaradigini sonradan ogrenelim
+        AWSDDLog.sharedInstance.logLevel = .verbose
+        AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+        
+        // setup cognito config
+        self.cognitoConfig = CognitoConfig()
+        
+        // setup cognito
+        setupCognitoUserPool()
         
         return true
     }
@@ -107,6 +136,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
     }
     
+}
+
+// to use interactive user interface for user sign in process with username and password
+extension AppDelegate : AWSCognitoIdentityInteractiveAuthenticationDelegate {
     
+    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
+        
+//        if(self.navigationController == nil) {
+//            self.navigationController = self.window?.rootViewController as? UINavigationController
+//        }
+        
+        if(self.navigationTabBarController == nil) {
+            self.navigationTabBarController = self.window?.rootViewController as? UITabBarController
+        }
+        
+        if(self.loginViewController == nil) {
+            self.loginViewController = (self.storyboardLogin?.instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController) as? LoginViewController)!
+        }
+        
+        DispatchQueue.main.async {
+            if(self.loginViewController!.isViewLoaded || self.loginViewController!.view.window == nil) {
+                self.navigationTabBarController?.present(self.loginViewController!, animated: true, completion: nil)
+            }
+        }
+        
+        return self.loginViewController!
+        
+    }
+    
+}
+
+// special functions
+extension AppDelegate {
+    
+    class func defaultUserPool() -> AWSCognitoIdentityUserPool {
+        return AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
+    }
+    
+    func setupCognitoUserPool() {
+        
+        // major settings to initiate user pool and sync aws cognito user pool
+        let clientId:String = self.cognitoConfig!.getClientId()
+        let poolId:String = self.cognitoConfig!.getPoolId()
+        let clientSecret:String = self.cognitoConfig!.getClientSecret()
+        let region:AWSRegionType = self.cognitoConfig!.getRegion()
+        let providerKey = self.cognitoConfig!.getProviderKey()
+        
+        // service configuration
+        let serviceConfiguration:AWSServiceConfiguration = AWSServiceConfiguration(region: region, credentialsProvider: nil)
+        
+        // cognito configuration
+        let cognitoConfiguration:AWSCognitoIdentityUserPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: clientId, clientSecret: clientSecret, poolId: poolId)
+        
+        AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: cognitoConfiguration, forKey: providerKey)
+        
+        // fetch the user pool client we initialized in above step
+        let pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
+        pool.delegate = self
+        
+    }
 }
 

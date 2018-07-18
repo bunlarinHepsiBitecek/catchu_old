@@ -18,5 +18,9 @@ target 'catchu' do
   pod 'FBSDKShareKit'
   pod 'TwitterKit'
   pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
+  
+  pod 'AWSCore', '~> 2.6.0'
+  pod 'AWSCognitoIdentityProvider', '~> 2.6.0'
+  pod 'AWSAPIGateway'
 
 end
