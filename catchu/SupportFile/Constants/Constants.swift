@@ -54,8 +54,9 @@ struct Constants {
     
     struct Storyboard {
         struct ID {
-            static let LoginViewController      = "LoginViewController"
             static let MainTabBarViewController = "MainTabBarViewController"
+            static let LoginViewController      = "LoginViewController"
+            static let ConfirmationViewController = "ConfirmationViewController"
         }
         
         struct Name {

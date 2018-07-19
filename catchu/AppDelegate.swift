@@ -143,25 +143,43 @@ extension AppDelegate : AWSCognitoIdentityInteractiveAuthenticationDelegate {
     
     func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
         
+//        LoaderController.shared.goToLoginViewController()
+//
+//        print("self.window?.rootViewController : \(self.window?.rootViewController)")
+        
 //        if(self.navigationController == nil) {
 //            self.navigationController = self.window?.rootViewController as? UINavigationController
 //        }
-        
+
+        print("self.navigationController : \(type(of: self.navigationController))")
+        print("self.window?.rootViewController : \(self.window?.rootViewController)")
+
         if(self.navigationTabBarController == nil) {
             self.navigationTabBarController = self.window?.rootViewController as? UITabBarController
         }
         
+        print("self.navigationTabBarController : \(type(of: self.navigationTabBarController))")
+        print("self.window?.rootViewController : \(self.window?.rootViewController)")
+
         if(self.loginViewController == nil) {
             self.loginViewController = (self.storyboardLogin?.instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController) as? LoginViewController)!
         }
-        
+
         DispatchQueue.main.async {
             if(self.loginViewController!.isViewLoaded || self.loginViewController!.view.window == nil) {
+                //self.navigationController?.present(self.loginViewController!, animated: true, completion: nil)
+
                 self.navigationTabBarController?.present(self.loginViewController!, animated: true, completion: nil)
             }
         }
         
+        
+        
         return self.loginViewController!
+        
+//        self.loginViewController = LoaderController.shared.currentViewController() as? LoginViewController
+//
+//        return self.loginViewController!
         
     }
     

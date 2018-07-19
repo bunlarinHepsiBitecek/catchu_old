@@ -22,23 +22,24 @@ class LoginViewController: UIViewController {
     // to authenticate login process done by user credentials (username and pasword)
     var passwordAuthenticationCompletion : AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
         self.customization()
         self.localized()
+        //self.navigationController?.isNavigationBarHidden = true
     }
     
-//    override func viewDidLoad() {
-//
-//        super.viewDidLoad()
-//        self.customization()
-//        self.localized()
-//        //self.navigationController?.isNavigationBarHidden = true
-//    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //self.navigationController?.isNavigationBarHidden = true
+        
+        print("type : \(type(of: self.navigationController))")
+        
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
+        //self.navigationController?.isNavigationBarHidden = false
     }
     
     override func didReceiveMemoryWarning() {

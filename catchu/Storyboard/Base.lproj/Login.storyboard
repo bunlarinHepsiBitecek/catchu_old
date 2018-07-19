@@ -186,7 +186,82 @@
                 <viewControllerPlaceholder storyboardName="Contact" referencedIdentifier="ContactStoryBoardReference" id="mdi-Ic-0ma" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sib-Lu-NxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3671" y="562"/>
+            <point key="canvasLocation" x="3707" y="638"/>
+        </scene>
+        <!--Confirmation View Controller-->
+        <scene sceneID="eQN-NG-Xt5">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmationViewController" id="OuY-xD-f1b" customClass="ConfirmationViewController" customModule="catchu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pSU-GT-pN7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hKw-Qb-a2R">
+                                <rect key="frame" x="45" y="250" width="285" height="65"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tcv-cu-9NG" userLabel="userNameTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" textContentType="username"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmation code..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="V2L-xS-86S" userLabel="userNameTextField">
+                                        <rect key="frame" x="0.0" y="35" width="285" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" textContentType="username"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2p-Gu-7Z4">
+                                <rect key="frame" x="60" y="369" width="255" height="30"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="CONFIRM"/>
+                                <connections>
+                                    <action selector="confirmButtonTapped:" destination="OuY-xD-f1b" eventType="touchUpInside" id="GGp-4E-U5Y"/>
+                                    <action selector="registerButtonClicked:" destination="G9I-VC-PJ0" eventType="touchUpInside" id="y2H-yx-yv1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2T-TQ-rcO">
+                                <rect key="frame" x="60" y="407" width="255" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Resend confirmation code">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="system" size="15"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="registerButtonClicked:" destination="G9I-VC-PJ0" eventType="touchUpInside" id="ttK-Ot-evj"/>
+                                    <action selector="resendButtonTapped:" destination="OuY-xD-f1b" eventType="touchUpInside" id="ec2-bA-5Zq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s2p-Gu-7Z4" firstAttribute="leading" secondItem="RRg-AK-ecB" secondAttribute="leading" constant="60" id="BtI-Mc-Kvs"/>
+                            <constraint firstItem="hKw-Qb-a2R" firstAttribute="top" secondItem="pSU-GT-pN7" secondAttribute="top" constant="250" id="DxH-pS-6rq"/>
+                            <constraint firstItem="RRg-AK-ecB" firstAttribute="trailing" secondItem="s2p-Gu-7Z4" secondAttribute="trailing" constant="60" id="HIF-BV-jak"/>
+                            <constraint firstItem="RRg-AK-ecB" firstAttribute="trailing" secondItem="hKw-Qb-a2R" secondAttribute="trailing" constant="45" id="iVL-uL-zzc"/>
+                            <constraint firstItem="s2p-Gu-7Z4" firstAttribute="top" secondItem="hKw-Qb-a2R" secondAttribute="bottom" constant="54" id="jac-5f-xec"/>
+                            <constraint firstItem="hKw-Qb-a2R" firstAttribute="leading" secondItem="RRg-AK-ecB" secondAttribute="leading" constant="45" id="whz-f1-Ifk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RRg-AK-ecB"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmationCode" destination="V2L-xS-86S" id="qHv-RW-tPP"/>
+                        <outlet property="userName" destination="tcv-cu-9NG" id="xs3-u4-3gP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T32-R5-Y1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3708" y="132"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="AW5-Ah-geE">
@@ -309,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMd-6I-ysx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3671.1999999999998" y="132.68365817091455"/>
+            <point key="canvasLocation" x="2015" y="929"/>
         </scene>
     </scenes>
 </document>
