@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSCognitoIdentityProvider
 
 struct Constants {
     static let TWITTER_CUSTOMER_KEY = "qSautcd7v9cuWd3FlH55HLBN6"
@@ -53,8 +54,9 @@ struct Constants {
     
     struct Storyboard {
         struct ID {
-            static let LoginViewController      = "LoginViewController"
             static let MainTabBarViewController = "MainTabBarViewController"
+            static let LoginViewController      = "LoginViewController"
+            static let ConfirmationViewController = "ConfirmationViewController"
         }
         
         struct Name {
@@ -169,6 +171,17 @@ struct Constants {
     struct NotificationConstants {
         
         static let requestIdentifier : String = "LocalNotificationRequest"
+        
+    }
+    
+    struct CognitoConstants {
+        
+        static let CognitoIdentityUserPoolRegion: AWSRegionType = .USEast1
+        static let CognitoIdentityUserPoolId = "us-east-1_8vIETg4na"
+        static let CognitoIdentityUserPoolAppClientId = "6suvju4eei3rl04coscm3aseqf"
+        static let CognitoIdentityUserPoolAppClientSecret = "1e3hjodip2bcosarvvh0qsnks0jj46m12orlu3piieof2qeki9rd"
+        
+        static let AWSCognitoUserPoolsSignInProviderKey = "UserPool"
         
     }
     

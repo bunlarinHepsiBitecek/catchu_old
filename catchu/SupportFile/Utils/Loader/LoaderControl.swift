@@ -110,6 +110,12 @@ class LoaderController: NSObject {
         LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
+    func gotoConfirmationViewController() {
+        LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: Constants.Storyboard.Name.Login, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.ID.ConfirmationViewController)
+        LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)
+        
+    }
+    
     func goToMainViewController() {
         LoaderController.shared.appDelegate().window?.rootViewController = UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.ID.MainTabBarViewController)
         LoaderController.shared.appDelegate().window?.rootViewController?.dismiss(animated: true, completion: nil)

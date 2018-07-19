@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AWSCognitoIdentityProvider
 
 class LoginViewController: UIViewController {
+    
     //MARK: outlets
     @IBOutlet weak var emailText: DesignableUITextField!
     @IBOutlet weak var passwordText: DesignableUITextField!
@@ -17,8 +19,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var dontHaveAccountLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     
+    // to authenticate login process done by user credentials (username and pasword)
+    var passwordAuthenticationCompletion : AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>?
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
         self.customization()
         self.localized()
@@ -26,11 +31,15 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        super.viewWillAppear(animated)
+        //self.navigationController?.isNavigationBarHidden = true
+        
+        print("type : \(type(of: self.navigationController))")
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
+        //self.navigationController?.isNavigationBarHidden = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +56,8 @@ class LoginViewController: UIViewController {
     }
     */
     @IBAction func loginButtonClicked(_ sender: UIButton) {
-        self.login()
+        //self.login()
+        self.signIn()
     }
     
     @IBAction func facebookButtonClicked(_ sender: UIButton) {
@@ -64,4 +74,47 @@ class LoginViewController: UIViewController {
     @IBAction func forgotPasswordButtonClicked(_ sender: UIButton) {
         self.performSegueToForgetPassword()
     }
+    @IBAction func test(_ sender: Any) {
+        
+        let pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
+        let user = pool.currentUser()
+        let task : AWSTask<AWSCognitoIdentityUserSession> = (user?.getSession())!
+        
+        print("token : \(task.result?.idToken?.tokenString)")
+        
+    }
+}
+
+extension LoginViewController: AWSCognitoIdentityPasswordAuthentication {
+    
+    public func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
+        self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource
+        DispatchQueue.main.async {
+//            if (self.usernameInput?.text == nil) {
+//                self.usernameInput?.text = authenticationInput.lastKnownUsername
+//            }
+            print("something")
+        }
+    }
+    
+    public func didCompleteStepWithError(_ error: Error?) {
+        DispatchQueue.main.async {
+            if let error = error as NSError? {
+                let alertController = UIAlertController(title: error.userInfo["__type"] as? String,
+                                                        message: error.userInfo["message"] as? String,
+                                                        preferredStyle: .alert)
+                let retryAction = UIAlertAction(title: "Retry", style: .default, handler: nil)
+                alertController.addAction(retryAction)
+                
+                self.present(alertController, animated: true, completion:  nil)
+            } else {
+                self.dismiss(animated: true, completion: {
+//                    self.usernameInput?.text = nil
+//                    self.passwordInput?.text = nil
+                })
+                
+            }
+        }
+    }
+
 }

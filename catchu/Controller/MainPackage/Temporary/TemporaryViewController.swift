@@ -9,32 +9,45 @@
 import UIKit
 import FirebaseFunctions
 import UserNotifications
+import AWSCognitoIdentityProvider
 
 class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     @IBOutlet var testImage: UIImageView!
+    
+    var user: AWSCognitoIdentityUser?
+    var pool: AWSCognitoIdentityUserPool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-//        requestPermissionWithCompletionhandler { (granted) -> (Void) in
-//
-//            DispatchQueue.main.async {
-//                if granted {
-//                    UIApplication.shared.registerForRemoteNotifications()
-//                }
-//            }
-//
-//        }
-        
     }
     
     @IBAction func logoutButtonClick(_ sender: UIButton) {
-        FirebaseManager.shared.logout()
+        //FirebaseManager.shared.logout()
+        self.pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
+        
+        if (self.user == nil) {
+            self.user = self.pool?.currentUser()
+        }
+        
+        self.user?.signOut()
+        
+        fetchUserDetails()
+        
     }
     
+    func fetchUserDetails() {
+        
+        user?.getDetails().continueOnSuccessWith(block: { (task) -> Any? in
+            
+            return nil
+            
+        })
+        
+    }
     
     func requestPermissionWithCompletionhandler(completion: ((Bool) -> (Void))? ) {
         
@@ -151,7 +164,6 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
 //
 //        })
         
-    
     }
     
     @IBAction func sendImage(_ sender: Any) {

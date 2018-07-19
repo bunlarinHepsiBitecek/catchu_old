@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseFunctions
 
+import AWSCognitoIdentityProvider
+
 extension RegisterViewController {
     
     func registerUser() {
@@ -19,7 +21,56 @@ extension RegisterViewController {
             return
         }
         
-        FirebaseManager.shared.registerFirebase(user: User.shared)
+        //FirebaseManager.shared.registerFirebase(user: User.shared)
+        
+        signUpForAWSCognitoUserPool()
+        
+    }
+    
+    // aws cognito user pool registeration
+    func registerUserPool() {
+        
+        self.pool = AWSCognitoIdentityUserPool.init(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
+        
+    }
+    
+    func signUpForAWSCognitoUserPool() {
+        
+        var attributes = [AWSCognitoIdentityUserAttributeType]()
+        
+        if let emailValue = self.emailTextField.text, !emailValue.isEmpty {
+            let email = AWSCognitoIdentityUserAttributeType()
+            email?.name = "email"
+            email?.value = emailValue
+            attributes.append(email!)
+        }
+        
+        // sign up - register user to pool
+        self.pool?.signUp(userNameTextField.text!, password: passwordTextField.text!, userAttributes: attributes, validationData: nil).continueWith(block: { (task) -> Any? in
+            
+            DispatchQueue.main.async(execute: {
+                
+                if let errorCode = task.error as NSError? {
+                    
+                    print("errorCode : \(errorCode.localizedDescription)")
+                    
+                } else if let result = task.result {
+                    // handle the case where user has to confirm his identity via email / SMS
+                    if result.user.confirmedStatus != AWSCognitoIdentityUserStatus.confirmed {
+                        
+                        LoaderController.shared.gotoConfirmationViewController()
+                        
+                    }
+                    
+                    
+                }
+                
+            })
+            
+            
+            return nil
+            
+        })
         
     }
     

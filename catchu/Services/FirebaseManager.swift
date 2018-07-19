@@ -49,6 +49,11 @@ class FirebaseManager {
             
             // MARK: direct to MainVC
             LoaderController.shared.goToMainViewController()
+            
+        } else {
+            
+            LoaderController.shared.goToLoginViewController()
+            
         }
     }
     

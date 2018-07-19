@@ -41,6 +41,10 @@
 		45DEEA9C20E16DB000FE484E /* SectionBasedFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEEA9A20E16DAF00FE484E /* SectionBasedFriend.swift */; };
 		45DEEA9D20E16DB000FE484E /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEEA9B20E16DAF00FE484E /* Share.swift */; };
 		6FB9B2EFA654AF8F538132DD /* Pods_catchu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */; };
+		A709F64B20FEA6A4003FF2C5 /* CognitoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709F64A20FEA6A4003FF2C5 /* CognitoConfig.swift */; };
+		A709F64D20FEA6D9003FF2C5 /* CognitoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A709F64C20FEA6D9003FF2C5 /* CognitoConfig.plist */; };
+		A709F67320FF4F6A003FF2C5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709F67220FF4F6A003FF2C5 /* FeedViewController.swift */; };
+		A709F68B21009E65003FF2C5 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A709F68A21009E65003FF2C5 /* ConfirmationViewController.swift */; };
 		A72173B620E5793300F73B9C /* NotificationManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B520E5793300F73B9C /* NotificationManager2.swift */; };
 		A72173B820E778D600F73B9C /* GeoFireData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B720E778D600F73B9C /* GeoFireData.swift */; };
 		A72173BA20E7D32700F73B9C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B920E7D32700F73B9C /* UIImageExtensions.swift */; };
@@ -124,6 +128,10 @@
 		45DEEA9A20E16DAF00FE484E /* SectionBasedFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionBasedFriend.swift; sourceTree = "<group>"; };
 		45DEEA9B20E16DAF00FE484E /* Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		7A6C384159F6A3962BB44D33 /* Pods_catchu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_catchu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A709F64A20FEA6A4003FF2C5 /* CognitoConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoConfig.swift; sourceTree = "<group>"; };
+		A709F64C20FEA6D9003FF2C5 /* CognitoConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CognitoConfig.plist; sourceTree = "<group>"; };
+		A709F67220FF4F6A003FF2C5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		A709F68A21009E65003FF2C5 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		A72173B520E5793300F73B9C /* NotificationManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager2.swift; sourceTree = "<group>"; };
 		A72173B720E778D600F73B9C /* GeoFireData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFireData.swift; sourceTree = "<group>"; };
 		A72173B920E7D32700F73B9C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 		4527E05120C85F2100ECB3D1 /* MainPackage */ = {
 			isa = PBXGroup;
 			children = (
+				A709F67120FF4F5C003FF2C5 /* Feed */,
 				452001C620CABF9500C1ED22 /* Main */,
 				452001CB20CBBA9C00C1ED22 /* DropPin */,
 			);
@@ -214,6 +223,7 @@
 			children = (
 				45356B2020BDF34D00E0733F /* ExtensionRegisterController.swift */,
 				45356B2120BDF34D00E0733F /* RegisterViewController.swift */,
+				A709F68A21009E65003FF2C5 /* ConfirmationViewController.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -355,6 +365,7 @@
 		4564E45820B9736C003B0D16 /* SupportFile */ = {
 			isa = PBXGroup;
 			children = (
+				A709F64920FEA5CE003FF2C5 /* Config */,
 				A7369AFC20C787E0001692F4 /* ExistedLibraryExtensions */,
 				A79A766F20C5BE8100FCE198 /* Designables */,
 				4564E47020B9A79E003B0D16 /* Utils */,
@@ -434,6 +445,23 @@
 				4564E47920BBBF4E003B0D16 /* LoaderControl.swift */,
 			);
 			path = Loader;
+			sourceTree = "<group>";
+		};
+		A709F64920FEA5CE003FF2C5 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A709F64A20FEA6A4003FF2C5 /* CognitoConfig.swift */,
+				A709F64C20FEA6D9003FF2C5 /* CognitoConfig.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		A709F67120FF4F5C003FF2C5 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				A709F67220FF4F6A003FF2C5 /* FeedViewController.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		A7369AFC20C787E0001692F4 /* ExistedLibraryExtensions */ = {
@@ -710,6 +738,7 @@
 				4564E41A20B95576003B0D16 /* Assets.xcassets in Resources */,
 				4564E41820B95574003B0D16 /* Login.storyboard in Resources */,
 				A79A765F20C36BE400FCE198 /* Contact.storyboard in Resources */,
+				A709F64D20FEA6D9003FF2C5 /* CognitoConfig.plist in Resources */,
 				A7369B0020C86A5C001692F4 /* check-mark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,6 +767,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-catchu/Pods-catchu-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSAPIGateway/AWSAPIGateway.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -752,6 +785,10 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAPIGateway.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -837,8 +874,11 @@
 				45DEEA9920E16D1400FE484E /* User.swift in Sources */,
 				A72173B820E778D600F73B9C /* GeoFireData.swift in Sources */,
 				4564E45E20B975C4003B0D16 /* LocalizedConstants.swift in Sources */,
+				A709F67320FF4F6A003FF2C5 /* FeedViewController.swift in Sources */,
 				A79A766920C5B55900FCE198 /* ExtensionContactViewController.swift in Sources */,
 				A79A768420C656E100FCE198 /* ExtensionContainerFriendController.swift in Sources */,
+				A709F68B21009E65003FF2C5 /* ConfirmationViewController.swift in Sources */,
+				A709F64B20FEA6A4003FF2C5 /* CognitoConfig.swift in Sources */,
 				4527E05520C8605800ECB3D1 /* MainTabBarViewController.swift in Sources */,
 				4564E47620B9CBB2003B0D16 /* AlertViewSupport.swift in Sources */,
 				45DEEA9C20E16DB000FE484E /* SectionBasedFriend.swift in Sources */,

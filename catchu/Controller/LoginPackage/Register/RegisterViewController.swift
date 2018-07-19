@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSCognitoIdentityProvider
 
 class RegisterViewController: UIViewController {
 
@@ -15,11 +16,14 @@ class RegisterViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var registerButton: UIButton!
     
+    var pool : AWSCognitoIdentityUserPool?
+    var sentTo: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerUserPool()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,16 +31,6 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func registerButtonClicked(_ sender: Any) {
         
         registerUser()

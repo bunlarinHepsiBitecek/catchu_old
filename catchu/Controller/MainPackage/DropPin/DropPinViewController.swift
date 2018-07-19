@@ -15,6 +15,7 @@ class DropPinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customization()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,5 +34,5 @@ class DropPinViewController: UIViewController {
             mapShareView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)
             ])
     }
-
+    
 }
