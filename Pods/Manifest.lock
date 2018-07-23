@@ -1,17 +1,31 @@
 PODS:
   - AWSAPIGateway (2.6.23):
     - AWSCore (= 2.6.23)
+  - AWSAuthCore (2.6.23):
+    - AWSCore (= 2.6.23)
   - AWSCognitoIdentityProvider (2.6.23):
     - AWSCognitoIdentityProviderASF (= 1.0.1)
     - AWSCore (= 2.6.23)
   - AWSCognitoIdentityProviderASF (1.0.1)
   - AWSCore (2.6.23)
+  - AWSFacebookSignIn (2.6.23):
+    - AWSAuthCore (= 2.6.23)
+    - FBSDKCoreKit (~> 4.0)
+    - FBSDKLoginKit (~> 4.0)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - FacebookCore (0.3.1):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.33)
+  - FacebookLogin (0.3.1):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3.1)
+    - FBSDKCoreKit (~> 4.33)
+    - FBSDKLoginKit (~> 4.33)
   - FBSDKCoreKit (4.34.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.34.0):
@@ -77,6 +91,9 @@ DEPENDENCIES:
   - AWSAPIGateway
   - AWSCognitoIdentityProvider (~> 2.6.0)
   - AWSCore (~> 2.6.0)
+  - AWSFacebookSignIn
+  - FacebookCore
+  - FacebookLogin
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -92,10 +109,14 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AWSAPIGateway
+    - AWSAuthCore
     - AWSCognitoIdentityProvider
     - AWSCognitoIdentityProviderASF
     - AWSCore
+    - AWSFacebookSignIn
     - Bolts
+    - FacebookCore
+    - FacebookLogin
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -126,10 +147,14 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AWSAPIGateway: d37c2c069e8821c11f8e1cf50cd35e4de8c0d568
+  AWSAuthCore: 2db4c4f3db70e5789193b602e0392d25da6aca4e
   AWSCognitoIdentityProvider: 605ea825077825717418e37fba27d5cd23958ea2
   AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
   AWSCore: d56f69d7312e652e51c70f3b25e1687a5c2d06ca
+  AWSFacebookSignIn: a6c0b1f211a31404fa74a15b90937b8e200b19c8
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FacebookCore: 33078ef1d7d76b73f7e8c990dca7d3ea6db8d22f
+  FacebookLogin: 6f15bf4fefd7a8865abbfa8fcd7f3dfd87aa275f
   FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
   FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   FBSDKShareKit: 511d1dfc71204c0a8d69e6c5e3c964dcf0d4f3d9
@@ -150,6 +175,6 @@ SPEC CHECKSUMS:
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 9ec54f06e8c48411dabb26aea47948d5f9a8098d
+PODFILE CHECKSUM: 842971cf89cca92b0870adca6156ab0bd6418cd4
 
 COCOAPODS: 1.5.0

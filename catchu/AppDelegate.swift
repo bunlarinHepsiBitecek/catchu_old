@@ -141,46 +141,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 // to use interactive user interface for user sign in process with username and password
 extension AppDelegate : AWSCognitoIdentityInteractiveAuthenticationDelegate {
     
-    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
-        
-//        LoaderController.shared.goToLoginViewController()
+//    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
 //
-//        print("self.window?.rootViewController : \(self.window?.rootViewController)")
-        
-//        if(self.navigationController == nil) {
-//            self.navigationController = self.window?.rootViewController as? UINavigationController
+////        LoaderController.shared.goToLoginViewController()
+////
+////        print("self.window?.rootViewController : \(self.window?.rootViewController)")
+//
+////        if(self.navigationController == nil) {
+////            self.navigationController = self.window?.rootViewController as? UINavigationController
+////        }
+//
+//        if(self.navigationTabBarController == nil) {
+//            self.navigationTabBarController = self.window?.rootViewController as? UITabBarController
 //        }
-
-        print("self.navigationController : \(type(of: self.navigationController))")
-        print("self.window?.rootViewController : \(self.window?.rootViewController)")
-
-        if(self.navigationTabBarController == nil) {
-            self.navigationTabBarController = self.window?.rootViewController as? UITabBarController
-        }
-        
-        print("self.navigationTabBarController : \(type(of: self.navigationTabBarController))")
-        print("self.window?.rootViewController : \(self.window?.rootViewController)")
-
-        if(self.loginViewController == nil) {
-            self.loginViewController = (self.storyboardLogin?.instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController) as? LoginViewController)!
-        }
-
-        DispatchQueue.main.async {
-            if(self.loginViewController!.isViewLoaded || self.loginViewController!.view.window == nil) {
-                //self.navigationController?.present(self.loginViewController!, animated: true, completion: nil)
-
-                self.navigationTabBarController?.present(self.loginViewController!, animated: true, completion: nil)
-            }
-        }
-        
-        
-        
-        return self.loginViewController!
-        
-//        self.loginViewController = LoaderController.shared.currentViewController() as? LoginViewController
+//
+////        if(self.loginViewController == nil) {
+////            self.loginViewController = (self.storyboardLogin?.instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController) as? LoginViewController)!
+////        }
+//
+////        if(self.login == nil) {
+////            self.zalama = (self.storyboardLogin?.instantiateViewController(withIdentifier: "zalamaViewController") as? zalamaViewController)!
+////        }
+//
+//        if(self.loginViewController == nil) {
+//            self.loginViewController = (self.storyboardLogin?.instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController) as? LoginViewController)!
+//        }
+//
+//        if(self.zalama == nil) {
+//            self.zalama = (self.storyboardLogin?.instantiateViewController(withIdentifier: "zalamaViewController") as? zalamaViewController)!
+//        }
+//
+//        DispatchQueue.main.async {
+//            if(self.loginViewController!.isViewLoaded || self.loginViewController!.view.window == nil) {
+//                self.navigationTabBarController?.present(self.loginViewController!, animated: true, completion: nil)
+//            }
+//        }
+//
+////        DispatchQueue.main.async {
+////            if(self.zalama!.isViewLoaded || self.zalama!.view.window == nil) {
+////                self.navigationTabBarController?.present(self.zalama!, animated: true, completion: nil)
+////            }
+////        }
 //
 //        return self.loginViewController!
+//
+//    }
+    
+    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
+        if (self.navigationController == nil) {
+            self.navigationController = self.storyboardLogin?.instantiateViewController(withIdentifier: "LoginNavigationController") as? UINavigationController
+        }
         
+        if (self.loginViewController == nil) {
+            self.loginViewController = self.navigationController?.viewControllers[0] as? LoginViewController
+        }
+        
+        DispatchQueue.main.async {
+            self.navigationController!.popToRootViewController(animated: true)
+            if (!self.navigationController!.isViewLoaded
+                || self.navigationController!.view.window == nil) {
+                self.window?.rootViewController?.present(self.navigationController!,
+                                                         animated: true,
+                                                         completion: nil)
+            }
+            
+        }
+        return self.loginViewController!
     }
     
 }

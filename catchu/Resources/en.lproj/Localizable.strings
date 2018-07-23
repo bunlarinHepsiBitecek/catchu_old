@@ -8,6 +8,7 @@
 
 "OK"              = "OK";
 "Error"           = "Error";
+"Warning"         = "Warning";
 
 "UserName"        = "User name";
 "Email"           = "Email";
@@ -59,6 +60,10 @@
 
 // notification variables
 "CatchSomething" = "You caught something :)";
+
+// AWS Error explanations
+"confirmationCodeRequired" = "Please enter confirmation code";
+"confirmationFailed" = "Confirmation if failed!";
 
 
 

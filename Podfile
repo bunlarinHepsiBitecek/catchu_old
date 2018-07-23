@@ -22,5 +22,8 @@ target 'catchu' do
   pod 'AWSCore', '~> 2.6.0'
   pod 'AWSCognitoIdentityProvider', '~> 2.6.0'
   pod 'AWSAPIGateway'
+  pod 'FacebookLogin'
+  pod 'FacebookCore'
+  pod 'AWSFacebookSignIn'
 
 end

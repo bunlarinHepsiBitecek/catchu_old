@@ -9,6 +9,9 @@
 import UIKit
 import AWSCognitoIdentityProvider
 
+import FacebookCore
+import FacebookLogin
+
 class LoginViewController: UIViewController {
     
     //MARK: outlets
@@ -27,19 +30,25 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.customization()
         self.localized()
+        
+        let navigationController = UINavigationController()
+        
+        
         //self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         
-        print("type : \(type(of: self.navigationController))")
+        print("self.navigationController?.isNavigationBarHidden : \(self.navigationController?.isNavigationBarHidden)")
         
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        //self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
+        
+        print("self.navigationController?.isNavigationBarHidden : \(self.navigationController?.isNavigationBarHidden)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,6 +71,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func facebookButtonClicked(_ sender: UIButton) {
         self.loginWithFaceebook()
+        
+        
+        
     }
     
     @IBAction func twitterButtonClicked(_ sender: UIButton) {
@@ -85,36 +97,3 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: AWSCognitoIdentityPasswordAuthentication {
-    
-    public func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
-        self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource
-        DispatchQueue.main.async {
-//            if (self.usernameInput?.text == nil) {
-//                self.usernameInput?.text = authenticationInput.lastKnownUsername
-//            }
-            print("something")
-        }
-    }
-    
-    public func didCompleteStepWithError(_ error: Error?) {
-        DispatchQueue.main.async {
-            if let error = error as NSError? {
-                let alertController = UIAlertController(title: error.userInfo["__type"] as? String,
-                                                        message: error.userInfo["message"] as? String,
-                                                        preferredStyle: .alert)
-                let retryAction = UIAlertAction(title: "Retry", style: .default, handler: nil)
-                alertController.addAction(retryAction)
-                
-                self.present(alertController, animated: true, completion:  nil)
-            } else {
-                self.dismiss(animated: true, completion: {
-//                    self.usernameInput?.text = nil
-//                    self.passwordInput?.text = nil
-                })
-                
-            }
-        }
-    }
-
-}

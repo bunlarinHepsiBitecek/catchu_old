@@ -12,6 +12,7 @@ struct LocalizedConstants {
     static let Ok = NSLocalizedString("OK", comment: "")
     static let UnknownError = NSLocalizedString("UnknownError", comment: "")
     static let Error = NSLocalizedString("Error", comment: "")
+    static let Warning = NSLocalizedString("Warning", comment: "")
     
     struct Login {
         static let Email           = NSLocalizedString("Email", comment: "")
@@ -56,6 +57,13 @@ struct LocalizedConstants {
             NSLocalizedString("userNotFound", comment: "")
         static let unknownError = NSLocalizedString("unknownError", comment: "")
     
+    }
+    
+    struct AWSError {
+        
+        static let confirmationCodeRequired = NSLocalizedString("confirmationCodeRequired", comment: "")
+        static let confirmationFailed = NSLocalizedString("confirmationFailed", comment: "")
+        
     }
     
     struct TitleValues {

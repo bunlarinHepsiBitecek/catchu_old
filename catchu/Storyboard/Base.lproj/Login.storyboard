@@ -165,7 +165,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SAV-EC-k43">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TR3-IY-pZb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="TR3-IY-pZb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lqi-nC-nvL">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -186,7 +186,7 @@
                 <viewControllerPlaceholder storyboardName="Contact" referencedIdentifier="ContactStoryBoardReference" id="mdi-Ic-0ma" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sib-Lu-NxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3707" y="638"/>
+            <point key="canvasLocation" x="3707" y="637"/>
         </scene>
         <!--Confirmation View Controller-->
         <scene sceneID="eQN-NG-Xt5">
@@ -336,6 +336,7 @@
                         <outlet property="passwordTextField" destination="Bk5-JD-EoC" id="ADE-Ja-nrz"/>
                         <outlet property="registerButton" destination="1O6-yd-4LZ" id="fDL-1t-jSD"/>
                         <outlet property="userNameTextField" destination="KWS-Je-0zn" id="aBh-ux-NbT"/>
+                        <segue destination="OuY-xD-f1b" kind="show" identifier="confirmSignUpSegue" id="RHg-xR-XE1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZ5-bC-a0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMd-6I-ysx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015" y="929"/>
+            <point key="canvasLocation" x="2015" y="928"/>
         </scene>
     </scenes>
 </document>

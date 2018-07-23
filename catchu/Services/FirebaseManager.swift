@@ -13,6 +13,10 @@ import TwitterKit
 import MapKit
 import GeoFire
 
+import AWSCognitoIdentityProvider
+
+import AWSFacebookSignIn
+
 class FirebaseManager {
     
     public static let shared = FirebaseManager()
@@ -125,12 +129,66 @@ class FirebaseManager {
                         print("result as a data form: \(data)")
                         
                         self.parseFacebookGraph(data: data, provider: .facebook)
+                        // aşağıdaki FacebookAuthProvider firebase'e ait bir kütüphane
                         let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
-                        self.firebaseAuth(credential)
+                        //self.firebaseAuth(credential)
+                        
+                        
+                        //sflsdşifldsşifldsşifldsişflsdşflsdşiflşsdiflsşiflsdişflsdşiflsdfşsflşisdlf
+                        
+//                        let obj = FacebookProvider()
+//
+//                        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1, identityPoolId:"UserPool",identityProviderManager: obj)
+//
+//                        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+                        
+                        
+
+                        let fbProvider = FacebookProvider()
+                        let fbcredentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:643eae94-6a9c-4cae-bb20-f6a9bcd4be46", identityProviderManager: fbProvider)
+                        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider:fbcredentialsProvider)
+                        AWSServiceManager.default().defaultServiceConfiguration = configuration
+                        
+                        //fbcredentialsProvider.credentials()
+                        
+                        fbcredentialsProvider.clearKeychain()
+                        fbcredentialsProvider.clearCredentials()
+                        fbcredentialsProvider.credentials().continueWith { (task) -> Any? in
+                            DispatchQueue.main.async(execute: {
+                                if let error = task.error as NSError? {
+                                    //failure(error)
+                                    
+                                    print("error : \(error)")
+                                    
+                                } else {
+                                    let response = task.result! as AWSCredentials
+                                    
+                                    print("response : \(response)")
+                                    
+                                    //success(CognitoFacebookSession(credentials: response))
+                                    
+                                }
+                            })
+                            
+                            return nil
+                        }
+                        
                     }
                 })
                 connection.start()
+                
+                
             }
+        }
+    }
+    
+    class FacebookProvider: NSObject, AWSIdentityProviderManager {
+        
+        func logins() -> AWSTask<NSDictionary> {
+            if let token = FBSDKAccessToken.current().tokenString {
+                return AWSTask(result: [AWSIdentityProviderFacebook:token])
+            }
+            return AWSTask(error:NSError(domain: "Facebook Login", code: -1 , userInfo: ["Facebook" : "No current Facebook access token"]))
         }
     }
     
@@ -152,6 +210,8 @@ class FirebaseManager {
                         let credential = TwitterAuthProvider.credential(withToken: (session.authToken), secret: (session.authTokenSecret))
                         User.shared.userName = session.userName
                         self.firebaseAuth(credential)
+                        
+                        
                     } else {
                         print("get email error: \(String(describing: error?.localizedDescription))");
                     }
@@ -184,6 +244,7 @@ class FirebaseManager {
         }
         LoaderController.shared.removeLoader()
     }
+    
     
     func parseFacebookGraph(data: NSDictionary, provider: ProviderType) {
         User.shared.provider = provider.rawValue

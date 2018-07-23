@@ -36,6 +36,8 @@ extension RegisterViewController {
     
     func signUpForAWSCognitoUserPool() {
         
+        let strongSelf = self
+        
         var attributes = [AWSCognitoIdentityUserAttributeType]()
         
         if let emailValue = self.emailTextField.text, !emailValue.isEmpty {
@@ -58,19 +60,30 @@ extension RegisterViewController {
                     // handle the case where user has to confirm his identity via email / SMS
                     if result.user.confirmedStatus != AWSCognitoIdentityUserStatus.confirmed {
                         
-                        LoaderController.shared.gotoConfirmationViewController()
+                        strongSelf.sentTo = result.codeDeliveryDetails?.destination
+                        strongSelf.performSegue(withIdentifier: Constants.Segue.confirmSignUpSegue, sender: nil)
                         
                     }
-                    
                     
                 }
                 
             })
             
-            
             return nil
             
         })
+        
+    }
+    
+    // prepare segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationController = segue.destination as? ConfirmationViewController {
+            
+            destinationController.sentTo = self.sentTo
+            destinationController.user = pool?.getUser(userNameTextField.text!)
+            
+        }
         
     }
     

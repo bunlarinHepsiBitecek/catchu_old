@@ -50,6 +50,7 @@ struct Constants {
         static let PasswwordResetView = "segueToPasswordResetView"
         static let SegueToFriend = "segueToFriend"
         static let SegueToGroup = "segueToGroup"
+        static let confirmSignUpSegue = "confirmSignUpSegue"
     }
     
     struct Storyboard {
@@ -57,6 +58,7 @@ struct Constants {
             static let MainTabBarViewController = "MainTabBarViewController"
             static let LoginViewController      = "LoginViewController"
             static let ConfirmationViewController = "ConfirmationViewController"
+            
         }
         
         struct Name {
