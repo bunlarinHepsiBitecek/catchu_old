@@ -239,6 +239,10 @@ extension AppDelegate {
         let pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
         pool.delegate = self
         
+//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:643eae94-6a9c-4cae-bb20-f6a9bcd4be46", identityProviderManager:pool)
+//
+//        credentialsProvider.credentials()
+        
     }
 }
 

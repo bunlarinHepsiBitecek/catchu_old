@@ -95,6 +95,43 @@ class FirebaseManager {
         }
     }
     
+    func facebook2() {
+        
+        let fbProvider = FacebookProvider()
+        
+        fbProvider.logins()
+        
+        let fbcredentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:643eae94-6a9c-4cae-bb20-f6a9bcd4be46", identityProviderManager: fbProvider)
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider:fbcredentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        //fbcredentialsProvider.credentials()
+        
+        fbcredentialsProvider.clearKeychain()
+        fbcredentialsProvider.clearCredentials()
+        fbcredentialsProvider.credentials().continueWith { (task) -> Any? in
+            DispatchQueue.main.async(execute: {
+                if let error = task.error as NSError? {
+                    //failure(error)
+                    
+                    print("error : \(error)")
+                    
+                } else {
+                    let response = task.result! as AWSCredentials
+                    
+                    print("response : \(response)")
+                    
+                    //success(CognitoFacebookSession(credentials: response))
+                    
+                }
+            })
+            
+            return nil
+        }
+        
+    }
+    
     func loginWithFacebookAccount() {
         let currentVC = getPresentViewController()
         
@@ -131,47 +168,7 @@ class FirebaseManager {
                         self.parseFacebookGraph(data: data, provider: .facebook)
                         // aşağıdaki FacebookAuthProvider firebase'e ait bir kütüphane
                         let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
-                        //self.firebaseAuth(credential)
-                        
-                        
-                        //sflsdşifldsşifldsşifldsişflsdşflsdşiflşsdiflsşiflsdişflsdşiflsdfşsflşisdlf
-                        
-//                        let obj = FacebookProvider()
-//
-//                        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1, identityPoolId:"UserPool",identityProviderManager: obj)
-//
-//                        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
-                        
-                        
-
-                        let fbProvider = FacebookProvider()
-                        let fbcredentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:643eae94-6a9c-4cae-bb20-f6a9bcd4be46", identityProviderManager: fbProvider)
-                        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider:fbcredentialsProvider)
-                        AWSServiceManager.default().defaultServiceConfiguration = configuration
-                        
-                        //fbcredentialsProvider.credentials()
-                        
-                        fbcredentialsProvider.clearKeychain()
-                        fbcredentialsProvider.clearCredentials()
-                        fbcredentialsProvider.credentials().continueWith { (task) -> Any? in
-                            DispatchQueue.main.async(execute: {
-                                if let error = task.error as NSError? {
-                                    //failure(error)
-                                    
-                                    print("error : \(error)")
-                                    
-                                } else {
-                                    let response = task.result! as AWSCredentials
-                                    
-                                    print("response : \(response)")
-                                    
-                                    //success(CognitoFacebookSession(credentials: response))
-                                    
-                                }
-                            })
-                            
-                            return nil
-                        }
+                        self.firebaseAuth(credential)
                         
                     }
                 })

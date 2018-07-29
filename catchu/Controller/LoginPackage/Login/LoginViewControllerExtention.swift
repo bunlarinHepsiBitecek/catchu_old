@@ -58,7 +58,9 @@ extension LoginViewController {
     }
     
     func loginWithFaceebook() {
-        FirebaseManager.shared.loginWithFacebookAccount()
+        //FirebaseManager.shared.loginWithFacebookAccount()
+        
+        FirebaseManager.shared.facebook2()
         
     }
     
