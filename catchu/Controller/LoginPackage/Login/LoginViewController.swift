@@ -7,10 +7,6 @@
 //
 
 import UIKit
-import AWSCognitoIdentityProvider
-
-import FacebookCore
-import FacebookLogin
 
 class LoginViewController: UIViewController {
     
@@ -21,9 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var dontHaveAccountLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
-    
-    // to authenticate login process done by user credentials (username and pasword)
-    var passwordAuthenticationCompletion : AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>?
     
     override func viewDidLoad() {
 
@@ -41,14 +34,11 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         
-        print("self.navigationController?.isNavigationBarHidden : \(self.navigationController?.isNavigationBarHidden)")
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         
-        print("self.navigationController?.isNavigationBarHidden : \(self.navigationController?.isNavigationBarHidden)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,15 +55,11 @@ class LoginViewController: UIViewController {
     }
     */
     @IBAction func loginButtonClicked(_ sender: UIButton) {
-        //self.login()
-        self.signIn()
+        self.login()
     }
     
     @IBAction func facebookButtonClicked(_ sender: UIButton) {
         self.loginWithFaceebook()
-        
-        
-        
         
     }
     
@@ -89,11 +75,6 @@ class LoginViewController: UIViewController {
     }
     @IBAction func test(_ sender: Any) {
         
-        let pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
-        let user = pool.currentUser()
-        let task : AWSTask<AWSCognitoIdentityUserSession> = (user?.getSession())!
-        
-        print("token : \(task.result?.idToken?.tokenString)")
         
     }
 }

@@ -46,6 +46,8 @@ extension ContactViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        print("prepare prepare prepare prepare")
+        
         if segue.identifier == Constants.Segue.SegueToFriend {
             
             childReferenceFriendContainerFriendController = segue.destination as? ContainerFriendViewController

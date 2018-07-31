@@ -9,14 +9,10 @@
 import UIKit
 import FirebaseFunctions
 import UserNotifications
-import AWSCognitoIdentityProvider
 
 class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     @IBOutlet var testImage: UIImageView!
-    
-    var user: AWSCognitoIdentityUser?
-    var pool: AWSCognitoIdentityUserPool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,25 +23,8 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
     
     @IBAction func logoutButtonClick(_ sender: UIButton) {
         //FirebaseManager.shared.logout()
-        self.pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
         
-        if (self.user == nil) {
-            self.user = self.pool?.currentUser()
-        }
-        
-        self.user?.signOut()
-        
-        fetchUserDetails()
-        
-    }
-    
-    func fetchUserDetails() {
-        
-        user?.getDetails().continueOnSuccessWith(block: { (task) -> Any? in
-            
-            return nil
-            
-        })
+        AWSManager.shared.signOut()
         
     }
     
@@ -112,13 +91,88 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
     }
     
     @IBAction func goFriendView(_ sender: Any) {
+
+        startFriendViewPresentation()
+//        presentFriendViewController()
+        
+    }
+    
+    func presentFriendViewController() {
         
         if let destinationViewController = UIStoryboard(name: Constants.StoryBoardID.Contact, bundle: nil).instantiateViewController(withIdentifier: Constants.ViewControllerIdentifiers.ContactViewController) as? ContactViewController {
-            
+
             present(destinationViewController, animated: true, completion: nil)
+
+        }
+        
+    }
+    
+    func getUserFriendList(completion : @escaping (_ result : Bool) -> Void) {
+        
+        let client = RECatchUMobileAPIClient.default()
+        
+        client.friendsGet(userid: User.shared.userID).continueWith { (taskFriendList) -> Any? in
+            
+            if taskFriendList.error != nil {
+                
+                print("getting friend list failed")
+                completion(false)
+                
+            } else {
+                
+                print("getting friend list ok")
+                
+                User.shared.appendElementIntoFriendListAWS(httpResult: taskFriendList.result!)
+                
+            }
+            
+            completion(true)
+            
+            return nil
             
         }
+        
     }
+    
+    func startFriendViewPresentation() {
+        
+        print("userFriendList count : \(User.shared.userFriendList.count)")
+        
+        if User.shared.userFriendList.count > 0 {
+            
+            self.presentFriendViewController()
+            
+        } else {
+            
+            LoaderController.shared.showLoader()
+            
+            getUserFriendList { (result) in
+                
+                if result {
+                    LoaderController.shared.removeLoader()
+                    
+                    /*
+                     eger viewControlleri async olarak present etmessen asagidaki gibi bir warning aliyorsun. Bunun nedeni, sen ayns olarak amazondan data cekiyorsun ve bunu bir completion handler a bagliyorsun ve main thread dispatch acmadan main thread icerisinde view controller present etmeye calisiyorsun. Bu noktada segmented button labellari sonradan geliyor, asyn transaction main thread e yetisemiyor. O yuzden viewcontroller i asagidaki gibi asyn olarak call edeceksin.
+                     
+                     Warningn : This application is modifying the autolayout engine from a background thread after the engine was accessed from the main thread. This can lead to engine corruption and weird crashes
+                     */
+                    DispatchQueue.main.async {
+                        
+                        self.presentFriendViewController()
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            
+            
+        }
+        
+    }
+    
+    
     @IBAction func printData(_ sender: Any) {
     
         SectionBasedFriend.shared.createInitialLetterBasedFriendDictionary()
@@ -199,5 +253,18 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
             
     }
     
+    @IBAction func getFriendsData(_ sender: Any) {
+        
+        getUserFriendList { (result) in
+            
+            print("result : \(result)")
+            
+        }
+        
+        
+    }
     
+    @IBAction func searchBtnClicked(_ sender: Any) {
+        
+    }
 }

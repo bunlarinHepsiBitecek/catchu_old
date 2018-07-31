@@ -13,10 +13,6 @@ import TwitterKit
 import MapKit
 import GeoFire
 
-import AWSCognitoIdentityProvider
-
-import AWSFacebookSignIn
-
 class FirebaseManager {
     
     public static let shared = FirebaseManager()
@@ -95,43 +91,6 @@ class FirebaseManager {
         }
     }
     
-    func facebook2() {
-        
-        let fbProvider = FacebookProvider()
-        
-        fbProvider.logins()
-        
-        let fbcredentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:643eae94-6a9c-4cae-bb20-f6a9bcd4be46", identityProviderManager: fbProvider)
-        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider:fbcredentialsProvider)
-        
-        AWSServiceManager.default().defaultServiceConfiguration = configuration
-        
-        //fbcredentialsProvider.credentials()
-        
-        fbcredentialsProvider.clearKeychain()
-        fbcredentialsProvider.clearCredentials()
-        fbcredentialsProvider.credentials().continueWith { (task) -> Any? in
-            DispatchQueue.main.async(execute: {
-                if let error = task.error as NSError? {
-                    //failure(error)
-                    
-                    print("error : \(error)")
-                    
-                } else {
-                    let response = task.result! as AWSCredentials
-                    
-                    print("response : \(response)")
-                    
-                    //success(CognitoFacebookSession(credentials: response))
-                    
-                }
-            })
-            
-            return nil
-        }
-        
-    }
-    
     func loginWithFacebookAccount() {
         let currentVC = getPresentViewController()
         
@@ -176,16 +135,6 @@ class FirebaseManager {
                 
                 
             }
-        }
-    }
-    
-    class FacebookProvider: NSObject, AWSIdentityProviderManager {
-        
-        func logins() -> AWSTask<NSDictionary> {
-            if let token = FBSDKAccessToken.current().tokenString {
-                return AWSTask(result: [AWSIdentityProviderFacebook:token])
-            }
-            return AWSTask(error:NSError(domain: "Facebook Login", code: -1 , userInfo: ["Facebook" : "No current Facebook access token"]))
         }
     }
     

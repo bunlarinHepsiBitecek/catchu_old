@@ -229,6 +229,44 @@ class User {
         }
     }
     
+    func appendElementIntoFriendListAWS(httpResult : REFriendList) {
+        
+        httpResult.displayProperties()
+        
+        for item in httpResult.resultArray! {
+            
+            let tempUser = User()
+            
+            tempUser.userID = item._userid
+            tempUser.userName = item._username
+            tempUser.profilePictureUrl = item._profilePhotoUrl
+            tempUser.name = item._name
+            
+            User.shared._userFriendList[item._userid] = tempUser
+            
+        }
+        
+        
+//        for item in dataDictionary {
+//
+//            let userData = item.value as! [String : AnyObject]
+//
+//            let tempUser = User()
+//
+//            tempUser.parseFriendDataToUser(dataDictionary: userData)
+//            tempUser.userID = item.key
+//
+//            User.shared._userFriendList[item.key] = tempUser
+//
+//        }
+//
+//        for item in User.shared.userFriendList {
+//
+//            print("key ---> :\(item.key)")
+//            print("val ---> :\(item.value)")
+//        }
+    }
+    
     func createSortedUserArray() {
         
         var tempArray : Array<User> = []

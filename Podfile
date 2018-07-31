@@ -19,11 +19,13 @@ target 'catchu' do
   pod 'TwitterKit'
   pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
   
-  pod 'AWSCore', '~> 2.6.0'
-  pod 'AWSCognitoIdentityProvider', '~> 2.6.0'
+  pod 'AWSUserPoolsSignIn', '~> 2.6.13'
+  pod 'AWSAuthUI', '~> 2.6.13'
+  pod 'AWSMobileClient', '~> 2.6.13'
+  pod 'AWSPinpoint'
+  pod 'AWSFacebookSignIn', '~> 2.6.13'
+  pod 'AWSGoogleSignIn', '~> 2.6.13'
+  
   pod 'AWSAPIGateway'
-  pod 'FacebookLogin'
-  pod 'FacebookCore'
-  pod 'AWSFacebookSignIn'
-
+  
 end

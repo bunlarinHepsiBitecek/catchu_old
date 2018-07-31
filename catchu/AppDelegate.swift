@@ -13,28 +13,12 @@ import FBSDKLoginKit
 import TwitterKit
 import UserNotifications
 
-import AWSCognitoIdentityProvider
+import AWSMobileClient
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
-    // to manage cognito user interfaces
-    var navigationController: UINavigationController?
-    var navigationTabBarController : UITabBarController?
-    var loginViewController: LoginViewController?
-    
-    var storyboardMain: UIStoryboard? {
-        return UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: nil)
-    }
-    
-    var storyboardLogin: UIStoryboard? {
-        return UIStoryboard(name: Constants.Storyboard.Name.Login, bundle: nil)
-    }
-
-    // to configure cognito settings
-    var cognitoConfig : CognitoConfig?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -69,21 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UIApplication.shared.registerForRemoteNotifications()
         }
         
-        // AWS kullanacagimizdan dolayi firebase akisini simdilik kapatalim
         //FirebaseManager.shared.checkUserLoggedIn()
         
-        // setup logging
-        // asagidaki 2 satir fonksiyonun ne ise yaradigini sonradan ogrenelim
-        AWSDDLog.sharedInstance.logLevel = .verbose
-        AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+        let awsInstance = AWSMobileClient.sharedInstance().interceptApplication(
+            application, didFinishLaunchingWithOptions:
+            launchOptions)
         
-        // setup cognito config
-        self.cognitoConfig = CognitoConfig()
-        
-        // setup cognito
-        setupCognitoUserPool()
-        
-        return true
+        return awsInstance
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -136,113 +112,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
     }
     
-}
-
-// to use interactive user interface for user sign in process with username and password
-extension AppDelegate : AWSCognitoIdentityInteractiveAuthenticationDelegate {
-    
-//    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
-//
-////        LoaderController.shared.goToLoginViewController()
-////
-////        print("self.window?.rootViewController : \(self.window?.rootViewController)")
-//
-////        if(self.navigationController == nil) {
-////            self.navigationController = self.window?.rootViewController as? UINavigationController
-////        }
-//
-//        if(self.navigationTabBarController == nil) {
-//            self.navigationTabBarController = self.window?.rootViewController as? UITabBarController
-//        }
-//
-////        if(self.loginViewController == nil) {
-////            self.loginViewController = (self.storyboardLogin?.instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController) as? LoginViewController)!
-////        }
-//
-////        if(self.login == nil) {
-////            self.zalama = (self.storyboardLogin?.instantiateViewController(withIdentifier: "zalamaViewController") as? zalamaViewController)!
-////        }
-//
-//        if(self.loginViewController == nil) {
-//            self.loginViewController = (self.storyboardLogin?.instantiateViewController(withIdentifier: Constants.Storyboard.ID.LoginViewController) as? LoginViewController)!
-//        }
-//
-//        if(self.zalama == nil) {
-//            self.zalama = (self.storyboardLogin?.instantiateViewController(withIdentifier: "zalamaViewController") as? zalamaViewController)!
-//        }
-//
-//        DispatchQueue.main.async {
-//            if(self.loginViewController!.isViewLoaded || self.loginViewController!.view.window == nil) {
-//                self.navigationTabBarController?.present(self.loginViewController!, animated: true, completion: nil)
-//            }
-//        }
-//
-////        DispatchQueue.main.async {
-////            if(self.zalama!.isViewLoaded || self.zalama!.view.window == nil) {
-////                self.navigationTabBarController?.present(self.zalama!, animated: true, completion: nil)
-////            }
-////        }
-//
-//        return self.loginViewController!
-//
-//    }
-    
-    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
-        if (self.navigationController == nil) {
-            self.navigationController = self.storyboardLogin?.instantiateViewController(withIdentifier: "LoginNavigationController") as? UINavigationController
-        }
+    // Add a AWSMobileClient call in application:open url
+    func application(_ application: UIApplication, open url: URL,
+                     sourceApplication: String?, annotation: Any) -> Bool {
         
-        if (self.loginViewController == nil) {
-            self.loginViewController = self.navigationController?.viewControllers[0] as? LoginViewController
-        }
-        
-        DispatchQueue.main.async {
-            self.navigationController!.popToRootViewController(animated: true)
-            if (!self.navigationController!.isViewLoaded
-                || self.navigationController!.view.window == nil) {
-                self.window?.rootViewController?.present(self.navigationController!,
-                                                         animated: true,
-                                                         completion: nil)
-            }
-            
-        }
-        return self.loginViewController!
-    }
-    
-}
-
-// special functions
-extension AppDelegate {
-    
-    class func defaultUserPool() -> AWSCognitoIdentityUserPool {
-        return AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
-    }
-    
-    func setupCognitoUserPool() {
-        
-        // major settings to initiate user pool and sync aws cognito user pool
-        let clientId:String = self.cognitoConfig!.getClientId()
-        let poolId:String = self.cognitoConfig!.getPoolId()
-        let clientSecret:String = self.cognitoConfig!.getClientSecret()
-        let region:AWSRegionType = self.cognitoConfig!.getRegion()
-        let providerKey = self.cognitoConfig!.getProviderKey()
-        
-        // service configuration
-        let serviceConfiguration:AWSServiceConfiguration = AWSServiceConfiguration(region: region, credentialsProvider: nil)
-        
-        // cognito configuration
-        let cognitoConfiguration:AWSCognitoIdentityUserPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: clientId, clientSecret: clientSecret, poolId: poolId)
-        
-        AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: cognitoConfiguration, forKey: providerKey)
-        
-        // fetch the user pool client we initialized in above step
-        let pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
-        pool.delegate = self
-        
-//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:643eae94-6a9c-4cae-bb20-f6a9bcd4be46", identityProviderManager:pool)
-//
-//        credentialsProvider.credentials()
+        return AWSMobileClient.sharedInstance().interceptApplication(
+            application, open: url,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
         
     }
+    
 }
 

@@ -10,8 +10,6 @@ import UIKit
 import Firebase
 import FirebaseFunctions
 
-import AWSCognitoIdentityProvider
-
 extension RegisterViewController {
     
     func registerUser() {
@@ -21,69 +19,7 @@ extension RegisterViewController {
             return
         }
         
-        //FirebaseManager.shared.registerFirebase(user: User.shared)
-        
-        signUpForAWSCognitoUserPool()
-        
-    }
-    
-    // aws cognito user pool registeration
-    func registerUserPool() {
-        
-        self.pool = AWSCognitoIdentityUserPool.init(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
-        
-    }
-    
-    func signUpForAWSCognitoUserPool() {
-        
-        let strongSelf = self
-        
-        var attributes = [AWSCognitoIdentityUserAttributeType]()
-        
-        if let emailValue = self.emailTextField.text, !emailValue.isEmpty {
-            let email = AWSCognitoIdentityUserAttributeType()
-            email?.name = "email"
-            email?.value = emailValue
-            attributes.append(email!)
-        }
-        
-        // sign up - register user to pool
-        self.pool?.signUp(userNameTextField.text!, password: passwordTextField.text!, userAttributes: attributes, validationData: nil).continueWith(block: { (task) -> Any? in
-            
-            DispatchQueue.main.async(execute: {
-                
-                if let errorCode = task.error as NSError? {
-                    
-                    print("errorCode : \(errorCode.localizedDescription)")
-                    
-                } else if let result = task.result {
-                    // handle the case where user has to confirm his identity via email / SMS
-                    if result.user.confirmedStatus != AWSCognitoIdentityUserStatus.confirmed {
-                        
-                        strongSelf.sentTo = result.codeDeliveryDetails?.destination
-                        strongSelf.performSegue(withIdentifier: Constants.Segue.confirmSignUpSegue, sender: nil)
-                        
-                    }
-                    
-                }
-                
-            })
-            
-            return nil
-            
-        })
-        
-    }
-    
-    // prepare segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let destinationController = segue.destination as? ConfirmationViewController {
-            
-            destinationController.sentTo = self.sentTo
-            destinationController.user = pool?.getUser(userNameTextField.text!)
-            
-        }
+        FirebaseManager.shared.registerFirebase(user: User.shared)
         
     }
     

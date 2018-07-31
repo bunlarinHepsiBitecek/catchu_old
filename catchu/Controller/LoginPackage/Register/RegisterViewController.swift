@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AWSCognitoIdentityProvider
 
 class RegisterViewController: UIViewController {
 
@@ -16,14 +15,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var registerButton: UIButton!
     
-    var pool : AWSCognitoIdentityUserPool?
-    var sentTo: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerUserPool()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,4 +45,5 @@ class RegisterViewController: UIViewController {
         }
         
     }
+    
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AWSCognitoIdentityProvider
 
 struct Constants {
     static let TWITTER_CUSTOMER_KEY = "qSautcd7v9cuWd3FlH55HLBN6"
@@ -51,6 +50,7 @@ struct Constants {
         static let SegueToFriend = "segueToFriend"
         static let SegueToGroup = "segueToGroup"
         static let confirmSignUpSegue = "confirmSignUpSegue"
+        static let SegueToSearch = "SegueToSearch"
     }
     
     struct Storyboard {
@@ -58,6 +58,7 @@ struct Constants {
             static let MainTabBarViewController = "MainTabBarViewController"
             static let LoginViewController      = "LoginViewController"
             static let ConfirmationViewController = "ConfirmationViewController"
+            static let FeedViewController = "FeedViewController"
             
         }
         
@@ -133,6 +134,8 @@ struct Constants {
     struct ViewControllerIdentifiers {
         
         static let ContactViewController: String = "ContactViewController"
+        static let FeedViewController: String = "FeedViewController"
+        static let SearchViewController: String = "SearchViewController"
         
     }
     
@@ -147,6 +150,8 @@ struct Constants {
         struct TableView {
             
             static let tableViewCellFriend: String = "tableViewCellFriend"
+            static let tableViewCellSearchResult: String = "tableViewCellSearchResult"
+            static let tableViewCellSearchProcess: String = "tableViewCellSearchProcess"
             
         }
         
@@ -155,6 +160,7 @@ struct Constants {
     struct NumericValues {
         
         static let rowHeight : CGFloat = 60.0
+        static let rowHeightSearch : CGFloat = 80.0
         
     }
     
@@ -178,12 +184,12 @@ struct Constants {
     
     struct CognitoConstants {
         
-        static let CognitoIdentityUserPoolRegion: AWSRegionType = .USEast1
-        static let CognitoIdentityUserPoolId = "us-east-1_8vIETg4na"
-        static let CognitoIdentityUserPoolAppClientId = "6suvju4eei3rl04coscm3aseqf"
-        static let CognitoIdentityUserPoolAppClientSecret = "1e3hjodip2bcosarvvh0qsnks0jj46m12orlu3piieof2qeki9rd"
-        
-        static let AWSCognitoUserPoolsSignInProviderKey = "UserPool"
+//        static let CognitoIdentityUserPoolRegion: AWSRegionType = .USEast1
+//        static let CognitoIdentityUserPoolId = "us-east-1_8vIETg4na"
+//        static let CognitoIdentityUserPoolAppClientId = "6suvju4eei3rl04coscm3aseqf"
+//        static let CognitoIdentityUserPoolAppClientSecret = "1e3hjodip2bcosarvvh0qsnks0jj46m12orlu3piieof2qeki9rd"
+//        
+//        static let AWSCognitoUserPoolsSignInProviderKey = "UserPool"
         
     }
     

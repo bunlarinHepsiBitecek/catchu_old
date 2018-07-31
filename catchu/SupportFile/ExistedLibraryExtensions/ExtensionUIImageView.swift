@@ -42,11 +42,11 @@ extension UIImageView {
                         if let image = UIImage(data: data!) {
                             
                             DispatchQueue.main.async(execute: {
-                                
+
                                 SectionBasedFriend.shared.cachedFriendProfileImages.setObject(image, forKey: urlString as NSString)
-                                
+
                                 self.image = image
-                                
+
                             })
                         }
                     }

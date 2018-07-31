@@ -7,17 +7,18 @@
 //
 
 import UIKit
-import AWSCognitoIdentityProvider
+import AWSAuthUI
 
 class FeedViewController: UIViewController {
 
-    var user: AWSCognitoIdentityUser?
-    var pool: AWSCognitoIdentityUserPool?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetchUserDetails()
+        
+        //print("self.navigationController! : \(self.navigationController!)")
+        
+        AWSManager.shared.startUserAuthenticationProcess(navigationController: self.navigationController!)
+        
+        //AWSManager.shared.showSignInView(navigationController: self.navigationController!)
 
     }
 
@@ -26,20 +27,4 @@ class FeedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func fetchUserDetails() {
-        
-        self.pool = AWSCognitoIdentityUserPool(forKey: Constants.CognitoConstants.AWSCognitoUserPoolsSignInProviderKey)
-        
-        if (self.user == nil) {
-            self.user = self.pool?.currentUser()
-        }
-        
-        user?.getDetails().continueOnSuccessWith(block: { (task) -> Any? in
-            
-            return nil
-            
-        })
-        
-    }
-
 }
