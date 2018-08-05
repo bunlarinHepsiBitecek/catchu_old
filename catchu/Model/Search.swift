@@ -51,5 +51,25 @@ class Search {
         }
     }
     
+    func appendElementIntoSearchArrayResult(httpResult : RESearchResult) {
+        
+        for item in httpResult.resultArray! {
+            
+            let tempUser = User()
+            
+            tempUser.userID = item._userid
+            tempUser.userName = item._username
+            tempUser.name = item._name
+            tempUser.profilePictureUrl = item._profilePhotoUrl
+            tempUser.isUserHasAFriendRelation = item._friendRelation.boolValue
+            tempUser.isUserHasPendingFriendRequest = item._pendingFriendRequest.boolValue
+            tempUser.isUserHasAPrivateAccount = item._isPrivateAccount.boolValue
+            
+            _searchResultArray.append(tempUser)
+            
+        }
+        
+    }
+    
     
 }

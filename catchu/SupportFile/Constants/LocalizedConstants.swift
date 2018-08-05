@@ -93,7 +93,10 @@ struct LocalizedConstants {
     
     struct SearchBar {
         static let searchResult = NSLocalizedString("Search Result", comment: "")
+        static let searching = NSLocalizedString("searching", comment: "")
+        static let searchingFor = NSLocalizedString("searchingFor", comment: "")
     }
+    
     struct Library {
         static let AccessLibraryDisableTitle   = NSLocalizedString("AccessLibraryDisableTitle", comment: "")
         static let AccessLibraryDisable        = NSLocalizedString("AccessLibraryDisable", comment: "")
@@ -114,4 +117,15 @@ struct LocalizedConstants {
         static let CatchSomething = NSLocalizedString("CatchSomething", comment: "")
         
     }
+    
+    struct Contact {
+        
+        static let addFriend = NSLocalizedString("addFriend", comment: "")
+        static let friends = NSLocalizedString("friends", comment: "")
+        static let requested = NSLocalizedString("requested", comment: "")
+        
+    }
+    
+    
+    
 }

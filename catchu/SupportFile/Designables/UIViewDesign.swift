@@ -23,6 +23,12 @@ class UIViewDesign: UIView {
         }
     }
     
+    @IBInspectable var thirdColor: UIColor = UIColor.white {
+        didSet {
+            updateView()
+        }
+    }
+    
     @IBInspectable var horizontalGradient: Bool = false {
         didSet {
             updateView()
@@ -37,7 +43,7 @@ class UIViewDesign: UIView {
     
     func updateView() {
         let layer = self.layer as! CAGradientLayer
-        layer.colors = [ firstColor.cgColor, secondColor.cgColor ]
+        layer.colors = [ firstColor.cgColor, secondColor.cgColor, thirdColor.cgColor ]
         
         if (horizontalGradient) {
             layer.startPoint = CGPoint(x: 0.0, y: 0.5)

@@ -48,6 +48,8 @@
 		A72173B620E5793300F73B9C /* NotificationManager2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B520E5793300F73B9C /* NotificationManager2.swift */; };
 		A72173B820E778D600F73B9C /* GeoFireData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B720E778D600F73B9C /* GeoFireData.swift */; };
 		A72173BA20E7D32700F73B9C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72173B920E7D32700F73B9C /* UIImageExtensions.swift */; };
+		A721BFF921176F000037A62D /* totoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721BFF821176F000037A62D /* totoViewController.swift */; };
+		A721BFFB21177DE20037A62D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A721BFFA21177DE20037A62D /* Profile.storyboard */; };
 		A7276D23210E12F800CAC67C /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A7276D22210E12F700CAC67C /* awsconfiguration.json */; };
 		A7276D25210E1E8A00CAC67C /* AWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7276D24210E1E8A00CAC67C /* AWSManager.swift */; };
 		A7276D392110790100CAC67C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7276D382110790100CAC67C /* SearchView.swift */; };
@@ -81,6 +83,25 @@
 		A79A768020C5CB1B00FCE198 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A767F20C5CB1B00FCE198 /* FriendsTableViewCell.swift */; };
 		A79A768220C6564900FCE198 /* ContainerFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A768120C6564900FCE198 /* ContainerFriendViewController.swift */; };
 		A79A768420C656E100FCE198 /* ExtensionContainerFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A768320C656E100FCE198 /* ExtensionContainerFriendController.swift */; };
+		A7E2F847211131CC00214066 /* UIButtonCustomDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F846211131CC00214066 /* UIButtonCustomDesign.swift */; };
+		A7E2F84B2111EFD600214066 /* RESearchResult_resultArray_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F8482111EFD600214066 /* RESearchResult_resultArray_item.swift */; };
+		A7E2F84C2111EFD600214066 /* RESearchResult_error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F8492111EFD600214066 /* RESearchResult_error.swift */; };
+		A7E2F84D2111EFD600214066 /* RESearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F84A2111EFD600214066 /* RESearchResult.swift */; };
+		A7E2F84F211276DA00214066 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F84E211276DA00214066 /* ButtonWithImage.swift */; };
+		A7E2F85221128CCC00214066 /* REResponse_error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F85021128CCB00214066 /* REResponse_error.swift */; };
+		A7E2F85321128CCC00214066 /* REResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F85121128CCB00214066 /* REResponse.swift */; };
+		A7E2F85521128CDE00214066 /* REFriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F85421128CDE00214066 /* REFriendRequest.swift */; };
+		A7E2F85B2114A6F700214066 /* REUserProfile_error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F8582114A6F500214066 /* REUserProfile_error.swift */; };
+		A7E2F85C2114A6F700214066 /* REUserProfile_resultArray_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F8592114A6F600214066 /* REUserProfile_resultArray_item.swift */; };
+		A7E2F85D2114A6F700214066 /* REUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2F85A2114A6F700214066 /* REUserProfile.swift */; };
+		A7F35D902116811B005DA851 /* REFriendRequestList_error.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F35D8D21168118005DA851 /* REFriendRequestList_error.swift */; };
+		A7F35D912116811B005DA851 /* REFriendRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F35D8E2116811A005DA851 /* REFriendRequestList.swift */; };
+		A7F35D922116811B005DA851 /* REFriendRequestList_resultArray_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F35D8F2116811B005DA851 /* REFriendRequestList_resultArray_item.swift */; };
+		A7F35D9521168423005DA851 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F35D9421168423005DA851 /* ProfileViewController.swift */; };
+		A7F35D9A211684C1005DA851 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F35D99211684C1005DA851 /* ProfileView.swift */; };
+		A7F35D9C21169A94005DA851 /* alarm_x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F35D9B21169A92005DA851 /* alarm_x.png */; };
+		A7F35D9E2116DBE7005DA851 /* ExtensionProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F35D9D2116DBE7005DA851 /* ExtensionProfileViewController.swift */; };
+		A7F35DA22116F173005DA851 /* TakasiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F35DA12116F173005DA851 /* TakasiViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +171,8 @@
 		A72173B520E5793300F73B9C /* NotificationManager2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager2.swift; sourceTree = "<group>"; };
 		A72173B720E778D600F73B9C /* GeoFireData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFireData.swift; sourceTree = "<group>"; };
 		A72173B920E7D32700F73B9C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		A721BFF821176F000037A62D /* totoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = totoViewController.swift; sourceTree = "<group>"; };
+		A721BFFA21177DE20037A62D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		A7276D22210E12F700CAC67C /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		A7276D24210E1E8A00CAC67C /* AWSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSManager.swift; sourceTree = "<group>"; };
 		A7276D382110790100CAC67C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -185,6 +208,25 @@
 		A79A767F20C5CB1B00FCE198 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		A79A768120C6564900FCE198 /* ContainerFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerFriendViewController.swift; sourceTree = "<group>"; };
 		A79A768320C656E100FCE198 /* ExtensionContainerFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionContainerFriendController.swift; sourceTree = "<group>"; };
+		A7E2F846211131CC00214066 /* UIButtonCustomDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonCustomDesign.swift; sourceTree = "<group>"; };
+		A7E2F8482111EFD600214066 /* RESearchResult_resultArray_item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESearchResult_resultArray_item.swift; sourceTree = "<group>"; };
+		A7E2F8492111EFD600214066 /* RESearchResult_error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESearchResult_error.swift; sourceTree = "<group>"; };
+		A7E2F84A2111EFD600214066 /* RESearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESearchResult.swift; sourceTree = "<group>"; };
+		A7E2F84E211276DA00214066 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
+		A7E2F85021128CCB00214066 /* REResponse_error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REResponse_error.swift; sourceTree = "<group>"; };
+		A7E2F85121128CCB00214066 /* REResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REResponse.swift; sourceTree = "<group>"; };
+		A7E2F85421128CDE00214066 /* REFriendRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REFriendRequest.swift; sourceTree = "<group>"; };
+		A7E2F8582114A6F500214066 /* REUserProfile_error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REUserProfile_error.swift; sourceTree = "<group>"; };
+		A7E2F8592114A6F600214066 /* REUserProfile_resultArray_item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REUserProfile_resultArray_item.swift; sourceTree = "<group>"; };
+		A7E2F85A2114A6F700214066 /* REUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REUserProfile.swift; sourceTree = "<group>"; };
+		A7F35D8D21168118005DA851 /* REFriendRequestList_error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REFriendRequestList_error.swift; sourceTree = "<group>"; };
+		A7F35D8E2116811A005DA851 /* REFriendRequestList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REFriendRequestList.swift; sourceTree = "<group>"; };
+		A7F35D8F2116811B005DA851 /* REFriendRequestList_resultArray_item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REFriendRequestList_resultArray_item.swift; sourceTree = "<group>"; };
+		A7F35D9421168423005DA851 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A7F35D99211684C1005DA851 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A7F35D9B21169A92005DA851 /* alarm_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_x.png; sourceTree = "<group>"; };
+		A7F35D9D2116DBE7005DA851 /* ExtensionProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProfileViewController.swift; sourceTree = "<group>"; };
+		A7F35DA12116F173005DA851 /* TakasiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakasiViewController.swift; sourceTree = "<group>"; };
 		B5C3AD71002450E40F97C224 /* Pods-catchu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.release.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.release.xcconfig"; sourceTree = "<group>"; };
 		C4E2B569C5CB5CFE69BDDBCF /* Pods-catchu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-catchu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-catchu/Pods-catchu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +276,7 @@
 		4527E05120C85F2100ECB3D1 /* MainPackage */ = {
 			isa = PBXGroup;
 			children = (
+				A7F35D9321168408005DA851 /* Profile */,
 				A7276D3A2110795400CAC67C /* Search */,
 				A79A765B20C3681400FCE198 /* Temporary */,
 				A709F67120FF4F5C003FF2C5 /* Feed */,
@@ -276,6 +319,7 @@
 		4564E40620B95574003B0D16 = {
 			isa = PBXGroup;
 			children = (
+				A7F35D9B21169A92005DA851 /* alarm_x.png */,
 				A735C57420D8447A00B7B1E2 /* 8771.jpg */,
 				4564E41120B95574003B0D16 /* catchu */,
 				4564E42620B95576003B0D16 /* catchuTests */,
@@ -350,6 +394,7 @@
 				4564E41620B95574003B0D16 /* Login.storyboard */,
 				45356B2620C2F96E00E0733F /* Main.storyboard */,
 				A79A765E20C36BE400FCE198 /* Contact.storyboard */,
+				A721BFFA21177DE20037A62D /* Profile.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -369,6 +414,7 @@
 		4564E44B20B9678D003B0D16 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A7F35D9621168433005DA851 /* Profile */,
 				453C226B20DD60F1004896A1 /* MapShareView */,
 				A79A766420C4B43F00FCE198 /* ContactPackage */,
 			);
@@ -513,10 +559,22 @@
 		A7276D33210F68EF00CAC67C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A7F35D8D21168118005DA851 /* REFriendRequestList_error.swift */,
+				A7F35D8F2116811B005DA851 /* REFriendRequestList_resultArray_item.swift */,
+				A7F35D8E2116811A005DA851 /* REFriendRequestList.swift */,
+				A7E2F8582114A6F500214066 /* REUserProfile_error.swift */,
+				A7E2F8592114A6F600214066 /* REUserProfile_resultArray_item.swift */,
+				A7E2F85A2114A6F700214066 /* REUserProfile.swift */,
+				A7E2F85421128CDE00214066 /* REFriendRequest.swift */,
+				A7E2F85021128CCB00214066 /* REResponse_error.swift */,
+				A7E2F85121128CCB00214066 /* REResponse.swift */,
 				A7276D502110C5F400CAC67C /* Empty.swift */,
 				A7276D592110C67800CAC67C /* REFriendList_error.swift */,
 				A7276D5A2110C67800CAC67C /* REFriendList_resultArray_item.swift */,
 				A7276D5B2110C67900CAC67C /* REFriendList.swift */,
+				A7E2F8492111EFD600214066 /* RESearchResult_error.swift */,
+				A7E2F8482111EFD600214066 /* RESearchResult_resultArray_item.swift */,
+				A7E2F84A2111EFD600214066 /* RESearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -607,6 +665,8 @@
 			isa = PBXGroup;
 			children = (
 				A79A765C20C368B700FCE198 /* TemporaryViewController.swift */,
+				A7F35DA12116F173005DA851 /* TakasiViewController.swift */,
+				A721BFF821176F000037A62D /* totoViewController.swift */,
 			);
 			path = Temporary;
 			sourceTree = "<group>";
@@ -658,8 +718,10 @@
 		A79A766F20C5BE8100FCE198 /* Designables */ = {
 			isa = PBXGroup;
 			children = (
+				A7E2F846211131CC00214066 /* UIButtonCustomDesign.swift */,
 				A79A767320C5BF2300FCE198 /* UIViewDesign.swift */,
 				A79A767720C5BFC400FCE198 /* UIImageViewDesign.swift */,
+				A7E2F84E211276DA00214066 /* ButtonWithImage.swift */,
 			);
 			path = Designables;
 			sourceTree = "<group>";
@@ -687,6 +749,23 @@
 				A79A767F20C5CB1B00FCE198 /* FriendsTableViewCell.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		A7F35D9321168408005DA851 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A7F35D9421168423005DA851 /* ProfileViewController.swift */,
+				A7F35D9D2116DBE7005DA851 /* ExtensionProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A7F35D9621168433005DA851 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A7F35D99211684C1005DA851 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C5CD0901428B420FF13AF238 /* Frameworks */ = {
@@ -826,6 +905,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */,
+				A7F35D9C21169A94005DA851 /* alarm_x.png in Resources */,
 				A79A767620C5BF6600FCE198 /* cancel_gray.png in Resources */,
 				4564E46320B978F9003B0D16 /* Localizable.strings in Resources */,
 				4564E41D20B95576003B0D16 /* LaunchScreen.storyboard in Resources */,
@@ -836,6 +916,7 @@
 				4564E41A20B95576003B0D16 /* Assets.xcassets in Resources */,
 				4564E41820B95574003B0D16 /* Login.storyboard in Resources */,
 				A79A765F20C36BE400FCE198 /* Contact.storyboard in Resources */,
+				A721BFFB21177DE20037A62D /* Profile.storyboard in Resources */,
 				A709F64D20FEA6D9003FF2C5 /* CognitoConfig.plist in Resources */,
 				A7369B0020C86A5C001692F4 /* check-mark.png in Resources */,
 			);
@@ -964,14 +1045,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79A767D20C5C7B500FCE198 /* FriendCollectionViewCell.swift in Sources */,
+				A7F35DA22116F173005DA851 /* TakasiViewController.swift in Sources */,
+				A7E2F84F211276DA00214066 /* ButtonWithImage.swift in Sources */,
 				A79A767420C5BF2300FCE198 /* UIViewDesign.swift in Sources */,
 				4564E46B20B996B0003B0D16 /* LoginViewController.swift in Sources */,
 				A79A767820C5BFC400FCE198 /* UIImageViewDesign.swift in Sources */,
 				A76DF54E20CC308A00B98A09 /* EnumFiles.swift in Sources */,
+				A7F35D9A211684C1005DA851 /* ProfileView.swift in Sources */,
+				A7E2F84C2111EFD600214066 /* RESearchResult_error.swift in Sources */,
 				45356B2320BDF34D00E0733F /* PasswordResetViewController.swift in Sources */,
 				452001CF20CC354F00C1ED22 /* MediaLibraryManager.swift in Sources */,
 				4564E46D20B998A8003B0D16 /* LoginViewControllerExtention.swift in Sources */,
+				A7E2F85D2114A6F700214066 /* REUserProfile.swift in Sources */,
 				A7276D402110935800CAC67C /* ContainerSearchResultViewController.swift in Sources */,
+				A7F35D922116811B005DA851 /* REFriendRequestList_resultArray_item.swift in Sources */,
 				A72173BA20E7D32700F73B9C /* UIImageExtensions.swift in Sources */,
 				A72173B620E5793300F73B9C /* NotificationManager2.swift in Sources */,
 				A79A766720C4B48B00FCE198 /* ContactView.swift in Sources */,
@@ -985,6 +1072,7 @@
 				4564E46F20B999AD003B0D16 /* DesignableUITextField.swift in Sources */,
 				45DEEA9D20E16DB000FE484E /* Share.swift in Sources */,
 				A7276D42211093F500CAC67C /* ExtensionContainerSearchResultViewController.swift in Sources */,
+				A7F35D9E2116DBE7005DA851 /* ExtensionProfileViewController.swift in Sources */,
 				A7276D482110A5D000CAC67C /* SearchProcessTableViewCell.swift in Sources */,
 				45DEEA9920E16D1400FE484E /* User.swift in Sources */,
 				A72173B820E778D600F73B9C /* GeoFireData.swift in Sources */,
@@ -993,16 +1081,25 @@
 				A709F67320FF4F6A003FF2C5 /* FeedViewController.swift in Sources */,
 				A79A766920C5B55900FCE198 /* ExtensionContactViewController.swift in Sources */,
 				A79A768420C656E100FCE198 /* ExtensionContainerFriendController.swift in Sources */,
+				A7E2F85221128CCC00214066 /* REResponse_error.swift in Sources */,
+				A7E2F84D2111EFD600214066 /* RESearchResult.swift in Sources */,
 				A709F68B21009E65003FF2C5 /* ConfirmationViewController.swift in Sources */,
 				A709F64B20FEA6A4003FF2C5 /* CognitoConfig.swift in Sources */,
 				4527E05520C8605800ECB3D1 /* MainTabBarViewController.swift in Sources */,
 				A7276D582110C60D00CAC67C /* RECatchUMobileAPIClient.swift in Sources */,
 				4564E47620B9CBB2003B0D16 /* AlertViewSupport.swift in Sources */,
+				A7E2F84B2111EFD600214066 /* RESearchResult_resultArray_item.swift in Sources */,
+				A7F35D912116811B005DA851 /* REFriendRequestList.swift in Sources */,
 				A7276D3C2110797600CAC67C /* SearchViewController.swift in Sources */,
+				A7E2F85B2114A6F700214066 /* REUserProfile_error.swift in Sources */,
 				A7276D3E21107A9900CAC67C /* ExtensionSearchViewController.swift in Sources */,
 				45DEEA9C20E16DB000FE484E /* SectionBasedFriend.swift in Sources */,
+				A7E2F847211131CC00214066 /* UIButtonCustomDesign.swift in Sources */,
+				A7E2F85C2114A6F700214066 /* REUserProfile_resultArray_item.swift in Sources */,
 				452001C820CABFF500C1ED22 /* DropPinViewController.swift in Sources */,
 				A7369AFE20C78830001692F4 /* ExtensionUIImageView.swift in Sources */,
+				A7F35D902116811B005DA851 /* REFriendRequestList_error.swift in Sources */,
+				A7E2F85521128CDE00214066 /* REFriendRequest.swift in Sources */,
 				A7276D5C2110C67900CAC67C /* REFriendList_error.swift in Sources */,
 				A7276D602110EF7600CAC67C /* Search.swift in Sources */,
 				45356B2520BDF34D00E0733F /* RegisterViewController.swift in Sources */,
@@ -1013,8 +1110,11 @@
 				A7276D392110790100CAC67C /* SearchView.swift in Sources */,
 				A79A768220C6564900FCE198 /* ContainerFriendViewController.swift in Sources */,
 				A7276D25210E1E8A00CAC67C /* AWSManager.swift in Sources */,
+				A7E2F85321128CCC00214066 /* REResponse.swift in Sources */,
+				A7F35D9521168423005DA851 /* ProfileViewController.swift in Sources */,
 				A79A765D20C368B700FCE198 /* TemporaryViewController.swift in Sources */,
 				452001D220CC439C00C1ED22 /* ShareCollectionViewCell.swift in Sources */,
+				A721BFF921176F000037A62D /* totoViewController.swift in Sources */,
 				45356B2220BDF34D00E0733F /* ExtensionPasswordReset.swift in Sources */,
 				452001CA20CBB7AB00C1ED22 /* MapView.swift in Sources */,
 				A7276D5D2110C67900CAC67C /* REFriendList_resultArray_item.swift in Sources */,

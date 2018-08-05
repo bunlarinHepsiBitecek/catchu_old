@@ -50,6 +50,15 @@
 "confirmationCodeRequired" = "Lütfen doğrulama kodunu giriniz!";
 "confirmationFailed" = "Doğrulama başarız!";
 
+//Search
+"searching" = "Aranıyor...";
+"searchingFor" = "Araniyor ";
+
+// Contact
+"addFriend" = "Arkadaş Ekle";
+"friends" = "Arkadaşın";
+"requested" = "İstek Gönderildi";
+
 
 
 

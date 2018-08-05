@@ -266,5 +266,46 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
     
     @IBAction func searchBtnClicked(_ sender: Any) {
         
+        let client = RECatchUMobileAPIClient.default()
+        
+        client.usersGet(userid: User.shared.userID).continueWith { (taskUserProfile) -> Any? in
+            
+            print("error : \(taskUserProfile.error)")
+            print("result : \(taskUserProfile.result)")
+            
+            taskUserProfile.result?.resultArray
+            return nil
+        }
+        
+        
+    }
+    
+    @IBOutlet var fiki: UILabel!
+    @IBAction func bk(_ sender: Any) {
+        
+        let client = RECatchUMobileAPIClient.default()
+        
+        let inputBody = REFriendRequest()
+        
+        inputBody?.requesterUserid = User.shared.userID
+        inputBody?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.requestingFollowList
+        
+        client.requestProcessPost(body: inputBody!).continueWith { (task) -> Any? in
+            print("task : \(task.result)")
+            
+            
+            DispatchQueue.main.async {
+                
+                self.fiki.text = String(describing: task.result?.resultArray?.count)
+                
+            }
+            
+            User.shared.addRequestingFollow(httpResult: task.result!)
+            
+            
+            return nil
+        }
+        
+        
     }
 }

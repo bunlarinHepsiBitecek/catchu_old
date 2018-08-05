@@ -31,6 +31,12 @@ class User {
     
     private var _userFriendList : Dictionary<String, User> = [:]
     private var _sortedFriendArray : Array<User> = []
+    // authenticated user's follow requests made by other users
+    private var _requestingFriendList : Array<User> = []
+    
+    private var _isUserHasAFriendRelation : Bool!
+    private var _isUserHasPendingFriendRequest: Bool!
+    private var _isUserHasAPrivateAccount : Bool!
     
     init() {
         self._userID     = Constants.CharacterConstants.SPACE
@@ -44,6 +50,8 @@ class User {
         self._indexPathCollectionview = IndexPath()
         self._indexPathTableViewOfSearchMode = IndexPath()
         self._indexPathTableView = IndexPath()
+        self._isUserHasAFriendRelation = false
+        self._isUserHasPendingFriendRequest = false
     }
     
     init(userID: String, userName: String, name: String, email: String, password: String, provider: String, providerID: String) {
@@ -191,6 +199,42 @@ class User {
         }
     }
     
+    var isUserHasAFriendRelation: Bool {
+        get {
+            return _isUserHasAFriendRelation
+        }
+        set {
+            _isUserHasAFriendRelation = newValue
+        }
+    }
+    
+    var isUserHasPendingFriendRequest: Bool {
+        get {
+            return _isUserHasPendingFriendRequest
+        }
+        set {
+            _isUserHasPendingFriendRequest = newValue
+        }
+    }
+    
+    var requestingFriendList: Array<User> {
+        get {
+            return _requestingFriendList
+        }
+        set {
+            _requestingFriendList = newValue
+        }
+    }
+    
+    var isUserHasAPrivateAccount: Bool {
+        get {
+            return _isUserHasAPrivateAccount
+        }
+        set {
+            _isUserHasAPrivateAccount = newValue
+        }
+    }
+    
     func toString() {
         print("userName :\(_userName)")
         print("email :\(_email)")
@@ -296,6 +340,23 @@ class User {
         }
         
         return _userDataDictionary
+    }
+    
+    func addRequestingFollow(httpResult : REFriendRequestList) {
+        
+        for item in httpResult.resultArray! {
+            
+            let tempUser = User()
+            
+            tempUser.userID = item._userid
+            tempUser.userName = item._username
+            tempUser.profilePictureUrl = item._profilePhotoUrl
+            tempUser.name = item._name
+            
+            _requestingFriendList.append(tempUser)
+            
+        }
+        
     }
     
     

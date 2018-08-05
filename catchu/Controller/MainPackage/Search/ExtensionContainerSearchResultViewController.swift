@@ -12,12 +12,21 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 4
+        if Search.shared.isSearchProgressActive {
+            
+            return 1
+            
+        } else {
+            
+            return Search.shared.searchResultArray.count
+            
+        }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+        // if search process is active, an activity indicator should be seen in a prototype of the tableView
         if Search.shared.isSearchProgressActive {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Collections.TableView.tableViewCellSearchProcess, for: indexPath) as? SearchProcessTableViewCell else {
@@ -26,7 +35,7 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
                 
             }
             
-            cell.searchProcessInformation.text = "Searching for " + searchKey!
+            cell.searchProcessInformation.text = LocalizedConstants.SearchBar.searchingFor + searchKey!
             
             cell.activityIndicator.hidesWhenStopped = true
             cell.activityIndicator.activityIndicatorViewStyle = .gray
@@ -38,18 +47,59 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
                 cell.viewForActivityIndicator.addSubview(cell.activityIndicator)
             }
             
+            
             return cell
           
         }  else {
             
+            // if search process is done (AWSTASK is completed), the code below lists users
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Collections.TableView.tableViewCellSearchResult, for: indexPath) as? SearchResultTableViewCell else {
                 
                 return UITableViewCell()
                 
             }
             
-            cell.searchUsername.text = "erkutbas"
-            cell.searchUserExtraLabel.text = "Erkut Bas"
+            // first of all initiate cell properties
+            cell.enableRequestButton()
+            cell.initializeCellProperties()
+            
+            print("indexPath.row : \(indexPath.row)")
+            print("searchData : \(Search.shared.searchResultArray.count)")
+            
+            // getting search result from neo4j
+            let searchObject = Search.shared.searchResultArray[indexPath.row]
+            cell.searchResultUser = searchObject
+            cell.searchUsername.text = searchObject.userName
+            cell.searchUserExtraLabel.text = searchObject.name
+            
+            // check user is a following or not
+            if searchObject.isUserHasAFriendRelation {
+                
+                cell.disableRequestButton()
+                cell.friendMapping()
+                
+            } else {
+                
+                if searchObject.isUserHasPendingFriendRequest {
+                    
+                    cell.disableRequestButton()
+                    cell.requestedMapping()
+                    
+                } else {
+                    
+                    cell.enableRequestButton()
+                    
+                }
+                
+            }
+            
+            
+            
+            if searchObject.profilePictureUrl != Constants.CharacterConstants.SPACE {
+                
+            cell.searchUserImage.setImagesFromCacheOrFirebaseForFriend(searchObject.profilePictureUrl)
+                
+            }
             
             return cell
             
@@ -59,9 +109,35 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
         
     }
     
+    // didselect row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if !Search.shared.isSearchProgressActive {
+
+            let cell = tableView.cellForRow(at: indexPath) as! SearchResultTableViewCell
+
+            //cell.defaultButtonColors()
+            
+            let storyboard = UIStoryboard(name: Constants.Storyboard.Name.Profile, bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "totoViewController") as! totoViewController
+            navigationController?.pushViewController(vc, animated: true)
+            
+//            self.tabBarController?.selectedIndex = 3
+//            if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "totoViewController") as? totoViewController {
+//
+//                if let navigator = self.tabBarController?.viewControllers?[3] as? UINavigationController {
+//                    navigator.pushViewController(controller, animated: true)
+//                }
+//            }
+            
+
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return Constants.NumericValues.rowHeightSearch
+        return Constants.NumericValues.rowHeight
         
     }
     
@@ -73,7 +149,23 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return "Search Result"
+        if Search.shared.isSearchProgressActive {
+            
+            return LocalizedConstants.SearchBar.searching
+            
+        } else {
+            
+            if Search.shared.searchResultArray.count > 0 {
+                
+                return LocalizedConstants.SearchBar.searchResult
+                
+            } else {
+                
+                return Constants.CharacterConstants.SPACE
+                
+            }
+            
+        }
         
     }
     

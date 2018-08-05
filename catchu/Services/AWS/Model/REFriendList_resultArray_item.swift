@@ -72,7 +72,14 @@ public class REFriendList_resultArray_item : AWSModel {
     
     var _profilePhotoUrl: String {
         get {
-            return profilePhotoUrl!
+            
+            if let photoUrl = profilePhotoUrl {
+                return photoUrl
+            } else {
+                return Constants.CharacterConstants.SPACE
+            }
+            
+            //return profilePhotoUrl!
         }
         set {
             profilePhotoUrl = newValue

@@ -408,12 +408,33 @@
                     <view key="view" contentMode="scaleToFill" id="el2-X3-xNv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="564"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bqc-fl-bqs">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="564"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="bHD-MG-ET2">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bHD-MG-ET2" id="e02-71-7YP">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bqc-fl-bqs" secondAttribute="bottom" id="FAY-6x-73R"/>
+                            <constraint firstItem="bqc-fl-bqs" firstAttribute="leading" secondItem="el2-X3-xNv" secondAttribute="leading" id="HW2-Pg-2hy"/>
+                            <constraint firstAttribute="trailing" secondItem="bqc-fl-bqs" secondAttribute="trailing" id="U2T-vI-Tmg"/>
+                            <constraint firstItem="bqc-fl-bqs" firstAttribute="top" secondItem="el2-X3-xNv" secondAttribute="top" id="ZHg-9R-9jk"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwV-Nm-tzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="84"/>
+            <point key="canvasLocation" x="704.79999999999995" y="83.497536945812811"/>
         </scene>
     </scenes>
     <resources>

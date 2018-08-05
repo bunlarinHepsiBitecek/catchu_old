@@ -65,6 +65,8 @@ struct Constants {
         struct Name {
             static let Login = "Login"
             static let Main  = "Main"
+            static let Contact = "Contact"
+            static let Profile = "Profile"
         }
         
     }
@@ -179,6 +181,19 @@ struct Constants {
     struct NotificationConstants {
         
         static let requestIdentifier : String = "LocalNotificationRequest"
+        
+    }
+    
+    struct AwsApiGatewayHttpRequestParameters {
+        
+        struct RequestOperationTypes {
+            
+            static let followRequest : String = "followRequest"
+            static let acceptRequest : String = "acceptRequest"
+            static let requestingFollowList : String = "requestingFollowList"
+            static let createFollowDirectly : String = "createFollowDirectly"
+            
+        }
         
     }
     

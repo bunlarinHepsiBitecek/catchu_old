@@ -15,6 +15,8 @@ class MainTabBarViewController: UITabBarController {
 
         self.selectedIndex = 1
         
+        self.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

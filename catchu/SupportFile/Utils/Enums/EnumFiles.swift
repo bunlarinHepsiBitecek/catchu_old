@@ -21,3 +21,4 @@ enum SegmentedButtonChoise {
     case groupCreation
     case nothing
 }
+

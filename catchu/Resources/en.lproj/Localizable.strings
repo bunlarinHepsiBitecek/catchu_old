@@ -65,6 +65,15 @@
 "confirmationCodeRequired" = "Please enter confirmation code";
 "confirmationFailed" = "Confirmation if failed!";
 
+//Search
+"searching" = "Searching...";
+"searchingFor" = "Searching for ";
+
+// Contact
+"addFriend" = "Add Friend";
+"friends" = "Friends";
+"requested" = "Requested";
+
 
 
 

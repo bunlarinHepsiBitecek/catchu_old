@@ -45,15 +45,17 @@ extension SearchView : UISearchBarDelegate {
     
         let client = RECatchUMobileAPIClient.default()
         
-        client.searchGet(searchValue: input).continueWith { (taskREFriendList) -> Any? in
+        client.searchGet(userid: User.shared.userID, searchValue: input).continueWith { (taskRESearchResult) -> Any? in
             
-            if taskREFriendList.error != nil {
+            if taskRESearchResult.error != nil {
                 
-                print("error : \(taskREFriendList.error?.localizedDescription)")
+                print("error : \(taskRESearchResult.error?.localizedDescription)")
                 
             } else {
                 
-                print("result : \(taskREFriendList.result)")
+                print("result : \(taskRESearchResult.result)")
+                
+                Search.shared.appendElementIntoSearchArrayResult(httpResult: taskRESearchResult.result!)
                 
             }
             
@@ -70,7 +72,16 @@ extension SearchView : UISearchBarDelegate {
         Search.shared.isSearchProgressActive = true
         Search.shared.searchKey = inputSearchKey
         
+        //Search.shared.searchResultArray.removeAll()
+        
         referenceMasterViewController.childReferenceContainerSearchResultViewController?.searchKey = inputSearchKey
+        referenceMasterViewController.childReferenceContainerSearchResultViewController?.tableView.reloadData()
+        
+    }
+    
+    func startSearchResult() {
+        
+        Search.shared.isSearchProgressActive = false
         referenceMasterViewController.childReferenceContainerSearchResultViewController?.tableView.reloadData()
         
     }
@@ -80,6 +91,8 @@ extension SearchView : UISearchBarDelegate {
         
         // empty searchResult array
 //        SectionBasedFriend.shared.emptySearchResult()
+        
+        Search.shared.searchResultArray.removeAll()
         
         print("textDidChange triggered")
         print("searchText : \(searchText)")
@@ -92,7 +105,7 @@ extension SearchView : UISearchBarDelegate {
                 
                 DispatchQueue.main.async {
                     
-                    
+                    self.startSearchResult()
                     
                 }
                 
@@ -113,6 +126,10 @@ extension SearchView : UISearchBarDelegate {
             searchBar.setShowsCancelButton(false, animated: true)
             self.searchBar.endEditing(true)
             
+            Search.shared.searchResultArray.removeAll()
+            
+            referenceMasterViewController.childReferenceContainerSearchResultViewController?.tableView.reloadData()
+            
         }
         
     }
@@ -121,6 +138,10 @@ extension SearchView : UISearchBarDelegate {
         
         self.searchBar.endEditing(true)
         
+        Search.shared.searchResultArray.removeAll()
+        
+referenceMasterViewController.childReferenceContainerSearchResultViewController?.tableView.reloadData()
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -128,6 +149,10 @@ extension SearchView : UISearchBarDelegate {
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.text = Constants.CharacterConstants.SPACE
         self.searchBar.endEditing(true)
+        
+        Search.shared.searchResultArray.removeAll()
+        
+        referenceMasterViewController.childReferenceContainerSearchResultViewController?.tableView.reloadData()
         
     }
     
