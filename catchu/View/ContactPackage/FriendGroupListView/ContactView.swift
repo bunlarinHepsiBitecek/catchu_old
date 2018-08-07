@@ -41,10 +41,7 @@ class ContactView: UIView, UNUserNotificationCenterDelegate {
         boolenValueForCountColorManagement = false
         
         UIView.animate(withDuration: 0.5) {
-            
             self.topView.alpha = 1.0
-            
-            
         }
         
         self.containerViewFriend.alpha = 1.0
@@ -64,41 +61,73 @@ class ContactView: UIView, UNUserNotificationCenterDelegate {
                     UIApplication.shared.registerForRemoteNotifications()
                 }
             }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @IBAction func cancelButtonClicked(_ sender: Any) {
+        
+        SectionBasedFriend.shared = SectionBasedFriend()
+        referenceMasterViewController.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        
+        showNotification(title: "yarro", message: "yarro messaje")
+        
+        switch returnSegment() {
+        case .friends:
             
+            
+            if SectionBasedFriend.shared.selectedUserArray.count > 0 {
+                
+                referenceMasterViewController.dismiss(animated: true, completion: nil)
+            }
+            
+        case .groups:
+            
+            print("groups")
+            
+        default:
+            print("nothing")
         }
         
     }
+    
+    @IBAction func segmentedButtonChanged(_ sender: Any) {
+        
+        setInitialSegmentPropertiesForContainerViewPresentations()
+        
+    }
+    
+}
+
+// view functions
+extension ContactView {
     
     func requestPermissionWithCompletionhandler(completion: ((Bool) -> (Void))? ) {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in
             
             if error != nil {
-                
                 if let errorMessage = error as NSError? {
-                    
                     print("errorMessage :\(errorMessage)")
                     print("errorMessage :\(errorMessage.localizedDescription)")
-                    
                     completion!(false)
                     return
                 }
-                
             } else {
-                
                 if granted {
-                    
                     UNUserNotificationCenter.current().delegate = self
                     self.setNotificationCategories()
-                    
                 }
-                
                 completion!(true)
-                
             }
-            
         }
-        
     }
     
     private func setNotificationCategories() {
@@ -116,17 +145,6 @@ class ContactView: UIView, UNUserNotificationCenterDelegate {
         let emailCat =  UNNotificationCategory(identifier: "email", actions: [replyAction, archiveAction], intentIdentifiers: [], options: [])
         
         UNUserNotificationCenter.current().setNotificationCategories([localCat, customCat, emailCat])
-        
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @IBAction func cancelButtonClicked(_ sender: Any) {
-        
-        SectionBasedFriend.shared = SectionBasedFriend()
-        referenceMasterViewController.dismiss(animated: true, completion: nil)
         
     }
     
@@ -151,46 +169,6 @@ class ContactView: UIView, UNUserNotificationCenterDelegate {
         if response.notification.request.identifier == "notif" {
             
             completionHandler()
-        }
-        
-    }
-    
-    @IBAction func nextButtonClicked(_ sender: Any) {
-        
-        showNotification(title: "yarro", message: "yarro messaje")
-        
-        switch returnSegment() {
-        case .friends:
-            
-            if SectionBasedFriend.shared.selectedUserArray.count > 0 {
-                
-                referenceMasterViewController.dismiss(animated: true, completion: nil)
-            }
-            
-        default:
-            print("nothing")
-        }
-        
-    }
-    
-    func returnSegment() -> SegmentedButtonChoise {
-        
-        if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_ZERO {
-            
-            return .friends
-            
-        } else if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_ONE {
-            
-            return .groups
-            
-        } else if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_TWO {
-            
-            return .groupCreation
-            
-        } else {
-            
-            return .nothing
-            
         }
         
     }
@@ -241,7 +219,10 @@ class ContactView: UIView, UNUserNotificationCenterDelegate {
     
     func returnTotalRowCountOfTableView() -> String {
         
-        let tempCount = SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count
+        print("SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count : \(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count)")
+        
+        //let tempCount = SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count
+        let tempCount = User.shared.userFriendList.count
         let countStringValue : String = String(tempCount)
         
         return countStringValue
@@ -308,6 +289,140 @@ class ContactView: UIView, UNUserNotificationCenterDelegate {
         }
         
         return countStringValue
+        
+    }
+    
+}
+
+// segmented button functions
+extension ContactView {
+    
+    func setInitialSegmentPropertiesForContainerViewPresentations() {
+        
+        switch returnSegment() {
+        case .friends, .groupCreation:
+            
+            startAnimationOfContainerViews(inputContainerViewChoise: .containerViewFriend)
+            
+        case .groups:
+            
+            if SectionBasedGroup.shared.groupNameInitialBasedDictionary.count > 0 {
+                
+                print("group okumasına gerek yok :)")
+                startAnimationOfContainerViews(inputContainerViewChoise: .containerViewGroup)
+                
+            } else {
+                
+                print("group okumasına gerek var :)")
+                getUserGroupList { (result) in
+                    
+                    if result {
+                        
+                        
+                        DispatchQueue.main.async {
+                            SectionBasedGroup.shared.createInitialLetterBasedGroupDictionary()
+                            self.startAnimationOfContainerViews(inputContainerViewChoise: .containerViewGroup)
+                            self.referenceMasterViewController.childReferenceGroupContainerGroupController?.tableView.reloadData()
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        case .nothing:
+            
+            print("There is nothing to do")
+            
+        }
+        
+    }
+    
+    func getUserGroupList(completion : @escaping (_ result : Bool) -> Void) {
+    
+        let client = RECatchUMobileAPIClient.default()
+        
+        let inputBody = REGroupRequest()
+        
+        inputBody?._requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Groups.GET_AUTHENTICATED_USER_GROUP_LIST
+        
+        inputBody?._userid = User.shared.userID
+        
+        client.groupsPost(body: inputBody!).continueWith { (taskGroupRequestResult) -> Any? in
+            
+            print("taskGroupRequestResult.result : \(taskGroupRequestResult.result)")
+            
+            if taskGroupRequestResult.error != nil {
+                
+                print("taskGroupRequestResult.error : \(taskGroupRequestResult.error)")
+                
+            } else {
+                
+                //Group.shared.createGroupDictionary(httpRequest: taskGroupRequestResult.result!)
+                Group.shared.createGroupList(httpRequest: taskGroupRequestResult.result!)
+                
+                
+            }
+            
+            completion(true)
+            
+            return nil
+            
+        }
+    
+    }
+    
+    
+    func startAnimationOfContainerViews(inputContainerViewChoise : EnumContainerView) {
+        
+        switch inputContainerViewChoise {
+        case .containerViewFriend:
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                self.containerViewFriend.alpha = 1.0
+                self.containerGroup.alpha = 0.0
+                
+            })
+            
+        case .containerViewGroup:
+            
+            DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                
+                    self.containerViewFriend.alpha = 0.0
+                    self.containerGroup.alpha = 1.0
+                    
+                })
+                
+            }
+                
+        }
+        
+    }
+    
+    func returnSegment() -> SegmentedButtonChoise {
+        
+        if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_ZERO {
+            
+            return .friends
+            
+        } else if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_ONE {
+            
+            return .groups
+            
+        } else if segmentedButton.selectedSegmentIndex == Constants.NumericConstants.INTEGER_TWO {
+            
+            return .groupCreation
+            
+        } else {
+            
+            return .nothing
+            
+        }
         
     }
     

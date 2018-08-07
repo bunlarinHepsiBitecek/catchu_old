@@ -81,6 +81,8 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print("FRIEND FRIEND FRIEND")
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Collections.TableView.tableViewCellFriend, for: indexPath) as? FriendsTableViewCell else {
             
             return UITableViewCell()

@@ -34,6 +34,28 @@ struct Constants {
         
     }
     
+    struct TableViewEditingStyleButtons {
+        
+        static let Info = "Info"
+        static let Delete = "Delete"
+        static let More = "More..."
+        
+    }
+    
+    struct AlertControllerConstants {
+        
+        struct Titles {
+            
+            static let titleSpace = " "
+            static let titleGroupInfo = "Group Info"
+            static let titleExitGroup = "Exit Group"
+            static let titleCancel = "Cancel"
+            
+        }
+        
+        
+    }
+    
     struct MediaLibrary {
         static let ImageFetchLimit = 11
         static let ImageHolderSize: CGSize    = CGSize(width: 50.0, height: 50.0)
@@ -152,6 +174,7 @@ struct Constants {
         struct TableView {
             
             static let tableViewCellFriend: String = "tableViewCellFriend"
+            static let tableViewCellGroup: String = "tableViewCellGroup"
             static let tableViewCellSearchResult: String = "tableViewCellSearchResult"
             static let tableViewCellSearchProcess: String = "tableViewCellSearchProcess"
             
@@ -188,10 +211,16 @@ struct Constants {
         
         struct RequestOperationTypes {
             
-            static let followRequest : String = "followRequest"
-            static let acceptRequest : String = "acceptRequest"
-            static let requestingFollowList : String = "requestingFollowList"
-            static let createFollowDirectly : String = "createFollowDirectly"
+            struct Friends {
+                static let followRequest : String = "followRequest"
+                static let acceptRequest : String = "acceptRequest"
+                static let requestingFollowList : String = "requestingFollowList"
+                static let createFollowDirectly : String = "createFollowDirectly"
+            }
+            
+            struct Groups {
+                static let GET_AUTHENTICATED_USER_GROUP_LIST : String = "GET_AUTHENTICATED_USER_GROUP_LIST"
+            }
             
         }
         

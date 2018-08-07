@@ -140,7 +140,7 @@ extension SearchView : UISearchBarDelegate {
         
         Search.shared.searchResultArray.removeAll()
         
-referenceMasterViewController.childReferenceContainerSearchResultViewController?.tableView.reloadData()
+        referenceMasterViewController.childReferenceContainerSearchResultViewController?.tableView.reloadData()
         
     }
     

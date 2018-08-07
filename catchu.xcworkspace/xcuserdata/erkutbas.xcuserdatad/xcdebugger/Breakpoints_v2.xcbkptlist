@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Main/MainTabBarViewController.swift"
-            timestampString = "555001969.466068"
+            timestampString = "555275627.5954961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Main/MainTabBarViewController.swift"
-            timestampString = "555001969.46631"
+            timestampString = "555275627.5959491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
@@ -202,7 +202,7 @@
                   moduleName = "catchu"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/erkutbas/Documents/catchU/catchu/Services/AWS/AWSManager.swift"
-                  timestampString = "555196557.2852809"
+                  timestampString = "555298185.6227241"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
@@ -217,7 +217,7 @@
                   moduleName = "catchu"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/erkutbas/Documents/catchU/catchu/Services/AWS/AWSManager.swift"
-                  timestampString = "555196557.287806"
+                  timestampString = "555298185.625217"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -249,40 +249,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
-            timestampString = "554765987.61403"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "setTitles()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
-            timestampString = "554765987.6143349"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "setButtonTitles()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Temporary/TemporaryViewController.swift"
-            timestampString = "555182537.807129"
+            timestampString = "555301934.822027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -298,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Temporary/TemporaryViewController.swift"
-            timestampString = "555182537.80722"
+            timestampString = "555301934.822088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -314,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Temporary/TemporaryViewController.swift"
-            timestampString = "555182537.807272"
+            timestampString = "555301934.822135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -330,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Temporary/TemporaryViewController.swift"
-            timestampString = "555182537.807318"
+            timestampString = "555301934.822176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
@@ -362,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionContainerSearchResultViewController.swift"
-            timestampString = "555196953.152793"
+            timestampString = "555301934.822248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -378,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/View/ContactPackage/Search/SearchView.swift"
-            timestampString = "555196953.1528749"
+            timestampString = "555301934.822295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -394,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/View/ContactPackage/Search/SearchView.swift"
-            timestampString = "555196953.1533639"
+            timestampString = "555301934.822336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -410,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
-            timestampString = "554765987.615205"
+            timestampString = "555301934.822376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/ContactPackage/Contact/ExtensionContainerFriendController.swift"
-            timestampString = "554999551.303831"
+            timestampString = "555301934.822546"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
-            timestampString = "554765987.615415"
+            timestampString = "555301934.822596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/ContactPackage/Contact/ExtensionContactViewController.swift"
-            timestampString = "554764758.449376"
+            timestampString = "555301934.8227479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -474,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionSearchViewController.swift"
-            timestampString = "555148935.8498729"
+            timestampString = "555266737.378116"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -490,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionSearchViewController.swift"
-            timestampString = "555148935.850381"
+            timestampString = "555266737.378184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -506,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionSearchViewController.swift"
-            timestampString = "555148935.850791"
+            timestampString = "555266737.378235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -522,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/View/ContactPackage/Search/SearchView.swift"
-            timestampString = "555196953.1538481"
+            timestampString = "555301934.822866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -538,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/View/ContactPackage/Search/SearchView.swift"
-            timestampString = "555196953.154204"
+            timestampString = "555301934.822907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -554,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/View/ContactPackage/Search/SearchView.swift"
-            timestampString = "555196953.154551"
+            timestampString = "555301934.822942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -570,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionContainerSearchResultViewController.swift"
-            timestampString = "555196953.154897"
+            timestampString = "555301934.82298"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
@@ -586,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionContainerSearchResultViewController.swift"
-            timestampString = "555196953.154961"
+            timestampString = "555301934.823018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -602,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Temporary/TakasiViewController.swift"
-            timestampString = "555196953.155033"
+            timestampString = "555301934.823058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -618,7 +586,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Temporary/TakasiViewController.swift"
-            timestampString = "555196953.155077"
+            timestampString = "555301934.823101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -634,7 +602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Temporary/TakasiViewController.swift"
-            timestampString = "555196953.155116"
+            timestampString = "555301934.823141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -650,7 +618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionContainerSearchResultViewController.swift"
-            timestampString = "555196953.155156"
+            timestampString = "555301934.823184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
@@ -666,12 +634,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "catchu/Controller/MainPackage/Search/ExtensionContainerSearchResultViewController.swift"
-            timestampString = "555196953.155197"
+            timestampString = "555301934.823223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
+            timestampString = "555301934.823262"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "nextButtonClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
+            timestampString = "555301934.823406"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "getUserGroupList(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
+            timestampString = "555301934.8235511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
+            landmarkName = "getUserGroupList(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "catchu.ContactView.getUserGroupList(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "catchu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erkutbas/Documents/catchU/catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
+                  timestampString = "555298185.758302"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "350"
+                  endingLineNumber = "350"
+                  offsetFromSymbolStart = "590">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.AWSTask&lt;catchu.REGroupRequestResult&gt;) -&gt; Swift.Optional&lt;Any&gt; in catchu.ContactView.getUserGroupList(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "catchu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/erkutbas/Documents/catchU/catchu/View/ContactPackage/FriendGroupListView/ContactView.swift"
+                  timestampString = "555298185.759885"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "catchu/Controller/ContactPackage/Contact/ExtensionContainerGroupViewController.swift"
+            timestampString = "555301934.8236901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "catchu/Model/SectionBasedGroup.swift"
+            timestampString = "555301934.82425"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
+            landmarkName = "returnGroupFromSectionBasedDictionary(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

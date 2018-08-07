@@ -288,7 +288,7 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
         let inputBody = REFriendRequest()
         
         inputBody?.requesterUserid = User.shared.userID
-        inputBody?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.requestingFollowList
+        inputBody?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.requestingFollowList
         
         client.requestProcessPost(body: inputBody!).continueWith { (task) -> Any? in
             print("task : \(task.result)")

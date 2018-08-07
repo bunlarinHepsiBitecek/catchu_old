@@ -15,6 +15,7 @@ class ContactViewController: UIViewController {
     
     // let's create a child view controller of container view controller get data from container view controller to main controller view controller
     var childReferenceFriendContainerFriendController : ContainerFriendViewController?
+    var childReferenceGroupContainerGroupController : ContainerGroupViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()

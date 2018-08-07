@@ -53,9 +53,12 @@ extension ContactViewController {
             childReferenceFriendContainerFriendController = segue.destination as? ContainerFriendViewController
             childReferenceFriendContainerFriendController?.parentReferenceContactViewController = self
             
-        } else if segue.identifier == Constants.Segue.SegueToFriend {
+        } else if segue.identifier == Constants.Segue.SegueToGroup {
             
             print("Group is activated")
+            
+            childReferenceGroupContainerGroupController = segue.destination as? ContainerGroupViewController
+            childReferenceGroupContainerGroupController?.parentReferenceContactViewController = self
         }
         
     }

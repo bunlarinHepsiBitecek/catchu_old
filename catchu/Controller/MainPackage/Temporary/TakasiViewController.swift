@@ -57,7 +57,7 @@ class TakasiViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let inputBody = REFriendRequest()
         
-        inputBody?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.acceptRequest
+        inputBody?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.acceptRequest
         inputBody?.requesterUserid = cell?.textLabel?.text
         inputBody?.requestedUserid = User.shared.userID
         

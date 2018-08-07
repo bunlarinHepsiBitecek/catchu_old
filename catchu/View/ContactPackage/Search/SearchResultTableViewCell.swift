@@ -35,11 +35,11 @@ class SearchResultTableViewCell: UITableViewCell {
         
         if searchResultUser.isUserHasAPrivateAccount {
             
-            input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.followRequest
+            input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.followRequest
             
         } else {
             
-            input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.createFollowDirectly
+            input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.createFollowDirectly
             
         }
         

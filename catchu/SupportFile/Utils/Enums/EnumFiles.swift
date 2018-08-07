@@ -22,3 +22,9 @@ enum SegmentedButtonChoise {
     case nothing
 }
 
+enum EnumContainerView {
+    
+    case containerViewFriend
+    case containerViewGroup
+    
+}
