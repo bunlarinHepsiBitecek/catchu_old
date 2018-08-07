@@ -40,4 +40,5 @@ public class REGroupRequestResult : AWSModel {
     }
     class func resultArrayParticipantListJSONTransformer() -> ValueTransformer{
         return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REGroupRequestResult_resultArrayParticipantList_item.self);
+    }
 }
