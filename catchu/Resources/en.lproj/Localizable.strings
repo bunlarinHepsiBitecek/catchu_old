@@ -26,6 +26,7 @@
 "EmptyPassword"   = "Password cann't be empty";
 "EmptyUserName"   = "Username cann't be empty";
 "PasswordResetMailSend" = "Password reset link has been send to your email";
+"DefaultError" = "Something went wrong, please try again 😜";
 
 // Error explanation retrieved from Firebase.AuthErrorCode
 "accountExistsWithDifferentCredential" = "Account exists with different credentials";
@@ -74,6 +75,19 @@
 "friends" = "Friends";
 "requested" = "Requested";
 
+// picker controller strings
+"chooseProfilePicture" = "Choose Profile Picture";
+"takePhoto" = "Take a Photo";
+"chooseFromLibrary" = "Choose from library";
 
+// Editable profile view 
+"Name" = "Name";
+"Username" = "Username";
+"Website" = "Website";
+"Bio" = "Bio";
+"Birthday" = "Birthday";
+"Email" = "Email";
+"Phone" = "Phone";
+"Gender" = "Gender";
 
 

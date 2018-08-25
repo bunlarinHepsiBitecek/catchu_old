@@ -13,6 +13,8 @@ extension ContainerGroupViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        print("SectionBasedGroup.shared.returnSectionNumber.count : \(SectionBasedGroup.shared.returnSectionNumber(index: section))")
+        
         if SectionBasedGroup.shared.groupNameInitialBasedDictionary.count > 0 {
             
             return SectionBasedGroup.shared.returnSectionNumber(index: section)
@@ -27,8 +29,6 @@ extension ContainerGroupViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        print("GROUP GROUP GROUP")
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Collections.TableView.tableViewCellGroup, for: indexPath) as? GroupTableViewCell else {
             

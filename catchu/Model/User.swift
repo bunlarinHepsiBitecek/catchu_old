@@ -20,6 +20,11 @@ class User {
     private var _provider: String
     private var _providerID: String
     private var _profilePictureUrl: String?
+    private var _profilePicture: UIImage?
+    private var _userBirthday: String?
+    private var _userGender: String?
+    private var _userPhone: String?
+    private var _userWebsite: String?
     
     // the attributes below is used for collectionView management
     private var _indexPathCollectionview : IndexPath!
@@ -38,6 +43,10 @@ class User {
     private var _isUserHasPendingFriendRequest: Bool!
     private var _isUserHasAPrivateAccount : Bool!
     
+    private var _userFollowerCount : String!
+    private var _userFollowingCount : String!
+ 
+    
     init() {
         self._userID     = Constants.CharacterConstants.SPACE
         self._email      = Constants.CharacterConstants.SPACE
@@ -52,6 +61,10 @@ class User {
         self._indexPathTableView = IndexPath()
         self._isUserHasAFriendRelation = false
         self._isUserHasPendingFriendRequest = false
+        self._userFollowerCount = Constants.CharacterConstants.SPACE
+        self._userFollowingCount = Constants.CharacterConstants.SPACE
+        self._userBirthday = Constants.CharacterConstants.SPACE
+        
     }
     
     init(userID: String, userName: String, name: String, email: String, password: String, provider: String, providerID: String) {
@@ -235,6 +248,69 @@ class User {
         }
     }
     
+    var userFollowerCount: String {
+        get {
+            return _userFollowerCount
+        }
+        set {
+            _userFollowerCount = newValue
+        }
+    }
+    
+    var userFollowingCount: String {
+        get {
+            return _userFollowingCount
+        }
+        set {
+            _userFollowingCount = newValue
+        }
+    }
+    
+    var profilePicture: UIImage {
+        get {
+            return _profilePicture!
+        }
+        set {
+            _profilePicture = newValue
+        }
+    }
+    
+    var userBirthday: String {
+        get {
+            return _userBirthday!
+        }
+        set {
+            _userBirthday = newValue
+        }
+    }
+    
+    var userGender: String {
+        get {
+            return _userGender!
+        }
+        set {
+            _userGender = newValue
+        }
+    }
+    
+    var userPhone: String {
+        get {
+            return _userPhone!
+        }
+        set {
+            _userPhone = newValue
+        }
+    }
+    
+    var userWebsite: String {
+        get {
+            return _userWebsite!
+        }
+        set {
+            _userWebsite = newValue
+        }
+    }
+    
     func toString() {
         print("userName :\(_userName)")
         print("email :\(_email)")
@@ -281,12 +357,12 @@ class User {
             
             let tempUser = User()
             
-            tempUser.userID = item._userid
-            tempUser.userName = item._username
-            tempUser.profilePictureUrl = item._profilePhotoUrl
-            tempUser.name = item._name
+            tempUser.userID = item.userid!
+            tempUser.userName = item.username!
+            tempUser.profilePictureUrl = item.profilePhotoUrl!
+            tempUser.name = item.name!
             
-            User.shared._userFriendList[item._userid] = tempUser
+            User.shared._userFriendList[item.userid!] = tempUser
             
         }
         
@@ -348,14 +424,65 @@ class User {
             
             let tempUser = User()
             
-            tempUser.userID = item._userid
-            tempUser.userName = item._username
-            tempUser.profilePictureUrl = item._profilePhotoUrl
-            tempUser.name = item._name
+            tempUser.userID = item.userid!
+            tempUser.userName = item.username!
+            tempUser.profilePictureUrl = item.profilePhotoUrl!
+            tempUser.name = item.name!
             
             _requestingFriendList.append(tempUser)
             
         }
+        
+    }
+    
+    // set user profile data into singleton object
+    func setUserProfileData(httpRequest : REUserProfile) {
+        
+        print("setUserProfileData starts")
+        
+        httpRequest.userInfo?.displayProperties()
+        
+        if let data = httpRequest.userInfo {
+            
+            _name = data.name!
+            _userName = data.username!
+            _profilePictureUrl = data.profilePhotoUrl!
+            _userBirthday = data.birthday
+            _userGender = data.gender
+            _email = data.email!
+            _userPhone = data.phone
+            _userWebsite = data.website
+            _isUserHasAPrivateAccount = data.isPrivateAccount?.boolValue
+            
+        }
+
+        if let dataRelation = httpRequest.relationCountInfo {
+            
+            _userFollowingCount = dataRelation.followingCount
+            _userFollowerCount = dataRelation.followerCount
+            
+        }
+        
+        
+    }
+    
+    func returnShared() -> User {
+        
+        return User.shared
+        
+    }
+    
+    func displayProperties() {
+        
+        print("takakakakakak")
+        
+        print("name :\(name)")
+        print("userName :\(userName)")
+        print("userWebsite :\(userWebsite)")
+        print("userBirthday :\(userBirthday)")
+        print("email :\(email)")
+        print("userPhone :\(userPhone)")
+        print("userGender :\(userGender)")
         
     }
     

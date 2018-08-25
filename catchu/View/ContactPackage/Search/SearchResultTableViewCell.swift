@@ -15,16 +15,15 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet var searchUserExtraLabel: UILabel!
     @IBOutlet var friendRequestButton: UIButton!
     
-    var isFriendRequestButtonSelected: Bool!
-    
     var searchResultUser = User()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
     
-    @IBAction func requestButtonTapped(_ sender: Any) {
+    func initiateRelationProcess(inputRequestType : RequestType) {
         
         let client = RECatchUMobileAPIClient.default()
         
@@ -33,45 +32,191 @@ class SearchResultTableViewCell: UITableViewCell {
         input?.requesterUserid = User.shared.userID
         input?.requestedUserid = searchResultUser.userID
         
-        if searchResultUser.isUserHasAPrivateAccount {
-            
-            input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.followRequest
-            
-        } else {
-            
-            input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.createFollowDirectly
-            
-        }
+//        switch inputRequestType {
+//        case .delete:
+//
+//            if searchResultUser.isUserHasAFriendRelation {
+//
+//                input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.deleteFollow
+//
+//            } else if searchResultUser.isUserHasPendingFriendRequest {
+//
+//                input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.deletePendingFollowRequest
+//
+//            }
+//
+//        case .create:
+//
+//            if searchResultUser.isUserHasAPrivateAccount {
+//
+//                input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.followRequest
+//
+//            } else {
+//
+//                input?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Friends.createFollowDirectly
+//
+//            }
+//
+//        default:
+//            print("do nothing")
+//            return
+//        }
+        
+        print("input?.requesterUserid : \(input?.requesterUserid)")
+        print("input?.requestedUserid : \(input?.requestedUserid)")
         
         client.requestProcessPost(body: input!).continueWith { (taskResponse) -> Any? in
             
             print("taskresponse :\(taskResponse)")
+            print("taskResponse.result?.error?.code?.boolValue :\(taskResponse.result?.error?.code?.boolValue)")
+            print("taskResponse.result?.error?.code? :\(taskResponse.result?.error?.code)")
             
             if (taskResponse.result?.error?.code?.boolValue)! {
                 
-                DispatchQueue.main.async {
-                    
-                    UIView.transition(with: self.friendRequestButton, duration: 0.3, options: .allowAnimatedContent, animations: {
-
-                        if self.searchResultUser.isUserHasAPrivateAccount {
-                            self.friendRequestButton.setTitle(LocalizedConstants.Contact.requested, for: .normal)
-                            
-                        } else {
-                            self.friendRequestButton.setTitle(LocalizedConstants.Contact.friends, for: .normal)
-                            
-                        }
-                        
-                        self.blackTones()
-
-                    })
-                    
-                }
+//                DispatchQueue.main.async {
+//                    
+//                    UIView.transition(with: self.friendRequestButton, duration: 0.3, options: .allowAnimatedContent, animations: {
+//                        
+//                        switch inputRequestType {
+//                            
+//                        case .delete:
+//                            self.friendRequestButton.setTitle(LocalizedConstants.Contact.addFriend, for: .normal)
+//                        
+//                        case .create:
+//                            if self.searchResultUser.isUserHasAPrivateAccount {
+//                                self.friendRequestButton.setTitle(LocalizedConstants.Contact.requested, for: .normal)
+//                                
+//                            } else {
+//                                self.friendRequestButton.setTitle(LocalizedConstants.Contact.friends, for: .normal)
+//                                
+//                            }
+//                            
+//                        default :
+//                            print("do nothing")
+//                        }
+//
+//                        self.blackTones()
+//                        
+//                    })
+//                    
+//                }
                 
             }
             
             return nil
             
         }
+        
+    }
+    
+    func returnRequestType() -> RequestType {
+        
+        if searchResultUser.isUserHasAFriendRelation {
+            return RequestType.deleteFollow
+        } else {
+            if searchResultUser.isUserHasPendingFriendRequest {
+                return RequestType.deletePendingFollowRequest
+            } else {
+                if searchResultUser.isUserHasAPrivateAccount {
+                    return RequestType.followRequest
+                } else {
+                    return RequestType.createFollowDirectly
+                }
+            }
+        }
+    }
+    
+    func requestButtonVisualManagementWhileLoadingTableView() {
+        
+        if searchResultUser.isUserHasAFriendRelation {
+            self.friendRequestButton.setTitle(LocalizedConstants.Contact.friends, for: .normal)
+            blackTones()
+        } else if searchResultUser.isUserHasPendingFriendRequest {
+            self.friendRequestButton.setTitle(LocalizedConstants.Contact.requested, for: .normal)
+            blackTones()
+        } else {
+            self.friendRequestButton.setTitle(LocalizedConstants.Contact.addFriend, for: .normal)
+            defaultButtonColors()
+        }
+        
+    }
+    
+    // function below decides button titles after updating nodes in neo4j
+    func requestButtonVisualManagement(httpResult : REFriendRequestList) {
+        
+        if (httpResult.updatedUserRelationInfo?._friendRelation.boolValue)! {
+           
+            UIView.transition(with: self.friendRequestButton, duration: 0.3, options: .allowAnimatedContent, animations: {
+                self.friendRequestButton.setTitle(LocalizedConstants.Contact.friends, for: .normal)
+                self.blackTones()
+            })
+            
+        } else if (httpResult.updatedUserRelationInfo?._pendingFriendRequest.boolValue)! {
+            
+            UIView.transition(with: self.friendRequestButton, duration: 0.3, options: .allowAnimatedContent, animations: {
+                self.friendRequestButton.setTitle(LocalizedConstants.Contact.requested, for: .normal)
+                self.blackTones()
+            })
+
+        } else {
+
+            UIView.transition(with: self.friendRequestButton, duration: 0.3, options: .allowAnimatedContent, animations: {
+                self.friendRequestButton.setTitle(LocalizedConstants.Contact.addFriend, for: .normal)
+                self.defaultButtonColors()
+            })
+            
+        }
+        
+    }
+    
+    func updateUserRelationInfo(httpResult : REFriendRequestList) {
+        
+        print("httpResult.updatedUserRelationInfo?._friendRelation.boolValue : \(httpResult.updatedUserRelationInfo?._friendRelation.boolValue)")
+        print("httpResult.updatedUserRelationInfo?._pendingFriendRequest.boolValue : \(httpResult.updatedUserRelationInfo?._pendingFriendRequest.boolValue)")
+        
+        if let result = httpResult.updatedUserRelationInfo {
+            
+            if let resultFollowRelation = result._friendRelation as? NSNumber {
+                self.searchResultUser.isUserHasAFriendRelation = resultFollowRelation.boolValue
+            }
+            
+            if let resultPendingRequestRelation = result._pendingFriendRequest as? NSNumber {
+                self.searchResultUser.isUserHasPendingFriendRequest = resultPendingRequestRelation.boolValue
+            }
+            
+        }
+        
+    }
+    
+    @IBAction func requestButtonTapped(_ sender: Any) {
+        
+        APIGatewayManager.shared.requstProces(inputRequestType: returnRequestType(), reqester: User.shared.userID, requested: searchResultUser.userID) { (response) in
+            
+            // when httprequest is finished, let's update user cell information
+            if let responseData = response as? REFriendRequestList {
+                
+                DispatchQueue.main.async {
+                    
+                    self.updateUserRelationInfo(httpResult: responseData)
+                    self.requestButtonVisualManagement(httpResult: responseData)
+                    
+                }
+                
+            }
+            
+        }
+        
+//        print("yarroooooooooooo")
+//
+//        if searchResultUser.isUserHasAFriendRelation || searchResultUser.isUserHasPendingFriendRequest{
+//
+//            initiateRelationProcess(inputRequestType: .delete)
+//
+//        } else {
+//
+//            initiateRelationProcess(inputRequestType: .create)
+//
+//        }
         
     }
 
@@ -97,7 +242,6 @@ extension SearchResultTableViewCell {
 
         self.searchUsername.text = Constants.CharacterConstants.SPACE
         self.searchUserExtraLabel.text = Constants.CharacterConstants.SPACE
-        self.isFriendRequestButtonSelected = false
 
         initializeButtonSettings()
 
@@ -150,7 +294,6 @@ extension SearchResultTableViewCell {
     func setInitialButtonSettings() {
 
         friendRequestButton.setTitle(LocalizedConstants.Contact.addFriend, for: .normal)
-        isFriendRequestButtonSelected = false
 
         friendRequestButton.layer.borderWidth = 1.0
         friendRequestButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)

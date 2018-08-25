@@ -60,7 +60,6 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
             }
             
             // first of all initiate cell properties
-            cell.enableRequestButton()
             cell.initializeCellProperties()
             
             print("indexPath.row : \(indexPath.row)")
@@ -72,34 +71,14 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
             cell.searchUsername.text = searchObject.userName
             cell.searchUserExtraLabel.text = searchObject.name
             
-            // check user is a following or not
-            if searchObject.isUserHasAFriendRelation {
-                
-                cell.disableRequestButton()
-                cell.friendMapping()
-                
-            } else {
-                
-                if searchObject.isUserHasPendingFriendRequest {
-                    
-                    cell.disableRequestButton()
-                    cell.requestedMapping()
-                    
-                } else {
-                    
-                    cell.enableRequestButton()
-                    
-                }
-                
-            }
-            
-            
-            
             if searchObject.profilePictureUrl != Constants.CharacterConstants.SPACE {
                 
-            cell.searchUserImage.setImagesFromCacheOrFirebaseForFriend(searchObject.profilePictureUrl)
+                cell.searchUserImage.setImagesFromCacheOrFirebaseForFriend(searchObject.profilePictureUrl)
                 
             }
+            
+            cell.requestButtonVisualManagementWhileLoadingTableView()
+            
             
             return cell
             
@@ -118,8 +97,9 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
 
             //cell.defaultButtonColors()
             
-            let storyboard = UIStoryboard(name: Constants.Storyboard.Name.Profile, bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "totoViewController") as! totoViewController
+            let storyboard = UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ProfileMainViewController") as! ProfileMainViewController
+//            let vc = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
             navigationController?.pushViewController(vc, animated: true)
             
 //            self.tabBarController?.selectedIndex = 3

@@ -318,6 +318,8 @@ extension ContactView {
                     
                     if result {
                         
+                        print("result basarili")
+                        print("SAYILAR : \(Group.shared.groupList.count)")
                         
                         DispatchQueue.main.async {
                             SectionBasedGroup.shared.createInitialLetterBasedGroupDictionary()
@@ -342,13 +344,15 @@ extension ContactView {
     
     func getUserGroupList(completion : @escaping (_ result : Bool) -> Void) {
     
+        print("getUserGroupList starts")
+        
         let client = RECatchUMobileAPIClient.default()
         
         let inputBody = REGroupRequest()
         
-        inputBody?._requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Groups.GET_AUTHENTICATED_USER_GROUP_LIST
-        
-        inputBody?._userid = User.shared.userID
+//        inputBody?._requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Groups.GET_AUTHENTICATED_USER_GROUP_LIST
+//        
+//        inputBody?._userid = User.shared.userID
         
         client.groupsPost(body: inputBody!).continueWith { (taskGroupRequestResult) -> Any? in
             
@@ -361,12 +365,14 @@ extension ContactView {
             } else {
                 
                 //Group.shared.createGroupDictionary(httpRequest: taskGroupRequestResult.result!)
+                print("Group count : \(taskGroupRequestResult.result?.resultArray?.count)")
                 Group.shared.createGroupList(httpRequest: taskGroupRequestResult.result!)
                 
+                completion(true)
                 
             }
             
-            completion(true)
+            //completion(true)
             
             return nil
             

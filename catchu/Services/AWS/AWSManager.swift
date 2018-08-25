@@ -59,6 +59,20 @@ class AWSManager {
         
     }
     
+    func getUserProfileInformation() {
+        
+        APIGatewayManager.shared.getUserProfileInfo(userid: User.shared.userID) { (userProfileData, result) in
+            
+            if result {
+                
+                User.shared.setUserProfileData(httpRequest: userProfileData)
+                
+            }
+            
+        }
+        
+    }
+    
     func checkUserAuthentication(navigationController : UINavigationController, completion : @escaping (_ result : Bool) -> Void) {
         
         if !AWSSignInManager.sharedInstance().isLoggedIn {

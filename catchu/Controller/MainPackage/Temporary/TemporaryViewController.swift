@@ -164,9 +164,9 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
                     
                 }
                 
-                
             }
             
+            print("erkut")
             
         }
         
@@ -268,14 +268,14 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
         
         let client = RECatchUMobileAPIClient.default()
         
-        client.usersGet(userid: User.shared.userID).continueWith { (taskUserProfile) -> Any? in
-            
-            print("error : \(taskUserProfile.error)")
-            print("result : \(taskUserProfile.result)")
-            
-            taskUserProfile.result?.resultArray
-            return nil
-        }
+//        client.usersGet(userid: User.shared.userID).continueWith { (taskUserProfile) -> Any? in
+//
+//            print("error : \(taskUserProfile.error)")
+//            print("result : \(taskUserProfile.result)")
+//
+//            taskUserProfile.result?.resultArray
+//            return nil
+//        }
         
         
     }

@@ -13,6 +13,7 @@ struct LocalizedConstants {
     static let UnknownError = NSLocalizedString("UnknownError", comment: "")
     static let Error = NSLocalizedString("Error", comment: "")
     static let Warning = NSLocalizedString("Warning", comment: "")
+    static let DefaultError = NSLocalizedString("DefaultError", comment: "")
     
     struct Login {
         static let Email           = NSLocalizedString("Email", comment: "")
@@ -123,6 +124,27 @@ struct LocalizedConstants {
         static let addFriend = NSLocalizedString("addFriend", comment: "")
         static let friends = NSLocalizedString("friends", comment: "")
         static let requested = NSLocalizedString("requested", comment: "")
+        
+    }
+    
+    struct PickerControllerStrings {
+        
+        static let chooseProfilePicture = NSLocalizedString("chooseProfilePicture", comment: "")
+        static let takePhoto = NSLocalizedString("takePhoto", comment: "")
+        static let chooseFromLibrary = NSLocalizedString("chooseFromLibrary", comment: "")
+        
+    }
+    
+    struct EditableProfileView {
+        
+        static let Name = NSLocalizedString("Name", comment: "")
+        static let Username = NSLocalizedString("Username", comment: "")
+        static let Website = NSLocalizedString("Website", comment: "")
+        static let Bio = NSLocalizedString("Bio", comment: "")
+        static let Birthday = NSLocalizedString("Birthday", comment: "")
+        static let Email = NSLocalizedString("Email", comment: "")
+        static let Phone = NSLocalizedString("Phone", comment: "")
+        static let Gender = NSLocalizedString("Gender", comment: "")
         
     }
     

@@ -20,7 +20,7 @@ import AWSCore
 @objcMembers
 public class RESearchResult : AWSModel {
     
-    var error: RESearchResult_error?
+    var error: REError?
     var resultArray: [RESearchResult_resultArray_item]?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
@@ -38,8 +38,6 @@ public class RESearchResult : AWSModel {
 	}
     
     func displayProperties() {
-        
-        error?.displayProperties()
         
         for item in resultArray! {
             

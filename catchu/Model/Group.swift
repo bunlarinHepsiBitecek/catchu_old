@@ -151,6 +151,10 @@ class Group {
             
         }
         
+        for item in _groupList {
+            print("Group item :\(item._groupName)")
+        }
+        
         //SectionBasedGroup.shared.createInitialLetterBasedGroupDictionary()
         
     }

@@ -20,31 +20,29 @@ import AWSCore
 @objcMembers
 public class REUserProfile : AWSModel {
     
-    var error: REUserProfile_error?
-    var resultArray: [REUserProfile_resultArray_item]?
+    var error: REError?
+    var userInfo: REUserProfileProperties?
+    var relationCountInfo: REUserProfile_relationCountInfo?
+    var requestType: String?
     
-   	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
-		var params:[AnyHashable : Any] = [:]
-		params["error"] = "error"
-		params["resultArray"] = "resultArray"
-		
+    public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
+        var params:[AnyHashable : Any] = [:]
+        params["error"] = "error"
+        params["userInfo"] = "userInfo"
+        params["relationCountInfo"] = "relationCountInfo"
+        params["requestType"] = "requestType"
+        
         return params
-	}
-	class func errorJSONTransformer() -> ValueTransformer{
-	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REUserProfile_error.self);
-	}
-	class func resultArrayJSONTransformer() -> ValueTransformer{
-		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REUserProfile_resultArray_item.self);
-	}
+    }
     
-    func display() {
-        
-        for item in resultArray! {
-            
-            item.display()
-            
-        }
-        
+    class func errorJSONTransformer() -> ValueTransformer{
+        return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REError.self);
+    }
+    class func userInfoJSONTransformer() -> ValueTransformer{
+        return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REUserProfileProperties.self);
+    }
+    class func relationCountInfoJSONTransformer() -> ValueTransformer{
+        return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REUserProfile_relationCountInfo.self);
     }
     
 }

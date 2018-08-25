@@ -24,6 +24,7 @@
 "EmptyEmail"      = "Email boş olamaz";
 "EmptyPassword"   = "Şifre boş olamaz";
 "PasswordResetMailSend" = "Şifre resetleme linki mailinize gönderildi";
+"DefaultError" = "Uppsss, lutfen yeniden deneyiniz 😜";
 
 // Error explanation retrieved from Firebase.AuthErrorCode
 "accountExistsWithDifferentCredential" = "Kullanıcı hesabı farklı kimlik bilgileri ile kayıtlı";
@@ -59,6 +60,20 @@
 "friends" = "Arkadaşın";
 "requested" = "İstek Gönderildi";
 
+// picker controller strings
+"chooseProfilePicture" = "Profile Resmi Seçiniz";
+"takePhoto" = "Resim Seç";
+"chooseFromLibrary" = "Galeriden Seç";
+
+// Editable profile view
+"Name" = "İsim";
+"Username" = "Kullanıcı Adı";
+"Website" = "Website";
+"Bio" = "Biyografi";
+"Birthday" = "Doğum Tarihi";
+"Email" = "Email";
+"Phone" = "Telefon";
+"Gender" = "Cinsiyet";
 
 
 

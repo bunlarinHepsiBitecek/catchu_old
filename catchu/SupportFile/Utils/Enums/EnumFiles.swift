@@ -28,3 +28,35 @@ enum EnumContainerView {
     case containerViewGroup
     
 }
+
+enum RequestType : String {
+    
+    case followRequest = "followRequest"
+    case acceptFollowRequest = "acceptRequest"
+    case getRequestingFollowList = "requestingFollowList"
+    case createFollowDirectly = "createFollowDirectly"
+    case deleteFollow = "deleteFollow"
+    case deletePendingFollowRequest = "deletePendingFollowRequest"
+    case defaultRequest = "Nothing"
+    case user_profile_update = "USER_PROFILE_UPDATE"
+ 
+}
+
+enum CallerViewController {
+    
+    case EditProfile4View
+    case Profile4ViewController
+}
+
+enum ButtonChoosen {
+    case selected
+    case deselected
+}
+
+enum PermissionFLows {
+    case camera
+    case photoLibrary
+    case cameraUnathorized
+    case photoLibraryUnAuthorized
+}
+

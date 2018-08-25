@@ -23,6 +23,7 @@ struct Constants {
         static let INTEGER_ZERO: Int   = 0
         static let INTEGER_ONE : Int = 1
         static let INTEGER_TWO : Int = 2
+        static let INTEGER_FOUR : Int = 4
         static let DOUBLE_ZERO: Double = 0.0
         static let FLOAT_ZERO: Float   = 0.0
         
@@ -168,6 +169,16 @@ struct Constants {
         struct CollectionView {
             
             static let collectionViewCellFriend: String = "collectionViewCellFriend"
+            static let collectionViewCellProfileView: String = "collectionViewCellProfileView"
+            static let collectionViewCellProfileViewChoise: String = "collectionViewCellProfileViewChoise"
+            static let collectionViewDataPageCell1: String = "dataPageCell1"
+            static let collectionViewDataPageCell2: String = "dataPageCell2"
+            static let collectionViewDataPageCell3: String = "dataPageCell3"
+            static let collectionViewDataPageCell4: String = "dataPageCell4"
+            static let collectionViewDataItemCell1: String = "itemCell1"
+            static let collectionViewDataItemCell2: String = "itemCell2"
+            static let collectionViewDataItemCell3: String = "itemCell3"
+            static let collectionViewDataItemCell4: String = "itemCell4"
             
         }
         
@@ -177,6 +188,9 @@ struct Constants {
             static let tableViewCellGroup: String = "tableViewCellGroup"
             static let tableViewCellSearchResult: String = "tableViewCellSearchResult"
             static let tableViewCellSearchProcess: String = "tableViewCellSearchProcess"
+            static let tableViewCellProfileView: String = "tableViewCellProfileView"
+            static let tableViewCellProfileViewChoise: String = "tableViewCellProfileViewChoise"
+            
             
         }
         
@@ -216,6 +230,8 @@ struct Constants {
                 static let acceptRequest : String = "acceptRequest"
                 static let requestingFollowList : String = "requestingFollowList"
                 static let createFollowDirectly : String = "createFollowDirectly"
+                static let deleteFollow : String = "deleteFollow"
+                static let deletePendingFollowRequest : String = "deletePendingFollowRequest"
             }
             
             struct Groups {

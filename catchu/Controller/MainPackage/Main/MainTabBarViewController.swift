@@ -13,9 +13,13 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.selectedIndex = 1
+        self.selectedIndex = 3
         
         self.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
+        
+        if let vc = self.selectedViewController as? Profile4ViewController {
+            vc.referenceForMainTabBarController = self
+        }
         
     }
     
@@ -31,5 +35,7 @@ class MainTabBarViewController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 }

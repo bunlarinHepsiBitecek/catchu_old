@@ -8,16 +8,24 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet var profileView: ProfileView!
+    @IBOutlet var dataView: DataView!
+    @IBOutlet var firstChildData: FirstChildDataView!
+    @IBOutlet var secondChildData: SecondChildDataView!
+    
+    var child = DataView()
+    
+    var views = [UIView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dataView.master = self
 
-        prepareViewLoadProcess()
-        
-        
+        self.view.addSubview(dataView)
+        self.views.append(firstChildData)
+        self.views.append(secondChildData)
         
     }
 
@@ -26,16 +34,20 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func blurEffect() {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
         
+        cell.contentView.addSubview(dataView)
+        
+        return cell
         
     }
+    
     
 
 
