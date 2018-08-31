@@ -52,7 +52,6 @@
 		45FEC2A0211AFCDD00B01B8F /* REAWSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC29F211AFCDD00B01B8F /* REAWSManager.swift */; };
 		45FEC2A2211D863C00B01B8F /* RECatchUMobileAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC2A1211D863C00B01B8F /* RECatchUMobileAPIClient.swift */; };
 		45FEC2B7211D865000B01B8F /* REShareResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC2A3211D864600B01B8F /* REShareResponse.swift */; };
-		45FEC2B8211D865000B01B8F /* RECommonS3BucketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC2A4211D864700B01B8F /* RECommonS3BucketResult.swift */; };
 		45FEC2B9211D865000B01B8F /* RESearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC2A5211D864700B01B8F /* RESearchResult.swift */; };
 		45FEC2BA211D865000B01B8F /* RESearchResult_resultArray_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC2A6211D864800B01B8F /* RESearchResult_resultArray_item.swift */; };
 		45FEC2BB211D865000B01B8F /* REGroupRequest_groupParticipantArray_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FEC2A7211D864800B01B8F /* REGroupRequest_groupParticipantArray_item.swift */; };
@@ -198,7 +197,6 @@
 		45FEC29F211AFCDD00B01B8F /* REAWSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REAWSManager.swift; sourceTree = "<group>"; };
 		45FEC2A1211D863C00B01B8F /* RECatchUMobileAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RECatchUMobileAPIClient.swift; sourceTree = "<group>"; };
 		45FEC2A3211D864600B01B8F /* REShareResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REShareResponse.swift; sourceTree = "<group>"; };
-		45FEC2A4211D864700B01B8F /* RECommonS3BucketResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RECommonS3BucketResult.swift; sourceTree = "<group>"; };
 		45FEC2A5211D864700B01B8F /* RESearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESearchResult.swift; sourceTree = "<group>"; };
 		45FEC2A6211D864800B01B8F /* RESearchResult_resultArray_item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESearchResult_resultArray_item.swift; sourceTree = "<group>"; };
 		45FEC2A7211D864800B01B8F /* REGroupRequest_groupParticipantArray_item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REGroupRequest_groupParticipantArray_item.swift; sourceTree = "<group>"; };
@@ -636,7 +634,6 @@
 			isa = PBXGroup;
 			children = (
 				45FEC2D9211D87F000B01B8F /* AWSManager.swift */,
-				45FEC2A4211D864700B01B8F /* RECommonS3BucketResult.swift */,
 				45FEC2AD211D864B00B01B8F /* REError.swift */,
 				45FEC2AC211D864B00B01B8F /* REFriendList.swift */,
 				45FEC2B3211D864E00B01B8F /* REFriendRequest.swift */,
@@ -1161,7 +1158,6 @@
 				A721C0052117AF560037A62D /* GroupTableViewCell.swift in Sources */,
 				452001CD20CC253500C1ED22 /* ShareView.swift in Sources */,
 				4564E47820BB1F45003B0D16 /* FirebaseManager.swift in Sources */,
-				45FEC2B8211D865000B01B8F /* RECommonS3BucketResult.swift in Sources */,
 				4564E47A20BBBF4E003B0D16 /* LoaderControl.swift in Sources */,
 				45356B2420BDF34D00E0733F /* ExtensionRegisterController.swift in Sources */,
 				45FEC2C1211D865000B01B8F /* REError.swift in Sources */,
