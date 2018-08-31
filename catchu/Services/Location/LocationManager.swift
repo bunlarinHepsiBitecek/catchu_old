@@ -69,7 +69,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.startUpdatingLocation()
         }
-        
     }
     
     func stopUpdateLocation() {
@@ -88,7 +87,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Remzi didUpdateLocations :\(locations.last)")
+        print("Remzi didUpdateLocations :\(String(describing: locations.last))")
         
         guard let location = locations.last  else {
             return
@@ -140,7 +139,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                                 
                                 print("share item.key : \(item.key)")
                                 print("share item.value.imageUrl : \(item.value.imageUrl)")
-                                print("share item.value.imageUrlSmall : \(item.value.imageUrlSmall)")
                                 print("share item.value.text : \(item.value.text)")
                                 
                                 
@@ -151,7 +149,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                             
                             if Share.shared.shareQueryResultDictionary.count > 0 {
                             
-                                Share.shared.tempImageView.getImageFromFirebaseStorage(url: (Share.shared.shareQueryResultDictionary.first?.value.imageUrlSmall)!, completion: { (result) in
+                                Share.shared.tempImageView.getImageFromFirebaseStorage(url: (Share.shared.shareQueryResultDictionary.first?.value.text)!, completion: { (result) in
                                     
                                     if result {
                                     

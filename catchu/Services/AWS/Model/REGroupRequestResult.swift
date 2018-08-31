@@ -20,25 +20,25 @@ import AWSCore
 @objcMembers
 public class REGroupRequestResult : AWSModel {
     
-    var error: REGroupRequestResult_error?
+    var error: REError?
     var resultArray: [REGroupRequestResult_resultArray_item]?
-    var resultArrayParticipantList: [REGroupRequestResult_resultArrayParticipantList_item]?
+    var resultArrayParticipantList: [REError]?
     
-    public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
-        var params:[AnyHashable : Any] = [:]
-        params["error"] = "error"
-        params["resultArray"] = "resultArray"
-        params["resultArrayParticipantList"] = "resultArrayParticipantList"
-        
+   	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
+		var params:[AnyHashable : Any] = [:]
+		params["error"] = "error"
+		params["resultArray"] = "resultArray"
+		params["resultArrayParticipantList"] = "resultArrayParticipantList"
+		
         return params
-    }
-    class func errorJSONTransformer() -> ValueTransformer{
-        return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REGroupRequestResult_error.self);
-    }
-    class func resultArrayJSONTransformer() -> ValueTransformer{
-        return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REGroupRequestResult_resultArray_item.self);
-    }
-    class func resultArrayParticipantListJSONTransformer() -> ValueTransformer{
-        return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REGroupRequestResult_resultArrayParticipantList_item.self);
-    }
+	}
+	class func errorJSONTransformer() -> ValueTransformer{
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REError.self);
+	}
+	class func resultArrayJSONTransformer() -> ValueTransformer{
+		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REGroupRequestResult_resultArray_item.self);
+	}
+	class func resultArrayParticipantListJSONTransformer() -> ValueTransformer{
+		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REError.self);
+	}
 }

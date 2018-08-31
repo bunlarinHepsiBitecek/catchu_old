@@ -33,13 +33,13 @@ class ShareView: UIView {
     
     private func accessPhotos() {
         MediaLibraryManager.shared.loadPhotos { (assets) in
+
             if assets.count > 0 {
                 self.photos = assets
                 self.collectionView.delegate = self
                 self.collectionView.dataSource = self
                 self.collectionView.reloadData()
-            }
-        }
+            }        }
     }
     
     // MARK: selected first image
@@ -172,7 +172,8 @@ extension ShareView: UINavigationControllerDelegate, UIImagePickerControllerDele
 
 // MARK:
 extension ShareView {
-    func populateShareViewData() {
+    
+    func populateShareViewData_Old() {
         if (self.textField.text?.isEmpty)! && self.selectedCell.count == 0 {
             AlertViewManager.shared.createAlert_2(title: LocalizedConstants.Share.MissingData, message: LocalizedConstants.Share.NoShareData, preferredStyle: .alert, actionTitle: LocalizedConstants.Location.Ok, actionStyle: .default, selfDismiss: true, seconds: 3, completionHandler: nil)
             return
@@ -180,7 +181,7 @@ extension ShareView {
         
         Share.shared.text = self.textField.text ?? Constants.CharacterConstants.SPACE
         Share.shared.location = LocationManager.shared.currentLocation
-        Share.shared.shareId = UUID().uuidString
+//        Share.shared.shareId = UUID().uuidString
         
         if selectedCell.count > 0 {
             let cell: ShareCollectionViewCell = collectionView.cellForItem(at: selectedCell) as! ShareCollectionViewCell
@@ -188,7 +189,6 @@ extension ShareView {
             // MARK: for Small Image
             Share.shared.imageSmall = cell.originalImageSmall
             FirebaseManager.shared.uploadImages(image: Share.shared.imageSmall) { (imageUrl) in
-                Share.shared.imageUrlSmall = imageUrl.absoluteString
                 
                 // MARK: for orginal Image
                 Share.shared.image = cell.originalImage
@@ -207,6 +207,30 @@ extension ShareView {
         let selectedFriends = User.shared.sortedFriendArray
         CloudFunctionsManager.shared.createSharedModel()
         FirebaseManager.shared.createGeofireData(selectedUserArray: selectedFriends)
+    }
+    
+    
+    
+    func populateShareViewData() {
+        if (self.textField.text?.isEmpty)! && self.selectedCell.count == 0 {
+            AlertViewManager.shared.createAlert_2(title: LocalizedConstants.Share.MissingData, message: LocalizedConstants.Share.NoShareData, preferredStyle: .alert, actionTitle: LocalizedConstants.Location.Ok, actionStyle: .default, selfDismiss: true, seconds: 3, completionHandler: nil)
+            return
+        }
+        
+        Share.shared.imageUrl = Constants.CharacterConstants.SPACE
+        Share.shared.text = self.textField.text ?? Constants.CharacterConstants.SPACE
+        Share.shared.location = LocationManager.shared.currentLocation
+        
+        var imageExist = false
+        if selectedCell.count > 0 {
+            let cell: ShareCollectionViewCell = collectionView.cellForItem(at: selectedCell) as! ShareCollectionViewCell
+            
+            Share.shared.image = cell.originalImage
+            imageExist = true
+        }
+        
+        REAWSManager.shared.shareData(imageExist: imageExist)
+        
     }
 }
 

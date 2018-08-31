@@ -273,7 +273,7 @@ class TemporaryViewController: UIViewController, UNUserNotificationCenterDelegat
             print("error : \(taskUserProfile.error)")
             print("result : \(taskUserProfile.result)")
             
-            taskUserProfile.result?.resultArray
+            taskUserProfile.result?.userInfo
             return nil
         }
         

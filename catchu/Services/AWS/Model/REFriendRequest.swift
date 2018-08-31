@@ -17,17 +17,16 @@
 import Foundation
 import AWSCore
 
-// bunu yazmassan request body lerde event.body boş gidiyor
 @objcMembers
 public class REFriendRequest : AWSModel {
     
+    var requestType: String?
     var requesterUserid: String?
     var requestedUserid: String?
-    var requestType: String?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
 		var params:[AnyHashable : Any] = [:]
-        params["requestType"] = "requestType"
+		params["requestType"] = "requestType"
 		params["requesterUserid"] = "requesterUserid"
 		params["requestedUserid"] = "requestedUserid"
 		

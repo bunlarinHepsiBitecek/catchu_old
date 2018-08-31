@@ -23,8 +23,31 @@ enum SegmentedButtonChoise {
 }
 
 enum EnumContainerView {
-    
     case containerViewFriend
     case containerViewGroup
+}
+
+enum PrivacyType: String {
+    case everyone
+    case allFollowers
+    case custom
+    case myself
     
+    public var stringValue: String {
+        switch self {
+        case .everyone:
+            return "EVERYONE"
+        case .allFollowers:
+            return "ALL_FOLLOWERS"
+        case .custom:
+            return "CUSTOM"
+        case .myself:
+            return "SELF"
+        }
+    }
+}
+
+enum SchemeType: String {
+    case hash
+    case mention
 }

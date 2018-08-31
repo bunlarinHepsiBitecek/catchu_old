@@ -20,7 +20,7 @@ import AWSCore
 @objcMembers
 public class RESearchResult : AWSModel {
     
-    var error: RESearchResult_error?
+    var error: REError?
     var resultArray: [RESearchResult_resultArray_item]?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
@@ -31,22 +31,9 @@ public class RESearchResult : AWSModel {
         return params
 	}
 	class func errorJSONTransformer() -> ValueTransformer{
-	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: RESearchResult_error.self);
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REError.self);
 	}
 	class func resultArrayJSONTransformer() -> ValueTransformer{
 		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: RESearchResult_resultArray_item.self);
 	}
-    
-    func displayProperties() {
-        
-        error?.displayProperties()
-        
-        for item in resultArray! {
-            
-            item.displayProperties()
-            
-        }
-        
-    }
-    
 }

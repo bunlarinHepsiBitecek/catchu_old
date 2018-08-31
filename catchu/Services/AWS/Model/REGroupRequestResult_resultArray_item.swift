@@ -24,51 +24,16 @@ public class REGroupRequestResult_resultArray_item : AWSModel {
     var name: String?
     var groupPhotoUrl: String?
     var createAt: String?
+    var groupAdmin: String?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
 		var params:[AnyHashable : Any] = [:]
 		params["groupid"] = "groupid"
 		params["name"] = "name"
-        params["groupPhotoUrl"] = "groupPhotoUrl"
+		params["groupPhotoUrl"] = "groupPhotoUrl"
 		params["createAt"] = "createAt"
+		params["groupAdmin"] = "groupAdmin"
 		
         return params
 	}
-    
-    var _groupid: String {
-        get {
-            return groupid!
-        }
-        set {
-            groupid = newValue
-        }
-    }
-    
-    var _name: String {
-        get {
-            return name!
-        }
-        set {
-            name = newValue
-        }
-    }
-    
-    var _createAt: String {
-        get {
-            return createAt!
-        }
-        set {
-            createAt = newValue
-        }
-    }
-    
-    var _groupPhotoUrl: String {
-        get {
-            return groupPhotoUrl!
-        }
-        set {
-            groupPhotoUrl = newValue
-        }
-    }
-    
 }

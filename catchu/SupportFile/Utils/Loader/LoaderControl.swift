@@ -1,5 +1,5 @@
 //
-//  LoaderControl.swift
+//  LoaderController.swift
 //  catchu
 //
 //  Created by Remzi YILDIRIM on 5/28/18.
@@ -16,7 +16,7 @@ class LoaderController: NSObject {
     // MARK: between 0.0 - 1.0
     var progressCounter: Double = 0 {
         didSet {
-            let progress = Float(progressCounter) / 100
+            let progress = Float(progressCounter)
             progressView.setProgress(progress, animated: progressCounter != 0)
         }
     }

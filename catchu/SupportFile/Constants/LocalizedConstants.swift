@@ -14,6 +14,11 @@ struct LocalizedConstants {
     static let Error = NSLocalizedString("Error", comment: "")
     static let Warning = NSLocalizedString("Warning", comment: "")
     
+    struct Network {
+        static let NoInternetConnection        = NSLocalizedString("NoInternetConnection", comment: "")
+        static let NoInternetConnectionMessage = NSLocalizedString("NoInternetConnectionMessage", comment: "")
+    }
+    
     struct Login {
         static let Email           = NSLocalizedString("Email", comment: "")
         static let Password        = NSLocalizedString("Password", comment: "")
@@ -107,9 +112,13 @@ struct LocalizedConstants {
     }
     
     struct Share {
-        static let MissingData                 = NSLocalizedString("MissingData", comment: "")
-        static let NoShareData                 = NSLocalizedString("NoShareData", comment: "")
-        static let Ok                          = NSLocalizedString("OK", comment: "")
+        static let MissingData = NSLocalizedString("MissingData", comment: "")
+        static let NoShareData = NSLocalizedString("NoShareData", comment: "")
+        static let Ok = NSLocalizedString("OK", comment: "")
+    }
+    
+    struct Feed {
+        static let Loading = NSLocalizedString("Loading", comment: "")
     }
     
     struct Notification {

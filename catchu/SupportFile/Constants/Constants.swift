@@ -24,6 +24,7 @@ struct Constants {
         static let INTEGER_ONE : Int = 1
         static let INTEGER_TWO : Int = 2
         static let DOUBLE_ZERO: Double = 0.0
+        static let DOUBLE_ONE: Double = 1.0
         static let FLOAT_ZERO: Float   = 0.0
         
         struct GeoFireUnits {
@@ -64,7 +65,8 @@ struct Constants {
     
     struct Map {
         static let DistanceFilter: Double = 10.0
-        static let ZoomDegree: Double       = 0.02
+        static let ZoomDegree: Double     = 0.02
+        static let Radius: Double         = 0.10
     }
     struct Segue {
         static let RegisterView = "segueToRegisterView"

@@ -27,5 +27,6 @@ target 'catchu' do
   pod 'AWSGoogleSignIn', '~> 2.6.13'
   
   pod 'AWSAPIGateway'
+  pod 'AWSS3'
   
 end

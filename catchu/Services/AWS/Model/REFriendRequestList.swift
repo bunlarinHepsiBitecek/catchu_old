@@ -20,31 +20,25 @@ import AWSCore
 @objcMembers
 public class REFriendRequestList : AWSModel {
     
-    var error: REFriendRequestList_error?
-    var resultArray: [REFriendRequestList_resultArray_item]?
+    var error: REError?
+    var updatedUserRelationInfo: RERelationProperties?
+    var resultArray: [REUserProfileProperties]?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
 		var params:[AnyHashable : Any] = [:]
 		params["error"] = "error"
+		params["updatedUserRelationInfo"] = "updatedUserRelationInfo"
 		params["resultArray"] = "resultArray"
 		
         return params
 	}
 	class func errorJSONTransformer() -> ValueTransformer{
-	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REFriendRequestList_error.self);
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REError.self);
+	}
+	class func updatedUserRelationInfoJSONTransformer() -> ValueTransformer{
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: RERelationProperties.self);
 	}
 	class func resultArrayJSONTransformer() -> ValueTransformer{
-		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REFriendRequestList_resultArray_item.self);
+		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REUserProfileProperties.self);
 	}
-    
-    func display() {
-        
-        for item in resultArray! {
-            
-            item.displayProperties()
-            
-        }
-        
-    }
-    
 }

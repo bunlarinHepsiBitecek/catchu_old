@@ -20,33 +20,30 @@ import AWSCore
 @objcMembers
 public class REGroupRequest : AWSModel {
     
+    var error: REError?
     var requestType: String?
     var userid: String?
+    var groupid: String?
+    var groupName: String?
+    var groupPhotoUrl: String?
+    var groupParticipantArray: [REGroupRequest_groupParticipantArray_item]?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
 		var params:[AnyHashable : Any] = [:]
+		params["error"] = "error"
 		params["requestType"] = "requestType"
 		params["userid"] = "userid"
+		params["groupid"] = "groupid"
+		params["groupName"] = "groupName"
+		params["groupPhotoUrl"] = "groupPhotoUrl"
+		params["groupParticipantArray"] = "groupParticipantArray"
 		
         return params
 	}
-    
-    var _requestType: String {
-        get {
-            return requestType!
-        }
-        set {
-            requestType = newValue
-        }
-    }
-    
-    var _userid: String {
-        get {
-            return userid!
-        }
-        set {
-            userid = newValue
-        }
-    }
-    
+	class func errorJSONTransformer() -> ValueTransformer{
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REError.self);
+	}
+	class func groupParticipantArrayJSONTransformer() -> ValueTransformer{
+		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REGroupRequest_groupParticipantArray_item.self);
+	}
 }

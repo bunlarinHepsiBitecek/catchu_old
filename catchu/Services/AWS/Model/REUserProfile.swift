@@ -20,31 +20,20 @@ import AWSCore
 @objcMembers
 public class REUserProfile : AWSModel {
     
-    var error: REUserProfile_error?
-    var resultArray: [REUserProfile_resultArray_item]?
+    var error: REError?
+    var userInfo: REUserProfileProperties?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
 		var params:[AnyHashable : Any] = [:]
 		params["error"] = "error"
-		params["resultArray"] = "resultArray"
+		params["userInfo"] = "userInfo"
 		
         return params
 	}
 	class func errorJSONTransformer() -> ValueTransformer{
-	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REUserProfile_error.self);
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REError.self);
 	}
-	class func resultArrayJSONTransformer() -> ValueTransformer{
-		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REUserProfile_resultArray_item.self);
+	class func userInfoJSONTransformer() -> ValueTransformer{
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REUserProfileProperties.self);
 	}
-    
-    func display() {
-        
-        for item in resultArray! {
-            
-            item.display()
-            
-        }
-        
-    }
-    
 }

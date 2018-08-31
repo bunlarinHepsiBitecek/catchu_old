@@ -346,9 +346,9 @@ extension ContactView {
         
         let inputBody = REGroupRequest()
         
-        inputBody?._requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Groups.GET_AUTHENTICATED_USER_GROUP_LIST
+        inputBody?.requestType = Constants.AwsApiGatewayHttpRequestParameters.RequestOperationTypes.Groups.GET_AUTHENTICATED_USER_GROUP_LIST
         
-        inputBody?._userid = User.shared.userID
+        inputBody?.userid = User.shared.userID
         
         client.groupsPost(body: inputBody!).continueWith { (taskGroupRequestResult) -> Any? in
             

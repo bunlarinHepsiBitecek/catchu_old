@@ -35,89 +35,9 @@ public class RESearchResult_resultArray_item : AWSModel {
 		params["username"] = "username"
 		params["profilePhotoUrl"] = "profilePhotoUrl"
 		params["friendRelation"] = "friendRelation"
-        params["pendingFriendRequest"] = "pendingFriendRequest"
-        params["isPrivateAccount"] = "isPrivateAccount"
+		params["pendingFriendRequest"] = "pendingFriendRequest"
+		params["isPrivateAccount"] = "isPrivateAccount"
 		
         return params
 	}
-    
-    func displayProperties() {
-        
-        print("name : \(self.name)")
-        print("userid :\(self.userid)")
-        print("username : \(self.username)")
-        print("profilePhotoUrl :\(self.profilePhotoUrl)")
-        print("friendRelation :\(self.friendRelation)")
-    }
-    
-    var _name: String {
-        get {
-            return name!
-        }
-        set {
-            name = newValue
-        }
-    }
-    
-    var _userid: String {
-        get {
-            return userid!
-        }
-        set {
-            userid = newValue
-        }
-    }
-    
-    var _username: String {
-        get {
-            return username!
-        }
-        set {
-            username = newValue
-        }
-    }
-    
-    var _profilePhotoUrl: String {
-        get {
-            
-            if let photoUrl = profilePhotoUrl {
-                return photoUrl
-            } else {
-                return Constants.CharacterConstants.SPACE
-            }
-            
-            //return profilePhotoUrl!
-        }
-        set {
-            profilePhotoUrl = newValue
-        }
-    }
-    
-    var _friendRelation: NSNumber {
-        get {
-            return friendRelation!
-        }
-        set {
-            friendRelation = newValue
-        }
-    }
-    
-    var _pendingFriendRequest: NSNumber {
-        get {
-            return pendingFriendRequest!
-        }
-        set {
-            pendingFriendRequest = newValue
-        }
-    }
-    
-    var _isPrivateAccount: NSNumber {
-        get {
-            return isPrivateAccount!
-        }
-        set {
-            isPrivateAccount = newValue
-        }
-    }
-    
 }

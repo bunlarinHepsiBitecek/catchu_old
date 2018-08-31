@@ -20,8 +20,8 @@ import AWSCore
 @objcMembers
 public class REFriendList : AWSModel {
     
-    var error: REFriendList_error?
-    var resultArray: [REFriendList_resultArray_item]?
+    var error: REError?
+    var resultArray: [REUserProfileProperties]?
     
    	public override static func jsonKeyPathsByPropertyKey() -> [AnyHashable : Any]!{
 		var params:[AnyHashable : Any] = [:]
@@ -31,22 +31,9 @@ public class REFriendList : AWSModel {
         return params
 	}
 	class func errorJSONTransformer() -> ValueTransformer{
-	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REFriendList_error.self);
+	    return ValueTransformer.awsmtl_JSONDictionaryTransformer(withModelClass: REError.self);
 	}
 	class func resultArrayJSONTransformer() -> ValueTransformer{
-		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REFriendList_resultArray_item.self);
+		return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REUserProfileProperties.self);
 	}
-    
-    func displayProperties() {
-        
-        error?.displayProperties()
-        
-        for item in resultArray! {
-            
-            item.displayProperties()
-            
-        }
-        
-    }
-    
 }

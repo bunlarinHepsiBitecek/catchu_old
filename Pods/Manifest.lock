@@ -21,6 +21,8 @@ PODS:
     - AWSAuthCore (= 2.6.23)
   - AWSPinpoint (2.6.23):
     - AWSCore (= 2.6.23)
+  - AWSS3 (2.6.23):
+    - AWSCore (= 2.6.23)
   - AWSUserPoolsSignIn (2.6.23):
     - AWSAuthCore (= 2.6.23)
     - AWSCognitoIdentityProvider (= 2.6.23)
@@ -56,13 +58,13 @@ PODS:
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseAuth (5.0.1):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.4):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (5.0.1):
     - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
@@ -77,7 +79,7 @@ PODS:
   - GeoFire (3.0.0):
     - Firebase/Database (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
   - IQKeyboardManagerSwift (6.0.4)
@@ -98,6 +100,7 @@ DEPENDENCIES:
   - AWSGoogleSignIn (~> 2.6.13)
   - AWSMobileClient (~> 2.6.13)
   - AWSPinpoint
+  - AWSS3
   - AWSUserPoolsSignIn (~> 2.6.13)
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -110,39 +113,6 @@ DEPENDENCIES:
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
   - IQKeyboardManagerSwift
   - TwitterKit
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - AWSAPIGateway
-    - AWSAuthCore
-    - AWSAuthUI
-    - AWSCognitoIdentityProvider
-    - AWSCognitoIdentityProviderASF
-    - AWSCore
-    - AWSFacebookSignIn
-    - AWSGoogleSignIn
-    - AWSMobileClient
-    - AWSPinpoint
-    - AWSUserPoolsSignIn
-    - Bolts
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FBSDKShareKit
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseAuth
-    - FirebaseCore
-    - FirebaseDatabase
-    - FirebaseFunctions
-    - FirebaseInstanceID
-    - FirebaseStorage
-    - GoogleToolboxForMac
-    - GTMSessionFetcher
-    - IQKeyboardManagerSwift
-    - leveldb-library
-    - nanopb
-    - TwitterCore
-    - TwitterKit
 
 EXTERNAL SOURCES:
   GeoFire:
@@ -164,6 +134,7 @@ SPEC CHECKSUMS:
   AWSGoogleSignIn: 1856e4f747222217c7639b674862907acb1458e6
   AWSMobileClient: c94ca9856f99e99a4813ebc7f4c19cecce7f06c8
   AWSPinpoint: 198ece283bc4b5b7dc8e08dfb3415b6225203e7f
+  AWSS3: 198942f234628f1ad1c373725d65c33ebfe87af6
   AWSUserPoolsSignIn: a101355358dec050f2ee2e81302e6011e2a95093
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
@@ -186,6 +157,6 @@ SPEC CHECKSUMS:
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 478215fbf1d8a791735d008c0f938c1584e720d7
+PODFILE CHECKSUM: f5f835bb662f632373e452148eec31f1d20bc135
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0

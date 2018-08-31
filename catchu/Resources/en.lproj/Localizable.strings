@@ -18,6 +18,10 @@
 "DontHaveAccount" = "Don't have an account?";
 "Register"        = "Register";
 
+// Internet connectin
+"NoInternetConnection"        = "No Internet Connection";
+"NoInternetConnectionMessage" = "Make sure your device is connected to the internet.";
+
 // Error Message
 "UnknownError"    = "Unknown error occured";
 "InvalidEmail"    = "Invalid email";
@@ -73,6 +77,9 @@
 "addFriend" = "Add Friend";
 "friends" = "Friends";
 "requested" = "Requested";
+
+//Feed
+"Loading" = "Loading...";
 
 
 

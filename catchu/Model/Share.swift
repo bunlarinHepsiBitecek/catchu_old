@@ -21,12 +21,16 @@ class Share {
     private var _textScreenShot : UIImage
     private var _videoScreenShot : UIImage
     private var _location : CLLocation
-    private var _shareId : String
+    private var _shareid : String
+    private var _privacyType: String
+    private var _distance: Double
+    private var _user: User
     
-    private var _imageUrl : String
+    var imageUrl : String?
     private var _imageUrlSmall : String
     private var _textScreenShotUrl : String
     private var _videoScreenShotUrl : String
+    var videoUrl: String?
     
     private var _sharedDataDictionary : Dictionary<String, String> = [:]
     private var _shareQueryResultDictionary : Dictionary<String, Share> = [:]
@@ -39,15 +43,13 @@ class Share {
         _textScreenShot = UIImage()
         _videoScreenShot = UIImage()
         _location = CLLocation()
-        _shareId = Constants.CharacterConstants.SPACE
-        _imageUrl = Constants.CharacterConstants.SPACE
+        _shareid = Constants.CharacterConstants.SPACE
         _imageUrlSmall = Constants.CharacterConstants.SPACE
         _textScreenShotUrl = Constants.CharacterConstants.SPACE
         _videoScreenShotUrl = Constants.CharacterConstants.SPACE
-        
-//        _imageUrl = URL(string: Constants.CharacterConstants.SPACE)!
-//        _textScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
-//        _videoScreenShotUrl = URL(string: Constants.CharacterConstants.SPACE)!
+        _privacyType = Constants.CharacterConstants.SPACE
+        _distance = Constants.NumericConstants.DOUBLE_ZERO
+        _user = User()
     }
     
     var image : UIImage {
@@ -58,6 +60,7 @@ class Share {
             _image = newValue
         }
     }
+    
     var imageSmall : UIImage {
         get {
             return self._imageSmall
@@ -105,21 +108,64 @@ class Share {
     
     var shareId: String {
         get {
-            return _shareId
+            return _shareid
         }
         set {
-            _shareId = newValue
+            _shareid = newValue
+        }
+    }
+    var privacyType: String {
+        get {
+            return _privacyType
+        }
+        set {
+            _privacyType = newValue
         }
     }
     
-    var imageUrl: String {
+    var distance: Double {
         get {
-            return self._imageUrl
+            return _distance
         }
         set {
-            self._imageUrl = newValue
+            _distance = newValue
         }
     }
+    
+    var user: User {
+        get {
+            return self._user
+        }
+        set {
+            self._user = newValue
+        }
+    }
+    
+    
+    // global functions
+    class func convert(shareDTO: REShare?) -> Share {
+        
+        let share = Share()
+        
+        guard let shareDTO = shareDTO else {return share}
+        
+        share.shareId = shareDTO.shareid ?? Constants.CharacterConstants.SPACE
+        share.imageUrl = shareDTO.imageUrl ?? Constants.CharacterConstants.SPACE
+        share.text = shareDTO.text ?? Constants.CharacterConstants.SPACE
+        share.privacyType = shareDTO.privacyType ?? Constants.CharacterConstants.SPACE
+        share.distance = shareDTO.distance?.doubleValue ?? Constants.NumericConstants.DOUBLE_ZERO
+        
+        share.user.userID = shareDTO.user?.userid ?? Constants.CharacterConstants.SPACE
+        share.user.name = shareDTO.user?.name ?? Constants.CharacterConstants.SPACE
+        share.user.userName = shareDTO.user?.username ?? Constants.CharacterConstants.SPACE
+        share.user.profilePictureUrl = shareDTO.user?.profilePhotoUrl ?? Constants.CharacterConstants.SPACE
+        
+        return share
+    }
+    
+    
+    
+    
     
     var imageUrlSmall: String {
         get {
@@ -163,45 +209,9 @@ class Share {
     
     func parseShareData(dataDictionary : [String : AnyObject]) {
         
-        self._imageUrl = dataDictionary["imageUrl"] as? String ?? Constants.CharacterConstants.SPACE
-        self._imageUrlSmall = dataDictionary["imageUrlSmall"] as? String ?? Constants.CharacterConstants.SPACE
-        self._text = dataDictionary["text"] as? String ?? Constants.CharacterConstants.SPACE
-        
     }
     
     func createSharedDataDictionary() -> Dictionary<String, String> {
-        
-        if !self._shareId.isEmpty {
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.shareId, value: _shareId)
-        }
-        
-        if !self._imageUrl.isEmpty {
-            
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.imageUrl, value: self._imageUrl)
-            
-        }
-        
-        if !self._imageUrlSmall.isEmpty {
-            
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.imageUrlSmall, value: self._imageUrlSmall)
-            
-        }
-        
-        if !self._textScreenShotUrl.isEmpty {
-            
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.textScreenShotUrl, value: self._textScreenShotUrl)
-            
-        }
-        
-        if !self._videoScreenShotUrl.isEmpty {
-            
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.videoScreenShotUrl, value: self._videoScreenShotUrl)
-            
-        }
-        
-        if !self._text.isEmpty {
-            appendElementIntoDictionary(key: Constants.FirebaseModelConstants.ShareModelConstants.Text, value: self._text)
-        }
         
         return _sharedDataDictionary
         

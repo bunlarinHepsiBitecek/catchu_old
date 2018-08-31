@@ -13,7 +13,8 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.selectedIndex = 1
+        // MARK: when open SafeLayout cannot working, FeedViewController crash
+//        self.selectedIndex = 0
         
         self.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
         

@@ -275,18 +275,16 @@ class User {
     
     func appendElementIntoFriendListAWS(httpResult : REFriendList) {
         
-        httpResult.displayProperties()
-        
         for item in httpResult.resultArray! {
             
             let tempUser = User()
             
-            tempUser.userID = item._userid
-            tempUser.userName = item._username
-            tempUser.profilePictureUrl = item._profilePhotoUrl
-            tempUser.name = item._name
+            tempUser.userID = item.userid!
+            tempUser.userName = item.username!
+            tempUser.profilePictureUrl = item.profilePhotoUrl!
+            tempUser.name = item.name!
             
-            User.shared._userFriendList[item._userid] = tempUser
+            User.shared._userFriendList[item.userid!] = tempUser
             
         }
         
@@ -348,10 +346,10 @@ class User {
             
             let tempUser = User()
             
-            tempUser.userID = item._userid
-            tempUser.userName = item._username
-            tempUser.profilePictureUrl = item._profilePhotoUrl
-            tempUser.name = item._name
+            tempUser.userID = item.userid!
+            tempUser.userName = item.username!
+            tempUser.profilePictureUrl = item.profilePhotoUrl!
+            tempUser.name = item.name!
             
             _requestingFriendList.append(tempUser)
             

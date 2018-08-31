@@ -126,11 +126,11 @@ class Group {
             
             let tempGroupObject = Group()
             
-            tempGroupObject.groupID = item._groupid
-            tempGroupObject.groupName = item._name
-            tempGroupObject.groupCreateDate = item._createAt
+            tempGroupObject.groupID = item.groupid!
+            tempGroupObject.groupName = item.name!
+            tempGroupObject.groupCreateDate = item.createAt!
             
-            self.groupDictionary[item._groupid] = tempGroupObject
+            self.groupDictionary[item.groupid!] = tempGroupObject
             
         }
         
@@ -142,10 +142,10 @@ class Group {
             
             let tempGroupObject = Group()
             
-            tempGroupObject.groupID = item._groupid
-            tempGroupObject.groupName = item._name
-            tempGroupObject.groupCreateDate = item._createAt
-            tempGroupObject.groupPictureUrl = item._groupPhotoUrl
+            tempGroupObject.groupID = item.groupid!
+            tempGroupObject.groupName = item.name!
+            tempGroupObject.groupCreateDate = item.createAt!
+            tempGroupObject.groupPictureUrl = item.groupPhotoUrl!
             
             self._groupList.append(tempGroupObject)
             
