@@ -13,7 +13,6 @@
 		451E9EE721369EFE00185925 /* SwipingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E9EE621369EFE00185925 /* SwipingViewModel.swift */; };
 		451E9EEA2136AEF500185925 /* DiscardableImageCacheItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E9EE82136AEF300185925 /* DiscardableImageCacheItem.swift */; };
 		451E9EEB2136AEF500185925 /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E9EE92136AEF400185925 /* CachedImageView.swift */; };
-		451E9EED2136DBD300185925 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = 451E9EEC2136DBD200185925 /* video.mov */; };
 		451E9EF121384C8D00185925 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E9EF021384C8D00185925 /* UITextFieldExtensions.swift */; };
 		452001C820CABFF500C1ED22 /* DropPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452001C720CABFF500C1ED22 /* DropPinViewController.swift */; };
 		452001CA20CBB7AB00C1ED22 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452001C920CBB7AB00C1ED22 /* MapView.swift */; };
@@ -150,7 +149,6 @@
 		451E9EE621369EFE00185925 /* SwipingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingViewModel.swift; sourceTree = "<group>"; };
 		451E9EE82136AEF300185925 /* DiscardableImageCacheItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscardableImageCacheItem.swift; sourceTree = "<group>"; };
 		451E9EE92136AEF400185925 /* CachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
-		451E9EEC2136DBD200185925 /* video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video.mov; sourceTree = "<group>"; };
 		451E9EF021384C8D00185925 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		452001C720CABFF500C1ED22 /* DropPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropPinViewController.swift; sourceTree = "<group>"; };
 		452001C920CBB7AB00C1ED22 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 		4564E40620B95574003B0D16 = {
 			isa = PBXGroup;
 			children = (
-				451E9EEC2136DBD200185925 /* video.mov */,
 				A7F35D9B21169A92005DA851 /* alarm_x.png */,
 				A735C57420D8447A00B7B1E2 /* 8771.jpg */,
 				4564E41120B95574003B0D16 /* catchu */,
@@ -986,7 +983,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				451E9EED2136DBD300185925 /* video.mov in Resources */,
 				A735C57520D8447B00B7B1E2 /* 8771.jpg in Resources */,
 				A7F35D9C21169A94005DA851 /* alarm_x.png in Resources */,
 				A79A767620C5BF6600FCE198 /* cancel_gray.png in Resources */,
