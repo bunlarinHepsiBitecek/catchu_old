@@ -35,42 +35,6 @@ public class REGroupRequestResult_resultArray_item : AWSModel {
         params["groupAdmin"] = "groupAdmin"
         
         return params
-    }
-    
-    var _groupid: String {
-        get {
-            return groupid!
-        }
-        set {
-            groupid = newValue
-        }
-    }
-    
-    var _name: String {
-        get {
-            return name!
-        }
-        set {
-            name = newValue
-        }
-    }
-    
-    var _createAt: String {
-        get {
-            return createAt!
-        }
-        set {
-            createAt = newValue
-        }
-    }
-    
-    var _groupPhotoUrl: String {
-        get {
-            return groupPhotoUrl!
-        }
-        set {
-            groupPhotoUrl = newValue
-        }
-    }
+    }    
     
 }

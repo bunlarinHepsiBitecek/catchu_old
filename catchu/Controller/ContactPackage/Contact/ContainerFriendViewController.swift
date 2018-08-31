@@ -28,7 +28,6 @@ class ContainerFriendViewController: UIViewController {
         
         collectionViewHeightConstraint.constant = 0
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

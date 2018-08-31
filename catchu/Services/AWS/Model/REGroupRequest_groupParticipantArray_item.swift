@@ -28,4 +28,10 @@ public class REGroupRequest_groupParticipantArray_item : AWSModel {
 		
         return params
 	}
+    
+    func displayItemProperties() {
+        
+        print("participantUserid : \(participantUserid)")
+        
+    }
 }

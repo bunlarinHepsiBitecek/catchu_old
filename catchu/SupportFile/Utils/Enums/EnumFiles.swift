@@ -39,6 +39,11 @@ enum RequestType : String {
     case deletePendingFollowRequest = "deletePendingFollowRequest"
     case defaultRequest = "Nothing"
     case user_profile_update = "USER_PROFILE_UPDATE"
+    case get_group_participant_list = "GET_GROUP_PARTICIPANT_LIST"
+    case update_group_info = "UPDATE_GROUP_INFO"
+    case add_participant_into_group = "ADD_PARTICIPANT_INTO_GROUP"
+    case exit_group = "EXIT_GROUP"
+    
  
 }
 

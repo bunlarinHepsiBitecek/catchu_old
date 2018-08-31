@@ -161,6 +161,7 @@ struct Constants {
         static let ContactViewController: String = "ContactViewController"
         static let FeedViewController: String = "FeedViewController"
         static let SearchViewController: String = "SearchViewController"
+        static let GroupInformationViewController: String = "GroupInformationViewController"
         
     }
     
@@ -190,6 +191,8 @@ struct Constants {
             static let tableViewCellSearchProcess: String = "tableViewCellSearchProcess"
             static let tableViewCellProfileView: String = "tableViewCellProfileView"
             static let tableViewCellProfileViewChoise: String = "tableViewCellProfileViewChoise"
+            static let participantListCell: String = "participantListCell"
+            static let groupInfoCell: String = "groupInfoCell"
             
             
         }
@@ -199,6 +202,7 @@ struct Constants {
     struct NumericValues {
         
         static let rowHeight : CGFloat = 60.0
+        static let rowHeight50 : CGFloat = 50.0
         static let rowHeightSearch : CGFloat = 80.0
         
     }

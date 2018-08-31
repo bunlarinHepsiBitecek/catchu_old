@@ -50,7 +50,7 @@ extension ContainerGroupViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.NumericValues.rowHeight
+        return Constants.NumericValues.rowHeight50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,7 +58,7 @@ extension ContainerGroupViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return SectionBasedGroup.shared.keyData
+        return SectionBasedGroup.shared.groupSectionKeyData
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -75,7 +75,7 @@ extension ContainerGroupViewController: UITableViewDelegate, UITableViewDataSour
         
         let info = UITableViewRowAction(style: .default, title: Constants.TableViewEditingStyleButtons.More) { (action, indexPath) in
             
-            self.openActionsForGroupInfo()
+            self.openActionsForGroupInfo(group: cellAtIndex.group)
             
         }
         
@@ -90,7 +90,7 @@ extension ContainerGroupViewController: UITableViewDelegate, UITableViewDataSour
 // row properties
 extension ContainerGroupViewController {
     
-    func openActionsForGroupInfo() {
+    func openActionsForGroupInfo(group: Group) {
         
         let groupInfoAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -98,7 +98,8 @@ extension ContainerGroupViewController {
             
             print("Info tapped")
             
-            //self.gotoInfoView()
+            //self.gotoGroupInformationViewController()
+            self.startGroupInformationPresentation(group: group)
             
         }
         
@@ -122,17 +123,77 @@ extension ContainerGroupViewController {
         
     }
     
-//    func gotoInfoView() {
-//
-//        if let destinationViewController = UIStoryboard(name: ViewConstants.StoryBoard.HomePage, bundle: nil).instantiateViewController(withIdentifier: ViewConstants.StoryBoardIdentifiers.GroupInfoViewController_storyBoardID) as? GroupInfoViewController {
-//
-//            destinationViewController.groupID = groupObject.groupID
-//            destinationViewController.group = groupObject
-//
-//            present(destinationViewController, animated: true, completion: nil)
-//
-//        }
-//
-//    }
+    func gotoGroupInformationViewController() {
+
+        if let destinationViewController = UIStoryboard(name: Constants.Storyboard.Name.Contact, bundle: nil).instantiateViewController(withIdentifier: Constants.ViewControllerIdentifiers.GroupInformationViewController) as? GroupInformationViewController {
+
+            present(destinationViewController, animated: true, completion: nil)
+
+        }
+
+    }
+    
+    func startGroupInformationPresentation(group: Group) {
+        
+        print("startGroupInformationPresentation starts")
+        print("groupId : \(group.groupID)")
+        
+        print("Participant.shared.participantDictionary[group.groupID] : \(Participant.shared.participantDictionary[group.groupID])")
+        
+        if Participant.shared.participantDictionary[group.groupID] != nil {
+            
+            if let destinationViewController = UIStoryboard(name: Constants.Storyboard.Name.Contact, bundle: nil).instantiateViewController(withIdentifier: Constants.ViewControllerIdentifiers.GroupInformationViewController) as? GroupInformationViewController {
+                
+                destinationViewController.group = group
+                destinationViewController.referenceOfContainerGroupViewController = self
+                self.present(destinationViewController, animated: true, completion: nil)
+                
+            }
+            
+        } else {
+            
+            LoaderController.shared.showLoader()
+            
+            APIGatewayManager.shared.getGroupParticipantList(requestType: .get_group_participant_list, groupId: group.groupID) { (groupRequestResult, responseBool) in
+                
+                if responseBool {
+                    
+                    LoaderController.shared.removeLoader()
+                    
+                    for item in groupRequestResult.resultArrayParticipantList! {
+                        
+                        let tempUser = User()
+                        
+                        tempUser.setUserProfileProperties(httpRequest: item)
+                        
+                        if Participant.shared.participantDictionary[group.groupID] == nil {
+                            Participant.shared.participantDictionary[group.groupID] = [User]()
+                        }
+
+                        Participant.shared.participantDictionary[group.groupID]?.append(tempUser)
+                        
+                    }
+                    
+                    print("***COUNT : \(Participant.shared.participantDictionary[group.groupID]?.count)")
+                    
+                    DispatchQueue.main.async {
+                        
+                        if let destinationViewController = UIStoryboard(name: Constants.Storyboard.Name.Contact, bundle: nil).instantiateViewController(withIdentifier: Constants.ViewControllerIdentifiers.GroupInformationViewController) as? GroupInformationViewController {
+                            
+                            destinationViewController.group = group
+                            destinationViewController.referenceOfContainerGroupViewController = self
+                            self.present(destinationViewController, animated: true, completion: nil)
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
     
 }

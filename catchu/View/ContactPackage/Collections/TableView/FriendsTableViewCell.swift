@@ -13,6 +13,7 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet var friendImage: UIImageViewDesign!
     @IBOutlet var friendName: UILabel!
     @IBOutlet var friendSelectedIcon: UIImageViewDesign!
+    @IBOutlet var friendUserNameDetail: UILabel!
     
     var userFriend = User()
     

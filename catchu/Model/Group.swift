@@ -126,11 +126,11 @@ class Group {
             
             let tempGroupObject = Group()
             
-            tempGroupObject.groupID = item._groupid
-            tempGroupObject.groupName = item._name
-            tempGroupObject.groupCreateDate = item._createAt
+            tempGroupObject.groupID = item.groupid!
+            tempGroupObject.groupName = item.name!
+            tempGroupObject.groupCreateDate = item.createAt!
             
-            self.groupDictionary[item._groupid] = tempGroupObject
+            self.groupDictionary[item.groupid!] = tempGroupObject
             
         }
         
@@ -142,10 +142,11 @@ class Group {
             
             let tempGroupObject = Group()
             
-            tempGroupObject.groupID = item._groupid
-            tempGroupObject.groupName = item._name
-            tempGroupObject.groupCreateDate = item._createAt
-            tempGroupObject.groupPictureUrl = item._groupPhotoUrl
+            tempGroupObject.groupID = item.groupid!
+            tempGroupObject.groupName = item.name!
+            tempGroupObject.groupCreateDate = item.createAt!
+            tempGroupObject.groupPictureUrl = item.groupPhotoUrl!
+            tempGroupObject.adminUserID = item.groupAdmin!
             
             self._groupList.append(tempGroupObject)
             
@@ -156,6 +157,48 @@ class Group {
         }
         
         //SectionBasedGroup.shared.createInitialLetterBasedGroupDictionary()
+        
+    }
+    
+    
+    func returnREGroupRequestFromGroup(inputGroup : Group) -> REGroupRequest {
+        
+        let returnREGroup = REGroupRequest()
+        
+        returnREGroup?.userid = inputGroup.adminUserID
+        returnREGroup?.groupid = inputGroup.groupID
+        returnREGroup?.groupName = inputGroup.groupName
+        returnREGroup?.groupPhotoUrl = inputGroup.groupPictureUrl
+        
+        return returnREGroup!
+        
+    }
+    
+    func displayGroupProperties() {
+        
+        print("displayGroupProperties starts")
+        
+        print("")
+        
+    }
+    
+    func updateGroupInfoInGroupList(inputGroupID : String, inputGroupName : String) {
+        
+        print("updateGroupInfoInGroupList starts")
+        
+        var i = 0
+        
+        for item in _groupList {
+            
+            if item._groupID == inputGroupID {
+                
+                _groupList[i]._groupName = inputGroupName
+                break
+                
+            }
+            
+            i += 1
+        }
         
     }
     

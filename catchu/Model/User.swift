@@ -466,6 +466,20 @@ class User {
         
     }
     
+    func setUserProfileProperties(httpRequest : REUserProfileProperties) {
+        
+        _userID = httpRequest.userid!
+        _name = httpRequest.name!
+        _userName = httpRequest.username!
+        _profilePictureUrl = httpRequest.profilePhotoUrl!
+        _isUserHasAPrivateAccount = httpRequest.isPrivateAccount?.boolValue
+//        _userBirthday = httpRequest.birthday
+//        _userGender = httpRequest.gender!
+//        _email = httpRequest.email!
+//        _userPhone = httpRequest.phone!
+        
+    }
+    
     func returnShared() -> User {
         
         return User.shared
@@ -478,11 +492,7 @@ class User {
         
         print("name :\(name)")
         print("userName :\(userName)")
-        print("userWebsite :\(userWebsite)")
         print("userBirthday :\(userBirthday)")
-        print("email :\(email)")
-        print("userPhone :\(userPhone)")
-        print("userGender :\(userGender)")
         
     }
     

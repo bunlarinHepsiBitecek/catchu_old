@@ -36,13 +36,18 @@
 "unknownError" = "Bilinmeyen hata";
 
 // Button or Label promt values
-"addParticipant" = "Kişi veya Grup Ekle";
+"addParticipantOrGroup" = "Kişi veya Grup Ekle";
+"addParticipant" = "Kişi Ekle";
 "cancel" = "Vazgeç";
 "next" = "Ekle";
 "Friends" = "Arkadaşlar";
 "Groups" = "Gruplar";
 "New Group" = "Yeni Grup";
 "Search Result" = "Arama Sonuçları";
+"add" = "Add";
+"makeGroupAdmin" = "Grup Admini Yap";
+"RemoveFromGroup" = "Gruptan Çıkar";
+"gotoInfo" = "Bilgi";
 
 // notification variables
 "CatchSomething" = "Bir şey yakaladınız :)";

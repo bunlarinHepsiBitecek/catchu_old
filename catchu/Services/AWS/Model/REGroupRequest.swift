@@ -47,5 +47,18 @@ public class REGroupRequest : AWSModel {
         return  ValueTransformer.awsmtl_JSONArrayTransformer(withModelClass: REGroupRequest_groupParticipantArray_item.self);
     }
     
+    func displayGroupAttributes() {
+        print("requestType:\( requestType)")
+        print("userid:\( userid)")
+        print("groupid:\( groupid)")
+        print("groupName:\( groupName)")
+        print("groupPhotoUrl:\( groupPhotoUrl)")
+        
+//        for item in groupParticipantArray! {
+//
+//            item.displayItemProperties()
+//
+//        }
+    }
     
 }

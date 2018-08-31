@@ -26,7 +26,8 @@ class LoaderController: NSObject {
         removeLoader()
         
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = .gray
+        //activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.activityIndicatorViewStyle = .whiteLarge
         
     }
     

@@ -30,7 +30,8 @@ extension ContactViewController {
         
         let safeGuide = self.view.safeAreaLayoutGuide
         contactView.topAnchor.constraint(equalTo: safeGuide.topAnchor).isActive = true
-        contactView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor).isActive = true
+        contactView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor).isActive = true
+//        contactView.centerXAnchor.constraint(equalTo: safeGuide.centerXAnchor).isActive = true
         contactView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor).isActive = true
         contactView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor ).isActive = true
         

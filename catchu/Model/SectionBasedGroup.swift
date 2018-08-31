@@ -18,7 +18,6 @@ class SectionBasedGroup {
     private var _userGroupSortedDictionary : [String : Group] = [:]
     private var _keyData : Array<String>
     
-    private var _sectionDictionaryForGroups = NSDictionary() as! [String : [Group]]
     private var _groupNameInitialBasedDictionary : Dictionary<String, [Group]>!
     private var _groupSectionKeyData : Array<String>!
     
@@ -65,15 +64,6 @@ class SectionBasedGroup {
         }
         set {
             _keyData = newValue
-        }
-    }
-    
-    var sectionDictionaryForGroups : [String : [Group]] {
-        get {
-            return _sectionDictionaryForGroups
-        }
-        set {
-            _sectionDictionaryForGroups = newValue
         }
     }
     

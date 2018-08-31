@@ -34,5 +34,10 @@ class ContainerGroupViewController: UIViewController {
         
     }
     
+    func deneme() {
+        
+        print("GAGAGAGAGAGAGAGAGAGAGGAGA")
+        
+    }
 
 }

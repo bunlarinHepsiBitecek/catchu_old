@@ -18,7 +18,8 @@ class ImageVideoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavi
     
     public static var shared = ImageVideoPickerHandler()
     
-    func createActionSheetForImageChoiceProcess(inputRequest : ImageProcessPickerType, inputCallerViewController : CallerViewController) {
+    // func createActionSheetForImageChoiceProcess(inputRequest : ImageProcessPickerType, inputCallerViewController : CallerViewController) {
+    func createActionSheetForImageChoiceProcess(inputRequest : ImageProcessPickerType) {
         
         var title = Constants.CharacterConstants.SPACE
         
@@ -34,14 +35,16 @@ class ImageVideoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavi
         let cameraAction = UIAlertAction(title: LocalizedConstants.PickerControllerStrings.takePhoto, style: .default) { (alertAction) in
         
             print("camera action selected")
-            self.takePictureByCamera(inputViewControllerChoice: inputCallerViewController)
+//            self.takePictureByCamera(inputViewControllerChoice: inputCallerViewController)
+            self.takePictureByCamera()
             
         }
         
         let galeryAction = UIAlertAction(title: LocalizedConstants.PickerControllerStrings.chooseFromLibrary, style: .default) { (alertAction) in
             
             print("galeery action selected")
-            self.getPictureByGalery(inputViewControllerChoice: inputCallerViewController)
+            //self.getPictureByGalery(inputViewControllerChoice: inputCallerViewController)
+            self.getPictureByGalery()
             
         }
         
@@ -61,7 +64,8 @@ class ImageVideoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavi
     }
     
     // photo library permission request management
-    func getPictureByGalery(inputViewControllerChoice : CallerViewController) {
+    // func getPictureByGalery(inputViewControllerChoice : CallerViewController) {
+    func getPictureByGalery() {
         
         print("getPictureByGalery starts")
         
@@ -88,7 +92,8 @@ class ImageVideoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavi
     }
     
     // camera permission request management
-    func takePictureByCamera(inputViewControllerChoice : CallerViewController) {
+    // func takePictureByCamera(inputViewControllerChoice : CallerViewController) {
+    func takePictureByCamera() {
         
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         

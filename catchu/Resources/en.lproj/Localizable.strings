@@ -38,6 +38,7 @@
 "unknownError" = "Unknown Error";
 
 // Button or Label promt values
+"addParticipantOrGroup" = "Add Participant or Group";
 "addParticipant" = "Add Participant";
 "cancel" = "Cancel";
 "next" = "Next";
@@ -45,6 +46,10 @@
 "Groups" = "Groups";
 "New Group" = "New Group";
 "Search Result" = "Search Result";
+"add" = "Add";
+"makeGroupAdmin" = "Make Group Admin";
+"RemoveFromGroup" = "Remove From Group";
+"gotoInfo" = "Info";
 
 // Location Services
 "LocationServiceDisableTitle" = "Location Service Disable";

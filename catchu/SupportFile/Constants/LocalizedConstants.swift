@@ -76,11 +76,16 @@ struct LocalizedConstants {
             static let friend = NSLocalizedString("Friends", comment: "")
             static let group = NSLocalizedString("Groups", comment: "")
             static let newGroup = NSLocalizedString("New Group", comment: "")
+            static let add = NSLocalizedString("Add", comment: "")
+            static let makeGroupAdmin = NSLocalizedString("makeGroupAdmin", comment: "")
+            static let RemoveFromGroup = NSLocalizedString("RemoveFromGroup", comment: "")
+            static let gotoInfo = NSLocalizedString("gotoInfo", comment: "")
             
         }
         
         struct LabelTitle {
 
+            static let addParticipantOrGroup = NSLocalizedString("addParticipantOrGroup", comment: "")
             static let addParticipant = NSLocalizedString("addParticipant", comment: "")
             
         }

@@ -98,9 +98,9 @@ extension ContainerSearchResultViewController: UITableViewDelegate, UITableViewD
             //cell.defaultButtonColors()
             
             let storyboard = UIStoryboard(name: Constants.Storyboard.Name.Main, bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ProfileMainViewController") as! ProfileMainViewController
+//            let vc = storyboard.instantiateViewController(withIdentifier: "ProfileMainViewController") as! ProfileMainViewController
 //            let vc = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-            navigationController?.pushViewController(vc, animated: true)
+            //navigationController?.pushViewController(vc, animated: true)
             
 //            self.tabBarController?.selectedIndex = 3
 //            if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "totoViewController") as? totoViewController {

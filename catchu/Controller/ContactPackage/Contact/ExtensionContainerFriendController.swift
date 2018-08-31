@@ -13,14 +13,22 @@ extension ContainerFriendViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        SectionBasedFriend.shared.emptySectionBasedDictioanry()
-        SectionBasedFriend.shared.emptyIfUserSelectedDictionary()
+        print("VIEWWILLDISAPPEAR STARTS")
+        print("friendUsernameInitialBasedDictionary count : \(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count)")
+        
+        // container lar arasında geçiş yaparken view resetlemek için kullanılır
+//        SectionBasedFriend.shared.emptySectionBasedDictioanry()
+//        SectionBasedFriend.shared.emptyIfUserSelectedDictionary()
         
     }
     
     func prepareViewDidLoadProcess() {
         
+        print("PREPAREVIEWDIDLOADPROCESS STARTS")
+        print("friendUsernameInitialBasedDictionary count : \(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count)")
+        
         SectionBasedFriend.shared.createInitialLetterBasedFriendDictionary()
+        print("friendUsernameInitialBasedDictionary count : \(SectionBasedFriend.shared.friendUsernameInitialBasedDictionary.count)")
         
         self.isCollectionViewOpen = false
         SectionBasedFriend.shared.emptyIfUserSelectedDictionary()
@@ -95,7 +103,8 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
         cell.userFriend = returnUser(indexPath: indexPath)
         /* the code below supplies data for table view - end */
         
-        cell.friendName.text = cell.userFriend.name
+        cell.friendName.text = cell.userFriend.userName
+        cell.friendUserNameDetail.text = cell.userFriend.name
         cell.friendImage.setImagesFromCacheOrFirebaseForFriend(cell.userFriend.profilePictureUrl)
         
         if SectionBasedFriend.shared.ifUserSelectedDictionary[cell.userFriend.userID]! {
@@ -139,7 +148,7 @@ extension ContainerFriendViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return Constants.NumericValues.rowHeight
+        return Constants.NumericValues.rowHeight50
         
     }
     

@@ -12,6 +12,7 @@ class GroupTableViewCell: UITableViewCell {
 
     @IBOutlet var groupImage: UIImageViewDesign!
     @IBOutlet var groupName: UILabel!
+    @IBOutlet var groupDescription: UILabel!
     
     var group = Group()
     
